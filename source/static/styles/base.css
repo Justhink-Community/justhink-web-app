@@ -1,0 +1,146 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-weight: 400;
+  color: #222;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background-color: gray;
+  font-size: 1.6rem;
+}
+
+.header {
+  background-color: #fff;
+  height: 11.7rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3.2rem;
+  /* gap: 9.1rem; */
+}
+
+/* HEADER START (LOGO & NAV)  */
+
+.header__start {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+
+.header__hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.header__hamburger-menu span {
+  width: 4.5rem;
+  height: 0.7rem;
+  background-color: #c54a56;
+  border-radius: 11px;
+}
+
+.header__logo {
+  width: 100%;
+}
+
+.header__logo use {
+  stroke: #c04957;
+}
+
+.header__logo g path {
+  fill: #c04957;
+  stroke: #c04957;
+}
+
+.header__heading {
+  color: #c04957;
+  width: 32rem;
+}
+
+/* HEADER CENTER (SEARCH BOX ) */
+
+.header__search-box {
+  width: 80rem;
+  height: 5.5rem;
+  border: 3px solid #707070;
+  border-radius: 15px;
+
+  display: flex;
+  align-items: center;
+  padding: 0 0.8rem;
+  gap: 1.6rem;
+
+  color: inherit;
+  font: inherit;
+}
+
+.header__search-field {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+}
+
+.header__search-field:focus {
+  background: none;
+  border: none;
+  outline: none;
+}
+.header__search-icon {
+  font-size: 3.2rem;
+  color: #c04957;
+  transform: scaleX(-1);
+}
+
+/* HEADER END (NOTIFICATON, LANGUAGE SWITCH, CTA ) */
+
+.header__end {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.header__notifications {
+  color: #6e3070;
+  font-size: 4rem;
+}
+
+.header__language-checkbox {
+  visibility: hidden;
+  display: none;
+}
+
+.header__language-switch *:is(.on, .off) {
+  font-size: 2rem;
+}
+
+.header__language-switch {
+  border-radius: 20px;
+  background-color: #ebebeb;
+
+  display: flex;
+  align-items: center;
+}
+
+.header__language-switch .on {
+  padding: 1.5rem;
+  background-color: #682e72;
+  color: #fff;
+  border-radius: 20px;
+}
+
+.header__language-switch .off {
+  padding: 1.8rem;
+  color: #686868;
+}

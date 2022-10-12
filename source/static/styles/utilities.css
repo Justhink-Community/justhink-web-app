@@ -1,0 +1,13 @@
+.btn:link,
+.btn:visited {
+  text-decoration: none;
+  font-size: 2.4rem;
+  padding: 1.5rem 4rem;
+  border-radius: 20px;
+}
+
+.btn--primary:link,
+.btn--primary:visited {
+  background-color: #5a2a76;
+  color: #fff;
+}
