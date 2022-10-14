@@ -26,6 +26,8 @@
 
     <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
     <link rel="stylesheet" href="{% static 'styles/utilities.css' %}" />
+
+    {% block head %} {% endblock head %}
   </head>
   <body>
     <header class="header">
@@ -213,5 +215,7 @@
         <a href="#" class="btn btn--primary">Giriş Yap</a>
       </div>
     </header>
+
+    <main>{% block main %} {% endblock main %}</main>
   </body>
 </html>

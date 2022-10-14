@@ -1,0 +1,119 @@
+main {
+  padding: 3rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.daily-summary {
+  position: relative;
+}
+
+.daily-summary_structor  {
+  width: 100%;
+  height: 100%;
+  max-width: 180rem;
+  min-width: 100rem;
+  /* max-height: 38.6rem; */
+  /* min-height: 30rem; */
+}
+
+.daily-summary__content {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.daily-summary__topic {
+  font-size: 5rem;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 1.1px;
+}
+
+.daily-summary_statistics {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2.5rem;
+  color: rgba(255, 255, 255, .5);
+  font-size: 3rem;
+}
+
+.daily-summary__navigation {
+  margin-top: 5.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 13rem;
+}
+
+.daily-summary__navigation .middle {
+  display: flex;
+  background-color: rgb(148, 137, 143, .3);
+  gap: 1.7rem;
+  border-radius: 100px;
+  height: 7.6rem;
+  position: relative;
+  z-index: -2;
+  justify-content: center;
+  text-align: center;
+}
+
+.daily-summary__navigation .middle .daily-summary__navigation-element {
+  background-color: transparent;
+}
+
+.base-container {
+  transform: translateX(-.15rem);
+}
+
+.daily-summary__navigation-element-base {
+
+}
+
+.daily-summary__navigation-element-base::after {
+  content: '';
+  position: absolute;
+  width: 11.12rem;
+  height: 11.12rem;
+  background-color: #E3E3E3;
+  left: 50%;
+  top: calc(50%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.daily-summary__navigation-element-base .daily-summary__navigation-icon {
+  color: #8E3967;
+  font-size: 6rem !important;
+}
+
+.middle .daily-summary__navigation-icon {
+  font-size: 4.5rem;
+}
+
+.daily-summary__navigation-element {
+  height: 7.6rem;
+  width: 7.6rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, .1);
+  position: relative;
+}
+
+.daily-summary__navigation-icon {
+  color: #fff;
+  font-size: 5rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.icon-reverse {
+  transform: translate(-50%, -50%) scaleX(-1);
+}
