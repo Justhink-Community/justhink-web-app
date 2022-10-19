@@ -11,19 +11,22 @@ html {
   font-weight: 400;
   color: #222;
   font-family: "Montserrat", sans-serif;
+
 }
 
 body {
-  height: 100vh;
+  height: 100%;
   font-size: 1.6rem;
+
+  background-color: #e3e3e3;
 }
 
 main {
-  border: 1px solid #707070;
-  border-top: none;
-  height: calc(100vh - 11.7rem);
-  background-color: #e3e3e3;
+  height: auto;
+
 }
+
+
 
 .header {
   background-color: #fff;
@@ -33,6 +36,7 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 0 3.2rem;
+  position: relative;
   /* gap: 9.1rem; */
 }
 
@@ -40,9 +44,9 @@ main {
   position: absolute;
   content: '';
   left: 0;
-  top: 0;
+  bottom: 0;
   width: 100%;
-  height: 3px;
+  height: 1.5px;
   background-color: #808080;
 }
 
@@ -58,13 +62,20 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+
 }
 
 .header__hamburger-menu span {
+  position: relative;
+  top: 50%; 
   width: 4.5rem;
   height: 0.7rem;
   background-color: #c54a56;
   border-radius: 11px;
+}
+
+.hamburger-btn:hover .header__hamburger-menu span {
+  height: .6rem;
 }
 
 .header__logo {
@@ -171,6 +182,7 @@ main {
   html {
     font-size: 50%;
   }
+
 }
 
 @media only screen and (max-width: 1350px) {
@@ -184,3 +196,6 @@ main {
     font-size: 37.15%;
   }
 }
+
+
+

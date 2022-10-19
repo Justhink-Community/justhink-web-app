@@ -1,5 +1,9 @@
+html {
+  overflow-x: hidden;
+}
+
 main {
-  padding: 3rem 4rem;
+  padding: 2.5rem 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,4 +120,101 @@ main {
 
 .icon-reverse {
   transform: translate(-50%, -50%) scaleX(-1);
+}
+
+.daily-summary__tags {
+  position: absolute;
+  right: 3.75rem;
+  bottom: 1.3rem;
+  color: #632C74;
+  font-size: 2.5rem;
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  word-spacing: 1rem;
+}
+
+/* LATEST IDEAS  */
+
+.latest-ideas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 4.5rem;
+}
+
+.idea {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  width: 100%;
+  padding: 4rem 3rem;
+  background-color: #F0F0F0;
+  border-radius: 11px;
+  position: relative;
+}
+
+.idea__content {
+  grid-column: 3 / -1;
+}
+
+.idea__interaction-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+  margin-right: 3rem;
+}
+
+.idea__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.idea__interaction-icon {
+  color: #9F254C;
+  font-size: 4.5rem;
+}
+
+.idea__counter {
+  font-size: 2rem;
+  color: #8F3A66;
+}
+
+.idea__profile-photo {
+  margin-right: 2.4rem;
+}
+
+.idea__profile-photo img {
+  width: 20rem;
+  height: 28rem;
+}
+
+.idea__content {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.idea__author {
+  color: #8E3A66;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.idea__text {
+  font-size: 1.8rem;
+  color: #686868;
+  font-weight: 400;
+}
+
+.idea:nth-of-type(even)::after {
+  content: '';
+  position: absolute;
+  left: -2.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #8E3967;
+  width: 2px;
+  height: 50%;
+
 }
