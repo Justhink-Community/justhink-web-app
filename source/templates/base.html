@@ -27,17 +27,17 @@
     <link rel="stylesheet" href="/static/styles/base.css" />
     <link rel="stylesheet" href="/static/styles/utilities.css" />
 
+    <script src="/static/src/script.js" defer></script>
+
     {% block head %} {% endblock head %}
   </head>
   <body>
     <header class="header">
       <div class="header__start">
         <a href="#" class="hamburger-btn">
-          <div class="header__hamburger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+          <span class="header__hamburger-menu">
+            
+          </span>
         </a>
 
         <h1 class="header__heading">
@@ -190,15 +190,17 @@
       </div>
 
       <div class="header__end">
-        <ion-icon
+        <a href="#" class="header__notifications-link">
+          <ion-icon
           name="notifications-outline"
           class="header__notifications"
-        ></ion-icon>
+          ></ion-icon>
+        </a>
 
         <form action="change_language" method="get">
           {% csrf_token %}
 
-          <div class="header__language-switch">
+          <div class="header__language-switch language-switch">
             <input
               type="checkbox"
               id="language-checkbox"
@@ -207,15 +209,84 @@
 
             <label for="language-checkbox"></label>
 
-            <span class="on">TR</span>
-            <span class="off">ENG</span>
+            <a href="#" class="on language-selection--primary">TR</a>
+            <a href="#" class="off language-selection--secondary">ENG</a>
           </div>
         </form>
 
-        <a href="#" class="btn btn--primary">Giriş Yap</a>
+        <a href="login" class="btn btn--primary">Giriş Yap</a>
       </div>
     </header>
 
-    <main>{% block main %} {% endblock main %}</main>
+    <main>
+      <div class="daily-summary">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1832" height="385.999" viewBox="0 0 1832 385.999" class="daily-summary_structor">
+          <defs>
+            <linearGradient id="linear-gradient" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+              <stop offset="0" stop-color="#C74B55"/>
+              <stop offset="1" stop-color="#592977"/>
+            </linearGradient>
+          </defs>
+          {% block header_path %} 
+          <path id="Dikdörtgen_64" data-name="Dikdörtgen 64" d="M0,15A15,15,0,0,1,15,0H1817a15,15,0,0,1,15,15V311.313a15,15,0,0,1-15,15H1477.655a50,50,0,0,0-39.666,19.559l-15.75,20.523a50,50,0,0,1-39.66,19.559L952.221,386a20,20,0,0,1-16.657-8.927l-6.3-9.474a20,20,0,0,1,3.189-25.861L941.5,333.5l-55.168.189,8.313,8.943a20,20,0,0,1,2.808,23.377l-5.4,9.652A20,20,0,0,1,874.6,385.9L15,386A15,15,0,0,1,0,371Z" fill="url(#linear-gradient)"/>
+          {% endblock header_path %}
+        </svg>
+
+        
+        <div class="daily-summary__content">
+          <p class="daily-summary__topic">Bir haftalığına herkesi ikna etme yetin olacak. Ne yaparsın?</p>
+          
+          <div class="daily-summary_statistics">
+            <p class="total-art">toplam art: 1234</p>
+            <p class="total-comment">toplam yorum: 1234</p>
+            <p class="total-idea">toplam fikir: 1234</p>
+          </div>
+          
+          <nav class="daily-summary__navigation">
+            <div class="daily-summary__navigation-element">
+              <ion-icon name="help-outline" class="daily-summary__navigation-icon"></ion-icon>
+            </div>
+            
+            <div class="middle">
+              <div class="daily-summary__navigation-element">
+                <ion-icon name="brush-outline" class="daily-summary__navigation-icon icon-reverse"></ion-icon>
+              </div>
+              
+              <div class="base-container">
+                <div class="daily-summary__navigation-element daily-summary__navigation-element-base">
+                  <ion-icon name="home" class="daily-summary__navigation-icon"></ion-icon>
+                </div>
+              </div>
+              
+              <div class="daily-summary__navigation-element">
+                <ion-icon name="pencil-outline" class="daily-summary__navigation-icon"></ion-icon>
+              </div>
+            </div>
+            
+            
+            <div class="daily-summary__navigation-element">
+              <ion-icon name="chatbubbles-outline" class="daily-summary__navigation-icon"></ion-icon>
+            </div>
+          </nav>
+        </div>
+    
+        <p class="daily-summary__tags">#sosyal #kurgu #toplum</p>
+        
+      </div>
+    
+      {% block main %} {% endblock main %}
+
+      <a href="#" class="publish-idea">
+        <ion-icon class="publish-idea-icon" name="add-outline"></ion-icon>
+      </a>
+    </main>
+
+
+
+    <footer class="footer">
+      <a href="#" class="social-link"><ion-icon class="social-icon" name="logo-google"></ion-icon></a>
+      <a href="#" class="social-link"><ion-icon class="social-icon" name="logo-linkedin"></ion-icon></a>
+      <a href="#" class="social-link"><ion-icon class="social-icon" name="logo-instagram"></ion-icon></a>
+    </footer>
   </body>
 </html>
