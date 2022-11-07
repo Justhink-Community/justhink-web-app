@@ -15,7 +15,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 4.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 6rem;
 }
 
 .idea {
@@ -24,7 +24,7 @@ main {
   align-items: center;
   width: 100%;
   padding: 3rem 2rem;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   border-radius: 11px;
   position: relative;
 }
@@ -47,15 +47,14 @@ main {
   align-items: center;
 }
 
-
 .idea__interaction-icon {
-  color: #9F254C;
+  color: #9f254c;
   font-size: 4.5rem;
 }
 
 .idea__counter {
   font-size: 2rem;
-  color: #8F3A66;
+  color: #8f3a66;
 }
 
 .idea__profile-photo {
@@ -68,11 +67,11 @@ main {
 }
 
 .idea__content {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .idea__author {
-  color: #8E3A66;
+  color: #8e3a66;
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.2rem;
@@ -85,13 +84,12 @@ main {
 }
 
 .idea:nth-of-type(even)::after {
-  content: '';
+  content: "";
   position: absolute;
   left: -2.15rem;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #8E3967;
+  background-color: #8e3967;
   width: 2px;
   height: 50%;
-
 }
