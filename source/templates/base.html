@@ -212,7 +212,148 @@
           </div>
         </form>
 
-        <a href="login" class="btn btn--primary">Giriş Yap</a>
+        <a href="#" class="btn btn--primary" onclick="logInSimulate()"
+          >Giriş Yap</a
+        >
+
+        <div class="login-box" id="login">
+          <div class="login-container">
+            <h2 class="heading-secondary login-form__heading">
+              Tekrar hoş geldin!
+            </h2>
+            <form action="" method="post" class="login-form">
+              <div class="login-form__information-box">
+                <div class="login-form__input-box">
+                  <label for="username" class="login-form__input-label"
+                    >Kullanıcı Adı:</label
+                  >
+                  <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="meredith_grey"
+                    class="login-form__input"
+                  />
+                </div>
+                <div class="login-form__input-box">
+                  <label for="password" class="login-form__input-label"
+                    >Kullanıcı Şifresi:</label
+                  >
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="******"
+                    class="login-form__input"
+                  />
+                </div>
+              </div>
+
+              <div class="login-form__action-box">
+                <div class="login-form__checkbox-box">
+                  <input
+                    type="checkbox"
+                    name="rememberme"
+                    id="rememberme"
+                    class="login-form__checkbox"
+                  />
+                  <label for="rememberme" class="login-form__checkbox-label"
+                    >Beni hatırla</label
+                  >
+                </div>
+                <input type="submit" value="Giriş Yap" class="btn btn-form" />
+              </div>
+
+              <a
+                href="#"
+                class="login-form__change-auth-mode"
+                onclick="simulateAuthModeChange()"
+                >Hesabın yok mu? Hemen aramıza katıl!</a
+              >
+            </form>
+          </div>
+
+          <div class="register-container">
+            <h2 class="heading-secondary login-form__heading">
+              Aramıza katıl!
+            </h2>
+            <form action="" method="post" class="login-form">
+              <div class="login-form__information-box">
+                <div class="login-form__input-box">
+                  <label for="username" class="login-form__input-label"
+                    >Kullanıcı Adı:</label
+                  >
+                  <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="meredith_grey"
+                    class="login-form__input"
+                  />
+                </div>
+                <div class="login-form__input-box">
+                  <label for="email" class="login-form__input-label"
+                    >Kullanıcı E-Posta:</label
+                  >
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="hello@justhink.com"
+                    class="login-form__input"
+                  />
+                </div>
+                <div class="login-form__input-box">
+                  <label for="password" class="login-form__input-label"
+                    >Kullanıcı Şifre:</label
+                  >
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="******"
+                    class="login-form__input"
+                  />
+                </div>
+
+                <div class="login-form__checkbox-box mt-2">
+                  <input
+                    type="checkbox"
+                    name="kvkk"
+                    id="kvkk"
+                    class="login-form__checkbox"
+                    checked
+                  />
+                  <label for="kvkk" class="login-form__checkbox-label"
+                    >KVKK politikasını kabul ediyorum.</label
+                  >
+                </div>
+                <div class="login-form__checkbox-box">
+                  <input
+                    type="checkbox"
+                    name="emaillist"
+                    id="emaillist"
+                    class="login-form__checkbox"
+                  />
+                  <label for="emaillist" class="login-form__checkbox-label"
+                    >E-Posta bültenine kayıt ol.</label
+                  >
+                </div>
+              </div>
+
+              <div class="login-form__action-box">
+                <input type="submit" value="Kayıt Ol" class="btn btn-form" />
+              </div>
+
+              <a
+                href="#"
+                class="login-form__change-auth-mode"
+                onclick="simulateAuthModeChange()"
+                >Hesabın var mı? Hemen giriş yap!</a
+              >
+            </form>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -306,14 +447,35 @@
         <p class="daily-summary__tags">#sosyal #kurgu #toplum</p>
       </div>
 
-      <a href="#" class="publish-idea">
-        <ion-icon class="publish-idea-icon" name="add-outline"></ion-icon>
-      </a>
-
       {% block main %} {% endblock main %}
     </main>
 
     <footer class="footer">
+      <div class="publish-idea-box">
+        <a href="#" class="publish-idea" onclick="shareIdea()">
+          <ion-icon class="publish-idea-icon" name="add-outline"></ion-icon>
+          <ion-icon
+            class="publish-idea-icon"
+            name="share-social-outline"
+          ></ion-icon>
+        </a>
+        <div class="publish-idea-container">
+          <form action="" class="publish-idea-form">
+            <label for="idea-content" class="publish-idea__input-label"
+              >Fikrini aşağıya yazabilirsin.</label
+            >
+            <textarea
+              name="idea-content"
+              id="idea-content"
+              class="publish-idea__textarea"
+              cols="50"
+              rows="6"
+              placeholder="Bence, xxx konusunda almamız gereken tutum böyle..."
+            ></textarea>
+          </form>
+        </div>
+      </div>
+
       <div class="social-links">
         <a href="#" class="social-link"
           ><ion-icon class="social-icon" name="logo-google"></ion-icon

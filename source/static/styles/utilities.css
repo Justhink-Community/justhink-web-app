@@ -4,7 +4,7 @@
   font-size: 2rem;
   padding: 1.5rem 3rem;
   border-radius: 20px;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .btn--primary:link,
@@ -13,29 +13,37 @@
   color: #fff;
 }
 
-.btn--primary:hover, 
+.btn--primary:hover,
 .btn--primary:active {
-  background-color: #6b3f84; 
+  background-color: #6b3f84;
 }
 
 .mt-6 {
   margin-top: 6rem;
 }
 
-.language-selection--primary:link, .language-selection--primary:visited {
-  transition: all .2s ease;
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.language-selection--primary:link,
+.language-selection--primary:visited {
+  transition: all 0.2s ease;
   text-decoration: none;
 }
 
-.language-selection--primary:hover ,.language-selection--primary:active {
+.language-selection--primary:hover,
+.language-selection--primary:active {
   background-color: #51266a;
 }
 
-.language-selection--secondary:link, .language-selection--secondary:visited {
-  transition: all .2s ease;
+.language-selection--secondary:link,
+.language-selection--secondary:visited {
+  transition: all 0.2s ease;
   text-decoration: none;
 }
 
-.language-switch {
-
+.heading-secondary {
+  color: #eee;
+  font-size: 3.4rem;
 }
