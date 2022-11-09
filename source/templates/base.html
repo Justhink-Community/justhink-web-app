@@ -32,6 +32,20 @@
     {% block head %} {% endblock head %}
   </head>
   <body>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}> -->
+      <div class="alert showAlert show">
+        <ion-icon name="{{ message.extra_tags }}"></ion-icon>
+        <span class="msg">{{ message }}</span>
+      </div>
+
+      {% endfor %}
+    </ul>
+  {% endif %}
+    
+
     <header class="header">
       <div class="header__start">
         <a href="#" class="hamburger-btn">
@@ -182,6 +196,7 @@
               id="search"
               class="header__search-field"
               placeholder="Dilediğiniz şeyi arayın."
+              required
             />
           </div>
         </form>
@@ -203,6 +218,7 @@
               type="checkbox"
               id="language-checkbox"
               class="header__language-checkbox"
+              
             />
 
             <label for="language-checkbox"></label>
@@ -212,16 +228,23 @@
           </div>
         </form>
 
+        {% if not user.is_authenticated %}
         <a href="#" class="btn btn--primary" onclick="logInSimulate()"
           >Giriş Yap</a
         >
+        {% else %} 
+        <a href="/logout" class="btn btn--primary"
+          >Çıkış Yap</a
+        >
+        {% endif %}
 
         <div class="login-box" id="login">
           <div class="login-container">
             <h2 class="heading-secondary login-form__heading">
               Tekrar hoş geldin!
             </h2>
-            <form action="" method="post" class="login-form">
+            <form action="/login" method="post" class="login-form">
+              {% csrf_token %}
               <div class="login-form__information-box">
                 <div class="login-form__input-box">
                   <label for="username" class="login-form__input-label"
@@ -233,6 +256,7 @@
                     id="username"
                     placeholder="meredith_grey"
                     class="login-form__input"
+                    required
                   />
                 </div>
                 <div class="login-form__input-box">
@@ -245,6 +269,7 @@
                     id="password"
                     placeholder="******"
                     class="login-form__input"
+                    required
                   />
                 </div>
               </div>
@@ -277,7 +302,8 @@
             <h2 class="heading-secondary login-form__heading">
               Aramıza katıl!
             </h2>
-            <form action="" method="post" class="login-form">
+            <form action="/register" method="post" class="login-form">
+              {% csrf_token %}
               <div class="login-form__information-box">
                 <div class="login-form__input-box">
                   <label for="username" class="login-form__input-label"
@@ -331,11 +357,11 @@
                 <div class="login-form__checkbox-box">
                   <input
                     type="checkbox"
-                    name="emaillist"
-                    id="emaillist"
+                    name="emailperm"
+                    id="emailperm"
                     class="login-form__checkbox"
                   />
-                  <label for="emaillist" class="login-form__checkbox-label"
+                  <label for="emailperm" class="login-form__checkbox-label"
                     >E-Posta bültenine kayıt ol.</label
                   >
                 </div>
@@ -358,6 +384,7 @@
     </header>
 
     <main>
+
       <div class="daily-summary">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -461,6 +488,8 @@
         </a>
         <div class="publish-idea-container">
           <form action="" class="publish-idea-form">
+            {% csrf_token %}
+
             <label for="idea-content" class="publish-idea__input-label"
               >Fikrini aşağıya yazabilirsin.</label
             >
@@ -471,6 +500,7 @@
               cols="50"
               rows="6"
               placeholder="Bence, xxx konusunda almamız gereken tutum böyle..."
+              required
             ></textarea>
           </form>
         </div>

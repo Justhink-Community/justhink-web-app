@@ -26,7 +26,7 @@ document.querySelector("html").addEventListener("click", (e) => {
     loginBox.classList.remove("showed");
   } else if (
     !publishIdeaContainer.contains(e.target) &&
-    e.target != document.querySelector("a.publish-idea ion-icon")
+    e.target != document.querySelector("a.publish-idea ion-icon") && publishIdeaBox.classList.contains('writing-idea')
   ) {
     publishIdeaBox.classList.remove("writing-idea");
     publishIdeaBox.classList.add("inspecting-ideas");

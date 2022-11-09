@@ -656,6 +656,71 @@ main {
   height: 2.2rem;
 }
 
+/* POP-UP NOTIFICATIONS  */
+
+.messages {
+  position: absolute;
+}
+
+.alert{
+  position: absolute;
+  background: #F7EEFF;
+  padding: .6rem 2rem;
+  min-width: 330px;
+  /* transform: translateX(1rem) translateY(1rem); */
+  margin-left: 1rem;
+  margin-top: 1rem;
+  width: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: .4rem;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  color: #7E4EAC;
+
+  z-index: 500;
+}
+.alert.showAlert {
+  opacity: 1;
+  pointer-events: auto;
+}
+.alert.show {
+  animation: show_slide 5s ease forwards;
+}
+@keyframes show_slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  25% {
+    transform: translateX(0%);
+  }
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+.alert ion-icon {
+  font-size: 3rem;
+  /* content: 'check_circle' */
+}
+.alert .msg {
+  font-size: 1.6rem;
+  color: #345abc;
+}
+
+.messages {
+  height: 3rem !important;
+}
+
+
 @media only screen and (max-width: 1700px) {
   html {
     font-size: 56.25%;
