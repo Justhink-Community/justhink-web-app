@@ -22,9 +22,7 @@ def IndexView(request):
         request,
         "index.html",
         {
-            "top_ideas": Idea.objects.all()[:2]
-            if len(Idea.objects.all()) >= 2
-            else Idea.objects.all(),
+            "top_ideas": Idea.objects.all(),
             "comments_count": len(Comment.objects.all()),
             "ideas_count": len(Idea.objects.all()),
         },

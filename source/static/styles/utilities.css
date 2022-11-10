@@ -4,7 +4,7 @@
   text-decoration: none;
   font-size: 2rem;
   padding: 1.5rem 3rem;
-  border-radius: 20px;
+  border-radius: 11px;
   transition: all 0.2s ease;
 }
 
@@ -139,6 +139,39 @@
   top: 50%;
   transform: translateY(-50%);
   background-color: #8e3967;
-  width: 2px;
+  width: .2rem;
   height: 50%;
+}
+.latest-ideas {
+  row-gap: 4.5rem;
+}
+
+.idea:nth-of-type(n + 3)::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -2.15rem;
+  transform: translateX(-50%);
+  background-color: #8e3967;
+  width: 75%;
+  height: .2rem;
+}
+
+.daily-summary_mobile-structor {
+  display: none;
+}
+
+@media only screen and (max-width: 1050px) {
+  .daily-summary__tags {
+    right: 1.5rem;
+    bottom: 1.5rem;
+  }
+
+  .daily-summary__topic {
+    font-size: 4.5rem;
+  }
+
+  .daily-summary_statistics {
+    font-size: 2.75rem;
+  }
 }

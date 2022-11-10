@@ -145,7 +145,7 @@ main {
   background: linear-gradient(white, white) padding-box,
     linear-gradient(to right bottom, #c74b55, #592977) border-box;
   border-radius: 11px;
-  border: 3px solid transparent;
+  border: .3rem solid transparent;
 
   display: flex;
   align-items: center;
@@ -361,12 +361,12 @@ main {
 
 .btn-form {
   background-color: #5a2a76;
-  color: #eee;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 3.3px;
-  transition: background-color 0.15s ease;
-  font: inherit;
+  color: #eee !important;
+  border: none !important;
+  padding: 1rem 2rem !important;
+  border-radius: 3.3px !important;
+  transition: background-color 0.15s ease !important;
+  font: inherit !important;
 }
 
 .login-form__change-auth-mode:link,
@@ -775,5 +775,24 @@ main {
 @media only screen and (max-width: 1200px) {
   html {
     font-size: 37.15%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  html {
+    font-size: 32.15%;
+  }
+}
+
+
+@media only screen and (max-width: 800px) {
+  html {
+    font-size: 26.15%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  html {
+    font-size: 20.15%;
   }
 }

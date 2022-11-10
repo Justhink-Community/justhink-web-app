@@ -387,6 +387,18 @@
     <main>
       {% block daily_summary %}
       <div class="daily-summary">
+        <svg class="daily-summary_mobile-structor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="263" viewBox="0 0 360 263">
+          <defs>
+            <linearGradient id="linear-gradient2" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+              <stop offset="0" stop-color="#e62b3c"/>
+              <stop offset="0" stop-color="#bd2645"/>
+              <stop offset="1" stop-color="#561c5c"/>
+              <stop offset="1" stop-color="#351964"/>
+            </linearGradient>
+          </defs>
+          <path id="1" data-name="Dikdörtgen 61" d="M0,0H360V242.715s-22.7,10.318-56.6,15.371-109.6,7.435-115.4,0l7.662-16.317a2,2,0,0,0-1.81-2.85H164.5a2,2,0,0,0-1.846,2.77l6.844,16.4c-5.75,7.9-75.9,5.052-109.5,0A310,310,0,0,1,0,242.715Z" fill="url(#linear-gradient2)"/>
+        </svg>
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -416,6 +428,9 @@
           />
           {% endblock header_path %}
         </svg>
+
+
+        
 
         <div class="daily-summary__content">
           <p class="daily-summary__topic">
