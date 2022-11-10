@@ -26,3 +26,8 @@ class Comment(models.Model):
     
     comment_dislikes = models.JSONField(editable=False, default=dict)
     comment_dislike_count = models.IntegerField(editable=False, default=0)
+    
+class Topic(models.Model):
+  topic_name = models.CharField(max_length=100)
+  topic_sources = models.TextField()
+  topic_keywords = models.CharField(max_length=40)

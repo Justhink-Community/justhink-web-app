@@ -37,6 +37,23 @@
     {% block head %} {% endblock head %}
   </head>
   <body>
+    <div class="restriction">
+      <ion-icon name="sad-outline"></ion-icon>
+      <p>Hay aksi, sitemizi cihanızın çözünürlüğünde görüntüleyemiyoruz. Fakat üzülme, bunun için çalışıyoruz! Çok yakında cihazında sitemizle etkileşebileceksin.</p>
+
+      <div class="social-links">
+        <a href="#" class="social-link"
+          ><ion-icon class="social-icon" name="logo-google"></ion-icon
+        ></a>
+        <a href="#" class="social-link"
+          ><ion-icon class="social-icon" name="logo-linkedin"></ion-icon
+        ></a>
+        <a href="#" class="social-link"
+          ><ion-icon class="social-icon" name="logo-instagram"></ion-icon
+        ></a>
+      </div>
+    </div>
+
     {% if messages %}
     <ul class="messages">
       {% for message in messages %}
@@ -44,6 +61,8 @@
       <div class="alert showAlert show">
         <ion-icon name="{{ message.extra_tags }}"></ion-icon>
         <span class="msg">{{ message }}</span>
+
+  
       </div>
 
       {% endfor %}
@@ -434,7 +453,7 @@
 
         <div class="daily-summary__content">
           <p class="daily-summary__topic">
-            Bir haftalığına herkesi ikna etme yetin olacak. Ne yaparsın?
+            {{ topic.topic_name }}
           </p>
 
           <div class="daily-summary_statistics">
@@ -487,7 +506,7 @@
           </nav>
         </div>
 
-        <p class="daily-summary__tags">#sosyal #kurgu #toplum</p>
+        <p class="daily-summary__tags">{{ topic.topic_keywords }}</p>
       </div>
 
       {% endblock %} {% block main %} {% endblock main %}

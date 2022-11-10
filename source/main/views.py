@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test
 
 from user_profile.models import Profile
-from idea.models import Idea, Comment
+from idea.models import Idea, Comment, Topic
 
 
 NOTIFICATION_TAGS = {
@@ -22,6 +22,7 @@ def IndexView(request):
         request,
         "index.html",
         {
+            "topic": Topic.objects.first(),
             "top_ideas": Idea.objects.all(),
             "comments_count": len(Comment.objects.all()),
             "ideas_count": len(Idea.objects.all()),
@@ -171,7 +172,7 @@ def InspectIdeaView(request, idea_id: int):
         return redirect("index-page")
     else:
 
-        return render(request, "inspect_idea.html", {'idea': idea_object, 'comments': comments,             "comments_count": len(Comment.objects.all()),
+        return render(request, "inspect_idea.html", {"topic": Topic.objects.first(),'idea': idea_object, 'comments': comments,             "comments_count": len(Comment.objects.all()),
             "ideas_count": len(Idea.objects.all()),})
 
 @user_passes_test(lambda u: not u.is_anonymous)

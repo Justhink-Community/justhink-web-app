@@ -754,6 +754,10 @@ main {
   height: 3rem !important;
 }
 
+.restriction {
+  display: none;
+}
+
 @media only screen and (max-width: 1700px) {
   html {
     font-size: 56.25%;
@@ -782,6 +786,40 @@ main {
   html {
     font-size: 32.15%;
   }
+
+  .header, main, .footer {
+    display: none;
+  }
+
+  .restriction {
+    display: flex;
+    background-color: #f0f0f0;
+    height: 100vh;
+    font-size: 3rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+    padding: 0 12.5%;
+  }
+
+  .restriction > ion-icon {
+    font-size: 10rem;
+  }
+
+  .social-links {
+    position: relative;
+    background: none;
+    padding: 0;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .social-icon {
+    font-size: 4rem;
+  }
+
 }
 
 
