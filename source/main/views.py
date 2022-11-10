@@ -166,7 +166,7 @@ def LikePostView(request, post_id: int):
 def InspectIdeaView(request, idea_id: int):
     try:
         idea_object = Idea.objects.get(id=idea_id)
-        comments = Comment.objects.filter(comment_idea = idea_object).order_by(comment_like_count)
+        comments = Comment.objects.filter(comment_idea = idea_object).order_by('comment_like_count')
     except Idea.DoesNotExist:
         return redirect("index-page")
     else:
