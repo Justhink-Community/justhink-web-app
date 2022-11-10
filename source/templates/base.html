@@ -15,6 +15,11 @@
       rel="stylesheet"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
@@ -43,8 +48,7 @@
 
       {% endfor %}
     </ul>
-  {% endif %}
-    
+    {% endif %}
 
     <header class="header">
       <div class="header__start">
@@ -53,7 +57,7 @@
         </a>
 
         <h1 class="header__heading">
-          <a href="#">
+          <a href="/">
             <svg
               class="header__logo"
               width="384.12372px"
@@ -185,10 +189,9 @@
 
           <div class="header__search-box">
             <a href="#" class="header__search-btn">
-              <ion-icon
-                name="search-outline"
-                class="header__search-icon"
-              ></ion-icon>
+              <span class="material-symbols-outlined header__search-icon"
+                >search</span
+              >
             </a>
             <input
               type="text"
@@ -218,7 +221,6 @@
               type="checkbox"
               id="language-checkbox"
               class="header__language-checkbox"
-              
             />
 
             <label for="language-checkbox"></label>
@@ -232,10 +234,8 @@
         <a href="#" class="btn btn--primary" onclick="logInSimulate()"
           >Giriş Yap</a
         >
-        {% else %} 
-        <a href="/logout" class="btn btn--primary"
-          >Çıkış Yap</a
-        >
+        {% else %}
+        <a href="/logout" class="btn btn--primary">Çıkış Yap</a>
         {% endif %}
 
         <div class="login-box" id="login">
@@ -304,6 +304,7 @@
             </h2>
             <form action="/register" method="post" class="login-form">
               {% csrf_token %}
+
               <div class="login-form__information-box">
                 <div class="login-form__input-box">
                   <label for="username" class="login-form__input-label"
@@ -384,7 +385,7 @@
     </header>
 
     <main>
-
+      {% block daily_summary %}
       <div class="daily-summary">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -422,51 +423,51 @@
           </p>
 
           <div class="daily-summary_statistics">
-            <p class="total-art">toplam art: 1234</p>
-            <p class="total-comment">toplam yorum: 1234</p>
-            <p class="total-idea">toplam fikir: 1234</p>
+            <p class="total-art">toplam art: 0</p>
+            <p class="total-comment">toplam yorum: {{ comments_count }}</p>
+            <p class="total-idea">toplam fikir: {{ ideas_count }}</p>
           </div>
 
           <nav class="daily-summary__navigation">
             <div class="daily-summary__navigation-element">
-              <ion-icon
-                name="help-outline"
-                class="daily-summary__navigation-icon"
-              ></ion-icon>
+              <span
+                class="material-symbols-outlined daily-summary__navigation-icon"
+                >help</span
+              >
             </div>
 
             <div class="middle">
               <div class="daily-summary__navigation-element">
-                <ion-icon
-                  name="brush-outline"
-                  class="daily-summary__navigation-icon icon-reverse"
-                ></ion-icon>
+                <span
+                  class="material-symbols-outlined daily-summary__navigation-icon icon-reverse"
+                  >brush</span
+                >
               </div>
 
               <div class="base-container">
                 <div
                   class="daily-summary__navigation-element daily-summary__navigation-element-base"
                 >
-                  <ion-icon
-                    name="home"
-                    class="daily-summary__navigation-icon"
-                  ></ion-icon>
+                  <span
+                    class="material-symbols-outlined daily-summary__navigation-icon"
+                    >home</span
+                  >
                 </div>
               </div>
 
               <div class="daily-summary__navigation-element">
-                <ion-icon
-                  name="pencil-outline"
-                  class="daily-summary__navigation-icon"
-                ></ion-icon>
+                <span
+                  class="material-symbols-outlined daily-summary__navigation-icon"
+                  >edit</span
+                >
               </div>
             </div>
 
             <div class="daily-summary__navigation-element">
-              <ion-icon
-                name="chatbubbles-outline"
-                class="daily-summary__navigation-icon"
-              ></ion-icon>
+              <span
+                class="material-symbols-outlined daily-summary__navigation-icon"
+                >forum</span
+              >
             </div>
           </nav>
         </div>
@@ -474,7 +475,7 @@
         <p class="daily-summary__tags">#sosyal #kurgu #toplum</p>
       </div>
 
-      {% block main %} {% endblock main %}
+      {% endblock %} {% block main %} {% endblock main %}
     </main>
 
     <footer class="footer">
@@ -487,7 +488,7 @@
           ></ion-icon>
         </a>
         <div class="publish-idea-container">
-          <form action="" class="publish-idea-form">
+          <form action="/publish-idea" class="publish-idea-form" method="POST">
             {% csrf_token %}
 
             <label for="idea-content" class="publish-idea__input-label"
@@ -500,8 +501,13 @@
               cols="50"
               rows="6"
               placeholder="Bence, xxx konusunda almamız gereken tutum böyle..."
+              minlength="20"
+              maxlength="600"
+              style="resize: none"
               required
             ></textarea>
+
+            <button type="submit" class="btn btn-form">Fikri Paylaş</button>
           </form>
         </div>
       </div>

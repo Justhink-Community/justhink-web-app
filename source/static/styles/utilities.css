@@ -1,3 +1,4 @@
+.btn,
 .btn:link,
 .btn:visited {
   text-decoration: none;
@@ -7,6 +8,7 @@
   transition: all 0.2s ease;
 }
 
+.btn--primary,
 .btn--primary:link,
 .btn--primary:visited {
   background-color: #5a2a76;
@@ -46,4 +48,97 @@
 .heading-secondary {
   color: #eee;
   font-size: 3.4rem;
+}
+
+.heading-tertiary {
+  color: #51266a;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+
+.idea {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  width: 100%;
+  padding: 3rem 2rem;
+  background-color: #f0f0f0;
+  border-radius: 11px;
+  position: relative;
+}
+
+.idea__btn {
+  text-decoration: none;
+}
+
+.idea__btn:hover .idea__interaction-icon {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+.idea__content {
+  margin-top: 2.5rem;
+  margin-bottom: auto;
+  grid-column: 3 / -1;
+}
+
+.idea__interaction-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+  margin-right: 3rem;
+}
+
+.idea__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.idea__interaction-icon {
+  color: #9f254c;
+  font-size: 4.5rem;
+}
+
+.idea__counter {
+  font-size: 2rem;
+  color: #8f3a66;
+}
+
+.idea__profile-photo {
+  margin-right: 2.4rem;
+}
+
+.idea__profile-photo img {
+  width: 20rem;
+  height: 28rem;
+}
+
+.idea__content {
+  font-family: "Montserrat", sans-serif;
+}
+
+.idea__author {
+  color: #8e3a66;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.idea__text {
+  font-size: 1.8rem;
+  color: #686868;
+  font-weight: 400;
+}
+
+.idea:nth-of-type(even)::after {
+  content: "";
+  position: absolute;
+  left: -2.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #8e3967;
+  width: 2px;
+  height: 50%;
 }

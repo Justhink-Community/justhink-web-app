@@ -11,6 +11,7 @@ html {
   font-weight: 400;
   color: #222;
   font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
 }
 
 body {
@@ -23,7 +24,35 @@ body {
 main {
   height: auto;
   position: relative;
+  padding: 2.5rem 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5rem;
 }
+
+::-webkit-scrollbar {
+  width: 1.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+
+  border-radius: 9px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #74316F; 
+  border-radius: 10px;
+  transition: background .15s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:#82467d; 
+}
+
 
 .header {
   background-color: #fff;
@@ -113,8 +142,10 @@ main {
 .header__search-box {
   width: clamp(60rem, 45vw, 80rem);
   height: 5.5rem;
-  border: 3px solid #707070;
-  border-radius: 15px;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right bottom, #c74b55, #592977) border-box;
+  border-radius: 11px;
+  border: 3px solid transparent;
 
   display: flex;
   align-items: center;
@@ -365,7 +396,7 @@ main {
   position: fixed;
   right: 8rem;
   bottom: 12rem;
-  background-color: #5a2a76;
+  background-color: #6b3f84;
   color: #eee;
   padding: 4rem;
   border-radius: 11px;
@@ -533,6 +564,7 @@ main {
 
 /* PUBLISH IDEA  */
 
+.publish-idea,
 .publish-idea:link,
 .publish-idea:visited {
   background-color: #5a2a76;
@@ -544,6 +576,8 @@ main {
   border-radius: 50%;
   z-index: 1;
   transition: background-color 0.2s ease;
+  outline: none;
+  border: none;
 }
 
 .publish-idea-icon {
@@ -662,11 +696,11 @@ main {
   position: absolute;
 }
 
-.alert{
+.alert {
   position: absolute;
-  background: #F7EEFF;
-  padding: .6rem 2rem;
-  min-width: 330px;
+  background: #f7eeff;
+  padding: 0.6rem 2rem;
+  min-width: clamp(35rem, 15vw, 50rem);
   /* transform: translateX(1rem) translateY(1rem); */
   margin-left: 1rem;
   margin-top: 1rem;
@@ -675,11 +709,11 @@ main {
   justify-content: space-between;
   align-items: center;
 
-  border-radius: .4rem;
+  border-radius: 0.4rem;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
-  color: #7E4EAC;
+  color: #7e4eac;
 
   z-index: 500;
 }
@@ -713,13 +747,12 @@ main {
 }
 .alert .msg {
   font-size: 1.6rem;
-  color: #345abc;
+  color: #7e4eac;
 }
 
 .messages {
   height: 3rem !important;
 }
-
 
 @media only screen and (max-width: 1700px) {
   html {

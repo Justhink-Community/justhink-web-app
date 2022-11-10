@@ -1,0 +1,114 @@
+{% extends 'base.html' %} 
+
+{% block head %}
+<link rel="stylesheet" href="/static/styles/idea.css">
+{% endblock %}
+
+{% block daily_summary %} {% endblock %} 
+
+{% block main %} 
+
+  <section class="daily-summary">
+    <p class="daily-summary__tags">#sosyal #kurgu #toplum</p>
+
+    <p class="daily-summary__topic">
+      Bir haftalığına herkesi ikna etme yetin olacak. Ne yaparsın?
+    </p>
+
+    <div class="daily-summary_statistics">
+      <p class="total-art">toplam art: 0</p>
+      <p class="total-comment">toplam yorum: {{ comments_count }}</p>
+      <p class="total-idea">toplam fikir: {{ ideas_count }}</p>
+    </div>
+  </section>
+
+  <section class="idea-overview">
+    <div class="idea-container">
+      <div class="idea">
+
+        <div class="idea__content">
+          <p class="idea__author">{{ idea.idea_author.account.username }}:</p>
+          <p class="idea__text">{{ idea.idea_content }}</p>
+        </div>
+  
+        <div class="idea__interaction-btns">
+          <a href="like-post/{{ id }}" class="idea__like-btn idea__btn">
+            <span class="material-symbols-outlined idea__interaction-icon"
+              >favorite</span
+            >
+            <p class="idea__like-count idea__counter">
+              {{ idea.idea_like_count }}
+            </p>
+          </a>
+          <a
+            href="comment-idea/{{ id }}"
+            class="idea__comment-btn idea__btn"
+          >
+            <span class="material-symbols-outlined idea__interaction-icon"
+              >chat</span
+            >
+            <p class="idea__comment-count idea__counter">
+              {{ idea.idea_comments }}
+            </p>
+          </a>
+          <a href="" class="idea__share-btn idea__btn" onclick="navigator.clipboard.writeText( window.location.href);">
+            <span class="material-symbols-outlined idea__interaction-icon"
+              >share</span
+            >
+          </a>
+        </div>
+      </div> 
+  
+      <div class="idea-comments">
+        {% for comment in comments %} 
+        <div class="idea-comment idea">
+          <div class="idea__content">
+            <p class="idea__author">{{ comment.comment_author.account.username }}:</p>
+            <p class="idea__text">{{ comment.comment_content }}</p>
+          </div>
+    
+          <div class="idea__interaction-btns">
+            <a href="/like-comment/{{ idea.id }}/{{ comment.id }}" class="idea__like-btn idea__btn">
+              <span class="material-symbols-outlined idea__interaction-icon"
+                >add</span
+              >
+              <p class="idea__like-count idea__counter">
+                {{ comment.comment_like_count }}
+              </p>
+            </a>
+            <a
+              href="/dislike-comment/{{ idea.id }}/{{ comment.id }}"
+              class="idea__comment-btn idea__btn"
+            >
+              <span class="material-symbols-outlined idea__interaction-icon"
+                >remove</span
+              >
+              <p class="idea__comment-count idea__counter">
+                {{ comment.comment_dislike_count }}
+              </p>
+            </a>
+  
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="send-comment">
+      <form action="/send-comment/{{ idea.id }}" method="post" class="send-comment-form">
+        {% csrf_token %}
+        <input type="text" name="comment-content" id="comment-content" class="send-comment-textbox" placeholder="Yorum ekle..." required minlength="10" maxlength="300">
+        <input type="submit" value="Paylaş" class="send-comment-btn">
+      </form>
+    </div>
+  </section>
+  <section class="articles">
+    <h3 class="articles-heading heading-tertiary">Beğenileceğini düşündüğümüz metinler:</h3>
+    <ul class="articles-list">
+      <li class="article"><a href="#" class="article-link">#123</a></li>
+      <li class="article"><a href="#" class="article-link">#456</a></li>
+      <li class="article"><a href="#" class="article-link">#789</a></li>
+    </ul>   
+  </section>
+
+{% endblock %}

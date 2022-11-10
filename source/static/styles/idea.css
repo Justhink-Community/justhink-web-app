@@ -1,0 +1,173 @@
+main {
+  padding: 0;
+  height: calc(100vh - 14.4rem);
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 3fr 1fr;
+  padding: 3.2rem;
+}
+
+footer {
+  margin: 0 !important;
+}
+
+/* DAILY SUMMARY  */
+
+.daily-summary {
+  background-image: linear-gradient(#C74B55, #592977);
+  width: clamp(30rem, 25vw, 40rem);
+  height: clamp(50rem, 80vh, 100rem);
+  padding: 10rem 3.5rem;
+  border-radius: 11px;
+}
+
+.daily-summary__tags {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  color: #eee;
+  opacity: .8;
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-bottom: 1.4rem;
+}
+
+.daily-summary__topic {
+  font-size: 4rem;
+}
+
+.daily-summary_statistics {
+  flex-direction: column;
+  gap: .5rem;
+  font-size: 2.2rem;
+}
+
+/* IDEA OVERVIEW  */
+
+.idea-overview {
+  background-color: #f0f0f0;
+  border-radius: 11px;
+  max-height: 80vh;
+
+}
+
+.idea-container {
+  overflow-y: scroll;
+  max-height: calc(80vh - 3.2rem);
+}
+
+.idea {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  background: none;
+  border-radius: 0;
+}
+
+.idea:not(.idea-comment) {
+  padding-bottom: 0;
+}
+
+
+
+.idea__content {
+  grid-column: 1;
+  width: 90%;
+}
+
+.idea__interaction-btns {
+  position: relative;
+  flex-direction: row;
+}
+
+.idea__interaction-btns::after {
+  content: '';
+  position: absolute;
+  bottom: -2.5rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #9f254c;
+}
+
+.idea__btn {
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.idea:nth-of-type(even)::after {
+  background-color: transparent;
+  width: 0;
+  height: 0;
+}
+
+/* IDEA COMMENTS  */
+
+.idea-comment {
+  padding-top: 0;
+}
+
+.idea-comment .idea__interaction-btns::after {
+  width: 45%;
+  background-color: black;
+}
+
+/* SEND COMMENT  */
+
+.send-comment {
+  width: 100%;
+}
+
+.send-comment-form {
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  height: 3.2rem;
+}
+
+.send-comment-form input {
+  outline: none;
+  border: none;
+}
+
+.send-comment-textbox {
+  border-bottom-left-radius: 11px;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  background-color: #ddd;
+}
+
+.send-comment-btn {
+  background-color: #74316F; 
+  color: #eee;
+  border-bottom-right-radius: 11px;
+  transition: background-color .2s ease;
+  font-size: 1.6rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.send-comment-btn:hover {
+  background-color: #82467d; 
+}
+
+
+/* ARTICLES  */
+
+.articles {
+  height: 80vh;
+  background-color: #f0f0f0;
+  padding: 2rem;
+}
+
+.articles-list {
+  margin-top: 2.5rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.article-link {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
