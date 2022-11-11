@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -44,6 +46,12 @@ def LoginView(request):
                 f"Başarıyla giriş yaptın: {username}",
                 extra_tags=NOTIFICATION_TAGS["success"],
             )
+            logged_in = datetime.datetime.now()
+            
+            profile = Profile.objects.get(account = user)
+            profile.login_count += 1
+            profile.last_logged_in = logged_in.replace(tzinfo=None)
+            profile.save()
         else:
             messages.error(
                 request,
@@ -119,7 +127,15 @@ def LogoutView(request):
         f"Hesabınızdan çıkış yaptınız: {request.user.username}",
         extra_tags=NOTIFICATION_TAGS["info"],
     )
+    logged_out = datetime.datetime.now()
+    profile = Profile.objects.get(account = request.user)
+    print(logged_out, profile.last_logged_in)
+    logged_time = logged_out - profile.last_logged_in
+    profile.total_logged_time = logged_time
+    profile.save()
+    
     logout(request)
+    
 
     return redirect("index-page")
 
@@ -254,3 +270,9 @@ def DislikeCommentView(request, idea_id: int,  comment_id: int):
             comment_object.save()
 
         return redirect("inspect-idea-page", idea_id)
+      
+def DevToolsView(request):
+  if request.user.is_superuser:
+    return render(request, 'status.html', {'accounts': User.objects.all(), 'ideas': Idea.objects.all(), 'comments': Comment.objects.all(), 'profiles': Profile.objects.all()})
+  else:
+    return redirect('index-page')
