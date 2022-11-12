@@ -72,14 +72,11 @@
   text-decoration: none;
 }
 
-.idea__btn:hover .idea__interaction-icon {
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
-}
 
 .idea__content {
   margin-top: 2.5rem;
   margin-bottom: auto;
-  grid-column: 3 / -1;
+  grid-column: 2 / -1;
 }
 
 .idea__interaction-btns {
@@ -99,7 +96,19 @@
 .idea__interaction-icon {
   color: #9f254c;
   font-size: 4.5rem;
+  transition: all .2s ease;
+  
 }
+
+.idea__interaction-icon.interacted {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48
+}
+
+
+.idea__interaction-icon:hover {
+  color: #b25170;
+}
+
 
 .idea__counter {
   font-size: 2rem;

@@ -154,8 +154,15 @@ def LogoutView(request):
     return redirect("index-page")
 
 
-@user_passes_test(lambda u: not u.is_anonymous)
 def PublishIdeaView(request):
+    if request.user.is_anonymous: 
+        messages.error(
+            request,
+            "Bu işlem için giriş yapman gerekiyor!",
+            extra_tags=NOTIFICATION_TAGS["error"],
+        )
+        return redirect(request.META['HTTP_REFERER'])
+
     if request.POST:
         idea_content = request.POST["idea-content"]
 
@@ -173,8 +180,15 @@ def PublishIdeaView(request):
         return redirect("index-page")
 
 
-@user_passes_test(lambda u: not u.is_anonymous)
 def LikePostView(request, post_id: int):
+    if request.user.is_anonymous: 
+        messages.error(
+            request,
+            "Bu işlem için giriş yapman gerekiyor!",
+            extra_tags=NOTIFICATION_TAGS["error"],
+        )
+        return redirect('index-page')
+  
     try:
         idea_object = Idea.objects.get(id=post_id)
     except Idea.DoesNotExist:
@@ -205,8 +219,15 @@ def InspectIdeaView(request, idea_id: int):
         return render(request, "inspect_idea.html", {"topic": Topic.objects.first(),'idea': idea_object, 'comments': comments,             "comments_count": len(Comment.objects.all()),
             "ideas_count": len(Idea.objects.all()),})
 
-@user_passes_test(lambda u: not u.is_anonymous)
 def SendCommentView(request, idea_id: int):
+  if request.user.is_anonymous: 
+      messages.error(
+          request,
+          "Bu işlem için giriş yapman gerekiyor!",
+          extra_tags=NOTIFICATION_TAGS["error"],
+      )
+      return redirect('index-page')
+  
   if request.POST:
     try:
         idea_object = Idea.objects.get(id=idea_id)
@@ -227,8 +248,15 @@ def SendCommentView(request, idea_id: int):
 
       return redirect("inspect-idea-page", idea_id)
     
-@user_passes_test(lambda u: not u.is_anonymous)
 def LikeCommentView(request, idea_id: int,  comment_id: int):
+    if request.user.is_anonymous: 
+      messages.error(
+          request,
+          "Bu işlem için giriş yapman gerekiyor!",
+          extra_tags=NOTIFICATION_TAGS["error"],
+      )
+      return redirect(request.META['HTTP_REFERER'])
+  
     try:
         comment_object = Comment.objects.get(id=comment_id)
     except Idea.DoesNotExist:
@@ -255,10 +283,16 @@ def LikeCommentView(request, idea_id: int,  comment_id: int):
             comment_object.save()
 
         return redirect("inspect-idea-page", idea_id)
-      
-    
-@user_passes_test(lambda u: not u.is_anonymous)
+
 def DislikeCommentView(request, idea_id: int,  comment_id: int):
+    if request.user.is_anonymous: 
+        messages.error(
+            request,
+            "Bu işlem için giriş yapman gerekiyor!",
+            extra_tags=NOTIFICATION_TAGS["error"],
+        )
+        return redirect(request.META['HTTP_REFERER'])
+  
     try:
         comment_object = Comment.objects.get(id=comment_id)
     except Idea.DoesNotExist:
@@ -285,3 +319,5 @@ def DislikeCommentView(request, idea_id: int,  comment_id: int):
 
         return redirect("inspect-idea-page", idea_id)
       
+def handle_404(request, exception):
+  return render(request, '404.html')

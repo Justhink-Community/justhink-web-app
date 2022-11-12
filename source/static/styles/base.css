@@ -39,6 +39,10 @@ main {
 }
 
 
+.daily-summary_mobile-structor {
+  display: none;
+}
+
 
 ::-webkit-scrollbar {
   width: 1.5rem;
@@ -46,7 +50,7 @@ main {
 
 /* Track */
 ::-webkit-scrollbar-track {
-
+  background-color: #f1eaf1;
   border-radius: 9px;
 }
 
@@ -603,11 +607,11 @@ main {
   background-color: #682e72;
 }
 
-.publish-idea-icon[name="share-social-outline"] {
+.publish-idea-icon[name="close-outline"] {
   display: none;
 }
 
-.publish-idea-box.writing-idea .publish-idea-icon[name="share-social-outline"] {
+.publish-idea-box.writing-idea .publish-idea-icon[name="close-outline"] {
   display: block;
   visibility: visible;
   animation: PublishIconFadeInAnimation 0.5s ease;
@@ -709,7 +713,7 @@ main {
   position: absolute;
   background: #f7eeff;
   padding: 0.6rem 2rem;
-  min-width: clamp(35rem, 15vw, 50rem);
+  min-width: clamp(35rem, 20vw, 70rem);
   /* transform: translateX(1rem) translateY(1rem); */
   margin-left: 1rem;
   margin-top: 1rem;

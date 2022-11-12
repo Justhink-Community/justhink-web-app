@@ -5,7 +5,7 @@ const secondaryLanguageSelection = document.querySelector(
   loginBox = document.querySelector(".login-box"),
   loginContainer = document.querySelector(".login-container"),
   registerContainer = document.querySelector(".register-container"),
-  publishIdeaLink = document.querySelector("a.publish-idea"),
+  publishIdeaLink = document.querySelector(".publish-idea"),
   publishIdeaBox = document.querySelector(".publish-idea-box"),
   publishIdeaContainer = document.querySelector(".publish-idea-container"),
   informationBox = document.querySelector('.information-box')
@@ -30,7 +30,7 @@ document.querySelector("html").addEventListener("click", (e) => {
     loginBox.classList.remove("showed");
   } else if (
     !publishIdeaContainer.contains(e.target) &&
-    e.target != document.querySelector("a.publish-idea ion-icon") && publishIdeaBox.classList.contains('writing-idea')
+    e.target != document.querySelector(".publish-idea ion-icon") && publishIdeaBox.classList.contains('writing-idea')
   ) {
     publishIdeaBox.classList.remove("writing-idea");
     publishIdeaBox.classList.add("inspecting-ideas");
@@ -57,11 +57,12 @@ const simulateAuthModeChange = () => {
   }
 };
 
-const shareIdea = () => {
+publishIdeaLink.addEventListener('click', () => {
+  // console.log('hi')
   let linkIcon = publishIdeaLink.querySelector("ion-icon");
   if (linkIcon.getAttribute("name") == "add-outline") {
     publishIdeaBox.classList.add("writing-idea");
     publishIdeaBox.classList.remove("inspecting-ideas");
-  } else {
-  }
-};
+  } 
+})
+

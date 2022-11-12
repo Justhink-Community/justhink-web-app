@@ -9,8 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Justhink Yazılım Ekibi">
     <meta name="description" content="Justhink, insanları belirli bir konu hakkında tartışmak için bir araya getiren ve bunları etik bir ortamda yapmalarına aracılık eden öncü bir yeni nesil sosyal medya platformudur.">
-    <meta name="keywords" content="Justhink, fikir, insanlar, düşünce, etik, süper insanlar, ekşisözlük, twitter, fikirler, düşünceler, ölümsüz, yok olmak, okul, ortam, beyin, fırtına, beyin fırtınası, mindstorming, inovasyon, gündelik, sohbet, akademik tartışma, tartışma">
+    <meta name="keywords" content="Justhink, justhink, jusTHINK, jusTHİNK, fikir, insanlar, düşünce, etik, süper insanlar, ekşisözlük, twitter, fikirler, düşünceler, ölümsüz, yok olmak, okul, ortam, beyin, fırtına, beyin fırtınası, mindstorming, inovasyon, gündelik, sohbet, akademik tartışma, tartışma">
     <meta name="google-site-verification" content="MUpgXMLwErTODhvmdYiBd4iP2vJ9YTCh-ywN2vBigbY" />
+
+    <link rel="icon" type="image/x-icon" href="/static/favicon.svg">
+    <link rel="apple-touch-icon" href="/static/favicon.svg">
+
     <title>Justhink - {% block title %}Anasayfa{% endblock %}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,10 +24,7 @@
       rel="stylesheet"
     />
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <script
       type="module"
@@ -39,10 +40,84 @@
 
     <script src="/static/src/script.js" defer></script>
 
+    <style>
+      body:not(.fully-loaded) .header, body:not(.fully-loaded) main, body:not(.fully-loaded) .footer {display: none;}
+
+      .loading-screen {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        background-color: #e3e3e3;
+        transition: all .5s ease;
+        z-index: 100;
+      }
+      .fully-loaded .loading-screen {
+        opacity: 0 !important;
+        visibility: hidden;
+
+      }
+
+      body:not(.fully-loaded) .loading-screen {
+        opacity: 1;
+      }
+
+      body:not(.fully-loaded) .loading-screen__logo {
+        position: relative;
+      }
+
+      body:not(.fully-loaded) .loading-element {
+        position: relative;
+      }
+
+      body:not(.fully-loaded) .loading-element::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 125%;
+        background-color: #e3e3e3;
+        z-index: 5;
+        animation: LoadingAnimation 2s infinite;
+      }
+
+      @keyframes LoadingAnimation {
+        0% {
+          transform: translateY(0);
+        }
+
+        100% {
+          transform: translateY(-100%);
+        }
+      }
+
+      @keyframes FadeOutLoadingScreen {
+        0% {
+          opacity: 1;
+        }
+
+        100% {
+
+        }
+      }
+  
+    </style>
+
+    <script>
+
+    </script>
+
     {% block head %} {% endblock head %}
   </head>
-  <body>
+  <body onload="document.querySelector('body').classList.add('fully-loaded')">
 
+    <div class="loading-screen">
+      <div class="loading-element">
+        <img src="/static/black_icon.svg" class="loading-screen__logo" alt="jusTHINK Logo">
+      </div>
+    </div>
 
     {% if messages %}
     <ul class="messages">
@@ -62,7 +137,7 @@
     <header class="header">
       <div class="header__start">
         <a href="#" class="hamburger-btn">
-          <span class="header__hamburger-menu"> </span>
+          <span class="header__hamburger-menu"></span>
         </a>
 
         <h1 class="header__heading">
@@ -361,7 +436,7 @@
                     checked
                   />
                   <label for="kvkk" class="login-form__checkbox-label"
-                    >KVKK politikasını kabul ediyorum.</label
+                    ><a href="/static/policies/user-terms.pdf" target="_blank" style="color: inherit">KVKK politikasını</a> kabul ediyorum.</label
                   >
                 </div>
                 <div class="login-form__checkbox-box">
@@ -472,7 +547,7 @@
           </p>
 
           <div class="daily-summary_statistics">
-            <p class="total-art">toplam art: 0</p>
+            <!-- <p class="total-art">toplam art: 0</p> -->
             <p class="total-comment">toplam yorum: {{ comments_count }}</p>
             <p class="total-idea">toplam fikir: {{ ideas_count }}</p>
           </div>
@@ -528,14 +603,15 @@
     </main>
 
     <footer class="footer">
+      {% block publish_idea %} 
       <div class="publish-idea-box">
-        <a href="#" class="publish-idea" onclick="shareIdea()">
+        <span class="publish-idea">
           <ion-icon class="publish-idea-icon" name="add-outline"></ion-icon>
           <ion-icon
             class="publish-idea-icon"
-            name="share-social-outline"
+            name="close-outline"
           ></ion-icon>
-        </a>
+        </span>
         <div class="publish-idea-container">
           <form action="/publish-idea" class="publish-idea-form" method="POST">
             {% csrf_token %}
@@ -560,12 +636,16 @@
           </form>
         </div>
       </div>
+      {% endblock %}
 
       <div class="social-links">
-        <a href="https://www.linkedin.com/company/justhink/" target="_blank" class="social-link"
+        <a href="mailto:iletisim@justhink.net" target="_blank" rel="nofollower noopener" class="social-link"
+        ><ion-icon class="social-icon" name="logo-google"></ion-icon
+        ></a>
+        <a href="https://www.linkedin.com/company/justhink/" target="_blank" rel="nofollower noopener" class="social-link"
           ><ion-icon class="social-icon" name="logo-linkedin"></ion-icon
         ></a>
-        <a href="https://instagram.com/justhinkofficial" target="_blank" class="social-link"
+        <a href="https://instagram.com/justhinkofficial" target="_blank" rel="nofollower noopener" class="social-link"
           ><ion-icon class="social-icon" name="logo-instagram"></ion-icon
         ></a>
       </div>
