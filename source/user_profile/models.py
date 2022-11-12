@@ -1,8 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
-
 
 class Profile(models.Model):
     account = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -15,4 +13,3 @@ class Profile(models.Model):
     login_count = models.IntegerField(default=0)
     total_logged_time = models.DurationField()
     last_logged_in = models.DateTimeField()
-    

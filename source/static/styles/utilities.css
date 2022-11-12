@@ -132,7 +132,7 @@
   font-weight: 400;
 }
 
-.idea:nth-of-type(even)::after {
+.idea:not(.idea-comment):nth-of-type(even)::after {
   content: "";
   position: absolute;
   left: -2.15rem;
@@ -146,7 +146,7 @@
   row-gap: 4.5rem;
 }
 
-.idea:nth-of-type(n + 3)::before {
+.idea:not(.idea-comment):nth-of-type(n + 3)::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -155,6 +155,12 @@
   background-color: #8e3967;
   width: 75%;
   height: .2rem;
+}
+
+.idea__interaction-icon:hover {
+  fill: black;
+  stroke: black;
+  /* background-color: black; */
 }
 
 .daily-summary_mobile-structor {

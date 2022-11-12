@@ -7,7 +7,8 @@ const secondaryLanguageSelection = document.querySelector(
   registerContainer = document.querySelector(".register-container"),
   publishIdeaLink = document.querySelector("a.publish-idea"),
   publishIdeaBox = document.querySelector(".publish-idea-box"),
-  publishIdeaContainer = document.querySelector(".publish-idea-container");
+  publishIdeaContainer = document.querySelector(".publish-idea-container"),
+  informationBox = document.querySelector('.information-box')
 
 secondaryLanguageSelection.addEventListener("mouseover", () => {
   languageSwitch.style.backgroundColor = "#e4e4e4";
@@ -18,6 +19,9 @@ secondaryLanguageSelection.addEventListener("mouseout", () => {
 });
 
 document.querySelector("html").addEventListener("click", (e) => {
+
+
+
   if (
     !loginBox.contains(e.target) &&
     loginBox.classList.contains("showed") &&
@@ -31,6 +35,8 @@ document.querySelector("html").addEventListener("click", (e) => {
     publishIdeaBox.classList.remove("writing-idea");
     publishIdeaBox.classList.add("inspecting-ideas");
   }
+
+
 });
 
 const logInSimulate = () => {

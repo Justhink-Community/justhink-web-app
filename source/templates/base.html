@@ -6,6 +6,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Justhink Yazılım Ekibi">
+    <meta name="description" content="Justhink, insanları belirli bir konu hakkında tartışmak için bir araya getiren ve bunları etik bir ortamda yapmalarına aracılık eden öncü bir yeni nesil sosyal medya platformudur.">
+    <meta name="keywords" content="Justhink, fikir, insanlar, düşünce, etik, süper insanlar, ekşisözlük, twitter, fikirler, düşünceler, ölümsüz, yok olmak, okul, ortam, beyin, fırtına, beyin fırtınası, mindstorming, inovasyon, gündelik, sohbet, akademik tartışma, tartışma">
+    <meta name="google-site-verification" content="MUpgXMLwErTODhvmdYiBd4iP2vJ9YTCh-ywN2vBigbY" />
     <title>Justhink - {% block title %}Anasayfa{% endblock %}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,22 +42,7 @@
     {% block head %} {% endblock head %}
   </head>
   <body>
-    <div class="restriction">
-      <ion-icon name="sad-outline"></ion-icon>
-      <p>Hay aksi, sitemizi cihanızın çözünürlüğünde görüntüleyemiyoruz. Fakat üzülme, bunun için çalışıyoruz! Çok yakında cihazında sitemizle etkileşebileceksin.</p>
 
-      <div class="social-links">
-        <a href="#" class="social-link"
-          ><ion-icon class="social-icon" name="logo-google"></ion-icon
-        ></a>
-        <a href="#" class="social-link"
-          ><ion-icon class="social-icon" name="logo-linkedin"></ion-icon
-        ></a>
-        <a href="#" class="social-link"
-          ><ion-icon class="social-icon" name="logo-instagram"></ion-icon
-        ></a>
-      </div>
-    </div>
 
     {% if messages %}
     <ul class="messages">
@@ -232,7 +222,7 @@
           ></ion-icon>
         </a>
 
-        <form action="change_language" method="get">
+        <form action="change_language" method="get" class="language-header">
           {% csrf_token %}
 
           <div class="header__language-switch language-switch">
@@ -406,17 +396,22 @@
     <main>
       {% block daily_summary %}
       <div class="daily-summary">
-        <svg class="daily-summary_mobile-structor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="263" viewBox="0 0 360 263">
-          <defs>
-            <linearGradient id="linear-gradient2" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
-              <stop offset="0" stop-color="#e62b3c"/>
-              <stop offset="0" stop-color="#bd2645"/>
-              <stop offset="1" stop-color="#561c5c"/>
-              <stop offset="1" stop-color="#351964"/>
+        
+          <svg class="daily-summary_mobile-structor" width="650" height="200" viewBox="0 0 650 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_191_2)">
+            <path d="M0 0H650V242.715C650 242.715 609.014 253.033 547.806 258.086C486.597 263.139 349.917 265.521 339.444 258.086L353.279 241.769C353.537 241.464 353.652 241.128 353.614 240.792C353.575 240.456 353.384 240.131 353.058 239.847C352.732 239.563 352.282 239.329 351.749 239.166C351.217 239.004 350.618 238.919 350.011 238.919H297.014C296.419 238.919 295.834 239 295.31 239.156C294.785 239.311 294.338 239.536 294.009 239.81C293.679 240.084 293.476 240.399 293.419 240.727C293.362 241.054 293.452 241.385 293.681 241.689L306.038 258.089C295.656 265.989 168.996 263.141 108.33 258.089C71.3837 254.98 35.0927 249.83 0 242.715L0 0Z" fill="url(#paint0_linear_191_2)"/>
+            </g>
+            <defs>
+            <linearGradient id="paint0_linear_191_2" x1="0" y1="131.502" x2="650" y2="131.502" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#BD2645"/>
+            <stop offset="1" stop-color="#351964"/>
             </linearGradient>
-          </defs>
-          <path id="1" data-name="Dikdörtgen 61" d="M0,0H360V242.715s-22.7,10.318-56.6,15.371-109.6,7.435-115.4,0l7.662-16.317a2,2,0,0,0-1.81-2.85H164.5a2,2,0,0,0-1.846,2.77l6.844,16.4c-5.75,7.9-75.9,5.052-109.5,0A310,310,0,0,1,0,242.715Z" fill="url(#linear-gradient2)"/>
-        </svg>
+            <clipPath id="clip0_191_2">
+            <rect width="650" height="263" fill="white"/>
+            </clipPath>
+            </defs>
+            </svg>
+            
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -449,9 +444,29 @@
         </svg>
 
 
-        
 
         <div class="daily-summary__content">
+          <form action="search" method="get" class="daily-summary_search-box">
+            {% csrf_token %}
+  
+            <div class="header__search-box">
+              <a href="#" class="header__search-btn">
+                <span class="material-symbols-outlined header__search-icon"
+                  >search</span
+                >
+              </a>
+              <input
+                type="text"
+                name="search"
+                id="search"
+                class="header__search-field"
+                placeholder="Dilediğiniz şeyi arayın."
+                required
+              />
+            </div>
+          </form>
+  
+
           <p class="daily-summary__topic">
             {{ topic.topic_name }}
           </p>
@@ -547,13 +562,10 @@
       </div>
 
       <div class="social-links">
-        <a href="#" class="social-link"
-          ><ion-icon class="social-icon" name="logo-google"></ion-icon
-        ></a>
-        <a href="#" class="social-link"
+        <a href="https://www.linkedin.com/company/justhink/" target="_blank" class="social-link"
           ><ion-icon class="social-icon" name="logo-linkedin"></ion-icon
         ></a>
-        <a href="#" class="social-link"
+        <a href="https://instagram.com/justhinkofficial" target="_blank" class="social-link"
           ><ion-icon class="social-icon" name="logo-instagram"></ion-icon
         ></a>
       </div>

@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test
+from django.db.models import Q
 
 from user_profile.models import Profile
 from idea.models import Idea, Comment, Topic
@@ -80,6 +81,18 @@ def RegisterView(request):
                 request.POST["email"],
             )
 
+            try:
+                found_user = User.objects.filter(Q(username = username) | Q(email = email))
+            except User.DoesNotExist:
+                pass 
+            else:
+                if found_user:
+                    messages.error(
+                        request,
+                        "Bu bilgilere ait bir hesap zaten var!",
+                        extra_tags=NOTIFICATION_TAGS["error"],
+                    )
+                    return redirect('index-page')
             kvkk_check = True
 
             try:
@@ -108,6 +121,8 @@ def RegisterView(request):
                     web_theme="default-theme",
                     kvkk_agreed=kvkk_check,
                     email_permission=email_perm,
+                    total_logged_time=datetime.timedelta(seconds=1),
+                    last_logged_in=datetime.datetime.now()
                 ).save()
 
             else:
@@ -129,9 +144,8 @@ def LogoutView(request):
     )
     logged_out = datetime.datetime.now()
     profile = Profile.objects.get(account = request.user)
-    print(logged_out, profile.last_logged_in)
     logged_time = logged_out - profile.last_logged_in
-    profile.total_logged_time = logged_time
+    profile.total_logged_time = profile.total_logged_time + logged_time
     profile.save()
     
     logout(request)
@@ -177,7 +191,7 @@ def LikePostView(request, post_id: int):
             del idea_object.idea_likes[request.user.username]
             idea_object.save()
 
-        return redirect("index-page")
+        return redirect(request.META['HTTP_REFERER'])
 
 
 def InspectIdeaView(request, idea_id: int):
@@ -271,8 +285,3 @@ def DislikeCommentView(request, idea_id: int,  comment_id: int):
 
         return redirect("inspect-idea-page", idea_id)
       
-def DevToolsView(request):
-  if request.user.is_superuser:
-    return render(request, 'status.html', {'accounts': User.objects.all(), 'ideas': Idea.objects.all(), 'comments': Comment.objects.all(), 'profiles': Profile.objects.all()})
-  else:
-    return redirect('index-page')

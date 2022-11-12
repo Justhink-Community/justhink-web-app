@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='idea',
             name='idea_comments',
-            field=models.IntegerField(default=0, editable=False),
+            field=models.JSONField(default=dict, editable=False),
         ),
         migrations.AlterField(
             model_name='idea',
             name='idea_likes',
-            field=models.IntegerField(default=0, editable=False),
+            field=models.JSONField(default=dict, editable=False),
         ),
     ]

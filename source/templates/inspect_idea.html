@@ -2,18 +2,69 @@
 
 {% block head %}
 <link rel="stylesheet" href="/static/styles/idea.css">
+<style>
+  .information-box {
+    visibility: hidden; 
+    display: block;
+
+    transition: transform .2s ease;
+    
+    position: fixed;
+    left: 50vw;
+    top: 50vh;
+    width: 33vw;
+    left: 50%;
+    top: 50%;
+    transform: scale(0); 
+
+    background-color: rgb(0, 0, 0, .7);
+    backdrop-filter: blur(3px);
+    color: #f0f0f0;
+    line-height: 1.5;
+    border-radius: 11px;
+    padding: 3rem 6rem;
+    z-index: 5;
+  }
+
+  .information-topic {
+    text-decoration: none;
+  }
+
+  .information-box.showed {
+    visibility: visible;
+    transform: scale(1) translate(-50%, -50%) ;
+  }
+
+  .daily-summary {
+    position: static;
+  }
+
+  @media only screen and (max-width: 42rem) {
+    .information-box {
+      width: 50vw
+    }
+  }
+</style>
 {% endblock %}
 
 {% block daily_summary %} {% endblock %} 
 
 {% block main %} 
 
+
   <section class="daily-summary">
+
+    
+
     <p class="daily-summary__tags">#sosyal #kurgu #toplum</p>
 
-    <p class="daily-summary__topic">
-      Bir haftalığına herkesi ikna etme yetin olacak. Ne yaparsın?
-    </p>
+    <a href="#" class="daily-summary__topic information-topic" onclick="document.querySelector('.information-box').classList.toggle('showed')">
+      {{ topic.topic_name }}
+    </a>
+
+    <div class="information-box" id="information-box">
+      {{ topic.topic_sources }}
+    </div>
 
     <div class="daily-summary_statistics">
       <p class="total-art">toplam art: 0</p>
@@ -32,7 +83,7 @@
         </div>
   
         <div class="idea__interaction-btns">
-          <a href="like-post/{{ id }}" class="idea__like-btn idea__btn">
+          <a href="/like-post/{{ idea.id }}" class="idea__like-btn idea__btn">
             <span class="material-symbols-outlined idea__interaction-icon"
               >favorite</span
             >
@@ -41,7 +92,7 @@
             </p>
           </a>
           <a
-            href="comment-idea/{{ id }}"
+            href="/inspect-idea/{{ idea.id }}"
             class="idea__comment-btn idea__btn"
           >
             <span class="material-symbols-outlined idea__interaction-icon"
@@ -51,7 +102,7 @@
               {{ idea.idea_comments }}
             </p>
           </a>
-          <a href="" class="idea__share-btn idea__btn" onclick="navigator.clipboard.writeText( window.location.href);">
+          <a href="#" class="idea__share-btn idea__btn" onclick="navigator.clipboard.writeText(window.location.href);">
             <span class="material-symbols-outlined idea__interaction-icon"
               >share</span
             >

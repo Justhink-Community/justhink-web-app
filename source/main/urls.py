@@ -9,13 +9,18 @@ from .views import (
     InspectIdeaView,
     SendCommentView,
     LikeCommentView,
-    DislikeCommentView,
-    DevToolsView
+    DislikeCommentView
 )
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StaticViewSiteMap 
+sitemaps = {
+    'static': StaticViewSiteMap
+}
 
 urlpatterns = [
     path("", IndexView, name="index-page"),
-    path('devtools', DevToolsView, name = 'dev-tools-page'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
+    path("home", IndexView, name="home"),
     path("login", LoginView, name="login-page"),
     path("register", RegisterView, name="register-page"),
     path("logout", LogoutView, name="logout-page"),

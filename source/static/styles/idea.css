@@ -85,7 +85,7 @@ footer {
   bottom: -2.5rem;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: .2rem;
   background-color: #9f254c;
 }
 
@@ -171,3 +171,34 @@ footer {
   color: #000;
   font-weight: 600;
 }
+
+
+
+
+@media only screen and (max-width: 37em) {
+  .daily-summary_statistics {flex-direction: column !important; gap: 1rem !important; text-align: center;}
+}
+
+@media only screen and (max-width: 80em) {
+  main {
+    grid-template-columns: 95%;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .daily-summary {
+    width: 100%;
+    height: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .daily-summary__topic {
+    width: 100% !important;
+    font-size: 4rem !important;
+    /* padding: 0 !important; */
+  }
+  .daily-summary_statistics {flex-direction: row; gap: 3rem;}
+}
+

@@ -25,7 +25,7 @@
           {{ top_idea.idea_comments }}
         </p>
       </a>
-      <a href="#" class="idea__share-btn idea__btn" data-url = "inspect-idea/{{ top_idea.id }}" onclick="navigator.clipboard.writeText(window.location.href.slice(0, -1) + this.getAttribute('data-url'));">
+      <a href="#" class="idea__share-btn idea__btn" data-url = "/inspect-idea/{{ top_idea.id }}" onclick="navigator.clipboard.writeText(window.location.href.slice(0, -1) + this.getAttribute('data-url'));">
         <span class="material-symbols-outlined idea__interaction-icon"
           >share</span
         >

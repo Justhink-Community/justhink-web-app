@@ -2,9 +2,13 @@ from user_profile.models import Profile
 
 from django.db import models
 
-# Create your models here.
+
+from django.contrib.postgres import fields
 
 
+class OldJSONField(fields.JSONField):
+    def db_type(self, connection):
+        return 'json'
 class Idea(models.Model):
     idea_author = models.ForeignKey(to=Profile, on_delete=models.CASCADE)
     idea_content = models.TextField()
