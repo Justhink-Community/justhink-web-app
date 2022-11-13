@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="/static/styles/utilities.css" />
 
     <script src="/static/src/script.js" defer></script>
+    {% block scripts %} {% endblock scripts %}
 
     <style>
       body:not(.fully-loaded) .header, body:not(.fully-loaded) main, body:not(.fully-loaded) .footer {display: none;}
@@ -281,8 +282,8 @@
             </a>
             <input
               type="text"
-              name="search"
-              id="search"
+              name="search-nonmobile"
+              id="search-nonmobile"
               class="header__search-field"
               placeholder="Dilediğiniz şeyi arayın."
               required
@@ -342,6 +343,7 @@
                     id="username"
                     placeholder="meredith_grey"
                     class="login-form__input"
+                    autocomplete="username"
                     required
                   />
                 </div>
@@ -355,6 +357,7 @@
                     id="password"
                     placeholder="******"
                     class="login-form__input"
+                    autocomplete="current-password"
                     required
                   />
                 </div>
@@ -393,14 +396,15 @@
 
               <div class="login-form__information-box">
                 <div class="login-form__input-box">
-                  <label for="username" class="login-form__input-label"
+                  <label for="username-register" class="login-form__input-label"
                     >Kullanıcı Adı:</label
                   >
                   <input
                     type="text"
-                    name="username"
-                    id="username"
+                    name="username-register"
+                    id="username-register"
                     placeholder="meredith_grey"
+                    autocomplete="username"
                     class="login-form__input"
                   />
                 </div>
@@ -413,19 +417,21 @@
                     name="email"
                     id="email"
                     placeholder="hello@justhink.com"
+                    autocomplete="email"
                     class="login-form__input"
                   />
                 </div>
                 <div class="login-form__input-box">
-                  <label for="password" class="login-form__input-label"
+                  <label for="password-register" class="login-form__input-label"
                     >Kullanıcı Şifre:</label
                   >
                   <input
                     type="password"
-                    name="password"
-                    id="password"
+                    name="password-register"
+                    id="password-register"
                     placeholder="******"
                     class="login-form__input"
+                    autocomplete="current-password"
                   />
                 </div>
 
@@ -441,17 +447,7 @@
                     ><a href="/static/policies/user-terms.pdf" target="_blank" style="color: inherit">KVKK politikasını</a> kabul ediyorum.</label
                   >
                 </div>
-                <div class="login-form__checkbox-box">
-                  <input
-                    type="checkbox"
-                    name="emailperm"
-                    id="emailperm"
-                    class="login-form__checkbox"
-                  />
-                  <label for="emailperm" class="login-form__checkbox-label"
-                    >E-Posta bültenine kayıt ol.</label
-                  >
-                </div>
+
               </div>
 
               <div class="login-form__action-box">
@@ -480,8 +476,8 @@
             </g>
             <defs>
             <linearGradient id="paint0_linear_191_2" x1="0" y1="131.502" x2="650" y2="131.502" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#BD2645"/>
-            <stop offset="1" stop-color="#351964"/>
+            <stop stop-color="#5C346B"/>
+            <stop offset="1" stop-color="#400556"/>
             </linearGradient>
             <clipPath id="clip0_191_2">
             <rect width="650" height="263" fill="white"/>
@@ -498,6 +494,7 @@
           viewBox="0 0 1832 385.999"
           class="daily-summary_structor"
         >
+          {% block daily-summary-svg %} 
           <defs>
             <linearGradient
               id="linear-gradient"
@@ -506,18 +503,17 @@
               y2="0.5"
               gradientUnits="objectBoundingBox"
             >
-              <stop offset="0" stop-color="#C74B55" />
-              <stop offset="1" stop-color="#592977" />
+              <stop offset="0" stop-color="#5C346B" />
+              <stop offset="1" stop-color="#400556" />
             </linearGradient>
           </defs>
-          {% block header_path %}
           <path
             id="Dikdörtgen_64"
             data-name="Dikdörtgen 64"
             d="M0,15A15,15,0,0,1,15,0H1817a15,15,0,0,1,15,15V311.313a15,15,0,0,1-15,15H1477.655a50,50,0,0,0-39.666,19.559l-15.75,20.523a50,50,0,0,1-39.66,19.559L952.221,386a20,20,0,0,1-16.657-8.927l-6.3-9.474a20,20,0,0,1,3.189-25.861L941.5,333.5l-55.168.189,8.313,8.943a20,20,0,0,1,2.808,23.377l-5.4,9.652A20,20,0,0,1,874.6,385.9L15,386A15,15,0,0,1,0,371Z"
             fill="url(#linear-gradient)"
           />
-          {% endblock header_path %}
+          {% endblock daily-summary-svg %}
         </svg>
 
 
@@ -544,10 +540,13 @@
           </form>
   
 
-          <p class="daily-summary__topic">
+          <a href="#" class="daily-summary__topic information-topic" onclick="document.querySelector('.information-box').classList.toggle('showed')">
             {{ topic.topic_name }}
-          </p>
-
+          </a>
+      
+          <div class="information-box" id="information-box">
+            {{ topic.topic_sources }}
+          </div>
           <div class="daily-summary_statistics">
             <!-- <p class="total-art">toplam art: 0</p> -->
             <p class="total-comment">toplam yorum: {{ comments_count }}</p>
@@ -555,46 +554,51 @@
           </div>
 
           <nav class="daily-summary__navigation">
-            <div class="daily-summary__navigation-element">
+            <a href="#" class="daily-summary__navigation-element">
               <span
                 class="material-symbols-outlined daily-summary__navigation-icon"
                 >help</span
               >
-            </div>
+            </a>
 
-            <div class="middle">
-              <div class="daily-summary__navigation-element">
+            <div class="middle"> 
+              {% block nav_midle %} 
+
+              <a href="#" class="daily-summary__navigation-element">
                 <span
                   class="material-symbols-outlined daily-summary__navigation-icon icon-reverse"
                   >brush</span
                 >
-              </div>
+              </a>
 
-              <div class="base-container">
-                <div
+              <a href="{% url 'index-page' %}" class="base-container">
+                <div                 
                   class="daily-summary__navigation-element daily-summary__navigation-element-base"
                 >
+                
                   <span
                     class="material-symbols-outlined daily-summary__navigation-icon"
                     >home</span
                   >
                 </div>
-              </div>
+              </a>
 
-              <div class="daily-summary__navigation-element">
+              <a href="{% url 'ideas-page' %}" class="daily-summary__navigation-element">
                 <span
                   class="material-symbols-outlined daily-summary__navigation-icon"
                   >edit</span
                 >
-              </div>
+              </a>
+
+              {% endblock nav_midle %}
             </div>
 
-            <div class="daily-summary__navigation-element">
+            <a href="#" class="daily-summary__navigation-element">
               <span
                 class="material-symbols-outlined daily-summary__navigation-icon"
                 >forum</span
               >
-            </div>
+            </a>
           </nav>
         </div>
 

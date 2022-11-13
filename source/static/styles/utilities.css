@@ -11,13 +11,13 @@
 .btn--primary,
 .btn--primary:link,
 .btn--primary:visited {
-  background-color: #5a2a76;
+  background-color: #4D1A5F;
   color: #fff;
 }
 
 .btn--primary:hover,
 .btn--primary:active {
-  background-color: #6b3f84;
+  background-color: #5a2a76;
 }
 
 .mt-6 {
@@ -94,7 +94,7 @@
 }
 
 .idea__interaction-icon {
-  color: #9f254c;
+  color: #4D1A5F;
   font-size: 4.5rem;
   transition: all .2s ease;
   
@@ -106,13 +106,13 @@
 
 
 .idea__interaction-icon:hover {
-  color: #b25170;
+  color: #71487f;
 }
 
 
 .idea__counter {
   font-size: 2rem;
-  color: #8f3a66;
+  color: #4D1A5F;
 }
 
 .idea__profile-photo {
@@ -129,7 +129,7 @@
 }
 
 .idea__author {
-  color: #8e3a66;
+  color: #4D1A5F;
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.2rem;
@@ -147,7 +147,7 @@
   left: -2.15rem;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #8e3967;
+  background-color: #4D1A5F;
   width: .2rem;
   height: 50%;
 }
@@ -161,7 +161,7 @@
   left: 50%;
   top: -2.15rem;
   transform: translateX(-50%);
-  background-color: #8e3967;
+  background-color: #4D1A5F;
   width: 75%;
   height: .2rem;
 }

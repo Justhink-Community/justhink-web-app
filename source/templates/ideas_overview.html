@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %}Fikirler{% endblock title %}
+
+{% block head %} 
+<link rel="stylesheet" href="/static/styles/ideas_overview.css">
+
+{% endblock head %}
+
+{% block scripts %} 
+<script src="/static/src/ideas.js" defer></script>
+{% endblock %}
+
+{% block nav_midle %} 
+
+<a href="#" class="daily-summary__navigation-element">
+  <span
+    class="material-symbols-outlined daily-summary__navigation-icon icon-reverse"
+    >brush</span
+  >
+</a>
+
+<a href="{% url 'index-page' %}" class="daily-summary__navigation-element space-right">
+  <span
+    class="material-symbols-outlined daily-summary__navigation-icon"
+    >home</span
+  >
+</a>
+
+<a href="{% url 'ideas-page' %}" class="base-container">
+  <div                 
+  class="daily-summary__navigation-element daily-summary__navigation-element-base"
+>
+
+  <span
+    class="material-symbols-outlined daily-summary__navigation-icon"
+    >edit</span
+  >
+</div>
+
+</a>
+{% endblock nav_midle %}
+
+{% block daily-summary-svg %} 
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#5C346B"/>
+      <stop offset="1" stop-color="#400556"/>
+    </linearGradient>
+  </defs>
+  <path id="Dikdörtgen_74" data-name="Dikdörtgen 74" d="M0,15A15,15,0,0,1,15,0H1822a15,15,0,0,1,15,15V311.171a15,15,0,0,1-15,15H1480.1a50,50,0,0,0-39.607,19.483L1424.507,366.4a50,50,0,0,1-39.594,19.483l-340.691.089a20,20,0,0,1-16.66-8.927l-6.3-9.472a20,20,0,0,1,3.189-25.861l9.046-8.237-55.167.189,8.313,8.943a20,20,0,0,1,2.808,23.377l-5.4,9.652a20,20,0,0,1-17.455,10.24l-951.6.1a15,15,0,0,1-15-15Z" fill="url(#linear-gradient)"/>
+
+{% endblock daily-summary-svg %}
+
+{% block main %} 
+
+<div class="wrapper">
+  <section class="idea-section">
+    <div class="idea" id="{{ random_idea.id }}">
+      <div class="idea__interaction-btns">
+        <a href="like-idea/{{ random_idea.id }}" class="idea__like-btn idea__btn">
+          <span class="material-symbols-outlined idea__interaction-icon {% if request.user.username in random_idea.idea_likes %}interacted{% endif %}"
+            >favorite</span
+          >
+  
+          <p class="idea__like-count idea__counter">
+            {{ random_idea.idea_like_count }}
+          </p>
+        </a>
+        <a
+          href="inspect-idea/{{ random_idea.id }}"
+          class="idea__comment-btn idea__btn"
+        >
+          <span class="material-symbols-outlined idea__interaction-icon"
+            >chat</span
+          >
+          <p class="idea__comment-count idea__counter">
+            {{ random_idea.idea_comments }}
+          </p>
+        </a>
+        <a href="#" class="idea__share-btn idea__btn" data-url = "/inspect-idea/{{ random_idea.id }}" onclick="navigator.clipboard.writeText(window.location.href.slice(0, -1) + this.getAttribute('data-url'));">
+          <span class="material-symbols-outlined idea__interaction-icon"
+            >share</span
+          >
+        </a>
+      </div>
+      <div class="idea__content">
+        <p class="idea__author">{{ random_idea.idea_author.account.username }}:</p>
+        <p class="idea__text">{{ random_idea.idea_content }} {% if random_idea.idea_content|length >= 500 %} <a style="text-decoration: none; color: inherit; font: inherit;" href="inspect-idea/{{ random_idea.id }}"><u>devamını oku</u></a> {% endif %}</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="idea-administration">
+    <div class="user-copyright">
+      <p>
+        Bugünkü konunun geliştirilmesinde katkıda bulunan <span>{{ topic.topic_suggested_user.username }}</span>'a teşekkür ederiz.
+      </p>
+    </div>
+    <a href="#" class="purple-box information-topic" onclick="document.querySelector('.information-box').classList.toggle('showed')">
+      <span
+      class="material-symbols-outlined purple-box__icon"
+      >edit</span
+    >
+      <header class="purple-box__header">
+        <h4  class="purple-box__heading">Mor Kutu</h4>
+        <span class="purple-box__description">Burada sadece bilgi var.</span>
+      </header>
+    </a>
+    <div class="idea-controller">
+      <header class="controller__header">
+        <span class="controller__heading"> Rastgele metin gösteriliyor.</span> 
+        <span class="countdown">Yeni içeriğe son: <span class="countdown__value">90</span> saniye</span>
+      </header>
+      <menu class="controller__menu">
+        <span onclick="window.location.reload()" class="material-symbols-outlined controller__item controller__previous">
+          chevron_left
+        </span>
+        <span onclick="stopCountdown()" class="material-symbols-outlined controller__item controller__start">
+          pause_circle
+          </span>
+        <span onclick="window.location.reload()" class="material-symbols-outlined controller__item controller__afterwards">
+          chevron_right
+        </span>
+      </menu>
+    </div>
+  </section>
+  
+  <section class="topic-sources articles" style="height:auto">
+    <h3 class="articles-heading heading-tertiary">Beğenileceğini düşündüğümüz metinler:</h3>
+    <ul class="articles-list">
+      <li class="article"><a href="#" class="article-link">#123</a></li>
+      <li class="article"><a href="#" class="article-link">#456</a></li>
+      <li class="article"><a href="#" class="article-link">#789</a></li>
+    </ul>  
+  </section>
+</div>
+{% endblock %}

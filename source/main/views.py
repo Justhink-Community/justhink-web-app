@@ -1,4 +1,5 @@
 import datetime
+import random
 
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -9,7 +10,8 @@ from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
 
 from user_profile.models import Profile
-from idea.models import Idea, Comment, Topic
+from idea.models import Idea, Comment, Topic 
+
 
 
 NOTIFICATION_TAGS = {
@@ -34,6 +36,32 @@ def IndexView(request):
         },
     )
 
+
+def IdeasOverview(request):
+    ideas = Idea.objects.filter(Q(idea_archived = False))
+    comments = Comment.objects.filter(Q(comment_archived = False))
+    return render(
+        request,
+        "ideas_overview.html",
+        {
+            "topic": Topic.objects.first(),
+            "random_idea": random.choice(ideas),
+            "comments_count": len(comments),
+            "ideas_count": len(ideas),
+        },
+    )
+    
+def InspectIdeaView(request, idea_id: int):
+    try:
+        idea_object = Idea.objects.get(Q(id=idea_id) & Q(idea_archived = False))
+        comments = Comment.objects.filter(comment_idea = idea_object).order_by('comment_like_count').reverse()
+    except Idea.DoesNotExist:
+        return redirect("index-page")
+    else:
+        ideas = Idea.objects.filter(Q(idea_archived = False))
+        all_comments = Comment.objects.filter(Q(comment_archived = False))
+        return render(request, "inspect_idea.html", {"topic": Topic.objects.first(),'idea': idea_object, 'comments': comments,             "comments_count": len(all_comments),
+            "ideas_count": len(ideas),})
 
 @user_passes_test(lambda u: u.is_anonymous)
 def LoginView(request):
@@ -78,8 +106,8 @@ def RegisterView(request):
             )
         else:
             username, password, email = (
-                request.POST["username"],
-                request.POST["password"],
+                request.POST["username-register"],
+                request.POST["password-register"],
                 request.POST["email"],
             )
 
@@ -210,16 +238,7 @@ def LikePostView(request, post_id: int):
         return redirect(request.META['HTTP_REFERER'])
 
 
-def InspectIdeaView(request, idea_id: int):
-    try:
-        idea_object = Idea.objects.get(id=idea_id)
-        comments = Comment.objects.filter(comment_idea = idea_object).order_by('comment_like_count').reverse()
-    except Idea.DoesNotExist:
-        return redirect("index-page")
-    else:
 
-        return render(request, "inspect_idea.html", {"topic": Topic.objects.first(),'idea': idea_object, 'comments': comments,             "comments_count": len(Comment.objects.all()),
-            "ideas_count": len(Idea.objects.all()),})
 
 def SendCommentView(request, idea_id: int):
   if request.user.is_anonymous: 

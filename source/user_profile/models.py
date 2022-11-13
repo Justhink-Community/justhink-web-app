@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models import Q
 
 
 class Profile(models.Model):
@@ -13,3 +14,5 @@ class Profile(models.Model):
     login_count = models.IntegerField(default=0)
     total_logged_time = models.DurationField()
     last_logged_in = models.DateTimeField()
+
+

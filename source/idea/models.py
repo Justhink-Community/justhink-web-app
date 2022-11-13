@@ -1,9 +1,14 @@
-from user_profile.models import Profile
+import datetime
 
+from user_profile.models import Profile
+from django.contrib.auth.models import User
 from django.db import models
 
-
 from django.contrib.postgres import fields
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
 
 
 class OldJSONField(fields.JSONField):
@@ -19,7 +24,7 @@ class Idea(models.Model):
     idea_comments = models.IntegerField(editable=False, default=0)
 
     idea_archived = models.BooleanField(default=False)
-
+    
 class Comment(models.Model):
     comment_idea = models.ForeignKey(to=Idea, on_delete=models.CASCADE)
     comment_author = models.ForeignKey(to=Profile, on_delete=models.CASCADE)
@@ -38,3 +43,14 @@ class Topic(models.Model):
   topic_name = models.CharField(max_length=100)
   topic_sources = models.TextField()
   topic_keywords = models.CharField(max_length=40)
+  topic_date = models.DateField(auto_created=True)
+  topic_suggested_user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=User.objects.get(models.Q(username = 'justhink')))
+
+  def save(self, *args, **kwargs):
+    today = datetime.datetime.now().date()
+    if today != self.topic_date: 
+        Idea.objects.all().update(idea_archived = True) 
+        Comment.objects.all().update(comment_archived = True) 
+    
+    # send_mail('Günün konusu hazır! - justhink.net', 'Merhaba dostum!', 'iletisim@justhink.net', ['furkanesen1900@gmail.com'])
+    super().save(*args, **kwargs)

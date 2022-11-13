@@ -3,47 +3,13 @@
 {% block head %}
 <link rel="stylesheet" href="/static/styles/idea.css">
 <style>
-    .information-box {
-    visibility: hidden; 
-    display: block;
 
-    transition: transform .2s ease;
-    
-    position: fixed;
-    left: 50vw;
-    top: 50vh;
-    width: 33vw;
-    left: 50%;
-    top: 50%;
-    transform: scale(0); 
-
-    background-color: rgb(0, 0, 0, .7);
-    backdrop-filter: blur(3px);
-    color: #f0f0f0;
-    line-height: 1.5;
-    border-radius: 11px;
-    padding: 3rem 6rem;
-    z-index: 5;
-  }
-
-  .information-topic {
-    text-decoration: none;
-  }
-
-  .information-box.showed {
-    visibility: visible;
-    transform: scale(1) translate(-50%, -50%) ;
-  }
 
   .daily-summary {
     position: static;
   }
 
-  @media only screen and (max-width: 42rem) {
-    .information-box {
-      width: 50vw
-    }
-  }
+
 </style>
 {% endblock %}
 
