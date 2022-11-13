@@ -775,6 +775,7 @@ main {
   display: none;
 }
 
+
 @media only screen and (max-width: 1700px) {
   html {
     font-size: 56.25%;

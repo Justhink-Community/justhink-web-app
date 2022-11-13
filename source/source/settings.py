@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-o5ab4@jiz=ib87kqk3b^%om6zscmw_i2#hfm*ip7jid(dj7jvy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["justhink.net", "www.justhink.net", "37.59.221.234", "localhost"]
 
 
 # Application definition
@@ -127,4 +127,4 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-CSRF_TRUSTED_ORIGINS = ['http://localhost']
+CSRF_TRUSTED_ORIGINS = ['https://www.justhink.net', 'https://justhink.net', 'https://localhost:8000']

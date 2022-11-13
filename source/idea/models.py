@@ -18,6 +18,7 @@ class Idea(models.Model):
     idea_like_count = models.IntegerField(editable=False, default=0)
     idea_comments = models.IntegerField(editable=False, default=0)
 
+    idea_archived = models.BooleanField(default=False)
 
 class Comment(models.Model):
     comment_idea = models.ForeignKey(to=Idea, on_delete=models.CASCADE)
@@ -30,6 +31,8 @@ class Comment(models.Model):
     
     comment_dislikes = models.JSONField(editable=False, default=dict)
     comment_dislike_count = models.IntegerField(editable=False, default=0)
+
+    comment_archived = models.BooleanField(default=False)
     
 class Topic(models.Model):
   topic_name = models.CharField(max_length=100)

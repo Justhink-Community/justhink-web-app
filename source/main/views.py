@@ -21,14 +21,16 @@ NOTIFICATION_TAGS = {
 
 
 def IndexView(request):
+    ideas = Idea.objects.filter(Q(idea_archived = False))
+    comments = Comment.objects.filter(Q(comment_archived = False))
     return render(
         request,
         "index.html",
         {
             "topic": Topic.objects.first(),
-            "top_ideas": Idea.objects.all(),
-            "comments_count": len(Comment.objects.all()),
-            "ideas_count": len(Idea.objects.all()),
+            "top_ideas": ideas,
+            "comments_count": len(comments),
+            "ideas_count": len(ideas),
         },
     )
 
