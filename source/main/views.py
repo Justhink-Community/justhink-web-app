@@ -50,6 +50,9 @@ def IdeasOverview(request):
             "ideas_count": len(ideas),
         },
     )
+
+def StatusView(request):
+    return redirect('https://stats.uptimerobot.com/NyKm0fZmO3')
     
 def InspectIdeaView(request, idea_id: int):
     try:
