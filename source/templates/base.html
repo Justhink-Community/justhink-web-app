@@ -322,7 +322,10 @@
           >Giriş Yap</a
         >
         {% else %}
-        <a href="/logout" class="btn btn--primary">Çıkış Yap</a>
+        <div class="profile">
+          
+          <a href="/logout" class="btn btn--primary">Çıkış Yap</a>
+        </div>
         {% endif %}
 
         <div class="login-box" id="login">
@@ -554,11 +557,12 @@
           </div>
 
           <nav class="daily-summary__navigation">
-            <a href="#" class="daily-summary__navigation-element">
+            <a href="{% url 'favourite-ideas-page' %}" class="daily-summary__navigation-element {% if section == 'favourites' %}active{% endif %}">
               <span
                 class="material-symbols-outlined daily-summary__navigation-icon"
-                >help</span
+                >favorite</span
               >
+              <span class="daily-summary__description-text">favoriler</span>
             </a>
 
             <div class="middle"> 
@@ -593,11 +597,12 @@
               {% endblock nav_midle %}
             </div>
 
-            <a href="#" class="daily-summary__navigation-element">
+            <a href="{% url 'trend-ideas-page' %}" class="daily-summary__navigation-element {% if section == 'trends' %}active{% endif %}" >
               <span
                 class="material-symbols-outlined daily-summary__navigation-icon"
-                >forum</span
+                >trending_up</span
               >
+              <span class="daily-summary__description-text">trendler</span>
             </a>
           </nav>
         </div>
@@ -638,7 +643,7 @@
               required
             ></textarea>
 
-            <button type="submit" class="btn btn-form">Fikri Paylaş</button>
+            <button type="submit" class="btn btn-form publish-idea-submit">Fikri Paylaş</button>
           </form>
         </div>
       </div>

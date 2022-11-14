@@ -66,3 +66,34 @@ publishIdeaLink.addEventListener('click', () => {
   } 
 })
 
+// AJAX 
+
+const publishIdeaForm = document.querySelector('.publish-idea-form'),
+publishIdeaContent = document.querySelector('.publish-idea__textarea'),
+csrf = document.querySelectorAll('.csrfmiddlewaretoken')
+
+
+publishIdeaForm.addEventListener('submit', e => {
+  e.preventDefault() 
+
+  const formData = new FormData()
+  formData.append('csrfmiddlewaretoken', csrf[0].value)
+  formData.append('idea-content', publishIdeaContent.value)
+
+  $.ajax({
+    type: 'POST',
+    url: '',
+    enctype: 'multipart/form-data',
+    data: formData,
+    success: function(response)  {
+      console.log(response)
+    },
+    error: function(err) {
+      console.log(err)
+    },
+    cache: false,
+    contentType: false, 
+    processData: false
+  })
+
+})

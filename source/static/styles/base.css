@@ -502,6 +502,17 @@ main {
   gap: 13rem;
 }
 
+.daily-summary__description-text {
+  font-size: 2rem;
+  text-decoration: none;
+  color: #fff;
+  position: absolute;
+  bottom: -2.6rem;
+  left: 52.5%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
 .daily-summary__navigation .middle {
   display: flex;
   background-color: rgb(148, 137, 143, 0.3);
@@ -554,6 +565,20 @@ main {
   position: relative;
 }
 
+.daily-summary__navigation-element.active {
+  background-color: #e3e3e3;
+}
+
+.daily-summary__navigation-element.active .daily-summary__navigation-icon {
+  color: #4D1A5F;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+
+}
+
 .daily-summary__navigation-icon {
   color: #fff;
   font-size: 5rem;
@@ -577,6 +602,10 @@ main {
   font-weight: 500;
   word-spacing: 1rem;
 }
+
+/* PROFILE  */
+
+
 
 /* PUBLISH IDEA  */
 
@@ -923,7 +952,7 @@ main {
 
 
   .daily-summary__navigation {
-    display: none;
+    margin-bottom: 2.9rem;
   }
 
   .daily-summary_statistics {

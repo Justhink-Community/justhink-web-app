@@ -132,8 +132,8 @@ CSRF_TRUSTED_ORIGINS = ['https://localhost:8000']
 
 # EMAIL SETTINGS 
 
-EMAIL_HOST = 'smtp-relay.sendinblue.com'
-EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'iletisim@justhink.net'
-EMAIL_HOST_PASSWORD = '0M8mB1x4JAh3PDTv'
+EMAIL_HOST = "smtp-relay.sendinblue.com" 
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "iletisim@justhink.net"
+EMAIL_HOST_PASSWORD = "0M8mB1x4JAh3PDTv"
 EMAIL_USE_TLS = True
