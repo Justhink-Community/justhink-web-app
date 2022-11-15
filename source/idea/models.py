@@ -6,9 +6,9 @@ from django.db import models
 
 from django.contrib.postgres import fields
 from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 
+from django.template import Context
+from django.template.loader import render_to_string, get_template
 
 
 class OldJSONField(fields.JSONField):
@@ -52,5 +52,11 @@ class Topic(models.Model):
         Idea.objects.all().update(idea_archived = True) 
         Comment.objects.all().update(comment_archived = True) 
     
-    # send_mail('Günün konusu hazır! - justhink.net', 'Merhaba dostum!', 'iletisim@justhink.net', ['furkanesen1900@gmail.com'])
+    # ctx = {
+    #     'subtitle': 'Günün konusu hazır:',
+    #     'title': self.topic_name,
+    #     'paragraph_1': self.topic_sources
+    # }
+    # message = get_template('dynamic_mail.html').render(ctx)
+    # send_mail('Günün konusu hazır! - justhink.net', message, 'iletisim@justhink.net', ['furkanesen1900@gmail.com'])
     super().save(*args, **kwargs)

@@ -155,6 +155,25 @@
   row-gap: 4.5rem;
 }
 
+.idea__administration-menu {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.idea__administration-menu a {
+  color: #444;
+  cursor: pointer;
+  transition: color .2s ease;
+  text-decoration: none;
+}
+
+.idea__administration-menu a:hover {
+  color: #666;
+}
+
 .idea:not(.idea-comment):nth-of-type(n + 3)::before {
   content: "";
   position: absolute;

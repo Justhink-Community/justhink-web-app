@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-o5ab4@jiz=ib87kqk3b^%om6zscmw_i2#hfm*ip7jid(dj7jvy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["justhink.net", "www.justhink.net", "37.59.221.234"]
+ALLOWED_HOSTS = ["justhink.net", "www.justhink.net", "37.59.221.234", "*"]
 
 
 # Application definition
@@ -132,8 +132,8 @@ CSRF_TRUSTED_ORIGINS = ['https://www.justhink.net', 'https://justhink.net']
 
 # EMAIL SETTINGS 
 
-EMAIL_HOST = 'smtp-relay.sendinblue.com'
-EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'iletisim@justhink.net'
-EMAIL_HOST_PASSWORD = '0M8mB1x4JAh3PDTv'
+EMAIL_HOST = "smtp-relay.sendinblue.com" 
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "iletisim@justhink.net"
+EMAIL_HOST_PASSWORD = "0M8mB1x4JAh3PDTv"
 EMAIL_USE_TLS = True

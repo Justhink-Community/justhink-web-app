@@ -30,13 +30,44 @@ def IndexView(request):
         "index.html",
         {
             "topic": Topic.objects.first(),
-            "top_ideas": ideas,
+            "top_ideas": random.sample([*ideas], 2),
             "comments_count": len(comments),
             "ideas_count": len(ideas),
+            'section': 'summary'
         },
     )
 
+def FavouriteIdeasView(request):
+    ideas = Idea.objects.filter(Q(idea_archived = False))
+    comments = Comment.objects.filter(Q(comment_archived = False))
+    return render(
+        request,
+        "index.html",
+        {
+            "topic": Topic.objects.first(),
+            "top_ideas": ideas.order_by('-idea_like_count'),
+            "comments_count": len(comments),
+            "ideas_count": len(ideas),
+            'section': 'favourites'
+        },
+    )
+    
 
+def TrendIdeasView(request):
+    ideas = Idea.objects.filter(Q(idea_archived = False))
+    comments = Comment.objects.filter(Q(comment_archived = False))
+    return render(
+        request,
+        "index.html",
+        {
+            "topic": Topic.objects.first(),
+            "top_ideas": ideas.order_by('-idea_comments'),
+            "comments_count": len(comments),
+            "ideas_count": len(ideas),
+            'section': 'trends'
+        },
+    )
+  
 def IdeasOverview(request):
     ideas = Idea.objects.filter(Q(idea_archived = False))
     comments = Comment.objects.filter(Q(comment_archived = False))
@@ -48,6 +79,7 @@ def IdeasOverview(request):
             "random_idea": random.choice(ideas),
             "comments_count": len(comments),
             "ideas_count": len(ideas),
+            'section': 'idea-overview'
         },
     )
 
@@ -64,7 +96,12 @@ def InspectIdeaView(request, idea_id: int):
         ideas = Idea.objects.filter(Q(idea_archived = False))
         all_comments = Comment.objects.filter(Q(comment_archived = False))
         return render(request, "inspect_idea.html", {"topic": Topic.objects.first(),'idea': idea_object, 'comments': comments,             "comments_count": len(all_comments),
-            "ideas_count": len(ideas),})
+            "ideas_count": len(ideas), 'section': 'inspect-idea'})
+
+  
+
+def EditIdeaView(request, idea_id: int):
+    return redirect(request.META.get('HTTP_REFERER'))
 
 @user_passes_test(lambda u: u.is_anonymous)
 def LoginView(request):

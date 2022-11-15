@@ -9,7 +9,7 @@
 
 <div class="latest-ideas">
   {% for top_idea in top_ideas %}
-  <div class="idea" id="{{ top_idea.id }}">
+  <div class="idea{% if top_idea.idea_author.account == user %} own-idea{% endif %}" id="{{ top_idea.id }}">
     <div class="idea__interaction-btns">
 
       <a href="/like-idea/{{ top_idea.id }}" class="idea__like-btn idea__btn">
@@ -42,6 +42,21 @@
       <p class="idea__author">{{ top_idea.idea_author.account.username }}:</p>
       <p class="idea__text">{{ top_idea.idea_content }} {% if top_idea.idea_content|length >= 500 %} <a style="text-decoration: none; color: inherit; font: inherit;" href="inspect-idea/{{ top_idea.id }}"><u>devamını oku</u></a> {% endif %}</p>
     </div>
+    <menu class="idea__administration-menu">
+      {% if top_idea.idea_author.account == user %}
+      <a href="" class="material-symbols-outlined idea__edit-icon">
+        edit
+      </a>
+      {% else %}
+      <a href="#" class="material-symbols-outlined idea__report-icon">
+        flag
+      </a>
+      {% endif %}
+
+      <a href="#" class="material-symbols-outlined idea__administrate-icon">
+        more_horiz
+      </a>
+    </menu>
   </div>
   {% endfor %}
 </div>

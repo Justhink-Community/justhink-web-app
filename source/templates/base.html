@@ -104,17 +104,24 @@
         }
       }
 
-      
   
     </style>
 
-    <script>
+    <script defer>
+      window.onload = fixBackground = () => {
+        document.querySelector('body').classList.add('fully-loaded')
+        if (navigator.appVersion.indexOf("Mac") != -1) {
+            document.querySelector('.daily-summary__content').style.top = '65%'
+        } else {
+          document.querySelector('.daily-summary__content').style.top = '50%'
+        }
+      }
 
     </script>
 
     {% block head %} {% endblock head %}
   </head>
-  <body onload="document.querySelector('body').classList.add('fully-loaded')">
+  <body onload="fixBackground()">
 
     <div class="loading-screen">
       <div class="loading-element">
@@ -322,7 +329,10 @@
           >Giriş Yap</a
         >
         {% else %}
-        <a href="/logout" class="btn btn--primary">Çıkış Yap</a>
+        <div class="profile">
+          
+          <a href="/logout" class="btn btn--primary">Çıkış Yap</a>
+        </div>
         {% endif %}
 
         <div class="login-box" id="login">
@@ -554,11 +564,12 @@
           </div>
 
           <nav class="daily-summary__navigation">
-            <a href="#" class="daily-summary__navigation-element">
+            <a href="{% url 'favourite-ideas-page' %}" class="daily-summary__navigation-element {% if section == 'favourites' %}active{% endif %}">
               <span
                 class="material-symbols-outlined daily-summary__navigation-icon"
-                >help</span
+                >favorite</span
               >
+              <span class="daily-summary__description-text">favoriler</span>
             </a>
 
             <div class="middle"> 
@@ -593,11 +604,12 @@
               {% endblock nav_midle %}
             </div>
 
-            <a href="#" class="daily-summary__navigation-element">
+            <a href="{% url 'trend-ideas-page' %}" class="daily-summary__navigation-element {% if section == 'trends' %}active{% endif %}" >
               <span
                 class="material-symbols-outlined daily-summary__navigation-icon"
-                >forum</span
+                >trending_up</span
               >
+              <span class="daily-summary__description-text">trendler</span>
             </a>
           </nav>
         </div>
@@ -638,7 +650,7 @@
               required
             ></textarea>
 
-            <button type="submit" class="btn btn-form">Fikri Paylaş</button>
+            <button type="submit" class="btn btn-form publish-idea-submit">Fikri Paylaş</button>
           </form>
         </div>
       </div>

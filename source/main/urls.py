@@ -11,6 +11,10 @@ from .views import (
     LikeCommentView,
     DislikeCommentView,
     IdeasOverview,
+    FavouriteIdeasView,
+    TrendIdeasView,
+    IdeasOverview,
+    EditIdeaView,
     StatusView
 )
 from django.contrib.sitemaps.views import sitemap
@@ -25,9 +29,12 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     path('ideas-overview', IdeasOverview, name = 'ideas-page'),
     path('status', StatusView),
+    path('favourite-ideas', FavouriteIdeasView, name = 'favourite-ideas-page'),
+    path('trend-ideas', TrendIdeasView, name = 'trend-ideas-page'),
     path("login", LoginView, name="login-page"),
     path("register", RegisterView, name="register-page"),
     path("logout", LogoutView, name="logout-page"),
+    path('edit-idea/<int:idea_id>', EditIdeaView, name = 'edit-idea-page'),
     path("publish-idea", PublishIdeaView, name="publish-idea-page"),
     path("like-idea/<int:post_id>", LikePostView, name="like-post-page"),
     path("inspect-idea/<int:idea_id>", InspectIdeaView, name="inspect-idea-page"),

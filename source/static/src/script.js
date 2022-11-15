@@ -66,3 +66,16 @@ publishIdeaLink.addEventListener('click', () => {
   } 
 })
 
+// IDEAS 
+
+const ideas = document.querySelectorAll('.idea');
+
+ideas.forEach(idea => {
+  idea.addEventListener('click', (e) => {
+    if (! (idea.querySelector('menu').contains(e.target)) ) {
+
+      window.location.replace(idea.querySelector('.idea__comment-btn').getAttribute('href'))
+    }
+  })
+});
+

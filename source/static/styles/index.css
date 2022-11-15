@@ -3,5 +3,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 4.5rem;
+  width: 100%;
 }
 

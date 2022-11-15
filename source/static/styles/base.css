@@ -502,6 +502,17 @@ main {
   gap: 13rem;
 }
 
+.daily-summary__description-text {
+  font-size: 2rem;
+  text-decoration: none;
+  color: #fff;
+  position: absolute;
+  bottom: -2.6rem;
+  left: 52.5%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
 .daily-summary__navigation .middle {
   display: flex;
   background-color: rgb(148, 137, 143, 0.3);
@@ -554,6 +565,20 @@ main {
   position: relative;
 }
 
+.daily-summary__navigation-element.active {
+  background-color: #e3e3e3;
+}
+
+.daily-summary__navigation-element.active .daily-summary__navigation-icon {
+  color: #4D1A5F;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+
+}
+
 .daily-summary__navigation-icon {
   color: #fff;
   font-size: 5rem;
@@ -577,6 +602,10 @@ main {
   font-weight: 500;
   word-spacing: 1rem;
 }
+
+/* PROFILE  */
+
+
 
 /* PUBLISH IDEA  */
 
@@ -921,15 +950,42 @@ main {
     display: none;
   }
 
+  .daily-summary_search-box {
+    margin-bottom: clamp(.5rem, 2.4vh, 4.8rem) !important;
+  }
+  
+
 
   .daily-summary__navigation {
-    display: none;
+    margin-top: clamp(2.4rem, 3vh, 5.8rem) !important;
+    margin-bottom: clamp(2.9rem, 10vh, 8rem);
+    gap: clamp(5rem, 9vw, 13rem);
+    align-items: center !important;
   }
 
   .daily-summary_statistics {
     font-size: 1rem !important;
+    margin-top: clamp(1rem, 1vh, 3rem) !important;
+  }
+  .daily-summary__navigation-element {
+    width: clamp(5rem, 4vh, 7.6rem) !important;
+    height: clamp(5rem, 4vh, 7.6rem) !important;
+  }
+  .daily-summary__navigation-element-base::after {
+    width: clamp(4rem, 6.4vh, 12rem);
+    height: clamp(4rem, 6.4vh, 12rem);
+  }
+  .daily-summary__navigation .middle {
+    gap: clamp(.5rem, 1.5vw, 2rem);
+    height: clamp(3rem, 4.05vh, 7.6rem);
+    background-position-y: 10rem !important;
+    align-items: center !important;
+    /* background-color: none !important; */
   }
 
+  .daily-summary__description-text {
+    bottom: clamp(-2.3rem, -2vh, -1.5rem) !important;
+  }
 
   .idea {
     grid-template-columns: 1fr !important;
@@ -938,6 +994,10 @@ main {
     padding: clamp(1rem, 1vh, 3.6rem) clamp(1rem, 1vw, 2.4rem) !important;
     width: 80vw !important;
   } 
+
+  .latest-ideas {
+    width: 80vw !important;
+  }
 
   .header__search-box {
     width: clamp(30rem, 70vw, 80rem);

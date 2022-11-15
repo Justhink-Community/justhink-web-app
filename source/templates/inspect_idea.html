@@ -49,8 +49,8 @@
         </div>
   
         <div class="idea__interaction-btns">
-          <a href="/like-post/{{ idea.id }}" class="idea__like-btn idea__btn">
-            <span class="material-symbols-outlined idea__interaction-icon"
+          <a href="/like-idea/{{ idea.id }}" class="idea__like-btn idea__btn">
+            <span class="material-symbols-outlined idea__interaction-icon {% if request.user.username in top_idea.idea_likes %}interacted{% endif %}"
               >favorite</span
             >
             <p class="idea__like-count idea__counter">
