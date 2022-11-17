@@ -13,20 +13,20 @@
 
 {% block nav_midle %} 
 
-<a href="#" class="daily-summary__navigation-element">
+<a href="#" class="daily-summary__navigation-element" aria-label="Yaratıcılığını ve özgünlüğünü kullanarak konu hakkında bir tasarı ortaya çıkar ve paylaş.">
   <svg class="daily-summary__navigation-icon icon-reverse" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
     <path fill="currentColor" d="M6 21q-1.125 0-2.225-.55T2 19q.65 0 1.325-.512Q4 17.975 4 17q0-1.25.875-2.125T7 14q1.25 0 2.125.875T10 17q0 1.65-1.175 2.825Q7.65 21 6 21Zm5.75-6L9 12.25l8.95-8.95q.275-.275.688-.288q.412-.012.712.288l1.35 1.35q.3.3.3.7q0 .4-.3.7Z"/>
   </svg>
 
 </a>
 
-<a href="{% url 'index-page' %}" class="daily-summary__navigation-element space-right">
+<a href="{% url 'index-page' %}" class="daily-summary__navigation-element space-right" aria-label="Fikirleri rahat bir şekilde gezebilmek için tıkla.">
   <svg class="daily-summary__navigation-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
     <path fill="currentColor" d="M6 19h3v-6h6v6h3v-9l-6-4.5L6 10Zm-2 2V9l8-6l8 6v12h-7v-6h-2v6Zm8-8.75Z"/>
   </svg>
 </a>
 
-<a href="{% url 'ideas-page' %}" class="base-container">
+<a href="{% url 'ideas-page' %}" class="base-container"  aria-label="Justhink kullanıcılarından rastgele fikirler görmek için tıkla.">
   <div                 
   class="daily-summary__navigation-element daily-summary__navigation-element-base"
 >
@@ -56,7 +56,7 @@
   <section class="idea-section">
     <div class="idea" id="{{ random_idea.id }}">
       <div class="idea__interaction-btns">
-        <a href="like-idea/{{ random_idea.id }}" class="idea__like-btn idea__btn">
+        <a href="like-idea/{{ random_idea.id }}" class="idea__like-btn idea__btn" aria-label="Bu fikri beğenmek/beğenini kaldırmak için tıkla.">
           {% if request.user.username in top_idea.idea_likes %} 
 
           <svg class="idea__interaction-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
@@ -80,6 +80,7 @@
         <a
           href="inspect-idea/{{ random_idea.id }}"
           class="idea__comment-btn idea__btn"
+          aria-label="Bu fikre bir yorum bırakmak için tıkla."
         >
         <svg class="idea__interaction-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
           <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M408 64H104a56.16 56.16 0 0 0-56 56v192a56.16 56.16 0 0 0 56 56h40v80l93.72-78.14a8 8 0 0 1 5.13-1.86H408a56.16 56.16 0 0 0 56-56V120a56.16 56.16 0 0 0-56-56Z"/><circle cx="160" cy="216" r="32" fill="currentColor"/><circle cx="256" cy="216" r="32" fill="currentColor"/><circle cx="352" cy="216" r="32" fill="currentColor"/>
@@ -88,7 +89,7 @@
             {{ random_idea.idea_comments }}
           </p>
         </a>
-        <a href="#" class="idea__share-btn idea__btn" data-url = "/inspect-idea/{{ random_idea.id }}" onclick="navigator.clipboard.writeText(window.location.href.slice(0, -1) + this.getAttribute('data-url'));">
+        <a href="#" class="idea__share-btn idea__btn" data-url = "/inspect-idea/{{ random_idea.id }}" onclick="navigator.clipboard.writeText(window.location.href.slice(0, -1) + this.getAttribute('data-url'));" aria-label="Bu fikri diğer arkadaşlarınla paylaşmak için tıkla.">
           <svg class="idea__interaction-icon"  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
             <circle cx="128" cy="256" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
             <circle cx="384" cy="112" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
@@ -100,7 +101,7 @@
       </div>
       <div class="idea__content">
         <p class="idea__author">{{ random_idea.idea_author.account.username }}:</p>
-        <p class="idea__text">{{ random_idea.idea_content }} {% if random_idea.idea_content|length >= 500 %} <a style="text-decoration: none; color: inherit; font: inherit;" href="inspect-idea/{{ random_idea.id }}"><u>devamını oku</u></a> {% endif %}</p>
+        <p class="idea__text">{{ random_idea.idea_content }} {% if random_idea.idea_content|length >= 500 %} <a style="text-decoration: none; color: inherit; font: inherit;" href="inspect-idea/{{ random_idea.id }}" aria-label="Bu fikir çok uzun, devamını okumak için tıkla."><u>devamını oku</u></a> {% endif %}</p>
       </div>
     </div>
   </section>
@@ -111,7 +112,7 @@
         Bugünkü konunun geliştirilmesinde katkıda bulunan <span>{{ topic.topic_suggested_user.username }}</span>'a teşekkür ederiz.
       </p>
     </div>
-    <a href="#" class="purple-box information-topic" onclick="document.querySelector('.information-box').classList.toggle('showed')">
+    <a href="#" class="purple-box information-topic" onclick="document.querySelector('.information-box').classList.toggle('showed')" aria-label="Konu hakkında fikir almak için tıkla.">
       <span
       class="material-symbols-outlined purple-box__icon"
       >edit</span
@@ -152,9 +153,9 @@
   <section class="topic-sources articles" style="height:auto">
     <h3 class="articles-heading heading-tertiary">Beğenileceğini düşündüğümüz metinler:</h3>
     <ul class="articles-list">
-      <li class="article"><a href="#" class="article-link">#123</a></li>
-      <li class="article"><a href="#" class="article-link">#456</a></li>
-      <li class="article"><a href="#" class="article-link">#789</a></li>
+      <li class="article"><a href="#" class="article-link" aria-label="Bu bilginin kaynağına gitmek için tıkla.">#123</a></li>
+      <li class="article"><a href="#" class="article-link" aria-label="Bu bilginin kaynağına gitmek için tıkla.">#456</a></li>
+      <li class="article"><a href="#" class="article-link" aria-label="Bu bilginin kaynağına gitmek için tıkla.">#789</a></li>
     </ul>  
   </section>
 </div>

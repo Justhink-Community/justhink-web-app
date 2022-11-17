@@ -471,10 +471,10 @@ main {
 
 .daily-summary__content {
   position: absolute;
-  width: 100%;
-  text-align: center;
   top: 50%;
   transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
   display: flex;
   flex-direction: column;
 }
@@ -511,6 +511,14 @@ main {
   left: 52.5%;
   transform: translateX(-50%);
   text-align: center;
+}
+
+.daily-summary__description-text.favourite {
+  background-color: #532564;
+}
+
+.daily-summary__description-text.trend {
+  background-color: #48135c;
 }
 
 .daily-summary__navigation .middle {

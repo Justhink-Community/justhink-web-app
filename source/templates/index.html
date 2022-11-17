@@ -12,7 +12,7 @@
   <div class="idea{% if top_idea.idea_author.account == user %} own-idea{% endif %}" id="{{ top_idea.id }}">
     <div class="idea__interaction-btns">
 
-      <a href="/like-idea/{{ top_idea.id }}" class="idea__like-btn idea__btn">
+      <a href="/like-idea/{{ top_idea.id }}" class="idea__like-btn idea__btn" aria-label="Bu fikri beğenmek/beğenini kaldırmak için tıkla.">
         {% if request.user.username in top_idea.idea_likes %} 
 
         <svg class="idea__interaction-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
@@ -37,6 +37,7 @@
       <a
         href="inspect-idea/{{ top_idea.id }}"
         class="idea__comment-btn idea__btn"
+        aria-label="Bu fikre bir yorum bırakmak için tıkla."
       >
       <svg class="idea__interaction-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
         <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M408 64H104a56.16 56.16 0 0 0-56 56v192a56.16 56.16 0 0 0 56 56h40v80l93.72-78.14a8 8 0 0 1 5.13-1.86H408a56.16 56.16 0 0 0 56-56V120a56.16 56.16 0 0 0-56-56Z"/><circle cx="160" cy="216" r="32" fill="currentColor"/><circle cx="256" cy="216" r="32" fill="currentColor"/><circle cx="352" cy="216" r="32" fill="currentColor"/>
@@ -48,7 +49,7 @@
           {{ top_idea.idea_comments }}
         </p>
       </a>
-      <a href="#" class="idea__share-btn idea__btn" data-url = "/inspect-idea/{{ top_idea.id }}" onclick="navigator.clipboard.writeText(window.location.href.slice(0, -1) + this.getAttribute('data-url'));">
+      <a href="#" class="idea__share-btn idea__btn" data-url = "/inspect-idea/{{ top_idea.id }}" onclick="navigator.clipboard.writeText(window.location.href.slice(0, -1) + this.getAttribute('data-url'));" aria-label="Bu fikri diğer arkadaşlarınla paylaşmak için tıkla.">
         <svg class="idea__interaction-icon"  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
           <circle cx="128" cy="256" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
           <circle cx="384" cy="112" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
@@ -62,13 +63,13 @@
     </div>
     <div class="idea__content">
       <p class="idea__author">{{ top_idea.idea_author.account.username }}:</p>
-      <p class="idea__text">{{ top_idea.idea_content }} {% if top_idea.idea_content|length >= 500 %} <a style="text-decoration: none; color: inherit; font: inherit;" href="inspect-idea/{{ top_idea.id }}"><u>devamını oku</u></a> {% endif %}</p>
+      <p class="idea__text">{{ top_idea.idea_content }} {% if top_idea.idea_content|length >= 500 %} <a style="text-decoration: none; color: inherit; font: inherit;" href="inspect-idea/{{ top_idea.id }}" aria-label="Bu fikir çok uzun! Devamını okumak için tıkla."><u>devamını oku</u></a> {% endif %}</p>
     </div>
     <menu class="idea__administration-menu">
       {% if top_idea.idea_author.account == user %}
       
       {% else %}
-      <a href="#">
+      <a href="#" aria-label="Bu fikri şikayet etmek için tıkla.">
         <svg class="idea__report-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
           <path fill="currentColor" d="M80 480a16 16 0 0 1-16-16V68.13a24 24 0 0 1 11.9-20.72C88 40.38 112.38 32 160 32c37.21 0 78.83 14.71 115.55 27.68C305.12 70.13 333.05 80 352 80a183.84 183.84 0 0 0 71-14.5a18 18 0 0 1 25 16.58v219.36a20 20 0 0 1-12 18.31c-8.71 3.81-40.51 16.25-84 16.25c-24.14 0-54.38-7.14-86.39-14.71C229.63 312.79 192.43 304 160 304c-36.87 0-55.74 5.58-64 9.11V464a16 16 0 0 1-16 16Z"/>
         </svg>
@@ -78,7 +79,7 @@
 
       {% endif %}
 
-      <a href="#">
+      <a href="#" aria-label="Bu fikir ile detaylı etkileşime geçmek için tıkla.">
         <svg class="idea__administrate-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
           <circle cx="256" cy="256" r="48" fill="currentColor"/><circle cx="416" cy="256" r="48" fill="currentColor"/>
           <circle cx="96" cy="256" r="48" fill="currentColor"/>
