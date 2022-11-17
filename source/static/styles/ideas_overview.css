@@ -109,6 +109,10 @@
   font-size: 6rem;
 }
 
+.controller__item.invisible {
+  display: none !important;
+}
+
 .controller__start {
 
   font-variation-settings:

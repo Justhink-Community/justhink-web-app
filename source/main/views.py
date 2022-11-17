@@ -12,6 +12,8 @@ from django.db.models import Q
 from user_profile.models import Profile
 from idea.models import Idea, Comment, Topic 
 
+from django.core.cache import cache 
+
 
 
 NOTIFICATION_TAGS = {
@@ -24,13 +26,14 @@ NOTIFICATION_TAGS = {
 
 def IndexView(request):
     ideas = Idea.objects.filter(Q(idea_archived = False))
+
     comments = Comment.objects.filter(Q(comment_archived = False))
     return render(
         request,
         "index.html",
         {
             "topic": Topic.objects.first(),
-            "top_ideas": random.sample([*ideas], 2),
+            "top_ideas": random.sample([*ideas], 2) if len(ideas) >= 2 else ideas,
             "comments_count": len(comments),
             "ideas_count": len(ideas),
             'section': 'summary'
@@ -45,7 +48,7 @@ def FavouriteIdeasView(request):
         "index.html",
         {
             "topic": Topic.objects.first(),
-            "top_ideas": ideas.order_by('-idea_like_count'),
+            "top_ideas": ideas.order_by('-idea_like_count') if len(ideas) >= 2 else ideas,
             "comments_count": len(comments),
             "ideas_count": len(ideas),
             'section': 'favourites'
@@ -61,7 +64,7 @@ def TrendIdeasView(request):
         "index.html",
         {
             "topic": Topic.objects.first(),
-            "top_ideas": ideas.order_by('-idea_comments'),
+            "top_ideas": ideas.order_by('-idea_comments') if len(ideas) >= 2 else ideas,
             "comments_count": len(comments),
             "ideas_count": len(ideas),
             'section': 'trends'
@@ -76,7 +79,7 @@ def IdeasOverview(request):
         "ideas_overview.html",
         {
             "topic": Topic.objects.first(),
-            "random_idea": random.choice(ideas),
+            "random_idea": random.choice(ideas) if len(ideas) >= 2 else ideas,
             "comments_count": len(comments),
             "ideas_count": len(ideas),
             'section': 'idea-overview'

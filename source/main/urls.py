@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import (
     IndexView,
     LoginView,
@@ -27,6 +27,7 @@ urlpatterns = [
     path("", IndexView, name="index-page"),
     path("home", IndexView, name="home"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
+    path('robots.txt', include('robots.urls')),
     path('ideas-overview', IdeasOverview, name = 'ideas-page'),
     path('status', StatusView),
     path('favourite-ideas', FavouriteIdeasView, name = 'favourite-ideas-page'),

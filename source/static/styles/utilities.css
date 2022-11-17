@@ -97,15 +97,15 @@
   color: #4D1A5F;
   font-size: 4.5rem;
   transition: all .2s ease;
-  
 }
+
 
 .idea__interaction-icon.interacted {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48
 }
 
 
-.idea__interaction-icon:hover {
+.idea__interaction-icon {
   color: #71487f;
 }
 
@@ -161,6 +161,7 @@
   top: 1rem;
   display: flex;
   align-items: center;
+  gap: .6rem;
 }
 
 .idea__administration-menu a {

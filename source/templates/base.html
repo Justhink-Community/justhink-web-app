@@ -17,24 +17,7 @@
 
     <title>Justhink - {% block title %}Anasayfa{% endblock %}</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-
+    <link rel="stylesheet" href="/static/fonts/fonts.css">
     <link rel="stylesheet" href="/static/styles/base.css" />
     <link rel="stylesheet" href="/static/styles/utilities.css" />
 
@@ -42,7 +25,7 @@
     {% block scripts %} {% endblock scripts %}
 
     <style>
-      body:not(.fully-loaded) .header, body:not(.fully-loaded) main, body:not(.fully-loaded) .footer {display: none;}
+      body:not(.fully-loaded) .header, body:not(.fully-loaded) main, body:not(.fully-loaded) .footer {display: block; z-index: -5;}
 
       .loading-screen {
         position: fixed;
@@ -54,6 +37,12 @@
         transition: all .5s ease;
         z-index: 100;
       }
+
+      .loading-screen__logo {
+        width: 100%;
+        height: 100%;
+      }
+
       .fully-loaded .loading-screen {
         opacity: 0 !important;
         visibility: hidden;
@@ -109,14 +98,23 @@
 
     <script defer>
       window.onload = fixBackground = () => {
-        document.querySelector('body').classList.add('fully-loaded')
-        if (navigator.appVersion.indexOf("Mac") != -1) {
+        
+
+          try {
+            if (navigator.appVersion.indexOf("Mac") != -1) {
             document.querySelector('.daily-summary__content').style.top = '65%'
         } else {
           document.querySelector('.daily-summary__content').style.top = '50%'
         }
-      }
 
+          } catch (error) {
+            
+          }
+          document.querySelector('body').classList.add('fully-loaded')
+
+      }
+      
+      document.addEventListener('DOMContentLoaded', fixBackground)
     </script>
 
     {% block head %} {% endblock head %}
@@ -134,7 +132,9 @@
       {% for message in messages %}
       <!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}> -->
       <div class="alert showAlert show">
-        <ion-icon name="{{ message.extra_tags }}"></ion-icon>
+        <span class="material-symbols-outlined">
+          {{ message.extra_tags }}
+        </span>
         <span class="msg">{{ message }}</span>
 
   
@@ -283,9 +283,9 @@
 
           <div class="header__search-box">
             <a href="#" class="header__search-btn">
-              <span class="material-symbols-outlined header__search-icon"
-                >search</span
-              >
+              <svg class="header__search-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"/>
+              </svg>
             </a>
             <input
               type="text"
@@ -301,10 +301,11 @@
 
       <div class="header__end">
         <a href="#" class="header__notifications-link">
-          <ion-icon
-            name="notifications-outline"
-            class="header__notifications"
-          ></ion-icon>
+          <svg class="header__notifications" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M5 19q-.425 0-.713-.288Q4 18.425 4 18t.287-.712Q4.575 17 5 17h1v-7q0-2.075 1.25-3.688Q8.5 4.7 10.5 4.2v-.7q0-.625.438-1.062Q11.375 2 12 2t1.062.438q.438.437.438 1.062v.7q2 .5 3.25 2.112Q18 7.925 18 10v7h1q.425 0 .712.288q.288.287.288.712t-.288.712Q19.425 19 19 19Zm7-7.5ZM12 22q-.825 0-1.412-.587Q10 20.825 10 20h4q0 .825-.587 1.413Q12.825 22 12 22Zm-4-5h8v-7q0-1.65-1.175-2.825Q13.65 6 12 6q-1.65 0-2.825 1.175Q8 8.35 8 10Z"/>
+          </svg>
+        
+
         </a>
 
         <form action="change_language" method="get" class="language-header">
@@ -534,9 +535,10 @@
   
             <div class="header__search-box">
               <a href="#" class="header__search-btn">
-                <span class="material-symbols-outlined header__search-icon"
-                  >search</span
-                >
+                <svg class="header__search-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"/>
+                </svg>
+
               </a>
               <input
                 type="text"
@@ -565,10 +567,10 @@
 
           <nav class="daily-summary__navigation">
             <a href="{% url 'favourite-ideas-page' %}" class="daily-summary__navigation-element {% if section == 'favourites' %}active{% endif %}">
-              <span
-                class="material-symbols-outlined daily-summary__navigation-icon"
-                >favorite</span
-              >
+              <svg class="daily-summary__navigation-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                <path fill="currentColor" d="m12.1 18.55l-.1.1l-.11-.1C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5c1.54 0 3.04 1 3.57 2.36h1.86C13.46 6 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5c0 2.89-3.14 5.74-7.9 10.05M16.5 3c-1.74 0-3.41.81-4.5 2.08C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.41 2 8.5c0 3.77 3.4 6.86 8.55 11.53L12 21.35l1.45-1.32C18.6 15.36 22 12.27 22 8.5C22 5.41 19.58 3 16.5 3Z"/>
+              </svg>
+
               <span class="daily-summary__description-text">favoriler</span>
             </a>
 
@@ -576,10 +578,10 @@
               {% block nav_midle %} 
 
               <a href="#" class="daily-summary__navigation-element">
-                <span
-                  class="material-symbols-outlined daily-summary__navigation-icon icon-reverse"
-                  >brush</span
-                >
+                <svg class="daily-summary__navigation-icon icon-reverse" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M6 21q-1.125 0-2.225-.55T2 19q.65 0 1.325-.512Q4 17.975 4 17q0-1.25.875-2.125T7 14q1.25 0 2.125.875T10 17q0 1.65-1.175 2.825Q7.65 21 6 21Zm5.75-6L9 12.25l8.95-8.95q.275-.275.688-.288q.412-.012.712.288l1.35 1.35q.3.3.3.7q0 .4-.3.7Z"/>
+                </svg>
+
               </a>
 
               <a href="{% url 'index-page' %}" class="base-container">
@@ -587,28 +589,28 @@
                   class="daily-summary__navigation-element daily-summary__navigation-element-base"
                 >
                 
-                  <span
-                    class="material-symbols-outlined daily-summary__navigation-icon"
-                    >home</span
-                  >
+                  <svg class="daily-summary__navigation-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M6 19h3v-6h6v6h3v-9l-6-4.5L6 10Zm-2 2V9l8-6l8 6v12h-7v-6h-2v6Zm8-8.75Z"/>
+                  </svg>
+
                 </div>
               </a>
 
               <a href="{% url 'ideas-page' %}" class="daily-summary__navigation-element">
-                <span
-                  class="material-symbols-outlined daily-summary__navigation-icon"
-                  >edit</span
-                >
+                <svg class="daily-summary__navigation-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="m19.3 8.925l-4.25-4.2l1.4-1.4q.575-.575 1.413-.575q.837 0 1.412.575l1.4 1.4q.575.575.6 1.388q.025.812-.55 1.387ZM17.85 10.4L7.25 21H3v-4.25l10.6-10.6Z"/>
+                </svg>
+
               </a>
 
               {% endblock nav_midle %}
             </div>
 
             <a href="{% url 'trend-ideas-page' %}" class="daily-summary__navigation-element {% if section == 'trends' %}active{% endif %}" >
-              <span
-                class="material-symbols-outlined daily-summary__navigation-icon"
-                >trending_up</span
-              >
+
+              <svg class="daily-summary__navigation-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M3.4 18L2 16.6l7.4-7.45l4 4L18.6 8H16V6h6v6h-2V9.4L13.4 16l-4-4Z"/>
+              </svg>
               <span class="daily-summary__description-text">trendler</span>
             </a>
           </nav>
@@ -624,11 +626,14 @@
       {% block publish_idea %} 
       <div class="publish-idea-box">
         <span class="publish-idea">
-          <ion-icon class="publish-idea-icon" name="add-outline"></ion-icon>
-          <ion-icon
-            class="publish-idea-icon"
-            name="close-outline"
-          ></ion-icon>
+          <svg class="publish-idea-icon add" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
+          </svg>
+
+          <svg class="publish-idea-icon close" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6Z"/>
+          </svg>
+
         </span>
         <div class="publish-idea-container">
           <form action="/publish-idea" class="publish-idea-form" method="POST">
@@ -658,14 +663,11 @@
 
       <div class="social-links">
         <a href="mailto:iletisim@justhink.net" target="_blank" rel="nofollower noopener" class="social-link"
-        ><ion-icon class="social-icon" name="logo-google"></ion-icon
-        ></a>
+        ><img src="/static/images/logo-google.svg" alt="Google LLC Logo" class="social-icon"></a>
         <a href="https://www.linkedin.com/company/justhink/" target="_blank" rel="nofollower noopener" class="social-link"
-          ><ion-icon class="social-icon" name="logo-linkedin"></ion-icon
-        ></a>
+          ><img src="/static/images/logo-instagram.svg" alt="Meta Instagram Logo" class="social-icon"></a>
         <a href="https://instagram.com/justhinkofficial" target="_blank" rel="nofollower noopener" class="social-link"
-          ><ion-icon class="social-icon" name="logo-instagram"></ion-icon
-        ></a>
+          ><img src="/static/images/logo-linkedin.svg" alt="Microsoft LinkedIn Logo" class="social-icon"></a>
       </div>
     </footer>
   </body>

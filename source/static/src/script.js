@@ -30,7 +30,7 @@ document.querySelector("html").addEventListener("click", (e) => {
     loginBox.classList.remove("showed");
   } else if (
     !publishIdeaContainer.contains(e.target) &&
-    e.target != document.querySelector(".publish-idea ion-icon") && publishIdeaBox.classList.contains('writing-idea')
+    e.target != document.querySelector(".publish-idea svg") && publishIdeaBox.classList.contains('writing-idea')
   ) {
     publishIdeaBox.classList.remove("writing-idea");
     publishIdeaBox.classList.add("inspecting-ideas");
@@ -59,8 +59,8 @@ const simulateAuthModeChange = () => {
 
 publishIdeaLink.addEventListener('click', () => {
   // console.log('hi')
-  let linkIcon = publishIdeaLink.querySelector("ion-icon");
-  if (linkIcon.getAttribute("name") == "add-outline") {
+  let linkIcon = publishIdeaLink.querySelector("svg");
+  if (linkIcon.classList.contains('add')) {
     publishIdeaBox.classList.add("writing-idea");
     publishIdeaBox.classList.remove("inspecting-ideas");
   } 

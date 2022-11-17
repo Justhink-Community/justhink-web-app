@@ -1,6 +1,6 @@
 
 const countdownValue = document.querySelector('.countdown__value'),
-controllerStart = document.querySelector('.controller__start')
+controllerStart = document.querySelectorAll('.controller__start')
 let COUNTDOWN_STOPPED = false 
 
 function startCountdown() {
@@ -18,7 +18,13 @@ function startCountdown() {
 
 function stopCountdown() {
   COUNTDOWN_STOPPED = !COUNTDOWN_STOPPED;
-  COUNTDOWN_STOPPED == true ? controllerStart.innerHTML = 'play_circle': controllerStart.innerHTML = 'pause_circle'
+  if (COUNTDOWN_STOPPED) {
+    controllerStart[0].classList.add('invisible') 
+    controllerStart[1].classList.remove('invisible') 
+  } else {
+    controllerStart[0].classList.remove('invisible') 
+    controllerStart[1].classList.add('invisible') 
+  }
 } 
 
 startCountdown()

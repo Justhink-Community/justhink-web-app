@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-o5ab4@jiz=ib87kqk3b^%om6zscmw_i2#hfm*ip7jid(dj7jvy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["justhink.net", "www.justhink.net", "37.59.221.234", "*"]
+ALLOWED_HOSTS = ["justhink.net", "www.justhink.net", "37.59.221.234"]
 
 
 # Application definition
@@ -36,8 +36,10 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.sites",
     "django.contrib.staticfiles",
     'django.contrib.sitemaps',
+    'robots',
     "main",
     "user_profile",
     "idea",
@@ -53,6 +55,16 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
 
 ROOT_URLCONF = "source.urls"
 
@@ -119,7 +131,7 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-STATIC_URL = "/static/"
+STATIC_URL = '/static/'
 STATIC_ROOT = "static/"
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -137,3 +149,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = "iletisim@justhink.net"
 EMAIL_HOST_PASSWORD = "0M8mB1x4JAh3PDTv"
 EMAIL_USE_TLS = True
+
+# SITE ID 
+
+SITE_ID = 1

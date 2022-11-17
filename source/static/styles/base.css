@@ -201,8 +201,8 @@ main {
 }
 
 .header__notifications {
-  color: #4D1A5F;
   font-size: 4rem;
+  color: #4D1A5F;
   transition: color 0.2s ease;
 }
 
@@ -598,7 +598,7 @@ main {
   bottom: clamp(1.4rem, 1vh, 2rem);
   color: #632c74;
   font-size: 2.5rem;
-  font-family: "Lora", serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   word-spacing: 1rem;
 }
@@ -632,6 +632,7 @@ main {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 
 .publish-idea:hover,
@@ -639,17 +640,17 @@ main {
   background-color: #5a2a76;
 }
 
-.publish-idea-icon[name="close-outline"] {
+.publish-idea-icon.close {
   display: none;
 }
 
-.publish-idea-box.writing-idea .publish-idea-icon[name="close-outline"] {
+.publish-idea-box.writing-idea .publish-idea-icon.close {
   display: block;
   visibility: visible;
   animation: PublishIconFadeInAnimation 0.5s ease;
 }
 
-.publish-idea-box.writing-idea .publish-idea-icon[name="add-outline"] {
+.publish-idea-box.writing-idea .publish-idea-icon.add {
   display: none;
 }
 
@@ -660,7 +661,7 @@ main {
   animation: FadeInBottomRight 0.5s ease;
 }
 
-.publish-idea-box.inspecting-ideas .publish-idea-icon[name="add-outline"] {
+.publish-idea-box.inspecting-ideas .publish-idea-icon.add {
   display: block;
   visibility: visible;
   animation: PublishIconFadeInAnimation 0.5s ease;
@@ -725,8 +726,9 @@ main {
 }
 
 .social-icon {
-  color: #4D1A5F;
-  font-size: 2.2rem;
+  /* color: ; */
+  width: 2.2rem;
+  height: 2.2rem;
 }
 
 .social-link {
@@ -786,7 +788,7 @@ main {
     display: none;
   }
 }
-.alert ion-icon {
+.alert span {
   font-size: 3rem;
   /* content: 'check_circle' */
 }
