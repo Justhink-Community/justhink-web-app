@@ -7,13 +7,39 @@ from django.db import models
 from django.contrib.postgres import fields
 from django.core.mail import send_mail
 
-from django.template import Context
-from django.template.loader import render_to_string, get_template
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.core.mail import get_connection, EmailMultiAlternatives
 
+import threading
+
+def send_mass_html_mail(datatuple, fail_silently=False, user=None, password=None, 
+                        connection=None):
+    """
+    Given a datatuple of (subject, text_content, html_content, from_email,
+    recipient_list), sends each message to each recipient list. Returns the
+    number of emails sent.
+
+    If from_email is None, the DEFAULT_FROM_EMAIL setting is used.
+    If auth_user and auth_password are set, they're used to log in.
+    If auth_user is None, the EMAIL_HOST_USER setting is used.
+    If auth_password is None, the EMAIL_HOST_PASSWORD setting is used.
+
+    """
+    connection = connection or get_connection(
+        username=user, password=password, fail_silently=fail_silently)
+    messages = []
+    for subject, text, html, from_email, recipient in datatuple:
+        print(subject, text, html, from_email, recipient)
+        message = EmailMultiAlternatives(subject, text, from_email, recipient)
+        message.attach_alternative(html, 'text/html')
+        messages.append(message)
+    return connection.send_messages(messages)
 
 class OldJSONField(fields.JSONField):
     def db_type(self, connection):
         return 'json'
+        
 class Idea(models.Model):
     idea_author = models.ForeignKey(to=Profile, on_delete=models.CASCADE)
     idea_content = models.TextField()
@@ -45,18 +71,27 @@ class Topic(models.Model):
   topic_keywords = models.CharField(max_length=40)
   topic_date = models.DateField(auto_created=True)
   topic_suggested_user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=User.objects.get(models.Q(username = 'justhink')))
+  topic_video_id = models.CharField(max_length=16)
 
   def save(self, *args, **kwargs):
     today = datetime.datetime.now().date()
-    if today != self.topic_date: 
+    if today == self.topic_date: 
         Idea.objects.all().update(idea_archived = True) 
         Comment.objects.all().update(comment_archived = True) 
+
+    t = threading.Thread(target=self.send_mail,)
+    t.start()   
+
     
-    # ctx = {
-    #     'subtitle': 'Günün konusu hazır:',
-    #     'title': self.topic_name,
-    #     'paragraph_1': self.topic_sources
-    # }
-    # message = get_template('dynamic_mail.html').render(ctx)
-    # send_mail('Günün konusu hazır! - justhink.net', message, 'iletisim@justhink.net', ['furkanesen1900@gmail.com'])
     super().save(*args, **kwargs)
+  def send_mail(self):
+        ctx = {
+        'subtitle': 'Günün konusu hazır:',
+        'title': self.topic_name,
+        'paragraph_1': self.topic_sources[:500] + '...'
+        }
+        html_message = render_to_string('dynamic_mail.html', ctx)
+        plain_message = strip_tags(html_message)
+        send_mass_html_mail(
+            [('Günün konusu hazır! - justhink.net', plain_message, html_message, 'iletisim@justhink.net', [user.email]) for user in [User.objects.get(username="justhink")]],
+        fail_silently=True)

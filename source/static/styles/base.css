@@ -10,7 +10,7 @@ html {
   font-size: 62.5%;
   font-weight: 400;
   color: #222;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
   overflow-x: hidden !important;
 }
 
@@ -796,13 +796,11 @@ main {
     display: none;
   }
 }
-.alert span {
-  font-size: 3rem;
+.alert img {
+  width: 3rem;
+  height: 3rem;
+  /* color: #4D1A5F; */
   /* content: 'check_circle' */
-}
-.alert .msg {
-  font-size: 1.6rem;
-  color: #4D1A5F;
 }
 
 .messages {
@@ -859,7 +857,7 @@ main {
   line-height: 1.5;
   border-radius: 11px;
   padding: 3rem 6rem;
-  z-index: 5000;
+  z-index: 5000 !important;
 }
 
 .information-topic {
@@ -869,6 +867,59 @@ main {
 .information-box.showed {
   visibility: visible;
   transform: scale(1) translate(-50%, -50%) ;
+}
+
+/* ACHIVEMENT ANIMATIONS  */
+
+.achievement-animation {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  background-color: #48135c;
+  color: #f0f0f0;
+  font-size: 2rem;
+  font-weight: 500;
+  z-index: 9999999;
+  border-radius: 3px;
+  animation: ScaleUpAchvAnim .5s ease;
+  animation: ScaleDownAchvAnim 3s ease 1s forwards;
+  
+}
+
+@keyframes ScaleUpAchvAnim {
+  0% {
+    transform: scale(0) translate(-50%, -50%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+@keyframes ScaleDownAchvAnim {
+  0% {
+    left: 50%;
+    top: 50%;
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  100% {
+    left: 100vw;
+    top: 0;
+
+    transform: scale(0) ;
+    opacity: 0;
+  }
 }
 
 @media only screen and (max-width: 1700px) {
@@ -978,8 +1029,8 @@ main {
     margin-top: clamp(1rem, 1vh, 3rem) !important;
   }
   .daily-summary__navigation-element {
-    width: clamp(5rem, 4vh, 7.6rem) !important;
-    height: clamp(5rem, 4vh, 7.6rem) !important;
+    width: clamp(4rem, 4vh, 7.6rem) !important;
+    height: clamp(4rem, 4vh, 7.6rem) !important;
   }
   .daily-summary__navigation-element-base::after {
     width: clamp(4rem, 6.4vh, 12rem);
@@ -1031,9 +1082,8 @@ main {
   }
 
   .footer, .social-links {
-    height: clamp(2rem, 3vh, 5rem) !important;
-    align-items: center;
-    
+    height: clamp(3.5rem, 3.5vh, 5rem) !important;
+    align-items: center; 
   }
 
   .social-links {

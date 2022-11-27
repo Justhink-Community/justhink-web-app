@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-o5ab4@jiz=ib87kqk3b^%om6zscmw_i2#hfm*ip7jid(dj7jvy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["justhink.net", "www.justhink.net", "37.59.221.234"]
 
 
 # Application definition
@@ -56,6 +56,15 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
 
 ROOT_URLCONF = "source.urls"
 
@@ -131,16 +140,17 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-CSRF_TRUSTED_ORIGINS = ["http://localhost"]
+CSRF_TRUSTED_ORIGINS = ['https://www.justhink.net', 'https://justhink.net']
 
 # EMAIL SETTINGS 
 
-EMAIL_HOST = "smtp-relay.sendinblue.com" 
+EMAIL_HOST = "smtp.gmail.com" 
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "iletisim@justhink.net"
-EMAIL_HOST_PASSWORD = "0M8mB1x4JAh3PDTv"
+EMAIL_HOST_USER = "jthink011@gmail.com"
+EMAIL_HOST_PASSWORD = "deuzpdagixxegpte"
 EMAIL_USE_TLS = True
 
 # SITE ID 
 
 SITE_ID = 1
+SESSION_COOKIE_AGE = 525948 * 60 * 10

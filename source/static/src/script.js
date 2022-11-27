@@ -72,10 +72,12 @@ const ideas = document.querySelectorAll('.idea');
 
 ideas.forEach(idea => {
   idea.addEventListener('click', (e) => {
-    if (! (idea.querySelector('menu').contains(e.target)) ) {
+    console.log( 
+      !(idea.querySelector('.idea__interaction-btns').contains(e.target)
+      ))
+    if (!(idea.querySelector('.idea__interaction-btns').contains(e.target)) && e.target.tagName == 'a') {
 
       window.location.replace(idea.querySelector('.idea__comment-btn').getAttribute('href'))
     }
   })
 });
-

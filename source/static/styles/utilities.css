@@ -187,8 +187,7 @@
 }
 
 .idea__interaction-icon:hover {
-  fill: black;
-  stroke: black;
+  color: #5a2a76;
   /* background-color: black; */
 }
 
