@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-o5ab4@jiz=ib87kqk3b^%om6zscmw_i2#hfm*ip7jid(dj7jvy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["justhink.net", "www.justhink.net", "37.59.221.234"]
+ALLOWED_HOSTS = ["localhost"]
 
 
 # Application definition
@@ -38,15 +38,15 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.sites",
     "django.contrib.staticfiles",
-    'django.contrib.sitemaps',
-    'robots',
+    "django.contrib.sitemaps",
+    "robots",
     "main",
     "user_profile",
     "idea",
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -62,7 +62,7 @@ CACHES = {
         "LOCATION": "redis://127.0.0.1:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
+        },
     }
 }
 
@@ -131,26 +131,26 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 STATIC_ROOT = "static/"
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-CSRF_TRUSTED_ORIGINS = ['https://www.justhink.net', 'https://justhink.net']
+CSRF_TRUSTED_ORIGINS = ["http://localhost.com"]
 
-# EMAIL SETTINGS 
+# EMAIL SETTINGS
 
-EMAIL_HOST = "smtp.gmail.com" 
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "jthink011@gmail.com"
 EMAIL_HOST_PASSWORD = "deuzpdagixxegpte"
 EMAIL_USE_TLS = True
 
-# SITE ID 
+# SITE ID
 
 SITE_ID = 1
 SESSION_COOKIE_AGE = 525948 * 60 * 10

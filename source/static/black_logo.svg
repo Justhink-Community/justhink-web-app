@@ -21,29 +21,29 @@
   <g id="Grup-2">
     <g id="Dikdörtgen-18">
       <g clip-path="url(#clip_1)">
-        <use xlink:href="#path_1" fill="none" stroke="#8D2250" stroke-width="6" />
+        <use xlink:href="#path_1" fill="none" stroke="#4d1a5f" stroke-width="6" />
       </g>
     </g>
     <g id="Oval-3">
       <g clip-path="url(#clip_2)">
-        <use xlink:href="#path_2" fill="none" stroke="#8D2250" stroke-width="6" />
+        <use xlink:href="#path_2" fill="none" stroke="#4d1a5f" stroke-width="6" />
       </g>
     </g>
     <g id="Dikdörtgen-19">
       <g clip-path="url(#clip_3)">
-        <use xlink:href="#path_3" fill="none" stroke="#8D2250" stroke-width="6" />
+        <use xlink:href="#path_3" fill="none" stroke="#4d1a5f" stroke-width="6" />
       </g>
     </g>
     <g id="Grup" transform="translate(16.70102 55.670166)">
-      <path d="M0 4.17526C0 1.86933 1.86933 0 4.17526 0C6.48119 0 8.35052 1.86933 8.35052 4.17526C8.35052 6.48119 6.48119 8.35052 4.17526 8.35052C1.86933 8.35052 0 6.48119 0 4.17526Z" id="Oval" fill="#8D2250" fill-rule="evenodd" stroke="none" />
-      <path d="M25.0515 4.17526C25.0515 1.86933 26.9209 0 29.2268 0C31.5327 0 33.4021 1.86933 33.4021 4.17526C33.4021 6.48119 31.5327 8.35052 29.2268 8.35052C26.9209 8.35052 25.0515 6.48119 25.0515 4.17526Z" id="Oval-2" fill="#8D2250" fill-rule="evenodd" stroke="none" />
+      <path d="M0 4.17526C0 1.86933 1.86933 0 4.17526 0C6.48119 0 8.35052 1.86933 8.35052 4.17526C8.35052 6.48119 6.48119 8.35052 4.17526 8.35052C1.86933 8.35052 0 6.48119 0 4.17526Z" id="Oval" fill="#4d1a5f" fill-rule="evenodd" stroke="none" />
+      <path d="M25.0515 4.17526C25.0515 1.86933 26.9209 0 29.2268 0C31.5327 0 33.4021 1.86933 33.4021 4.17526C33.4021 6.48119 31.5327 8.35052 29.2268 8.35052C26.9209 8.35052 25.0515 6.48119 25.0515 4.17526Z" id="Oval-2" fill="#4d1a5f" fill-rule="evenodd" stroke="none" />
     </g>
-    <path d="M29.2553 64.1671C29.1014 64.6024 29.2552 63.6792 29.2552 64.1671C29.2552 66.4731 31.1246 68.3424 33.4305 68.3424C35.7365 68.3424 37.6058 66.4731 37.6058 64.1672C37.6058 64.1672 37.6058 64.1671 37.6058 64.1671C37.6058 64.1671 37.6058 64.1671 37.6058 64.1671C37.6058 64.1671 37.6058 64.1671 37.6058 64.1671C37.6058 63.6793 37.6319 64.6391 37.6058 64.1672C37.6058 64.1672 29.2552 64.1671 29.2552 64.1671L29.2553 64.1671Z" id="Vektör" fill="#8D2250" fill-rule="evenodd" stroke="none" />
+    <path d="M29.2553 64.1671C29.1014 64.6024 29.2552 63.6792 29.2552 64.1671C29.2552 66.4731 31.1246 68.3424 33.4305 68.3424C35.7365 68.3424 37.6058 66.4731 37.6058 64.1672C37.6058 64.1672 37.6058 64.1671 37.6058 64.1671C37.6058 64.1671 37.6058 64.1671 37.6058 64.1671C37.6058 64.1671 37.6058 64.1671 37.6058 64.1671C37.6058 63.6793 37.6319 64.6391 37.6058 64.1672C37.6058 64.1672 29.2552 64.1671 29.2552 64.1671L29.2553 64.1671Z" id="Vektör" fill="#4d1a5f" fill-rule="evenodd" stroke="none" />
     <g id="Çizgi">
       <g clip-path="url(#clip_4)">
-        <use xlink:href="#path_4" fill="none" stroke="#8D2250" stroke-width="40" stroke-linecap="square" />
+        <use xlink:href="#path_4" fill="none" stroke="#4d1a5f" stroke-width="40" stroke-linecap="square" />
       </g>
     </g>
-    <path d="M33.0928 13.9237L33.0928 25.0237" id="Çizgi-4" fill="none" fill-rule="evenodd" stroke="#8D2250" stroke-width="3" stroke-linecap="square" />
+    <path d="M33.0928 13.9237L33.0928 25.0237" id="Çizgi-4" fill="none" fill-rule="evenodd" stroke="#4d1a5f" stroke-width="3" stroke-linecap="square" />
   </g>
 </svg>

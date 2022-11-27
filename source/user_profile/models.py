@@ -1,16 +1,12 @@
+import hashlib
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Q
 
 
-JUSTHINK_RANKS = {
-    'ranks': (
-        ('rookie', 'ROOKIE'),
-    ),
-    'points': {
-        'rookie': 0   
-    }
-}
+JUSTHINK_RANKS = {"ranks": (("rookie", "ROOKIE"),), "points": {"rookie": 0}}
+
 
 class Profile(models.Model):
 
@@ -28,11 +24,13 @@ class Profile(models.Model):
     total_point = models.IntegerField(default=0, editable=False)
     login_strike = models.IntegerField(default=0, editable=False, null=False)
 
-    # PROFILE FIELDS 
+    # PROFILE FIELDS
 
-    profile_rank = models.CharField(choices=JUSTHINK_RANKS['ranks'], default='rookie', editable=False, max_length=10)
+    profile_rank = models.CharField(
+        choices=JUSTHINK_RANKS["ranks"], default="rookie", editable=False, max_length=10
+    )
 
-    # USER SYSTEM 
+    # USER SYSTEM
 
     profile_user = models.CharField(max_length=50, editable=False)
 
@@ -41,9 +39,14 @@ class Profile(models.Model):
     profile_browsers = models.JSONField(default=dict, editable=False)
     is_bot = models.BooleanField(default=False, editable=False)
 
-    # MULTILAYER SECURITY PURPOSES 
+    # MULTILAYER SECURITY PURPOSES
 
     # 2fa_status
-    # remember_me_status 
+    # remember_me_status
     # recovery_devices
-    
+
+    @property
+    def get_user_secret(self):
+        return str(
+            hashlib.sha256(str(self.account.id).encode()).hexdigest(),
+        )[:30]

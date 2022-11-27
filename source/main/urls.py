@@ -16,7 +16,8 @@ from .views import (
     IdeasOverview,
     EditIdeaView,
     StatusView,
-    StatisticsView
+    StatisticsView,
+    ShopView,
 )
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSiteMap 
@@ -32,6 +33,7 @@ urlpatterns = [
     path('ideas-overview', IdeasOverview, name = 'ideas-page'),
     path('status', StatusView),
     path('stats', StatisticsView),
+    path('shop', ShopView, name = 'shop-page'),
     path('favourite-ideas', FavouriteIdeasView, name = 'favourite-ideas-page'),
     path('trend-ideas', TrendIdeasView, name = 'trend-ideas-page'),
     path("login", LoginView, name="login-page"),

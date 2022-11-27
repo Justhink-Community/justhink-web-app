@@ -7,18 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="Justhink Yazılım Ekibi">
-    <meta name="description" content="Justhink, insanları belirli bir konu hakkında tartışmak için bir araya getiren ve bunları etik bir ortamda yapmalarına aracılık eden öncü bir yeni nesil sosyal medya platformudur.">
-    <meta name="keywords" content="Justhink, justhink, jusTHINK, jusTHİNK, fikir, insanlar, düşünce, etik, süper insanlar, ekşisözlük, twitter, fikirler, düşünceler, ölümsüz, yok olmak, okul, ortam, beyin, fırtına, beyin fırtınası, mindstorming, inovasyon, gündelik, sohbet, akademik tartışma, tartışma">
-    <meta name="google-site-verification" content="MUpgXMLwErTODhvmdYiBd4iP2vJ9YTCh-ywN2vBigbY" />
+    <meta name="author" content="Justhink Yazılım Ekibi" />
+    <meta
+      name="description"
+      content="Justhink, insanları belirli bir konu hakkında tartışmak için bir araya getiren ve bunları etik bir ortamda yapmalarına aracılık eden öncü bir yeni nesil sosyal medya platformudur."
+    />
+    <meta
+      name="keywords"
+      content="Justhink, justhink, jusTHINK, jusTHİNK, fikir, insanlar, düşünce, etik, süper insanlar, ekşisözlük, twitter, fikirler, düşünceler, ölümsüz, yok olmak, okul, ortam, beyin, fırtına, beyin fırtınası, mindstorming, inovasyon, gündelik, sohbet, akademik tartışma, tartışma"
+    />
+    <meta
+      name="google-site-verification"
+      content="MUpgXMLwErTODhvmdYiBd4iP2vJ9YTCh-ywN2vBigbY"
+    />
 
-
-    <link rel="icon" type="image/x-icon" href="/static/favicon.svg">
-    <link rel="apple-touch-icon" href="/static/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.svg" />
+    <link rel="apple-touch-icon" href="/static/favicon.svg" />
 
     <title>Justhink - {% block title %}Anasayfa{% endblock %}</title>
 
-    <link rel="stylesheet" href="/static/fonts/stylesheet.css">
+    <link rel="stylesheet" href="/static/fonts/stylesheet.css" />
+    <link rel="stylesheet" href="/static/styles/themes.css" />
     <link rel="stylesheet" href="/static/styles/base.css" />
     <link rel="stylesheet" href="/static/styles/utilities.css" />
 
@@ -28,13 +37,18 @@
     {% block scripts %} {% endblock scripts %}
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NKQ7T7XYV"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-9NKQ7T7XYV"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-9NKQ7T7XYV');
+      gtag("config", "G-9NKQ7T7XYV");
     </script>
 
     <style>
@@ -47,7 +61,7 @@
         display: grid;
         place-items: center;
         background-color: #e3e3e3;
-        transition: all .5s ease;
+        transition: all 0.5s ease;
         z-index: 100;
       }
 
@@ -59,7 +73,6 @@
       .fully-loaded .loading-screen {
         opacity: 0 !important;
         visibility: hidden;
-
       }
 
       body:not(.fully-loaded) .loading-screen {
@@ -75,7 +88,7 @@
       }
 
       body:not(.fully-loaded) .loading-element::after {
-        content: '';
+        content: "";
         position: absolute;
         left: 0;
         top: 0;
@@ -102,43 +115,42 @@
         }
 
         100% {
-
         }
       }
-
-  
     </style>
 
     <script defer>
       window.onload = fixBackground = (e) => {
-        
-
-          try {
-            if (navigator.appVersion.indexOf("Mac") != -1) {
-            document.querySelector('.daily-summary__content').style.top = '65%'
-            document.querySelector('.daily-summary__navigation-element').style.width = 'clamp(3rem, 3vh, 7.6rem) !important'
-
-        } else {
-          document.querySelector('.daily-summary__content').style.top = '50%'
-        }
-
-          } catch (error) {
-            
+        try {
+          if (navigator.appVersion.indexOf("Mac") != -1) {
+            document.querySelector(".daily-summary__content").style.top = "65%";
+            document.querySelector(
+              ".daily-summary__navigation-element"
+            ).style.width = "clamp(3rem, 3vh, 7.6rem) !important";
+          } else {
+            document.querySelector(".daily-summary__content").style.top = "50%";
           }
-          document.querySelector('body').classList.add('fully-loaded')
+        } catch (error) {}
+        document.querySelector("body").classList.add("fully-loaded");
+      };
 
-      }
-      
-      document.addEventListener('DOMContentLoaded', fixBackground)
+      document.addEventListener("DOMContentLoaded", fixBackground);
     </script>
 
     {% block head %} {% endblock head %}
   </head>
   <body>
+    <div class="darken">
+      
+    </div>
 
     <div class="loading-screen">
       <div class="loading-element">
-        <img src="/static/black_logo.svg" class="loading-screen__logo" alt="jusTHINK Logo">
+        <img
+          src="/static/black_logo.svg"
+          class="loading-screen__logo"
+          alt="jusTHINK Logo"
+        />
       </div>
     </div>
 
@@ -147,13 +159,9 @@
       {% for message in messages %}
       <!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}> -->
       <div class="alert showAlert show">
-  
-        <img src="{{ message.extra_tags }}" alt="Bildirim ikonu" class="msg">
-          
+        <img src="{{ message.extra_tags }}" alt="Bildirim ikonu" class="msg" />
 
         <span class="msg">{{ message }}</span>
-
-  
       </div>
 
       {% endfor %}
@@ -163,10 +171,14 @@
     <!-- {% if achievement_animation %} 
       <div class="achievement-animation"><span class="achievement-animation__label">{{ achievement_animation }}+</span></div>
     {% endif %} -->
-    
+
     <header class="header">
       <div class="header__start">
-        <a href="#" class="hamburger-btn" aria-label="Kullanıcı menüsünü genişletmek için tıkla.">
+        <a
+          href="#"
+          class="hamburger-btn"
+          aria-label="Kullanıcı menüsünü genişletmek için tıkla."
+        >
           <span class="header__hamburger-menu"></span>
         </a>
 
@@ -302,9 +314,23 @@
           {% csrf_token %}
 
           <div class="header__search-box">
-            <a href="#" class="header__search-btn" aria-label="Justhink veritabanlarında fikir, kullanıcı ve daha birçok şeyi sorgula.">
-              <svg class="header__search-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"/>
+            <a
+              href="#"
+              class="header__search-btn"
+              aria-label="Justhink veritabanlarında fikir, kullanıcı ve daha birçok şeyi sorgula."
+            >
+              <svg
+                class="header__search-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"
+                />
               </svg>
             </a>
             <input
@@ -320,15 +346,15 @@
       </div>
 
       <div class="header__end">
-        <!-- <a href="#" class="header__notifications-link" aria-label="Justhink'ten sana gelen bildirimlere bak.">
+        <a href="#" class="header__notifications-link" aria-label="Justhink'ten sana gelen bildirimlere bak.">
           <svg class="header__notifications" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
             <path fill="currentColor" d="M5 19q-.425 0-.713-.288Q4 18.425 4 18t.287-.712Q4.575 17 5 17h1v-7q0-2.075 1.25-3.688Q8.5 4.7 10.5 4.2v-.7q0-.625.438-1.062Q11.375 2 12 2t1.062.438q.438.437.438 1.062v.7q2 .5 3.25 2.112Q18 7.925 18 10v7h1q.425 0 .712.288q.288.287.288.712t-.288.712Q19.425 19 19 19Zm7-7.5ZM12 22q-.825 0-1.412-.587Q10 20.825 10 20h4q0 .825-.587 1.413Q12.825 22 12 22Zm-4-5h8v-7q0-1.65-1.175-2.825Q13.65 6 12 6q-1.65 0-2.825 1.175Q8 8.35 8 10Z"/>
           </svg>
         
 
-        </a> -->
+        </a>
 
-        <form action="change_language" method="get" class="language-header">
+        <!-- <form action="change_language" method="get" class="language-header">
           {% csrf_token %}
 
           <div class="header__language-switch language-switch">
@@ -340,10 +366,20 @@
 
             <label for="language-checkbox"></label>
 
-            <a href="#" class="on language-selection--primary" aria-label="Site dilini Türkçe'ye çevir.">TR</a>
-            <a href="#" class="off language-selection--secondary" aria-label="Site dilini İngilizce'ye çevir.">ENG</a>
+            <a
+              href="#"
+              class="on language-selection--primary"
+              aria-label="Site dilini Türkçe'ye çevir."
+              >TR</a
+            >
+            <a
+              href="#"
+              class="off language-selection--secondary"
+              aria-label="Site dilini İngilizce'ye çevir."
+              >ENG</a
+            >
           </div>
-        </form>
+        </form> -->
 
         {% if not user.is_authenticated %}
         <a href="#" class="btn btn--primary" onclick="logInSimulate()"
@@ -351,13 +387,155 @@
         >
         {% else %}
         <div class="profile">
-          
-          <a href="/logout" class="btn btn--primary" aria-label="Justhink hesabından çıkış yap.">Çıkış Yap</a>
+          <a
+            class="btn btn--primary"
+            aria-label="Justhink hesabınla etkileşime geç."
+            onclick="expandMyAccount()"
+            >Hesabım</a
+          >
+
+          <div class="my-account" id="my-account">
+            <div class="my-account__information">
+              <div class="my-account__information--basic">
+                <div class="my-account__text-information">
+                  <span class="my-account__username">{{ user.username }}</span>
+                  <span class="my-account__email">{{ user.email }}</span>
+                </div>
+                <div class="my-account__profile-photo">
+                  <img
+                    src="/static/black_logo.svg"
+                    alt="{{ user.username }} isimli kulanıcının profil fotoğrafı"
+                  />
+                </div>
+              </div>
+              <span class="my-account__information--id"
+                >User ID: <span>{{ profile.get_user_secret }}</span></span
+              >
+            </div>
+            <nav class="my-account__navigation">
+              <ul class="my-account__list">
+                <li class="my-account__list-item">
+                  <a href="#" class="my-account__link">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="m9.25 22l-.4-3.2q-.325-.125-.612-.3q-.288-.175-.563-.375L4.7 19.375l-2.75-4.75l2.575-1.95Q4.5 12.5 4.5 12.337v-.675q0-.162.025-.337L1.95 9.375l2.75-4.75l2.975 1.25q.275-.2.575-.375q.3-.175.6-.3l.4-3.2h5.5l.4 3.2q.325.125.613.3q.287.175.562.375l2.975-1.25l2.75 4.75l-2.575 1.95q.025.175.025.337v.675q0 .163-.05.338l2.575 1.95l-2.75 4.75l-2.95-1.25q-.275.2-.575.375q-.3.175-.6.3l-.4 3.2Zm2.8-6.5q1.45 0 2.475-1.025Q15.55 13.45 15.55 12q0-1.45-1.025-2.475Q13.5 8.5 12.05 8.5q-1.475 0-2.488 1.025Q8.55 10.55 8.55 12q0 1.45 1.012 2.475Q10.575 15.5 12.05 15.5Z"
+                      />
+                    </svg>
+
+                    Hesap Ayarları</a
+                  >
+                </li>
+                <li class="my-account__list-item">
+                  <a href="#" class="my-account__link">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 24 24"
+                    >
+                      <g transform="rotate(180 12 12)">
+                        <path
+                          fill="currentColor"
+                          d="M7 15q-1.25 0-2.125-.875T4 12q0-1.25.875-2.125T7 9q1.25 0 2.125.875T10 12q0 1.25-.875 2.125T7 15Zm0 3q1.925 0 3.475-1.1T12.65 14H13l2 2l2-2l2.5 1.975l3.5-4L21.025 10H12.65q-.6-1.7-2.112-2.85Q9.025 6 7 6Q4.5 6 2.75 7.75T1 12q0 2.5 1.75 4.25T7 18Z"
+                        />
+                      </g>
+                    </svg>
+
+                    Gizlilik Ayarları</a
+                  >
+                </li>
+                <li class="my-account__list-item">
+                  <a href="/shop" class="my-account__link">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1.04em"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 512 496"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M448 69H137l-3-12q-5-23-22.5-37.5T70 5H21q-9 0-15 6T0 27q0 9 6 15t15 6h49q19 0 22 17l49 256q6 21 23.5 34t38.5 13h202q10 0 16-6t6-15q0-22-22-22H203q-14 0-20-12l-2-9h214q20 0 36.5-12t22.5-31l58-123v-5q0-27-18.5-45.5T448 69zM192 261h-19l-28-149h47v149zm85 0h-42V112h42v149zm86 0h-43V112h43v149zm53-17v2q-3 10-11 13V112h43q18 0 21 17zM256 432q0 18-12.5 30.5T213 475q-17 0-29.5-12.5T171 432t12.5-30.5T213 389q18 0 30.5 12.5T256 432zm171 0q0 18-12.5 30.5T384 475t-30.5-12.5T341 432t12.5-30.5T384 389t30.5 12.5T427 432z"
+                      />
+                    </svg>
+
+                    Market</a
+                  >
+                </li>
+                <li class="my-account__list-item">
+                  <a href="#" class="my-account__link">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 1792 1792"
+                    >
+                      <g transform="rotate(180 896 896)">
+                        <path
+                          fill="currentColor"
+                          d="M896 0q182 0 348 71t286 191t191 286t71 348t-71 348t-191 286t-286 191t-348 71t-348-71t-286-191t-191-286T0 896t71-348t191-286T548 71T896 0zm0 128q-190 0-361 90l194 194q82-28 167-28t167 28l194-194q-171-90-361-90zM218 1257l194-194q-28-82-28-167t28-167L218 535q-90 171-90 361t90 361zm678 407q190 0 361-90l-194-194q-82 28-167 28t-167-28l-194 194q171 90 361 90zm0-384q159 0 271.5-112.5T1280 896t-112.5-271.5T896 512T624.5 624.5T512 896t112.5 271.5T896 1280zm484-217l194 194q90-171 90-361t-90-361l-194 194q28 82 28 167t-28 167z"
+                        />
+                      </g>
+                    </svg>
+
+                    Yardım Merkezi</a
+                  >
+                </li>
+                <li class="my-account__list-item">
+                  <a href="#" class="my-account__link">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M12 3c5.5 0 10 3.58 10 8s-4.5 8-10 8c-1.24 0-2.43-.18-3.53-.5C5.55 21 2 21 2 21c2.33-2.33 2.7-3.9 2.75-4.5C3.05 15.07 2 13.13 2 11c0-4.42 4.5-8 10-8m5 9v-2h-2v2h2m-4 0v-2h-2v2h2m-4 0v-2H7v2h2Z"
+                      />
+                    </svg>
+
+                    İstek Merkezi</a
+                  >
+                </li>
+                <li class="my-account__list-item">
+                  <a href="/logout" class="my-account__link">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2a9.985 9.985 0 0 1 8 4h-2.71a8 8 0 1 0 .001 12h2.71A9.985 9.985 0 0 1 12 22zm7-6v-3h-8v-2h8V8l5 4l-5 4z"
+                      />
+                    </svg>
+
+                    Oturumu Kapat</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
-        <a href="#" class="point-view" style="text-decoration:none; color: inherit; font-weight: 400;">Puan: {{ profile.total_point }}</a>
+        <a
+          href="#"
+          class="point-view"
+          >Puan: {{ profile.total_point }}</a
+        >
         {% endif %}
-
-
 
         <div class="login-box" id="login">
           <div class="login-container">
@@ -478,10 +656,16 @@
                     checked
                   />
                   <label for="kvkk" class="login-form__checkbox-label"
-                    ><a href="/static/policies/user-terms.pdf" target="_blank" style="color: inherit" aria-label="KVKK politikamıza göz gezdirmek için tıkla.">KVKK politikasını</a> kabul ediyorum.</label
+                    ><a
+                      href="/static/policies/user-terms.pdf"
+                      target="_blank"
+                      style="color: inherit"
+                      aria-label="KVKK politikamıza göz gezdirmek için tıkla."
+                      >KVKK politikasını</a
+                    >
+                    kabul ediyorum.</label
                   >
                 </div>
-
               </div>
 
               <div class="login-form__action-box">
@@ -503,22 +687,37 @@
     <main>
       {% block daily_summary %}
       <div class="daily-summary">
-        
-          <svg class="daily-summary_mobile-structor" width="650" height="200" viewBox="0 0 650 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_191_2)">
-            <path d="M0 0H650V242.715C650 242.715 609.014 253.033 547.806 258.086C486.597 263.139 349.917 265.521 339.444 258.086L353.279 241.769C353.537 241.464 353.652 241.128 353.614 240.792C353.575 240.456 353.384 240.131 353.058 239.847C352.732 239.563 352.282 239.329 351.749 239.166C351.217 239.004 350.618 238.919 350.011 238.919H297.014C296.419 238.919 295.834 239 295.31 239.156C294.785 239.311 294.338 239.536 294.009 239.81C293.679 240.084 293.476 240.399 293.419 240.727C293.362 241.054 293.452 241.385 293.681 241.689L306.038 258.089C295.656 265.989 168.996 263.141 108.33 258.089C71.3837 254.98 35.0927 249.83 0 242.715L0 0Z" fill="url(#paint0_linear_191_2)"/>
-            </g>
-            <defs>
-            <linearGradient id="paint0_linear_191_2" x1="0" y1="131.502" x2="650" y2="131.502" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#5C346B"/>
-            <stop offset="1" stop-color="#400556"/>
+        <svg
+          class="daily-summary_mobile-structor"
+          width="650"
+          height="200"
+          viewBox="0 0 650 200"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_191_2)">
+            <path
+              d="M0 0H650V242.715C650 242.715 609.014 253.033 547.806 258.086C486.597 263.139 349.917 265.521 339.444 258.086L353.279 241.769C353.537 241.464 353.652 241.128 353.614 240.792C353.575 240.456 353.384 240.131 353.058 239.847C352.732 239.563 352.282 239.329 351.749 239.166C351.217 239.004 350.618 238.919 350.011 238.919H297.014C296.419 238.919 295.834 239 295.31 239.156C294.785 239.311 294.338 239.536 294.009 239.81C293.679 240.084 293.476 240.399 293.419 240.727C293.362 241.054 293.452 241.385 293.681 241.689L306.038 258.089C295.656 265.989 168.996 263.141 108.33 258.089C71.3837 254.98 35.0927 249.83 0 242.715L0 0Z"
+              fill="url(#paint0_linear_191_2)"
+            />
+          </g>
+          <defs>
+            <linearGradient
+              id="paint0_linear_191_2"
+              x1="0"
+              y1="131.502"
+              x2="650"
+              y2="131.502"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#5C346B" />
+              <stop offset="1" stop-color="#400556" />
             </linearGradient>
             <clipPath id="clip0_191_2">
-            <rect width="650" height="263" fill="white"/>
+              <rect width="650" height="263" fill="white" />
             </clipPath>
-            </defs>
-            </svg>
-            
+          </defs>
+        </svg>
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -528,7 +727,7 @@
           viewBox="0 0 1832 385.999"
           class="daily-summary_structor"
         >
-          {% block daily-summary-svg %} 
+          {% block daily-summary-svg %}
           <defs>
             <linearGradient
               id="linear-gradient"
@@ -550,18 +749,29 @@
           {% endblock daily-summary-svg %}
         </svg>
 
-
-
         <div class="daily-summary__content">
           <form action="search" method="get" class="daily-summary_search-box">
             {% csrf_token %}
-  
-            <div class="header__search-box">
-              <a href="#" class="header__search-btn" aria-label="Justhink veritabanlarında fikir, kullanıcı ve daha birçok şeyi sorgula.">
-                <svg class="header__search-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"/>
-                </svg>
 
+            <div class="header__search-box">
+              <a
+                href="#"
+                class="header__search-btn"
+                aria-label="Justhink veritabanlarında fikir, kullanıcı ve daha birçok şeyi sorgula."
+              >
+                <svg
+                  class="header__search-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  preserveAspectRatio="xMidYMid meet"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"
+                  />
+                </svg>
               </a>
               <input
                 type="text"
@@ -573,12 +783,16 @@
               />
             </div>
           </form>
-  
 
-          <a href="#" class="daily-summary__topic information-topic" onclick="document.querySelector('.information-box').classList.toggle('showed')" aria-label="Konu hakkında kısa bir bilgi almak için tıkla.">
+          <a
+            href="#"
+            class="daily-summary__topic information-topic"
+            onclick="document.querySelector('.information-box').classList.toggle('showed')"
+            aria-label="Konu hakkında kısa bir bilgi almak için tıkla."
+          >
             {{ topic.topic_name }}
           </a>
-      
+
           <div class="information-box" id="information-box">
             {{ topic.topic_sources }}
           </div>
@@ -589,52 +803,121 @@
           </div>
 
           <nav class="daily-summary__navigation">
-            <a href="{% url 'favourite-ideas-page' %}" class="daily-summary__navigation-element {% if section == 'favourites' %}active{% endif %}" aria-label="Justhink kullanıcılarının en sevdiği fikirlere göz at.">
-              <svg class="daily-summary__navigation-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                <path fill="currentColor" d="m12.1 18.55l-.1.1l-.11-.1C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5c1.54 0 3.04 1 3.57 2.36h1.86C13.46 6 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5c0 2.89-3.14 5.74-7.9 10.05M16.5 3c-1.74 0-3.41.81-4.5 2.08C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.41 2 8.5c0 3.77 3.4 6.86 8.55 11.53L12 21.35l1.45-1.32C18.6 15.36 22 12.27 22 8.5C22 5.41 19.58 3 16.5 3Z"/>
+            <a
+              href="{% url 'favourite-ideas-page' %}"
+              class="daily-summary__navigation-element {% if section == 'favourites' %}active{% endif %}"
+              aria-label="Justhink kullanıcılarının en sevdiği fikirlere göz at."
+            >
+              <svg
+                class="daily-summary__navigation-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="m12.1 18.55l-.1.1l-.11-.1C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5c1.54 0 3.04 1 3.57 2.36h1.86C13.46 6 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5c0 2.89-3.14 5.74-7.9 10.05M16.5 3c-1.74 0-3.41.81-4.5 2.08C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.41 2 8.5c0 3.77 3.4 6.86 8.55 11.53L12 21.35l1.45-1.32C18.6 15.36 22 12.27 22 8.5C22 5.41 19.58 3 16.5 3Z"
+                />
               </svg>
 
-              <span class="daily-summary__description-text favourite">favoriler</span>
+              <span class="daily-summary__description-text favourite"
+                >favoriler</span
+              >
             </a>
 
-            <div class="middle"> 
-              {% block nav_midle %} 
+            <div class="middle">
+              {% block nav_midle %}
 
-              <a href="#" class="daily-summary__navigation-element" aria-label="Yaratıcılığını ve özgünlüğünü kullanarak konu hakkında bir tasarı ortaya çıkar ve paylaş.">
-                <svg class="daily-summary__navigation-icon icon-reverse" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M6 21q-1.125 0-2.225-.55T2 19q.65 0 1.325-.512Q4 17.975 4 17q0-1.25.875-2.125T7 14q1.25 0 2.125.875T10 17q0 1.65-1.175 2.825Q7.65 21 6 21Zm5.75-6L9 12.25l8.95-8.95q.275-.275.688-.288q.412-.012.712.288l1.35 1.35q.3.3.3.7q0 .4-.3.7Z"/>
+              <a
+                href="#"
+                class="daily-summary__navigation-element"
+                aria-label="Yaratıcılığını ve özgünlüğünü kullanarak konu hakkında bir tasarı ortaya çıkar ve paylaş."
+              >
+                <svg
+                  class="daily-summary__navigation-icon icon-reverse"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  preserveAspectRatio="xMidYMid meet"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M6 21q-1.125 0-2.225-.55T2 19q.65 0 1.325-.512Q4 17.975 4 17q0-1.25.875-2.125T7 14q1.25 0 2.125.875T10 17q0 1.65-1.175 2.825Q7.65 21 6 21Zm5.75-6L9 12.25l8.95-8.95q.275-.275.688-.288q.412-.012.712.288l1.35 1.35q.3.3.3.7q0 .4-.3.7Z"
+                  />
                 </svg>
-
               </a>
 
-              <a href="{% url 'index-page' %}" class="base-container" aria-label="Fikirleri rahat bir şekilde gezebilmek için tıkla.">
-                <div                 
+              <a
+                href="{% url 'index-page' %}"
+                class="base-container"
+                aria-label="Fikirleri rahat bir şekilde gezebilmek için tıkla."
+              >
+                <div
                   class="daily-summary__navigation-element daily-summary__navigation-element-base"
                 >
-                
-                  <svg class="daily-summary__navigation-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M6 19h3v-6h6v6h3v-9l-6-4.5L6 10Zm-2 2V9l8-6l8 6v12h-7v-6h-2v6Zm8-8.75Z"/>
+                  <svg
+                    class="daily-summary__navigation-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    preserveAspectRatio="xMidYMid meet"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M6 19h3v-6h6v6h3v-9l-6-4.5L6 10Zm-2 2V9l8-6l8 6v12h-7v-6h-2v6Zm8-8.75Z"
+                    />
                   </svg>
-
                 </div>
               </a>
 
-              <a href="{% url 'ideas-page' %}" class="daily-summary__navigation-element" aria-label="Justhink kullanıcılarından rastgele fikirler görmek için tıkla.">
-                <svg class="daily-summary__navigation-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="m19.3 8.925l-4.25-4.2l1.4-1.4q.575-.575 1.413-.575q.837 0 1.412.575l1.4 1.4q.575.575.6 1.388q.025.812-.55 1.387ZM17.85 10.4L7.25 21H3v-4.25l10.6-10.6Z"/>
+              <a
+                href="{% url 'ideas-page' %}"
+                class="daily-summary__navigation-element"
+                aria-label="Justhink kullanıcılarından rastgele fikirler görmek için tıkla."
+              >
+                <svg
+                  class="daily-summary__navigation-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  preserveAspectRatio="xMidYMid meet"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m19.3 8.925l-4.25-4.2l1.4-1.4q.575-.575 1.413-.575q.837 0 1.412.575l1.4 1.4q.575.575.6 1.388q.025.812-.55 1.387ZM17.85 10.4L7.25 21H3v-4.25l10.6-10.6Z"
+                  />
                 </svg>
-
               </a>
 
               {% endblock nav_midle %}
             </div>
 
-            <a href="{% url 'trend-ideas-page' %}" class="daily-summary__navigation-element {% if section == 'trends' %}active{% endif %}" aria-label="Justhink kullanıcılarının en çok tartıştığı fikirlere göz at.">
-
-              <svg class="daily-summary__navigation-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M3.4 18L2 16.6l7.4-7.45l4 4L18.6 8H16V6h6v6h-2V9.4L13.4 16l-4-4Z"/>
+            <a
+              href="{% url 'trend-ideas-page' %}"
+              class="daily-summary__navigation-element {% if section == 'trends' %}active{% endif %}"
+              aria-label="Justhink kullanıcılarının en çok tartıştığı fikirlere göz at."
+            >
+              <svg
+                class="daily-summary__navigation-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M3.4 18L2 16.6l7.4-7.45l4 4L18.6 8H16V6h6v6h-2V9.4L13.4 16l-4-4Z"
+                />
               </svg>
-              <span class="daily-summary__description-text trend">trendler</span>
+              <span class="daily-summary__description-text trend"
+                >trendler</span
+              >
             </a>
           </nav>
         </div>
@@ -646,17 +929,33 @@
     </main>
 
     <footer class="footer">
-      {% block publish_idea %} 
+      {% block publish_idea %}
       <div class="publish-idea-box">
         <span class="publish-idea">
-          <svg class="publish-idea-icon add" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
+          <svg
+            class="publish-idea-icon add"
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 24 24"
+          >
+            <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z" />
           </svg>
 
-          <svg class="publish-idea-icon close" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6Z"/>
+          <svg
+            class="publish-idea-icon close"
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6Z"
+            />
           </svg>
-
         </span>
         <div class="publish-idea-container">
           <form action="/publish-idea" class="publish-idea-form" method="POST">
@@ -678,19 +977,48 @@
               required
             ></textarea>
 
-            <button type="submit" class="btn btn-form publish-idea-submit">Fikri Paylaş</button>
+            <button type="submit" class="btn btn-form publish-idea-submit">
+              Fikri Paylaş
+            </button>
           </form>
         </div>
       </div>
       {% endblock %}
 
       <div class="social-links">
-        <a href="mailto:iletisim@justhink.net" target="_blank" rel="nofollower noopener" class="social-link" aria-label="GMail üzerinden bize ulaşabilirsin."
-        ><img src="/static/images/logo-google.svg" alt="Google LLC Logo" class="social-icon" aria-label="LinkedIn üzerinden bize ulaşabilirsin."></a>
-        <a href="https://www.linkedin.com/company/justhink/" target="_blank" rel="nofollower noopener" class="social-link"
-          ><img src="/static/images/logo-instagram.svg" alt="Meta Instagram Logo" class="social-icon"></a>
-        <a href="https://instagram.com/justhinkofficial" target="_blank" rel="nofollower noopener" class="social-link" aria-label="Instagram üzerinden bize ulaşabilirsin."
-          ><img src="/static/images/logo-linkedin.svg" alt="Microsoft LinkedIn Logo" class="social-icon"></a>
+        <a
+          href="mailto:iletisim@justhink.net"
+          target="_blank"
+          rel="nofollower noopener"
+          class="social-link"
+          aria-label="GMail üzerinden bize ulaşabilirsin."
+          ><img
+            src="/static/images/logo-google.svg"
+            alt="Google LLC Logo"
+            class="social-icon"
+            aria-label="LinkedIn üzerinden bize ulaşabilirsin."
+        /></a>
+        <a
+          href="https://www.linkedin.com/company/justhink/"
+          target="_blank"
+          rel="nofollower noopener"
+          class="social-link"
+          ><img
+            src="/static/images/logo-instagram.svg"
+            alt="Meta Instagram Logo"
+            class="social-icon"
+        /></a>
+        <a
+          href="https://instagram.com/justhinkofficial"
+          target="_blank"
+          rel="nofollower noopener"
+          class="social-link"
+          aria-label="Instagram üzerinden bize ulaşabilirsin."
+          ><img
+            src="/static/images/logo-linkedin.svg"
+            alt="Microsoft LinkedIn Logo"
+            class="social-icon"
+        /></a>
       </div>
     </footer>
   </body>
