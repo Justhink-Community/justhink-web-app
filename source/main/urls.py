@@ -18,6 +18,8 @@ from .views import (
     StatusView,
     StatisticsView,
     ShopView,
+    LandingView
+
 )
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSiteMap 
@@ -27,7 +29,7 @@ sitemaps = {
 
 urlpatterns = [
     path("", IndexView, name="index-page"),
-    path("home", IndexView, name="home"),
+    path("home", LandingView, name="home"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     path('robots.txt', include('robots.urls')),
     path('ideas-overview', IdeasOverview, name = 'ideas-page'),

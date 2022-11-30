@@ -530,11 +530,11 @@ main {
 }
 
 .daily-summary__description-text.favourite {
-  background-color: #532564;
+  background-color: var(--background-color);
 }
 
 .daily-summary__description-text.trend {
-  background-color: #48135c;
+  background-color: var(--background-color)
 }
 
 .daily-summary__navigation .middle {
@@ -564,7 +564,7 @@ main {
   position: absolute;
   width: 11.12rem;
   height: 11.12rem;
-  background-color: #e3e3e3;
+  background-color: var(--background-color);
   left: 50%;
   top: calc(50%);
   transform: translate(-50%, -50%);
@@ -573,7 +573,7 @@ main {
 }
 
 .daily-summary__navigation-element-base .daily-summary__navigation-icon {
-  color: #4d1a5f;
+  color: var(--color);
   font-size: 6rem !important;
 }
 
@@ -615,7 +615,7 @@ main {
   position: absolute;
   right: clamp(2rem, 1.5vw, 2.75rem);
   bottom: clamp(1.4rem, 1vh, 2rem);
-  color: #632c74;
+  color: var(--color);
   font-size: 2.5rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
@@ -629,7 +629,7 @@ main {
 .publish-idea,
 .publish-idea:link,
 .publish-idea:visited {
-  background-color: #4d1a5f;
+  background-color: var(--background-color);
   position: fixed;
   right: 2rem;
   bottom: 7rem;
@@ -644,7 +644,7 @@ main {
 
 .publish-idea-icon {
   font-size: 7rem;
-  color: #f5f5f5;
+  color: var(--color);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -654,7 +654,7 @@ main {
 
 .publish-idea:hover,
 .publish-idea:active {
-  background-color: #5a2a76;
+  background-color: var(--hover-background-color);
 }
 
 .publish-idea-icon.close {
@@ -746,6 +746,7 @@ main {
   /* color: ; */
   width: 2.2rem;
   height: 2.2rem;
+  color: var(--color);
 }
 
 .social-link {
@@ -1319,6 +1320,7 @@ main {
   .daily-summary__tags {
     right: -1rem !important;
     bottom: 1rem !important;
+    color: var(--color);
   }
 
   .header__center {

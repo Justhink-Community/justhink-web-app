@@ -120,6 +120,7 @@
     </style>
 
     <script defer>
+      
       window.onload = fixBackground = (e) => {
         try {
           if (navigator.appVersion.indexOf("Mac") != -1) {
@@ -132,6 +133,8 @@
           }
         } catch (error) {}
         document.querySelector("body").classList.add("fully-loaded");
+      
+        
       };
 
       document.addEventListener("DOMContentLoaded", fixBackground);
@@ -310,6 +313,7 @@
       </div>
 
       <div class="header__center">
+        {% block header_center %} 
         <form action="search" method="get">
           {% csrf_token %}
 
@@ -343,6 +347,8 @@
             />
           </div>
         </form>
+        {% endblock %}
+
       </div>
 
       <div class="header__end">
@@ -992,7 +998,9 @@
           rel="nofollower noopener"
           class="social-link"
           aria-label="GMail üzerinden bize ulaşabilirsin."
-          ><img
+          >
+          
+          <img
             src="/static/images/logo-google.svg"
             alt="Google LLC Logo"
             class="social-icon"

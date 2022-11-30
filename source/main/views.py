@@ -185,6 +185,18 @@ def ShopView(request):
         },
     )
 
+def LandingView(request):
+    IncrementLogin(request)
+
+    return render(
+        request,
+        "home.html",
+        {
+            "profile": get_user_profile(request.user),
+            "section": "home",
+        },
+    ) 
+
 def FavouriteIdeasView(request):
     ideas = Idea.objects.filter(Q(idea_archived=False))
     comments = Comment.objects.filter(Q(comment_archived=False))
