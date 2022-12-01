@@ -25,12 +25,25 @@ main {
     gap: 12.6rem;
 }
 
+
+.header__list-item {
+display: inline-block;    
+}
+
 .header__link {
     text-decoration: none;
     color: #844268;
     font-size: 2rem;
     font-weight: 500;
+    transition: all .2s ease;
+    z-index: 55;
 }
+
+.header__link:hover 
+{
+    color: hsl(325, 33%, 48%);
+}
+
 
 .section-hero {
     display: grid;
@@ -41,6 +54,7 @@ main {
 
 .image-composition__branding-image {
     max-width: 80%;
+    z-index: -1;
 }
 
 .heading {

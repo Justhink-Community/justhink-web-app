@@ -1,0 +1,74 @@
+{% extends 'base.html' %} 
+
+{% block head %} 
+<link rel="stylesheet" href="/static/styles/utilities.css">
+<link rel="stylesheet" href="/static/styles/authentication.css">
+
+{% endblock %} 
+
+{% block main %}
+<div class="wrapper auth">
+    <div class="auth__title">
+        <h2 class="heading-secondary auth__heading">jusTHINK</h2>
+        <span class="heading-secondary auth__description">günlük inovasyon dozu</span>
+    </div>
+    <div class="login-box auth-box">
+        <h3 class="auth-box__heading-tertiary">Giriş yap:</h3>
+        <form action="" method="POST" class="login-box__form">
+           <div class="auth-box__input-box">
+                <label for="username" class="auth-box__label">Kullanıcı adı:</label>
+                <input type="text" name="username" id="username" placeholder="meredith_grey" class="auth-box__input" required>
+           </div>
+           <div class="auth-box__input-box">
+                <label for="password" class="auth-box__label">Şifre:</label>
+                <input type="password" name="password" id="password" placeholder="*******" class="auth-box__input" required>
+            </div>
+            <a href="#" class="auth__forget-password">Şifremi unuttum:</a>
+            <div class="bottom-box">
+                <div class="auth-box__checkbox-box">
+                    <input type="checkbox" name="remember-me" id="remember-me" class="auth-box__input-checkbox">
+                    <label for="remember-me" class="auth-box__checkbox-label">Beni hatırla</label>
+                </div>
+                <input type="submit" value="Giriş Yap" class="btn btn--primary">
+            </div>
+        </form>
+    </div>
+    <div class="register-box auth-box">
+        <h3 class="auth-box__heading-tertiary">Hesabın yok mu? Kayıt ol</h3>
+        <form action="" method="POST" class="login-box__form">
+           <div class="auth-box__input-box">
+                <label for="username" class="auth-box__label">Kullanıcı adı:</label>
+                <input type="text" name="username" id="username" placeholder="meredith_grey" class="auth-box__input" required>
+           </div>
+           <div class="auth-box__input-box">
+                <label for="email" class="auth-box__label">Elektronik Posta:</label>
+                <input type="email" name="email" id="email" placeholder="hello@justhink.net" class="auth-box__input" required>
+            </div>
+            <div class="auth-box__input-box">
+                <label for="password" class="auth-box__label">Şifre:</label>
+                <input type="password" name="password" id="password" placeholder="*******" class="auth-box__input" required>
+            </div>
+            <div class="auth-box__input-box">
+                <label for="re-password" class="auth-box__label">Şifre (Tekrar):</label>
+                <input type="password" name="re-password" id="re-password" placeholder="*******" class="auth-box__input" required>
+            </div>
+            <div class="bottom-box">
+                <div class="auth-box__checkbox-box">
+                    <input type="checkbox" name="remember-me" id="remember-me" class="auth-box__input-checkbox">
+                    <label for="remember-me" class="auth-box__checkbox-label">KVKK'yı kabul ediyorum.</label>
+                </div>
+                <input type="submit" value="Devam Et" class="btn btn--primary">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block daily_summary %} 
+
+{% endblock %} 
+
+{% block publish_idea %} 
+
+{% endblock %}

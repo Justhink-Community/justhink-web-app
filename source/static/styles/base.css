@@ -20,6 +20,7 @@ body {
 }
 body {
   position: relative;
+  min-height: 100vh;
 }
 
 body {
@@ -163,7 +164,7 @@ main {
 }
 
 .header__heading {
-  width: 32rem;
+  width: 100%;
 }
 
 /* HEADER CENTER (SEARCH BOX ) */
@@ -255,7 +256,7 @@ main {
 
 /* LOGIN FORM ( POP - UP ) */
 
-.login-box {
+/* .login-box {
   visibility: hidden;
   opacity: 0;
 
@@ -416,7 +417,7 @@ main {
 
 .btn-form:hover {
   background-color: #7a5290;
-}
+} */
 
 .point-view {
   text-decoration: none; color: var(--color); font-weight: 400

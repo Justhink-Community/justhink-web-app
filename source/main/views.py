@@ -188,14 +188,32 @@ def ShopView(request):
 def LandingView(request):
     IncrementLogin(request)
 
+    topic = Topic.objects.first()
+
     return render(
         request,
         "home.html",
         {
             "profile": get_user_profile(request.user),
+            "topic_name": topic.topic_name[:40],
+            "topic_sources": topic.topic_sources[:300],
             "section": "home",
         },
     ) 
+
+def AuthenticationView(request):
+    IncrementLogin(request)
+
+    return render(
+        request,
+        "authentication.html",
+        {
+            "profile": get_user_profile(request.user),
+            "section": "home-authentication",
+        },
+    ) 
+
+
 
 def FavouriteIdeasView(request):
     ideas = Idea.objects.filter(Q(idea_archived=False))
