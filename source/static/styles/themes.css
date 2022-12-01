@@ -24,11 +24,6 @@
     --hover-background-color: #5a2a76;
   }
 
-  .btn--primary {
-    --background-color: hsl(284, 57%, 24%);
-    --hover-background-color: hsl(285, 28%, 39%);
-  }
-
   .header__notifications {
     --color: hsl(284, 57%, 24%);
     --hover-color: hsl(285, 28%, 39%);

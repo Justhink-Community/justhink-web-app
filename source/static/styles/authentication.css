@@ -1,3 +1,14 @@
+
+
+main {
+  padding-top: 0;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -43,7 +54,7 @@
     border-radius: .9rem;
 }
 
-.login-box__form {
+.login-box__form, .register-box__form {
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
@@ -53,7 +64,7 @@
     font-size: 3.2rem;
     letter-spacing: .75px;
     font-weight: 400;
-    margin-bottom: 1.8rem;
+    margin-bottom: 2rem;
 }
 
 .auth-box__label {
@@ -87,6 +98,7 @@
 }
 
 .bottom-box {
+  margin-top: auto;
     display: flex;
     justify-content: space-between;
 }
@@ -97,4 +109,8 @@
 
 .auth__forget-password {
     color: #fafafa;
+}
+
+.auth-box__input-checkbox {
+  accent-color: #6b3f84;
 }

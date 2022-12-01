@@ -1,7 +1,6 @@
 from django.urls import path, include
 from .views import (
     IndexView,
-    LoginView,
     RegisterView,
     LogoutView,
     PublishIdeaView,
@@ -40,7 +39,6 @@ urlpatterns = [
     path('shop', ShopView, name = 'shop-page'),
     path('favourite-ideas', FavouriteIdeasView, name = 'favourite-ideas-page'),
     path('trend-ideas', TrendIdeasView, name = 'trend-ideas-page'),
-    path("login", LoginView, name="login-page"),
     path("register", RegisterView, name="register-page"),
     path("logout", LogoutView, name="logout-page"),
     path('edit-idea/<int:idea_id>', EditIdeaView, name = 'edit-idea-page'),

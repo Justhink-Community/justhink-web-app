@@ -15,15 +15,17 @@
     <div class="login-box auth-box">
         <h3 class="auth-box__heading-tertiary">Giriş yap:</h3>
         <form action="" method="POST" class="login-box__form">
+          {% csrf_token %}
+
            <div class="auth-box__input-box">
-                <label for="username" class="auth-box__label">Kullanıcı adı:</label>
-                <input type="text" name="username" id="username" placeholder="meredith_grey" class="auth-box__input" required>
+                <label for="current-username" class="auth-box__label">Kullanıcı adı:</label>
+                <input type="text" name="current-username" id="current-username" placeholder="meredith_grey" class="auth-box__input" required>
            </div>
            <div class="auth-box__input-box">
-                <label for="password" class="auth-box__label">Şifre:</label>
-                <input type="password" name="password" id="password" placeholder="*******" class="auth-box__input" required>
+                <label for="current-password" class="auth-box__label">Şifre:</label>
+                <input type="password" name="current-password" id="current-password" placeholder="*******" class="auth-box__input" required>
             </div>
-            <a href="#" class="auth__forget-password">Şifremi unuttum:</a>
+            <a href="#" class="auth__forget-password">Şifremi unuttum</a>
             <div class="bottom-box">
                 <div class="auth-box__checkbox-box">
                     <input type="checkbox" name="remember-me" id="remember-me" class="auth-box__input-checkbox">
@@ -35,7 +37,8 @@
     </div>
     <div class="register-box auth-box">
         <h3 class="auth-box__heading-tertiary">Hesabın yok mu? Kayıt ol</h3>
-        <form action="" method="POST" class="login-box__form">
+        <form action="" method="POST" class="register-box__form">
+          {% csrf_token %}
            <div class="auth-box__input-box">
                 <label for="username" class="auth-box__label">Kullanıcı adı:</label>
                 <input type="text" name="username" id="username" placeholder="meredith_grey" class="auth-box__input" required>
@@ -46,22 +49,27 @@
             </div>
             <div class="auth-box__input-box">
                 <label for="password" class="auth-box__label">Şifre:</label>
-                <input type="password" name="password" id="password" placeholder="*******" class="auth-box__input" required>
+                <input type="password" name="password" id="password" placeholder="*******" class="auth-box__input" autocomplete="new-password" minlength="8" required>
             </div>
             <div class="auth-box__input-box">
                 <label for="re-password" class="auth-box__label">Şifre (Tekrar):</label>
-                <input type="password" name="re-password" id="re-password" placeholder="*******" class="auth-box__input" required>
+                <input type="password" autocomplete="new-password" name="re-password" id="re-password" placeholder="*******" class="auth-box__input" minlength="8" required>
             </div>
+            <a href="#" class="auth__forget-password">İlgili politikaları okumak için tıkla</a>
             <div class="bottom-box">
                 <div class="auth-box__checkbox-box">
-                    <input type="checkbox" name="remember-me" id="remember-me" class="auth-box__input-checkbox">
-                    <label for="remember-me" class="auth-box__checkbox-label">KVKK'yı kabul ediyorum.</label>
+                    <input type="checkbox" name="kvkk" id="kvkk" class="auth-box__input-checkbox" required>
+                    <label for="kvkk" class="auth-box__checkbox-label"><a href="/static/policies/user-terms.pdf" target="_blank " style="color: inherit">KVKK'yı</a> kabul ediyorum.</label>
                 </div>
                 <input type="submit" value="Devam Et" class="btn btn--primary">
             </div>
         </form>
     </div>
 </div>
+
+<script>
+
+</script>
 {% endblock %}
 
 

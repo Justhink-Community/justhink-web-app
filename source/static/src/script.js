@@ -61,14 +61,18 @@ const simulateAuthModeChange = () => {
   }
 };
 
-publishIdeaLink.addEventListener("click", () => {
-  // console.log('hi')
-  let linkIcon = publishIdeaLink.querySelector("svg");
-  if (linkIcon.classList.contains("add")) {
-    publishIdeaBox.classList.add("writing-idea");
-    publishIdeaBox.classList.remove("inspecting-ideas");
-  }
-});
+try {
+  publishIdeaLink.addEventListener("click", () => {
+    // console.log('hi')
+    let linkIcon = publishIdeaLink.querySelector("svg");
+    if (linkIcon.classList.contains("add")) {
+      publishIdeaBox.classList.add("writing-idea");
+      publishIdeaBox.classList.remove("inspecting-ideas");
+    }
+  });
+} catch (error) {
+  
+}
 
 // IDEAS
 

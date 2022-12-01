@@ -10,6 +10,7 @@
   border: none;
   outline: none;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+  letter-spacing: .5px;
 }
 
 .btn--primary,

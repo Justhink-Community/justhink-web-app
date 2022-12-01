@@ -201,7 +201,35 @@ def LandingView(request):
         },
     ) 
 
+@user_passes_test(lambda u: u.is_anonymous)
 def AuthenticationView(request):
+    if request.POST:
+      username, password = request.POST["username"], request.POST["password"]
+      user = authenticate(username=username, password=password)
+
+      if user is not None:
+          login(request, user)
+
+          messages.success(
+              request,
+              f"Başarıyla giriş yaptın: {username}",
+              extra_tags=NOTIFICATION_TAGS["success"],
+          )
+          logged_in = datetime.datetime.now()
+
+          profile = Profile.objects.get(account=user)
+          profile.login_count += 1
+          profile.last_logged_in = logged_in.replace(tzinfo=None)
+          profile.save()
+      else:
+          messages.error(
+              request,
+              "Bilgilerinde hata var, kontrol et!",
+              extra_tags=NOTIFICATION_TAGS["error"],
+          )
+
+      return redirect("index-page")
+  
     IncrementLogin(request)
 
     return render(
@@ -448,34 +476,6 @@ def EditIdeaView(request, idea_id: int):
     return redirect(request.META.get("HTTP_REFERER"))
 
 
-@user_passes_test(lambda u: u.is_anonymous)
-def LoginView(request):
-    if request.POST:
-        username, password = request.POST["username"], request.POST["password"]
-        user = authenticate(username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-
-            messages.success(
-                request,
-                f"Başarıyla giriş yaptın: {username}",
-                extra_tags=NOTIFICATION_TAGS["success"],
-            )
-            logged_in = datetime.datetime.now()
-
-            profile = Profile.objects.get(account=user)
-            profile.login_count += 1
-            profile.last_logged_in = logged_in.replace(tzinfo=None)
-            profile.save()
-        else:
-            messages.error(
-                request,
-                "Bilgilerinde hata var, kontrol et!",
-                extra_tags=NOTIFICATION_TAGS["error"],
-            )
-
-        return redirect("index-page")
 
 
 @user_passes_test(lambda u: u.is_anonymous)
@@ -489,12 +489,19 @@ def RegisterView(request):
                 "Kayıt olmak için KVKK'yı kabul etmelisin.",
                 extra_tags=NOTIFICATION_TAGS["error"],
             )
+            return redirect(request.META.get("HTTP_REFERER"))
+
         else:
-            username, password, email = (
-                request.POST["username-register"],
-                request.POST["password-register"],
-                request.POST["email"],
-            )
+          
+            username, password, re_password, email = request.POST["username"], request.POST["password"], request.POST["re_password"],request.POST["email"]
+            
+            if password != re_password:
+                messages.error(
+                  request,
+                  "Şifreler aynı değil!",
+                  extra_tags=NOTIFICATION_TAGS["error"],
+                )
+                return redirect(request.META.get("HTTP_REFERER"))
 
             try:
                 found_user = User.objects.filter(Q(username=username) | Q(email=email))
@@ -507,7 +514,7 @@ def RegisterView(request):
                         "Bu bilgilere ait bir hesap zaten var!",
                         extra_tags=NOTIFICATION_TAGS["error"],
                     )
-                    return redirect("index-page")
+                    return redirect(request.META.get("HTTP_REFERER"))
             kvkk_check = True
 
             try:
