@@ -15,8 +15,12 @@ from .views import (
     TrendIdeasView,
     IdeasOverview,
     EditIdeaView,
+    BannedView,
+    LeaderboardView,
     StatusView,
-    StatisticsView
+    StatisticsView,
+    UpdatesView,
+    IpToLocView
 )
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSiteMap 
@@ -29,11 +33,15 @@ urlpatterns = [
     path("home", IndexView, name="home"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     path('robots.txt', include('robots.urls')),
-    path('ideas-overview', IdeasOverview, name = 'ideas-page'),
+    path('shuffle-ideas', IdeasOverview, name = 'random-ideas-page'),
     path('status', StatusView),
     path('stats', StatisticsView),
-    path('favourite-ideas', FavouriteIdeasView, name = 'favourite-ideas-page'),
-    path('trend-ideas', TrendIdeasView, name = 'trend-ideas-page'),
+    path('updates', UpdatesView),
+    path('ideas', FavouriteIdeasView, name = 'ideas-page'),
+    path('leaderboard', LeaderboardView, name = 'leaderboard-page'),
+    path('banned', BannedView, name = 'banned-page'),
+    path('iptoloc', IpToLocView, name = 'ip-to-loc-page'),
+    # path('trend-ideas', TrendIdeasView, name = 'trend-ideas-page'),
     path("login", LoginView, name="login-page"),
     path("register", RegisterView, name="register-page"),
     path("logout", LogoutView, name="logout-page"),

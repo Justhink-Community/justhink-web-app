@@ -6,6 +6,9 @@ from .models import Profile
 
 class ProfileAdmin(admin.ModelAdmin):
     def get_readonly_fields(self, request, obj=None):
-        return [f.name for f in obj._meta.fields if not f.editable]
+        if request.user.username == "FurkanEsen":
+            return [f.name for f in obj._meta.fields if not f.editable]
+        return [f.name for f in obj._meta.fields if not f.editable and f.name != "ip_addresses"]
+ 
 
 admin.site.register(Profile, ProfileAdmin)

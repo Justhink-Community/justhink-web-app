@@ -52,6 +52,7 @@ footer {
 }
 
 .idea-container {
+  overflow-x: hidden;
   overflow-y: scroll;
   max-height: calc(80vh - 3.2rem);
 }
@@ -120,7 +121,7 @@ footer {
 .send-comment-form {
   display: grid;
   grid-template-columns: 6fr 1fr;
-  height: 3.2rem;
+  height: 4.5rem;
 }
 
 .send-comment-form input {
@@ -132,10 +133,12 @@ footer {
   border-bottom-left-radius: 11px;
   padding-left: 1.2rem;
   padding-right: 1.2rem;
-  background-color: #ddd;
+  background-color: #ccc;
 }
 
 .send-comment-btn {
+  display: grid;
+  place-items: center;
   background-color: #4D1A5F; 
   color: #eee;
   border-bottom-right-radius: 11px;

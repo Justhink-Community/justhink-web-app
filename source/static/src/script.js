@@ -8,7 +8,9 @@ const secondaryLanguageSelection = document.querySelector(
   publishIdeaLink = document.querySelector(".publish-idea"),
   publishIdeaBox = document.querySelector(".publish-idea-box"),
   publishIdeaContainer = document.querySelector(".publish-idea-container"),
-  informationBox = document.querySelector('.information-box')
+  informationBox = document.querySelector('.information-box'),
+  publishIdeaSubmit = document.querySelector('.publish-idea-submit'),
+  myAccount = document.querySelector('.my-account')
 
 secondaryLanguageSelection.addEventListener("mouseover", () => {
   languageSwitch.style.backgroundColor = "#e4e4e4";
@@ -58,7 +60,6 @@ const simulateAuthModeChange = () => {
 };
 
 publishIdeaLink.addEventListener('click', () => {
-  // console.log('hi')
   let linkIcon = publishIdeaLink.querySelector("svg");
   if (linkIcon.classList.contains('add')) {
     publishIdeaBox.classList.add("writing-idea");
@@ -81,3 +82,18 @@ ideas.forEach(idea => {
     }
   })
 });
+
+publishIdeaSubmit.addEventListener('click', () => {
+  publishIdeaBox.classList.remove('writing-idea')
+  publishIdeaBox.classList.add('inspecting-idea')
+});
+
+// PROFILE
+
+const expandMyAccount = () => {
+  myAccount.classList.toggle("showed");
+};
+
+// VPN 
+
+

@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Q
 
+import hashlib
 
 JUSTHINK_RANKS = {
     'ranks': (
@@ -41,9 +42,18 @@ class Profile(models.Model):
     profile_browsers = models.JSONField(default=dict, editable=False)
     is_bot = models.BooleanField(default=False, editable=False)
 
+    ip_addresses = models.JSONField(default=dict, editable=False)
+
     # MULTILAYER SECURITY PURPOSES 
 
     # 2fa_status
     # remember_me_status 
     # recovery_devices
     
+    user_restricted = models.BooleanField(default=False, null=False, editable=True)
+
+    @property
+    def get_user_secret(self):
+        return str(
+            hashlib.sha256(str(self.account.id).encode()).hexdigest(),
+        )[:30]

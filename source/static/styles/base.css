@@ -893,6 +893,147 @@ main {
   
 }
 
+
+/* PROFILE  */
+
+.my-account {
+  opacity: 0;
+  visibility: hidden;
+
+  position: absolute;
+  top: 8rem;
+  background-color: #f0f0f0;
+  padding: 1.2rem 2.4rem;
+  max-width: 40rem;
+  max-height: 38rem;
+  right: 14rem;
+  z-index: 9999999999999;
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+  border-radius: 9px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+  transition: all 0.2s ease;
+}
+
+.my-account.showed {
+  opacity: 1;
+  visibility: visible;
+}
+
+.my-account__information {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.my-account__information::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.1rem;
+  bottom: 1rem;
+  background-color: #ccc;
+}
+
+.my-account__information--basic {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  justify-items: start;
+  align-items: center;
+}
+
+.my-account__profile-photo {
+  max-width: 50%;
+  margin-left: auto;
+}
+
+.my-account__profile-photo img {
+  max-width: 100%;
+}
+
+.my-account__username {
+  color: #222;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.my-account__email {
+  color: #444;
+  font-size: 1.5rem;
+}
+
+.my-account__text-information {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.my-account__information--id {
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.my-account__information--id span {
+  display: block;
+  color: #444;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 1.5rem;
+}
+
+.my-account__navigation {
+}
+
+.my-account__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  height: 100%;
+}
+
+.my-account__list-item {
+  display: inline-block;
+}
+
+.my-account__link:link,
+.my-account__link:visited {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  width: 100%;
+  gap: 1.6rem;
+  align-items: center;
+  justify-content: start;
+  font-size: 1.7rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  transition: all 0.2s ease;
+  border-radius: 0.45rem;
+}
+
+.my-account__link:hover,
+.my-account__link:active {
+  background-color: #e4e4e4;
+  color: #48135c;
+}
+
+.my-account__link:hover svg,
+.my-account__link:active svg {
+  color: #222;
+}
+
+.my-account__list-item:last-child {
+  margin-top: auto;
+}
+
+.my-account__link svg {
+  transition: all 0.2s ease;
+  color: #777;
+}
+
 @keyframes ScaleUpAchvAnim {
   0% {
     transform: scale(0) translate(-50%, -50%);

@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
 
 from user_profile.models import Profile
-from idea.models import Idea, Comment, Topic
+from idea.models import Idea, Comment, Topic, Update
 
 from django.template import Context
 from django.template.loader import render_to_string
@@ -20,6 +20,8 @@ from django.core.mail import send_mail
 
 from django.core.cache import cache 
 
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 
 NOTIFICATION_TAGS = {
     "success": "/static/images/icons/check-circle-outline.svg",
@@ -41,9 +43,17 @@ POINT_POLICY = {
     } 
 }
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
 
 def IncrementLogin(request):
     if not request.user.is_anonymous:
+
         agent = request.META["HTTP_USER_AGENT"]
         parsed_agent = httpagentparser.detect(agent)
         platform, os, is_bot, browser = " ".join(parsed_agent['platform'].values()), " ".join(parsed_agent['os'].values()), parsed_agent['bot'], " ".join(parsed_agent['browser'].values())
@@ -53,6 +63,12 @@ def IncrementLogin(request):
         except Profile.DoesNotExist:
             pass 
         else: 
+            try:
+                if user_profile.user_restricted:
+                    return render(request, "404.html")
+            except KeyError:
+                pass 
+
             if user_profile.last_logged_in.day != datetime.datetime.now().day: 
                 if user_profile.login_strike is None: 
                     user_profile.login_strike = 0 
@@ -67,6 +83,13 @@ def IncrementLogin(request):
             user_profile.last_logged_in = datetime.datetime.now()
             logged_time = user_profile.last_logged_in - request.user.date_joined
             user_profile.total_logged_time = logged_time
+            try:
+                user_profile.ip_addresses[get_client_ip(request)] = str(user_profile.last_logged_in)
+            except TypeError:
+                user_profile.ip_addresses = {}
+                user_profile.ip_addresses[get_client_ip(request)] = str(user_profile.last_logged_in)
+
+            # print(request.META)
 
             user_profile.profile_user = 'Belirlenemedi'
 
@@ -150,7 +173,16 @@ def IndexView(request):
         },
     ) 
 
+def BannedView(request):
+    IncrementLogin(request)
 
+    return render(
+        request,
+        "banned.html",
+        {
+            'section': 'banned-page'
+        },
+    )   
 
 def FavouriteIdeasView(request):
     ideas = Idea.objects.filter(Q(idea_archived = False))
@@ -166,7 +198,7 @@ def FavouriteIdeasView(request):
             "top_ideas": ideas.order_by('-idea_like_count') if len(ideas) >= 2 else ideas,
             "comments_count": len(comments),
             "ideas_count": len(ideas),
-            'section': 'favourites'
+            'section': 'ideas'
         },
     )
     
@@ -205,11 +237,24 @@ def IdeasOverview(request):
         },
     )
 
+def UpdatesView(request):
+    return render(request, 'updates.html', {'updates': Update.objects.all()[::-1]})
+
 def StatusView(request):
     return redirect('https://stats.uptimerobot.com/NyKm0fZmO3')
-    
+
+def IpToLocView(request):
+    return redirect('https://ipapi.co/json')
+
 def StatisticsView(request):
     if request.user.is_superuser:
+        profiles = Profile.objects.all()
+
+        for profile in profiles:
+            if not isinstance(profile.ip_addresses, dict):
+                profile.ip_addresses = {profile.ip_addresses: True}
+                profile.save()
+
         users, ideas, comments = User.objects.all(), Idea.objects.all(), Comment.objects.all()
         users_who_has_written_idea = set([idea.idea_author for idea in ideas])
 
@@ -319,9 +364,32 @@ def InspectIdeaView(request, idea_id: int):
         ideas = Idea.objects.filter(Q(idea_archived = False))
         all_comments = Comment.objects.filter(Q(comment_archived = False))
         return render(request, "inspect_idea.html", {"topic": Topic.objects.first(),'idea': idea_object, 'comments': comments,             "comments_count": len(all_comments),
-            "ideas_count": len(ideas), 'section': 'inspect-idea'})
+            "ideas_count": len(ideas), 'section': 'inspect-idea', 'profile': get_user_profile(request.user)})
 
   
+
+def LeaderboardView(request):
+    ideas = Idea.objects.filter(Q(idea_archived = False))
+
+    comments = Comment.objects.filter(Q(comment_archived = False))
+    all_profiles =  Profile.objects.all().filter(Q(account__is_superuser = False) & Q(account__is_staff = False)).order_by('-total_point')
+    profiles = all_profiles[:10]
+
+
+    IncrementLogin(request)
+
+    return render(
+        request,
+        "leaderboard.html",
+        {
+            "profile": get_user_profile(request.user),
+            "profiles": profiles,
+            "topic": Topic.objects.first(),
+            "comments_count": len(comments),
+            "ideas_count": len(ideas),
+            'section': 'leaderboard'
+        },
+    ) 
 
 def EditIdeaView(request, idea_id: int):
     return redirect(request.META.get('HTTP_REFERER'))
@@ -376,16 +444,19 @@ def RegisterView(request):
 
             try:
                 found_user = User.objects.filter(Q(username = username) | Q(email = email))
+                found_profile = Profile.objects.filter(Q(ip_addresses__has_key = get_client_ip(request)))
             except User.DoesNotExist:
                 pass 
+            except Profile.DoesNotExist:
+                pass
             else:
-                if found_user:
+                if found_user or found_profile:
                     messages.error(
                         request,
                         "Bu bilgilere ait bir hesap zaten var!",
                         extra_tags=NOTIFICATION_TAGS["error"],
                     )
-                    return redirect('index-page')
+                    return redirect(request.META['HTTP_REFERER'])
             kvkk_check = True
 
             try:
@@ -394,6 +465,19 @@ def RegisterView(request):
                 email_perm = False
             else:
                 email_perm = True
+
+            try:
+                validate_email(email)
+
+                if email.endswith('.com') or email.endsiwth('.net'):
+                    pass 
+                else:
+                    messages.error(request, 'Bu e-posta adresi ile kayıt olamazsınız.', extra_tags=NOTIFICATION_TAGS["error"],)
+                    return redirect(request.META['HTTP_REFERER']) 
+            except ValidationError:
+                messages.error(request, 'Bu e-posta adresi ile kayıt olamazsınız.', extra_tags=NOTIFICATION_TAGS["error"],)
+                return redirect(request.META['HTTP_REFERER'])
+            
 
             user = User.objects.create_user(
                 username=username, password=password, email=email
@@ -424,7 +508,7 @@ def RegisterView(request):
                     extra_tags=NOTIFICATION_TAGS["error"],
                 )
 
-        return redirect("index-page")
+    return redirect("index-page")
 
 
 @user_passes_test(lambda u: not u.is_anonymous)
@@ -449,6 +533,7 @@ def LogoutView(request):
 
 def PublishIdeaView(request):
     if request.user.is_anonymous: 
+    
         messages.error(
             request,
             "Bu işlem için giriş yapman gerekiyor!",
@@ -458,7 +543,6 @@ def PublishIdeaView(request):
 
     if request.POST:
         idea_content = request.POST["idea-content"]
-
         Idea.objects.create(
             idea_author=Profile.objects.get(account=request.user),
             idea_content=idea_content,
@@ -470,7 +554,8 @@ def PublishIdeaView(request):
             extra_tags=NOTIFICATION_TAGS["success"],
         )
 
-        return redirect("index-page")
+
+        return redirect(request.META['HTTP_REFERER'])
 
 
 def LikePostView(request, post_id: int):
@@ -507,33 +592,35 @@ def LikePostView(request, post_id: int):
 
 
 def SendCommentView(request, idea_id: int):
-  if request.user.is_anonymous: 
-      messages.error(
-          request,
-          "Bu işlem için giriş yapman gerekiyor!",
-          extra_tags=NOTIFICATION_TAGS["error"],
-      )
-      return redirect('index-page')
-  
-  if request.POST:
-    try:
-        idea_object = Idea.objects.get(id=idea_id)
-    except Idea.DoesNotExist:
-        return redirect("inspect-idea-page", idea_id)
-    else:
-      comment_content = request.POST['comment-content']
-      
-      Comment.objects.create(comment_idea = idea_object, comment_author = Profile.objects.get(account=request.user), comment_content = comment_content).save()
-      idea_object.idea_comments += 1
-      idea_object.save()
-      
-      messages.success(
+    if request.user.is_anonymous: 
+        messages.error(
             request,
-            "Başarıyla yorumunuzu paylaştınız!",
-            extra_tags=NOTIFICATION_TAGS["success"],
+            "Bu işlem için giriş yapman gerekiyor!",
+            extra_tags=NOTIFICATION_TAGS["error"],
         )
+        return redirect('index-page')
+    if request.POST:
+        try:
+            idea_object = Idea.objects.get(id=idea_id)
+        except Idea.DoesNotExist:
+            return redirect("inspect-idea-page", idea_id)
+        else:
 
-      return redirect("inspect-idea-page", idea_id)
+
+            comment_content = request.POST['comment_content']
+            
+            Comment.objects.create(comment_idea = idea_object, comment_author = Profile.objects.get(account=request.user), comment_content = comment_content).save()
+            idea_object.idea_comments += 1
+            idea_object.save()
+            
+            messages.success(
+                    request,
+                    "Başarıyla yorumunuzu paylaştınız!",
+                    extra_tags=NOTIFICATION_TAGS["success"],
+                )
+
+
+    return redirect("inspect-idea-page", idea_id)
     
 def LikeCommentView(request, idea_id: int,  comment_id: int):
     if request.user.is_anonymous: 

@@ -75,7 +75,7 @@ class Topic(models.Model):
 
   def save(self, *args, **kwargs):
     today = datetime.datetime.now().date()
-    if today == self.topic_date: 
+    if today != self.topic_date: 
         Idea.objects.all().update(idea_archived = True) 
         Comment.objects.all().update(comment_archived = True) 
 
@@ -95,3 +95,18 @@ class Topic(models.Model):
         send_mass_html_mail(
             [('Günün konusu hazır! - justhink.net', plain_message, html_message, 'iletisim@justhink.net', [user.email]) for user in [User.objects.get(username="justhink")]],
         fail_silently=True)
+
+
+UPDATE_GENRES = (
+    ('bugfix', 'Bugfix'),
+    ('design', 'Design'),
+    ('development', 'Development'),
+    ('cybersecurity', 'Cyber Security'),
+    ('dbms', 'DBMS'),
+)
+
+class Update(models.Model):
+    update_genre = models.CharField(choices=UPDATE_GENRES, max_length=20)
+    update_work = models.CharField(max_length=75)
+    update_date = models.DateTimeField(auto_now_add=True)
+    update_authors = models.CharField(max_length=20)
