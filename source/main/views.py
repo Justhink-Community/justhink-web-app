@@ -204,23 +204,21 @@ def LandingView(request):
 @user_passes_test(lambda u: u.is_anonymous)
 def AuthenticationView(request):
     if request.POST:
+      
       username, password = request.POST["username"], request.POST["password"]
       user = authenticate(username=username, password=password)
 
       if user is not None:
           login(request, user)
+          print(user)
 
           messages.success(
               request,
               f"Başarıyla giriş yaptın: {username}",
               extra_tags=NOTIFICATION_TAGS["success"],
           )
-          logged_in = datetime.datetime.now()
-
-          profile = Profile.objects.get(account=user)
-          profile.login_count += 1
-          profile.last_logged_in = logged_in.replace(tzinfo=None)
-          profile.save()
+          
+          return redirect('profile-page')
       else:
           messages.error(
               request,
@@ -241,6 +239,11 @@ def AuthenticationView(request):
         },
     ) 
 
+@user_passes_test(lambda u: not u.is_anonymous) 
+def ProfileView(request):
+  profile = Profile.objects.get(account = request.user)
+  
+  return render(request, 'profile.html', {'profile': profile})
 
 
 def FavouriteIdeasView(request):
@@ -493,15 +496,7 @@ def RegisterView(request):
 
         else:
           
-            username, password, re_password, email = request.POST["username"], request.POST["password"], request.POST["re_password"],request.POST["email"]
-            
-            if password != re_password:
-                messages.error(
-                  request,
-                  "Şifreler aynı değil!",
-                  extra_tags=NOTIFICATION_TAGS["error"],
-                )
-                return redirect(request.META.get("HTTP_REFERER"))
+            username, password, email = request.POST["username"], request.POST["password"], request.POST["email"]
 
             try:
                 found_user = User.objects.filter(Q(username=username) | Q(email=email))
@@ -555,6 +550,7 @@ def RegisterView(request):
 
         return redirect("index-page")
 
+    return redirect('authentication')
 
 @user_passes_test(lambda u: not u.is_anonymous)
 def LogoutView(request):

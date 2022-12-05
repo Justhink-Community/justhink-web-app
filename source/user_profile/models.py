@@ -41,6 +41,7 @@ class Profile(models.Model):
 
     # MULTILAYER SECURITY PURPOSES
 
+    account_verifications = models.JSONField(default=dict, editable=False)
     # 2fa_status
     # remember_me_status
     # recovery_devices
