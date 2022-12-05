@@ -49,6 +49,8 @@ class Idea(models.Model):
     idea_like_count = models.IntegerField(editable=False, default=0)
     idea_comments = models.IntegerField(editable=False, default=0)
 
+    idea_topic = models.CharField(max_length=100, default="Belirlenemedi.", null=True, editable=True)
+
     idea_archived = models.BooleanField(default=False)
     
 class Comment(models.Model):
@@ -63,6 +65,8 @@ class Comment(models.Model):
     comment_dislikes = models.JSONField(editable=False, default=dict)
     comment_dislike_count = models.IntegerField(editable=False, default=0)
 
+    comment_topic = models.CharField(max_length=100, default="Belirlenemedi.", null=True, editable=True)
+
     comment_archived = models.BooleanField(default=False)
     
 class Topic(models.Model):
@@ -75,12 +79,15 @@ class Topic(models.Model):
 
   def save(self, *args, **kwargs):
     today = datetime.datetime.now().date()
-    if today == self.topic_date: 
-        Idea.objects.all().update(idea_archived = True) 
-        Comment.objects.all().update(comment_archived = True) 
+    if today != self.topic_date: 
+        not_archived_ideas = Idea.objects.filter(idea_archived = False)
+        not_archived_ideas.update(idea_topic = self.topic_name, idea_archived = True)
+        
+        not_archived_comments = Comment.objects.filter(comment_archived = False)
+        not_archived_comments.update(comment_topic = self.topic_name, comment_archived = True)
 
-    t = threading.Thread(target=self.send_mail,)
-    t.start()   
+    # t = threading.Thread(target=self.send_mail,)
+    # t.start()   
 
     
     super().save(*args, **kwargs)

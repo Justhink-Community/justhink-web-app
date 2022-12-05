@@ -41,448 +41,84 @@
         </li>
       </ul>
     </nav>
-    <img src="https://media.discordapp.net/attachments/1017446589331152969/1048654934377254963/image.png?width=521&height=702" alt="{{ user.username }} isimli kullanıcının profil fotoğrafı" class="profile__photo">
+    <img src="/static/black_logo.svg" alt="{{ user.username }} isimli kullanıcının profil fotoğrafı" class="profile__photo">
 
   </header>
   <div class="profile__details">
     <div class="profile__user-details">
       <p class="profile__username">{{ user.username }}</p>
       <ul class="profile__statistics">
-        <li class="profile__statistics-item"><span class="profile__statistics-value">100</span><span class="profile__statistics-tag">Takipçi</span></li>
-        <li class="profile__statistics-item"><span class="profile__statistics-value">100</span><span class="profile__statistics-tag">Fikir</span></li>
-        <li class="profile__statistics-item"><span class="profile__statistics-value">100</span><span class="profile__statistics-tag">Yorum</span></li>
+        <li class="profile__statistics-item"><span class="profile__statistics-value">0</span><span class="profile__statistics-tag">Takipçi</span></li>
+        <li class="profile__statistics-item"><span class="profile__statistics-value">{{ user_ideas|length }}</span><span class="profile__statistics-tag">Fikir</span></li>
+        <li class="profile__statistics-item"><span class="profile__statistics-value">{{ user_comments|length }}</span><span class="profile__statistics-tag">Yorum</span></li>
       </ul>
     </div>
     <div class="profile__user-history">
       <div class="profile__comments-history profile__history-box">
         <h4 class="profile__history-title">Geçmiş Fikirlerin:</h4>
         <ul class="profile__history-elements">
+          {% for user_idea in user_ideas %} 
+          {% if user_idea.idea_topic is not None %} 
           <li class="profile__history-element">
             <a href="#" class="profile__history-link">
               <div class="profile-history profile-history--idea">
                 <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir?</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
+                  <p class="profile-history__topic">{{ user_idea.idea_topic }}</p>
+                  <p class="profile-history__date">{{ user_idea.idea_publish_date|date:"d.m.Y - H.i" }}</p>
                 </div>
                 <ul class="profile-history__statistics">
                   <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
-                      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81c-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0 0 18 0c96.26-65.34 184.09-143.09 183-252.42c-.54-52.67-42.32-96.81-95.08-96.81Z"/>
+                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
                     </svg>
-                    <p class="profile-history__statistic-value">100</p>
+                    <p class="profile-history__statistic-value">{{ user_idea.idea_like_count }}</p>
                   </li>
                   <li class="profile-history_statistic">
                     <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
                       <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M408 64H104a56.16 56.16 0 0 0-56 56v192a56.16 56.16 0 0 0 56 56h40v80l93.72-78.14a8 8 0 0 1 5.13-1.86H408a56.16 56.16 0 0 0 56-56V120a56.16 56.16 0 0 0-56-56Z"/><circle cx="160" cy="216" r="32" fill="currentColor"/><circle cx="256" cy="216" r="32" fill="currentColor"/><circle cx="352" cy="216" r="32" fill="currentColor"/>
                     </svg>
-                    <p class="profile-history__statistic-value">100</p>
+                    <p class="profile-history__statistic-value">{{ user_idea.idea_comments|length }}</p>
                   </li>
                 </ul>
               </div>
             </a>
           </li>
-          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir?</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
-                      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81c-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0 0 18 0c96.26-65.34 184.09-143.09 183-252.42c-.54-52.67-42.32-96.81-95.08-96.81Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
-                      <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M408 64H104a56.16 56.16 0 0 0-56 56v192a56.16 56.16 0 0 0 56 56h40v80l93.72-78.14a8 8 0 0 1 5.13-1.86H408a56.16 56.16 0 0 0 56-56V120a56.16 56.16 0 0 0-56-56Z"/><circle cx="160" cy="216" r="32" fill="currentColor"/><circle cx="256" cy="216" r="32" fill="currentColor"/><circle cx="352" cy="216" r="32" fill="currentColor"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>
-          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir?</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
-                      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81c-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0 0 18 0c96.26-65.34 184.09-143.09 183-252.42c-.54-52.67-42.32-96.81-95.08-96.81Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
-                      <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M408 64H104a56.16 56.16 0 0 0-56 56v192a56.16 56.16 0 0 0 56 56h40v80l93.72-78.14a8 8 0 0 1 5.13-1.86H408a56.16 56.16 0 0 0 56-56V120a56.16 56.16 0 0 0-56-56Z"/><circle cx="160" cy="216" r="32" fill="currentColor"/><circle cx="256" cy="216" r="32" fill="currentColor"/><circle cx="352" cy="216" r="32" fill="currentColor"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>
-          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir?</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
-                      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81c-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0 0 18 0c96.26-65.34 184.09-143.09 183-252.42c-.54-52.67-42.32-96.81-95.08-96.81Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
-                      <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M408 64H104a56.16 56.16 0 0 0-56 56v192a56.16 56.16 0 0 0 56 56h40v80l93.72-78.14a8 8 0 0 1 5.13-1.86H408a56.16 56.16 0 0 0 56-56V120a56.16 56.16 0 0 0-56-56Z"/><circle cx="160" cy="216" r="32" fill="currentColor"/><circle cx="256" cy="216" r="32" fill="currentColor"/><circle cx="352" cy="216" r="32" fill="currentColor"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>          
-          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir?</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
-                      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81c-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0 0 18 0c96.26-65.34 184.09-143.09 183-252.42c-.54-52.67-42.32-96.81-95.08-96.81Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
-                      <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M408 64H104a56.16 56.16 0 0 0-56 56v192a56.16 56.16 0 0 0 56 56h40v80l93.72-78.14a8 8 0 0 1 5.13-1.86H408a56.16 56.16 0 0 0 56-56V120a56.16 56.16 0 0 0-56-56Z"/><circle cx="160" cy="216" r="32" fill="currentColor"/><circle cx="256" cy="216" r="32" fill="currentColor"/><circle cx="352" cy="216" r="32" fill="currentColor"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>
+          {% endif %}
+
+          {% endfor %}
         </ul>
       </div>
       <div class="profile__comments--history profile__history-box">
         <h4 class="profile__history-title">Geçmiş Yorumların:</h4>
         <ul class="profile__history-elements">
+          {% for user_comment in user_comments %} 
+          {% if user_comment.comment_topic is not None %} 
           <li class="profile__history-element">
             <a href="#" class="profile__history-link">
               <div class="profile-history profile-history--idea">
                 <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
+                  <p class="profile-history__topic">{{ user_comment.comment_topic }} ({{ user_comment.comment_author.account.username }})</p>
+                  <p class="profile-history__date">{{ user_comment.comment_publish_date|date:"d.m.Y - H.i" }}</p>
                 </div>
                 <ul class="profile-history__statistics">
                   <li class="profile-history__statistic">
                     <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                       <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
                     </svg>
-                    <p class="profile-history__statistic-value">100</p>
+                    <p class="profile-history__statistic-value">{{ user_comment.comment_like_count }}</p>
                   </li>
                   <li class="profile-history_statistic">
                     <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                       <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
                     </svg>
-                    <p class="profile-history__statistic-value">100</p>
+                    <p class="profile-history__statistic-value">{{ user_comment.comment_dislike_count }}</p>
                   </li>
                 </ul>
               </div>
             </a>
           </li>
-          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>          <li class="profile__history-element">
-            <a href="#" class="profile__history-link">
-              <div class="profile-history profile-history--idea">
-                <div class="profile-history__details">
-                  <p class="profile-history__topic">İnsan nedir? (d20)</p>
-                  <p class="profile-history__date">12.03.2022 - 9.51</p>
-                </div>
-                <ul class="profile-history__statistics">
-                  <li class="profile-history__statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                  <li class="profile-history_statistic">
-                    <svg class="profile-history__statistic-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
-                    </svg>
-                    <p class="profile-history__statistic-value">100</p>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>
+          {% endif %}
+          {% endfor %}
         </ul>
       </div>
     </div>

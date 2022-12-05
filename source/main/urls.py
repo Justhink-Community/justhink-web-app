@@ -19,7 +19,8 @@ from .views import (
     ShopView,
     LandingView,
     AuthenticationView,
-    ProfileView
+    ProfileView,
+    AboutUsView
 )
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSiteMap 
@@ -30,6 +31,8 @@ sitemaps = {
 urlpatterns = [
     path("", IndexView, name="index-page"),
     path("home", LandingView, name="home"),
+    path("dashboard", IndexView, name="index-page"),
+    path("about-us", AboutUsView, name = "about-us-page"),
     path("login", AuthenticationView, name = "authentication"),
     path("register", RegisterView, name="register-page"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),

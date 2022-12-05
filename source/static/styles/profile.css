@@ -76,9 +76,8 @@ main {
   bottom: -5rem;
   width: 20rem;
   height: 20rem;
-  object-fit: cover;
-  border-radius: 50%;
-  border: .4rem solid #fcfcfc;
+  object-fit: contain;
+  
 }
 
 /* PROFILE DETAILS  */

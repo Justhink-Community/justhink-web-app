@@ -7,15 +7,19 @@
 {% block header_center %} 
 <ul class="header-center__list">
     <li class="header__list-item">
-        <a href="#" class="header__link">hakkımızda</a>
+        <a href="{% url 'about-us-page' %}" class="header__link">hakkımızda</a>
     </li>
     <li class="header__list-item">
         <a href="#" class="header__link">forum</a>
     </li>
     <li class="header__list-item">
-        <a href="#" class="header__link">beta versiyon</a>
+        <a href="{% url 'index-page' %}" class="header__link">beta versiyon</a>
     </li>
 </ul>
+{% endblock %}
+
+{% block heading_link %} 
+{% url 'home' %}
 {% endblock %}
 
 {% block main %} 
@@ -62,6 +66,8 @@
             
     </figure>
 </div>
+
+
 
 {% endblock %}
 

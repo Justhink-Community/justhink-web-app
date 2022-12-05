@@ -18,6 +18,12 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.core.mail import send_mail
 
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.core.mail import get_connection, EmailMultiAlternatives
+
+from idea.models import send_mass_html_mail
+
 from django.core.cache import cache
 
 
@@ -200,6 +206,11 @@ def LandingView(request):
             "section": "home",
         },
     ) 
+    
+def AboutUsView(request):
+  IncrementLogin(request)
+  
+  return render(request, "about_us.html", {"section": "about-us"})
 
 @user_passes_test(lambda u: u.is_anonymous)
 def AuthenticationView(request):
@@ -243,7 +254,9 @@ def AuthenticationView(request):
 def ProfileView(request):
   profile = Profile.objects.get(account = request.user)
   
-  return render(request, 'profile.html', {'profile': profile})
+  return render(request, 'profile.html', {'profile': profile, 'user_ideas': Idea.objects.filter(Q(idea_author = profile)).order_by('-idea_publish_date'), 'user_comments': Comment.objects.filter(Q(comment_author = profile)).order_by('-comment_publish_date')})
+
+
 
 
 def FavouriteIdeasView(request):
@@ -540,6 +553,16 @@ def RegisterView(request):
                     last_logged_in=datetime.datetime.now(),
                     profile_rank="rookie",
                 ).save()
+                
+                ctx = {
+                'subtitle': 'Günün konusu hazır:',
+                'title': f'Hoş geldin {username}',
+                'paragraph_1': 'Aramıza hoş geldin. Bu platformda fikirlerini paylaşırken eğlenmeyi unutma! Birazdan gelen kutuna gelecek olan linke tıklayarak e-posta adresini doğrulayabilirsin.',
+                'paragraph_2': 'Eğer bu işlemi sen gerçekleştirmediysen güvenli bir şekilde bu iletiyi silebilirsin.'
+                }
+                html_message = render_to_string('dynamic_mail.html', ctx)
+                plain_message = strip_tags(html_message)
+                send_mail('Hesabın oluşturuldu! - justhink.net', plain_message, 'iletisim@justhink.net', [email], html_message=html_message,  fail_silently=True)
 
             else:
                 messages.error(
