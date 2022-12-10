@@ -18,7 +18,13 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.core.mail import send_mail
 
-from django.core.cache import cache 
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.core.mail import get_connection, EmailMultiAlternatives
+
+from idea.models import send_mass_html_mail
+
+from django.core.cache import cache
 
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
@@ -31,16 +37,16 @@ NOTIFICATION_TAGS = {
 }
 
 POINT_POLICY = {
-    'like_idea': 1,
-    'daily_strike': {
-        0: 10, 
+    "like_idea": 1,
+    "daily_strike": {
+        0: 10,
         1: 15,
         2: 20,
-        3: 25, 
+        3: 25,
         4: 30,
         5: 40,
         6: 50,
-    } 
+    },
 }
 
 def get_client_ip(request):
@@ -56,9 +62,14 @@ def IncrementLogin(request):
 
         agent = request.META["HTTP_USER_AGENT"]
         parsed_agent = httpagentparser.detect(agent)
-        platform, os, is_bot, browser = " ".join(parsed_agent['platform'].values()), " ".join(parsed_agent['os'].values()), parsed_agent['bot'], " ".join(parsed_agent['browser'].values())
+        platform, os, is_bot, browser = (
+            " ".join(parsed_agent["platform"].values()),
+            " ".join(parsed_agent["os"].values()),
+            parsed_agent["bot"],
+            " ".join(parsed_agent["browser"].values()),
+        )
 
-        try: 
+        try:
             user_profile = Profile.objects.get(account=request.user)
         except Profile.DoesNotExist:
             pass 
@@ -73,11 +84,17 @@ def IncrementLogin(request):
                 if user_profile.login_strike is None: 
                     user_profile.login_strike = 0 
                 try:
-                    user_profile.total_point = int(user_profile.total_point) + POINT_POLICY['daily_strike'][user_profile.login_strike]
-                except: 
-                    user_profile.total_point = POINT_POLICY['daily_strike'][user_profile.login_strike]
-                user_profile.login_strike += 1 
-                if user_profile.login_strike >= 7: user_profile.login_strike = 0
+                    user_profile.total_point = (
+                        int(user_profile.total_point)
+                        + POINT_POLICY["daily_strike"][user_profile.login_strike]
+                    )
+                except:
+                    user_profile.total_point = POINT_POLICY["daily_strike"][
+                        user_profile.login_strike
+                    ]
+                user_profile.login_strike += 1
+                if user_profile.login_strike >= 7:
+                    user_profile.login_strike = 0
 
             user_profile.login_count += 1
             user_profile.last_logged_in = datetime.datetime.now()
@@ -91,13 +108,17 @@ def IncrementLogin(request):
 
             # print(request.META)
 
-            user_profile.profile_user = 'Belirlenemedi'
+            user_profile.profile_user = "Belirlenemedi"
 
             try:
-                user_profile.profile_platforms[platform] = str(user_profile.last_logged_in)
+                user_profile.profile_platforms[platform] = str(
+                    user_profile.last_logged_in
+                )
             except TypeError:
                 user_profile.profile_platforms = {}
-                user_profile.profile_platforms[platform] = str(user_profile.last_logged_in)
+                user_profile.profile_platforms[platform] = str(
+                    user_profile.last_logged_in
+                )
 
             try:
                 user_profile.profile_oses[os] = str(user_profile.last_logged_in)
@@ -106,57 +127,60 @@ def IncrementLogin(request):
                 user_profile.profile_oses[os] = str(user_profile.last_logged_in)
 
             try:
-                user_profile.profile_browsers[browser] = str(user_profile.last_logged_in)
+                user_profile.profile_browsers[browser] = str(
+                    user_profile.last_logged_in
+                )
             except TypeError:
                 user_profile.profile_browsers = {}
-                user_profile.profile_browsers[browser] = str(user_profile.last_logged_in)
+                user_profile.profile_browsers[browser] = str(
+                    user_profile.last_logged_in
+                )
 
-            user_profile.is_bot = is_bot 
+            user_profile.is_bot = is_bot
             if user_profile.profile_rank is None:
-                user_profile.profile_rank = 'rookie'
+                user_profile.profile_rank = "rookie"
 
             user_profile.save()
 
+
 def GivePoint(user, amount):
-    try: 
+    try:
         user_profile = Profile.objects.get(account=user)
     except Profile.DoesNotExist:
-        pass 
-    else: 
-        try:
-            user_profile.total_point = int(user_profile.total_point) + int(amount) 
-        except: 
-            user_profile.total_point = 0
-        user_profile.save()
-    
-# def TakePoint(user, amount):
-#     try: 
-#         user_profile = Profile.objects.get(account=request.user)
-#     except Profile.DoesNotExist:
-#         pass 
-#     else: 
-#         try:
-#             if user_profile.total_point >= amount
-#             user_profile.total_point -= amount 
-#         except: 
-#             user_profile.total_point = 0
-#         user_profile.save()
+        return False
+    try:
+        user_profile.total_point = int(user_profile.total_point) + int(amount)
+    except:
+        user_profile.total_point = 0
+    user_profile.save()
+
+
+def TakePoint(user, amount):
+    try:
+        user_profile = Profile.objects.get(account=user)
+    except Profile.DoesNotExist:
+        return False
+    try:
+        user_profile.total_point = int(user_profile.total_point) - int(amount)
+    except:
+        user_profile.total_point = 0
+    user_profile.save()
+
 
 def get_user_profile(user):
-    try: 
-        profile = Profile.objects.get(account = user)
+    try:
+        profile = Profile.objects.get(account=user)
     except Profile.DoesNotExist:
-        return False 
+        return False
     except TypeError:
         return False
     else:
         return profile
 
+def DashBoardView(request):
+    ideas = Idea.objects.filter(Q(idea_archived=False))
 
-def IndexView(request):
-    ideas = Idea.objects.filter(Q(idea_archived = False))
-
-    comments = Comment.objects.filter(Q(comment_archived = False))
+    comments = Comment.objects.filter(Q(comment_archived=False))
 
     IncrementLogin(request)
 
@@ -169,71 +193,150 @@ def IndexView(request):
             "top_ideas": random.sample([*ideas], 2) if len(ideas) >= 2 else ideas,
             "comments_count": len(comments),
             "ideas_count": len(ideas),
-            'section': 'summary'
+            "section": "summary",
         },
-    ) 
+    )
 
-def BannedView(request):
+def IndexView(request):
+    if request.user.is_anonymous:
+        return LandingView(request)
+
+    return DashBoardView(request)
+
+
+def ShopView(request):
     IncrementLogin(request)
 
     return render(
         request,
-        "banned.html",
+        "shop.html",
         {
-            'section': 'banned-page'
+            "profile": get_user_profile(request.user),
+            "section": "shop",
         },
-    )   
+    )
+
+def LandingView(request):
+    IncrementLogin(request)
+
+    topic = Topic.objects.first()
+
+    return render(
+        request,
+        "home.html",
+        {
+            "profile": get_user_profile(request.user),
+            "topic_name": topic.topic_name[:40],
+            "topic_sources": topic.topic_sources[:300],
+            "section": "home",
+        },
+    ) 
+    
+def AboutUsView(request):
+  IncrementLogin(request)
+  
+  return render(request, "about_us.html", {"section": "about-us"})
+
+@user_passes_test(lambda u: u.is_anonymous)
+def AuthenticationView(request):
+    if request.POST:
+      
+      username, password = request.POST["username"], request.POST["password"]
+      user = authenticate(username=username, password=password)
+
+      if user is not None:
+          login(request, user)
+          print(user)
+
+          messages.success(
+              request,
+              f"Başarıyla giriş yaptın: {username}",
+              extra_tags=NOTIFICATION_TAGS["success"],
+          )
+          
+          return redirect('profile-page')
+      else:
+          messages.error(
+              request,
+              "Bilgilerinde hata var, kontrol et!",
+              extra_tags=NOTIFICATION_TAGS["error"],
+          )
+
+      return redirect("index-page")
+  
+    IncrementLogin(request)
+
+    return render(
+        request,
+        "authentication.html",
+        {
+            "profile": get_user_profile(request.user),
+            "section": "home-authentication",
+        },
+    ) 
+
+@user_passes_test(lambda u: not u.is_anonymous) 
+def ProfileView(request):
+  profile = Profile.objects.get(account = request.user)
+  ideas = Idea.objects.filter(Q(idea_author = profile)).order_by('-idea_publish_date')
+  return render(request, 'profile.html', {'profile': profile, 'user_ideas': ideas, 'user_comments': Comment.objects.filter(Q(comment_author = profile)).order_by('-comment_publish_date')})
+
+
+
 
 def FavouriteIdeasView(request):
-    ideas = Idea.objects.filter(Q(idea_archived = False))
-    comments = Comment.objects.filter(Q(comment_archived = False))
+    ideas = Idea.objects.filter(Q(idea_archived=False))
+    comments = Comment.objects.filter(Q(comment_archived=False))
     IncrementLogin(request)
 
     return render(
         request,
         "index.html",
         {
-                        "profile": get_user_profile(request.user),
+            "profile": get_user_profile(request.user),
             "topic": Topic.objects.first(),
-            "top_ideas": ideas.order_by('-idea_like_count') if len(ideas) >= 2 else ideas,
+            "top_ideas": ideas.order_by("-idea_like_count")
+            if len(ideas) >= 2
+            else ideas,
             "comments_count": len(comments),
             "ideas_count": len(ideas),
             'section': 'ideas'
         },
     )
-    
+
 
 def TrendIdeasView(request):
-    ideas = Idea.objects.filter(Q(idea_archived = False))
-    comments = Comment.objects.filter(Q(comment_archived = False))
+    ideas = Idea.objects.filter(Q(idea_archived=False))
+    comments = Comment.objects.filter(Q(comment_archived=False))
     IncrementLogin(request)
     return render(
         request,
         "index.html",
         {
-                        "profile": get_user_profile(request.user),
+            "profile": get_user_profile(request.user),
             "topic": Topic.objects.first(),
-            "top_ideas": ideas.order_by('-idea_comments') if len(ideas) >= 2 else ideas,
+            "top_ideas": ideas.order_by("-idea_comments") if len(ideas) >= 2 else ideas,
             "comments_count": len(comments),
             "ideas_count": len(ideas),
-            'section': 'trends'
+            "section": "trends",
         },
     )
-  
+
+
 def IdeasOverview(request):
-    ideas = Idea.objects.filter(Q(idea_archived = False))
-    comments = Comment.objects.filter(Q(comment_archived = False))
+    ideas = Idea.objects.filter(Q(idea_archived=False))
+    comments = Comment.objects.filter(Q(comment_archived=False))
     IncrementLogin(request)
     return render(
         request,
         "ideas_overview.html",
         {
-                        "profile": get_user_profile(request.user),
+            "profile": get_user_profile(request.user),
             "topic": Topic.objects.first(),
             "random_idea": random.choice(ideas) if len(ideas) >= 2 else ideas,
             "comments_count": len(comments),
             "ideas_count": len(ideas),
-            'section': 'idea-overview'
+            "section": "idea-overview",
         },
     )
 
@@ -248,35 +351,49 @@ def IpToLocView(request):
 
 def StatisticsView(request):
     if request.user.is_superuser:
-        profiles = Profile.objects.all()
-
-        for profile in profiles:
-            if not isinstance(profile.ip_addresses, dict):
-                profile.ip_addresses = {profile.ip_addresses: True}
-                profile.save()
-
-        users, ideas, comments = User.objects.all(), Idea.objects.all(), Comment.objects.all()
+        users, ideas, comments = (
+            User.objects.all(),
+            Idea.objects.all(),
+            Comment.objects.all(),
+        )
         users_who_has_written_idea = set([idea.idea_author for idea in ideas])
 
+        users_who_has_used_website_2_days = [
+            idea.idea_author
+            for idea in ideas
+            if len(Idea.objects.filter(Q(idea_author=idea.idea_author))) >= 2
+        ]
 
-        users_who_has_used_website_2_days = [idea.idea_author for idea in ideas if len(Idea.objects.filter(Q(idea_author = idea.idea_author))) >= 2]
-        
-        char_count_of_total_ideas = sum([len(idea.idea_content) for idea in ideas]) 
-        word_count_of_total_ideas = sum([len(idea.idea_content.split(' ')) for idea in ideas]) 
-        sentence_count_of_total_ideas = sum([len(idea.idea_content.split('.')) for idea in ideas]) 
+        char_count_of_total_ideas = sum([len(idea.idea_content) for idea in ideas])
+        word_count_of_total_ideas = sum(
+            [len(idea.idea_content.split(" ")) for idea in ideas]
+        )
+        sentence_count_of_total_ideas = sum(
+            [len(idea.idea_content.split(".")) for idea in ideas]
+        )
 
-        
-        char_count_of_total_comments = sum([len(comment.comment_content) for comment in comments]) 
-        word_count_of_total_comments = sum([len(comment.comment_content.split(' ')) for comment in comments]) 
-        sentence_count_of_total_comments = sum([len(comment.comment_content.split('.')) for comment in comments]) 
+        char_count_of_total_comments = sum(
+            [len(comment.comment_content) for comment in comments]
+        )
+        word_count_of_total_comments = sum(
+            [len(comment.comment_content.split(" ")) for comment in comments]
+        )
+        sentence_count_of_total_comments = sum(
+            [len(comment.comment_content.split(".")) for comment in comments]
+        )
 
-
-        words = [word.lower() for idea in ideas for word in idea.idea_content.split(' ')] + [word.lower() for comment in comments for word in comment.comment_content.split(' ')]  
+        words = [
+            word.lower() for idea in ideas for word in idea.idea_content.split(" ")
+        ] + [
+            word.lower()
+            for comment in comments
+            for word in comment.comment_content.split(" ")
+        ]
 
         temporary = {}
         show_case = {}
 
-        for sub in words: 
+        for sub in words:
             try:
                 temporary[sub] += 1
             except KeyError:
@@ -284,40 +401,36 @@ def StatisticsView(request):
 
         for temp, tval in temporary.items():
             if tval >= 10:
-                show_case[temp] = f'{((tval * 100) / len(words))} %'
-                # tval ? 
+                show_case[temp] = f"{((tval * 100) / len(words))} %"
+                # tval ?
                 # total 100
-
 
         user_register_dates = {}
 
-        for user in users: 
-            try: 
-                user_register_dates[user.date_joined.day] += 1 
+        for user in users:
+            try:
+                user_register_dates[user.date_joined.day] += 1
             except KeyError:
-                user_register_dates[user.date_joined.day] = 1 
+                user_register_dates[user.date_joined.day] = 1
 
-        
-        idea_publish_dates = {} 
+        idea_publish_dates = {}
 
-        for idea in ideas: 
-            try: 
-                idea_publish_dates[idea.idea_publish_date.day] += 1 
+        for idea in ideas:
+            try:
+                idea_publish_dates[idea.idea_publish_date.day] += 1
             except KeyError:
-                idea_publish_dates[idea.idea_publish_date.day] = 1 
+                idea_publish_dates[idea.idea_publish_date.day] = 1
 
-        
-        comment_publish_dates = {} 
+        comment_publish_dates = {}
 
-        for comment in comments: 
-            try: 
-                comment_publish_dates[comment.comment_publish_date.day] += 1 
+        for comment in comments:
+            try:
+                comment_publish_dates[comment.comment_publish_date.day] += 1
             except KeyError:
-                comment_publish_dates[comment.comment_publish_date.day] = 1 
-
+                comment_publish_dates[comment.comment_publish_date.day] = 1
 
         print(
-        """JUSTHINK STATS 
+            """JUSTHINK STATS 
 
         Total Users: {}
         Total Ideas: {}
@@ -346,27 +459,64 @@ def StatisticsView(request):
         Idea Dates: {}
         Comment Dates: {}
 
-        """.format(len(users), len(ideas), len(comments), len(users_who_has_written_idea), len(users_who_has_used_website_2_days), 
-        char_count_of_total_ideas, word_count_of_total_ideas, sentence_count_of_total_ideas, char_count_of_total_ideas / word_count_of_total_ideas, 
-        char_count_of_total_comments, word_count_of_total_comments, sentence_count_of_total_comments, char_count_of_total_comments / word_count_of_total_comments,
-        char_count_of_total_ideas + char_count_of_total_comments, word_count_of_total_ideas + word_count_of_total_comments, sentence_count_of_total_comments + sentence_count_of_total_ideas, ((char_count_of_total_comments / word_count_of_total_comments) + (char_count_of_total_ideas / word_count_of_total_ideas)) / 2,
-        show_case, user_register_dates, idea_publish_dates, comment_publish_dates
-        ))
-        return redirect('index-page')
+        """.format(
+                len(users),
+                len(ideas),
+                len(comments),
+                len(users_who_has_written_idea),
+                len(users_who_has_used_website_2_days),
+                char_count_of_total_ideas,
+                word_count_of_total_ideas,
+                sentence_count_of_total_ideas,
+                char_count_of_total_ideas / word_count_of_total_ideas,
+                char_count_of_total_comments,
+                word_count_of_total_comments,
+                sentence_count_of_total_comments,
+                char_count_of_total_comments / word_count_of_total_comments,
+                char_count_of_total_ideas + char_count_of_total_comments,
+                word_count_of_total_ideas + word_count_of_total_comments,
+                sentence_count_of_total_comments + sentence_count_of_total_ideas,
+                (
+                    (char_count_of_total_comments / word_count_of_total_comments)
+                    + (char_count_of_total_ideas / word_count_of_total_ideas)
+                )
+                / 2,
+                show_case,
+                user_register_dates,
+                idea_publish_dates,
+                comment_publish_dates,
+            )
+        )
+        return redirect("index-page")
+
 
 def InspectIdeaView(request, idea_id: int):
     try:
-        idea_object = Idea.objects.get(Q(id=idea_id) & Q(idea_archived = False))
-        comments = Comment.objects.filter(comment_idea = idea_object).order_by('comment_like_count').reverse()
+        idea_object = Idea.objects.get(Q(id=idea_id) & (Q(idea_archived=False) | Q(idea_author=Profile.objects.get(Q(account = request.user)))))
+        comments = (
+            Comment.objects.filter(comment_idea=idea_object)
+            .order_by("comment_like_count")
+            .reverse()
+        )
     except Idea.DoesNotExist:
         return redirect("index-page")
     else:
-        ideas = Idea.objects.filter(Q(idea_archived = False))
-        all_comments = Comment.objects.filter(Q(comment_archived = False))
-        return render(request, "inspect_idea.html", {"topic": Topic.objects.first(),'idea': idea_object, 'comments': comments,             "comments_count": len(all_comments),
-            "ideas_count": len(ideas), 'section': 'inspect-idea', 'profile': get_user_profile(request.user)})
+        ideas = Idea.objects.filter(Q(idea_archived=False))
+        all_comments = Comment.objects.filter(Q(comment_archived=False))
+        return render(
+            request,
+            "inspect_idea.html",
+            {
+                "topic": Topic.objects.first(),
+                "idea": idea_object,
+                "comments": comments,
+                "comments_count": len(all_comments),
+                "ideas_count": len(ideas),
+                "section": "inspect-idea",
+                "profile": Profile.objects.get(account=request.user)
+            },
+        )
 
-  
 
 def LeaderboardView(request):
     ideas = Idea.objects.filter(Q(idea_archived = False))
@@ -392,36 +542,9 @@ def LeaderboardView(request):
     ) 
 
 def EditIdeaView(request, idea_id: int):
-    return redirect(request.META.get('HTTP_REFERER'))
+    return redirect(request.META.get("HTTP_REFERER"))
 
-@user_passes_test(lambda u: u.is_anonymous)
-def LoginView(request):
-    if request.POST:
-        username, password = request.POST["username"], request.POST["password"]
-        user = authenticate(username=username, password=password)
 
-        if user is not None:
-            login(request, user)
-
-            messages.success(
-                request,
-                f"Başarıyla giriş yaptın: {username}",
-                extra_tags=NOTIFICATION_TAGS["success"],
-            )
-            logged_in = datetime.datetime.now()
-            
-            profile = Profile.objects.get(account = user)
-            profile.login_count += 1
-            profile.last_logged_in = logged_in.replace(tzinfo=None)
-            profile.save()
-        else:
-            messages.error(
-                request,
-                "Bilgilerinde hata var, kontrol et!",
-                extra_tags=NOTIFICATION_TAGS["error"],
-            )
-
-        return redirect("index-page")
 
 
 @user_passes_test(lambda u: u.is_anonymous)
@@ -435,20 +558,17 @@ def RegisterView(request):
                 "Kayıt olmak için KVKK'yı kabul etmelisin.",
                 extra_tags=NOTIFICATION_TAGS["error"],
             )
+            return redirect(request.META.get("HTTP_REFERER"))
+
         else:
-            username, password, email = (
-                request.POST["username-register"],
-                request.POST["password-register"],
-                request.POST["email"],
-            )
+          
+            username, password, email = request.POST["username"], request.POST["password"], request.POST["email"]
 
             try:
-                found_user = User.objects.filter(Q(username = username) | Q(email = email))
+                found_user = User.objects.filter(Q(username=username) | Q(email=email))
                 found_profile = Profile.objects.filter(Q(ip_addresses__has_key = get_client_ip(request)))
             except User.DoesNotExist:
                 pass 
-            except Profile.DoesNotExist:
-                pass
             else:
                 if found_user or found_profile:
                     messages.error(
@@ -498,8 +618,18 @@ def RegisterView(request):
                     email_permission=email_perm,
                     total_logged_time=datetime.timedelta(seconds=1),
                     last_logged_in=datetime.datetime.now(),
-                    profile_rank='rookie'
+                    profile_rank="rookie",
                 ).save()
+                
+                ctx = {
+                'subtitle': 'Günün konusu hazır:',
+                'title': f'Hoş geldin {username}',
+                'paragraph_1': 'Aramıza hoş geldin. Bu platformda fikirlerini paylaşırken eğlenmeyi unutma! Birazdan gelen kutuna gelecek olan linke tıklayarak e-posta adresini doğrulayabilirsin.',
+                'paragraph_2': 'Eğer bu işlemi sen gerçekleştirmediysen güvenli bir şekilde bu iletiyi silebilirsin.'
+                }
+                html_message = render_to_string('dynamic_mail.html', ctx)
+                plain_message = strip_tags(html_message)
+                send_mail('Hesabın oluşturuldu! - justhink.net', plain_message, 'iletisim@justhink.net', [email], html_message=html_message,  fail_silently=True)
 
             else:
                 messages.error(
@@ -510,6 +640,7 @@ def RegisterView(request):
 
     return redirect("index-page")
 
+    return redirect('authentication')
 
 @user_passes_test(lambda u: not u.is_anonymous)
 def LogoutView(request):
@@ -518,15 +649,14 @@ def LogoutView(request):
         f"Hesabınızdan çıkış yaptınız: {request.user.username}",
         extra_tags=NOTIFICATION_TAGS["info"],
     ),
-    
+
     logged_out = datetime.datetime.now()
-    profile = Profile.objects.get(account = request.user)
+    profile = Profile.objects.get(account=request.user)
     logged_time = logged_out - profile.last_logged_in
     profile.total_logged_time = profile.total_logged_time + logged_time
     profile.save()
-    
+
     logout(request)
-    
 
     return redirect("index-page")
 
@@ -539,13 +669,14 @@ def PublishIdeaView(request):
             "Bu işlem için giriş yapman gerekiyor!",
             extra_tags=NOTIFICATION_TAGS["error"],
         )
-        return redirect(request.META['HTTP_REFERER'])
+        return redirect(request.META["HTTP_REFERER"])
 
     if request.POST:
         idea_content = request.POST["idea-content"]
         Idea.objects.create(
             idea_author=Profile.objects.get(account=request.user),
             idea_content=idea_content,
+            idea_topic=Topic.objects.first().topic_name
         ).save()
 
         messages.success(
@@ -559,14 +690,14 @@ def PublishIdeaView(request):
 
 
 def LikePostView(request, post_id: int):
-    if request.user.is_anonymous: 
+    if request.user.is_anonymous:
         messages.error(
             request,
             "Bu işlem için giriş yapman gerekiyor!",
             extra_tags=NOTIFICATION_TAGS["error"],
         )
-        return redirect('index-page')
-  
+        return redirect("index-page")
+
     try:
         idea_object = Idea.objects.get(id=post_id)
     except Idea.DoesNotExist:
@@ -577,17 +708,19 @@ def LikePostView(request, post_id: int):
         except KeyError:
             idea_object.idea_like_count += 1
             idea_object.idea_likes[request.user.username] = True
-            idea_object.save() 
+            idea_object.save()
 
-            GivePoint(idea_object.idea_author.account, POINT_POLICY['like_idea'])
-            
+            GivePoint(idea_object.idea_author.account, POINT_POLICY["like_idea"])
+
         else:
             idea_object.idea_like_count -= 1
             del idea_object.idea_likes[request.user.username]
             idea_object.save()
 
-        return redirect(request.META['HTTP_REFERER'])
+            TakePoint(idea_object.idea_author.account, POINT_POLICY["like_idea"])
 
+
+        return redirect(request.META["HTTP_REFERER"])
 
 
 
@@ -609,7 +742,7 @@ def SendCommentView(request, idea_id: int):
 
             comment_content = request.POST['comment_content']
             
-            Comment.objects.create(comment_idea = idea_object, comment_author = Profile.objects.get(account=request.user), comment_content = comment_content).save()
+            Comment.objects.create(comment_idea = idea_object, comment_author = Profile.objects.get(account=request.user), comment_content = comment_content, comment_topic=Topic.objects.first().topic_name).save()
             idea_object.idea_comments += 1
             idea_object.save()
             
@@ -618,6 +751,19 @@ def SendCommentView(request, idea_id: int):
                     "Başarıyla yorumunuzu paylaştınız!",
                     extra_tags=NOTIFICATION_TAGS["success"],
                 )
+
+
+    return redirect("inspect-idea-page", idea_id)
+    
+
+def LikeCommentView(request, idea_id: int, comment_id: int):
+    if request.user.is_anonymous:
+        messages.error(
+            request,
+            "Bu işlem için giriş yapman gerekiyor!",
+            extra_tags=NOTIFICATION_TAGS["error"],
+        )
+        return redirect(request.META["HTTP_REFERER"])
 
 
     return redirect("inspect-idea-page", idea_id)
@@ -640,17 +786,17 @@ def LikeCommentView(request, idea_id: int,  comment_id: int):
             comment_object.comment_likes[request.user.username]
         except KeyError:
             try:
-              comment_object.comment_dislikes[request.user.username]
+                comment_object.comment_dislikes[request.user.username]
             except KeyError:
-              pass 
+                pass
             else:
-              comment_object.comment_dislike_count -= 1
-              del comment_object.comment_dislikes[request.user.username]
+                comment_object.comment_dislike_count -= 1
+                del comment_object.comment_dislikes[request.user.username]
             finally:
-              comment_object.comment_like_count += 1
-              comment_object.comment_likes[request.user.username] = True
-              comment_object.save()
-              
+                comment_object.comment_like_count += 1
+                comment_object.comment_likes[request.user.username] = True
+                comment_object.save()
+
         else:
             comment_object.comment_like_count -= 1
             del comment_object.comment_likes[request.user.username]
@@ -658,15 +804,16 @@ def LikeCommentView(request, idea_id: int,  comment_id: int):
 
         return redirect("inspect-idea-page", idea_id)
 
-def DislikeCommentView(request, idea_id: int,  comment_id: int):
-    if request.user.is_anonymous: 
+
+def DislikeCommentView(request, idea_id: int, comment_id: int):
+    if request.user.is_anonymous:
         messages.error(
             request,
             "Bu işlem için giriş yapman gerekiyor!",
             extra_tags=NOTIFICATION_TAGS["error"],
         )
-        return redirect(request.META['HTTP_REFERER'])
-  
+        return redirect(request.META["HTTP_REFERER"])
+
     try:
         comment_object = Comment.objects.get(id=comment_id)
     except Idea.DoesNotExist:
@@ -676,22 +823,23 @@ def DislikeCommentView(request, idea_id: int,  comment_id: int):
             comment_object.comment_dislikes[request.user.username]
         except KeyError:
             try:
-              comment_object.comment_likes[request.user.username]
+                comment_object.comment_likes[request.user.username]
             except KeyError:
-              pass 
+                pass
             else:
-              comment_object.comment_like_count -= 1
-              del comment_object.comment_likes[request.user.username]
+                comment_object.comment_like_count -= 1
+                del comment_object.comment_likes[request.user.username]
             finally:
-              comment_object.comment_dislike_count += 1
-              comment_object.comment_dislikes[request.user.username] = True
-              comment_object.save()
+                comment_object.comment_dislike_count += 1
+                comment_object.comment_dislikes[request.user.username] = True
+                comment_object.save()
         else:
             comment_object.comment_dislike_count -= 1
             del comment_object.comment_dislikes[request.user.username]
             comment_object.save()
 
         return redirect("inspect-idea-page", idea_id)
-      
+
+
 def handle_404(request, exception):
-  return render(request, '404.html')
+    return render(request, "404.html")

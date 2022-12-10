@@ -7,18 +7,22 @@
   border-radius: 11px;
   transition: all 0.2s ease;
   cursor: pointer;
+  border: none;
+  outline: none;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+  letter-spacing: .5px;
 }
 
 .btn--primary,
 .btn--primary:link,
 .btn--primary:visited {
-  background-color: #4D1A5F;
+  background-color: var(--background-color);
   color: #fff;
 }
 
 .btn--primary:hover,
 .btn--primary:active {
-  background-color: #5a2a76;
+  background-color: var(--hover-background-color);
 }
 
 .mt-6 {
@@ -57,7 +61,6 @@
   font-weight: 600;
 }
 
-
 .idea {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -72,7 +75,6 @@
 .idea__btn {
   text-decoration: none;
 }
-
 
 .idea__content {
   margin-top: 2.5rem;
@@ -95,25 +97,22 @@
 }
 
 .idea__interaction-icon {
-  color: #4D1A5F;
+  color: #4d1a5f;
   font-size: 4.5rem;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
-
 
 .idea__interaction-icon.interacted {
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
 }
-
 
 .idea__interaction-icon {
   color: #71487f;
 }
 
-
 .idea__counter {
   font-size: 2rem;
-  color: #4D1A5F;
+  color: #4d1a5f;
 }
 
 .idea__profile-photo {
@@ -130,7 +129,7 @@
 }
 
 .idea__author {
-  color: #4D1A5F;
+  color: #4d1a5f;
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.2rem;
@@ -148,8 +147,8 @@
   left: -2.15rem;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #4D1A5F;
-  width: .2rem;
+  background-color: #4d1a5f;
+  width: 0.2rem;
   height: 50%;
 }
 .latest-ideas {
@@ -162,13 +161,13 @@
   top: 1rem;
   display: flex;
   align-items: center;
-  gap: .6rem;
+  gap: 0.6rem;
 }
 
 .idea__administration-menu a {
   color: #444;
   cursor: pointer;
-  transition: color .2s ease;
+  transition: color 0.2s ease;
   text-decoration: none;
 }
 
@@ -182,9 +181,9 @@
   left: 50%;
   top: -2.15rem;
   transform: translateX(-50%);
-  background-color: #4D1A5F;
+  background-color: #4d1a5f;
   width: 75%;
-  height: .2rem;
+  height: 0.2rem;
 }
 
 .idea__interaction-icon:hover {
@@ -210,3 +209,4 @@
     font-size: 2.75rem;
   }
 }
+

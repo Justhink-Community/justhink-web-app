@@ -20,6 +20,7 @@
 .article-side {
   max-height: 30rem;
   overflow-y: scroll;
+  color: var(--color);
 }
 .embedded_video {
   margin-left: auto;

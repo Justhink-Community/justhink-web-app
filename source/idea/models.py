@@ -30,7 +30,6 @@ def send_mass_html_mail(datatuple, fail_silently=False, user=None, password=None
         username=user, password=password, fail_silently=fail_silently)
     messages = []
     for subject, text, html, from_email, recipient in datatuple:
-        print(subject, text, html, from_email, recipient)
         message = EmailMultiAlternatives(subject, text, from_email, recipient)
         message.attach_alternative(html, 'text/html')
         messages.append(message)
@@ -49,6 +48,8 @@ class Idea(models.Model):
     idea_like_count = models.IntegerField(editable=False, default=0)
     idea_comments = models.IntegerField(editable=False, default=0)
 
+    idea_topic = models.CharField(max_length=100, default="Belirlenemedi.", null=True, editable=True)
+
     idea_archived = models.BooleanField(default=False)
     
 class Comment(models.Model):
@@ -63,6 +64,8 @@ class Comment(models.Model):
     comment_dislikes = models.JSONField(editable=False, default=dict)
     comment_dislike_count = models.IntegerField(editable=False, default=0)
 
+    comment_topic = models.CharField(max_length=100, default="Belirlenemedi.", null=True, editable=True)
+
     comment_archived = models.BooleanField(default=False)
     
 class Topic(models.Model):
@@ -76,11 +79,14 @@ class Topic(models.Model):
   def save(self, *args, **kwargs):
     today = datetime.datetime.now().date()
     if today != self.topic_date: 
-        Idea.objects.all().update(idea_archived = True) 
-        Comment.objects.all().update(comment_archived = True) 
+        not_archived_ideas = Idea.objects.filter(idea_archived = False)
+        not_archived_ideas.update(idea_archived = True)
+        
+        not_archived_comments = Comment.objects.filter(comment_archived = False)
+        not_archived_comments.update(comment_archived = True)
 
-    t = threading.Thread(target=self.send_mail,)
-    t.start()   
+    # t = threading.Thread(target=self.send_mail,)
+    # t.start()   
 
     
     super().save(*args, **kwargs)

@@ -1,17 +1,13 @@
+import hashlib
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Q
 
 import hashlib
 
-JUSTHINK_RANKS = {
-    'ranks': (
-        ('rookie', 'ROOKIE'),
-    ),
-    'points': {
-        'rookie': 0   
-    }
-}
+JUSTHINK_RANKS = {"ranks": (("rookie", "ROOKIE"),), "points": {"rookie": 0}}
+
 
 class Profile(models.Model):
 
@@ -29,11 +25,13 @@ class Profile(models.Model):
     total_point = models.IntegerField(default=0, editable=False)
     login_strike = models.IntegerField(default=0, editable=False, null=False)
 
-    # PROFILE FIELDS 
+    # PROFILE FIELDS
 
-    profile_rank = models.CharField(choices=JUSTHINK_RANKS['ranks'], default='rookie', editable=False, max_length=10)
+    profile_rank = models.CharField(
+        choices=JUSTHINK_RANKS["ranks"], default="rookie", editable=False, max_length=10
+    )
 
-    # USER SYSTEM 
+    # USER SYSTEM
 
     profile_user = models.CharField(max_length=50, editable=False)
 
@@ -46,8 +44,9 @@ class Profile(models.Model):
 
     # MULTILAYER SECURITY PURPOSES 
 
+    account_verifications = models.JSONField(default=dict, editable=False)
     # 2fa_status
-    # remember_me_status 
+    # remember_me_status
     # recovery_devices
     
     user_restricted = models.BooleanField(default=False, null=False, editable=True)

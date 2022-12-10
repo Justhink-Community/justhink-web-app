@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "main",
     "user_profile",
     "idea",
-    "corsheaders"
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -145,7 +145,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 
-CSRF_TRUSTED_ORIGINS = ["https://justhink.net", "https://www.justhink.net","http://37.59.221.234.com", ]
+CSRF_TRUSTED_ORIGINS = ["https://justhink.net", "https://www.justhink.net","http://37.59.221.234", ]
 
 # EMAIL SETTINGS 
 
