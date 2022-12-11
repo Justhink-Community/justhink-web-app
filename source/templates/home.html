@@ -4,6 +4,12 @@
 <link rel="stylesheet" href="/static/styles/home.css">
 {% endblock %}
 
+{% block scripts %} 
+<script>
+  document.querySelector('html').classList.add('home')
+</script>
+{% endblock %}
+
 {% block header_center %} 
 <ul class="header-center__list">
     <li class="header__list-item">

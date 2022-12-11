@@ -13,7 +13,8 @@ class Profile(models.Model):
 
     account = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
 
-    web_theme = models.CharField(editable=False, max_length=10)
+    shop_bought_products = models.JSONField(default=dict, editable=False)
+    web_theme = models.CharField(editable=True, max_length=30) 
 
     kvkk_agreed = models.BooleanField(editable=False)
     email_permission = models.BooleanField(editable=False)
@@ -50,6 +51,8 @@ class Profile(models.Model):
     # recovery_devices
     
     user_restricted = models.BooleanField(default=False, null=False, editable=True)
+
+    user_notifications = models.JSONField(default=dict, editable=True, blank=True)
 
     @property
     def get_user_secret(self):

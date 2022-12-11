@@ -43,20 +43,20 @@ main {
 .auth__heading {
     font-size: 5.6rem;
     font-weight: 400;
-    color: #4D1B60;
+    color: var(--color);
 }
 
 .auth__description {
     font-size: 3.2rem;
     font-weight: 400;
-    color: #4D1B60;
+    color: var(--color);
     opacity: .5;
 }
 
 .auth-box {
   position: relative;
     padding: 2.8rem 3.6rem;
-    background-color: #987FA2;
+    background-color: var(--background-color);
     color: #fff;
     border-radius: .9rem;
 }

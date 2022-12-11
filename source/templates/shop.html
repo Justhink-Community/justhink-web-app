@@ -1,6 +1,6 @@
 {% extends 'base.html' %} 
 
-{% block title %}Market{% endblock title %} 
+{% block title %} &ndash; Market{% endblock title %} 
 
 {% block daily_summary %} 
 
@@ -14,69 +14,63 @@
 <link rel="stylesheet" href="/static/styles/shop.css">
 {% endblock %}
 
+{% block scripts %} 
+
+{% endblock %}
+
 {% block main %}
 <div class="wrapper">
   <div class="title">
     <h1 class="heading-primary">Justhink Marketi</h1>
     <p class="heading-description">Justhink'te aktif olarak ve diğer insanlarla konuşarak kazandığın puanları burada harcayabilirsin!</p>
   </div>
-  <div class="shop">
+  <div class="shop" id="shop">
     <div class="categories-nav">
       
     </div>
     <div class="products">
-      <!-- <div class="product">
-        <img class="product-image" src="https://media.discordapp.net/attachments/1023140492927582258/1046454341298565191/justhink.net_admin_idea_comment_.png?width=1248&height=702" />
+      {% for product in products %} 
+      <div class="product">
+        <img class="product-image" src="{{ product.product_image }}" />
         <div class="product__content">
-          <h4 class="product-title">Forest Teması</h4>
-          <p class="product-description">Forest Teması kullanıcıları mutlu edecek bir orman temasıdır.</p>
+          <h4 class="product-title">{{ product.product_name }}</h4>
+          <p class="product-description">{{ product.product_description }}</p>
           <div class="product-details">
-            <span class="product-fee">Ücret: <span>45 Puan</span></span>
-            <a href="#" class="btn btn--primary product-buy">
+            <span class="product-fee">Ücret: <span>{{ product.product_fee }} Puan</span></span>
+            {% if product.product_name in profile.shop_bought_products %}
+            {% if profile.web_theme == product.product_name %} 
+            <a href="#" class="btn btn--primary product-active" data-product="{{ product.product_name }}" data-fee = "{{ product.product_fee }}" data-niche = "theme">
+
+              Aktif</a>
+            {% else %}
+            <a href="#" class="btn btn--primary product-use" data-product="{{ product.product_name }}" data-fee = "{{ product.product_fee }}" data-niche = "theme">
+
+              Kullan</a>
+              {% csrf_token %}
+            {% endif %} 
+
+            {% else %}
+            <a href="#confirm-purchase" class="btn btn--primary product-buy" data-product="{{ product.product_name }}" data-fee = "{{ product.product_fee }}">
 
               Satın Al</a>
+            {% endif %}
+          
           </div>
         </div>
       </div>
-      <div class="product">
-        <img class="product-image" src="https://media.discordapp.net/attachments/1023140492927582258/1046454341298565191/justhink.net_admin_idea_comment_.png?width=1248&height=702" />
-        <div class="product__content">
-          <h4 class="product-title">Forest Teması</h4>
-          <p class="product-description">Forest Teması kullanıcıları mutlu edecek bir orman temasıdır.</p>
-          <div class="product-details">
-            <span class="product-fee">Ücret: <span>45 Puan</span></span>
-            <a href="#" class="btn btn--primary product-buy">
+      {% endfor %}
 
-              Satın Al</a>
-          </div>
-        </div>
-      </div>
-      <div class="product">
-        <img class="product-image" src="https://media.discordapp.net/attachments/1023140492927582258/1046454341298565191/justhink.net_admin_idea_comment_.png?width=1248&height=702" />
-        <div class="product__content">
-          <h4 class="product-title">Forest Teması</h4>
-          <p class="product-description">Forest Teması kullanıcıları mutlu edecek bir orman temasıdır.</p>
-          <div class="product-details">
-            <span class="product-fee">Ücret: <span>45 Puan</span></span>
-            <a href="#" class="btn btn--primary product-buy">
-
-              Satın Al</a>
-          </div>
-        </div>
-      </div>
-      <div class="product">
-        <img class="product-image" src="https://media.discordapp.net/attachments/1023140492927582258/1046454341298565191/justhink.net_admin_idea_comment_.png?width=1248&height=702" />
-        <div class="product__content">
-          <h4 class="product-title">Forest Teması</h4>
-          <p class="product-description">Forest Teması kullanıcıları mutlu edecek bir orman temasıdır.</p>
-          <div class="product-details">
-            <span class="product-fee">Ücret: <span>45 Puan</span></span>
-            <a href="#" class="btn btn--primary product-buy">
-
-              Satın Al</a>
-          </div>
-        </div>
-      </div> -->
+    </div>
+  </div>
+  <div class="confirm-purchase" id="confirm-purchase">
+    <div class="confirm-purchase__content">
+      <p class="confirm-purchase__text">Forest Teması adlı ürün için 100 puan kullanmayı onaylıyor musun?</p>
+    <div class="confirm-purchase__controls">
+      {% csrf_token %}
+      <a href="#shop" class="confirm-purchase__btn">Hayır</a>
+      
+      <a href="#" class="confirm-purchase__btn confirm-purchase__btn--confirm">Evet</a>
+    </div>
     </div>
   </div>
 </div>

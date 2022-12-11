@@ -30,19 +30,7 @@ main {
 display: inline-block;    
 }
 
-.header__link {
-    text-decoration: none;
-    color: #844268;
-    font-size: 2rem;
-    font-weight: 500;
-    transition: all .2s ease;
-    z-index: 55;
-}
 
-.header__link:hover 
-{
-    color: hsl(325, 33%, 48%);
-}
 /* @media only screen and (max-width: 37em) {
     .btn {
       font-size: 2rem !important;
@@ -87,7 +75,7 @@ display: inline-block;
 
 .topic-cta {
     background-color: hsl(0, 0%, 98%);
-    color: #B35159;
+    color: var(--color);
     font-size: 2rem;
     border-radius: .3rem;
     margin-top: 2rem;

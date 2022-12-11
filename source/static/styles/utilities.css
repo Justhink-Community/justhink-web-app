@@ -56,7 +56,7 @@
 }
 
 .heading-tertiary {
-  color: #51266a;
+  color: var(--color);
   font-size: 2rem;
   font-weight: 600;
 }
@@ -67,7 +67,7 @@
   align-items: center;
   width: 100%;
   padding: 3rem 2rem;
-  background-color: #f0f0f0;
+  background-color: var(--background-color);
   border-radius: 11px;
   position: relative;
 }
@@ -97,7 +97,7 @@
 }
 
 .idea__interaction-icon {
-  color: #4d1a5f;
+  color: var(--color);
   font-size: 4.5rem;
   transition: all 0.2s ease;
 }
@@ -107,12 +107,12 @@
 }
 
 .idea__interaction-icon {
-  color: #71487f;
+  color: var(--color);
 }
 
 .idea__counter {
   font-size: 2rem;
-  color: #4d1a5f;
+  color: var(--color);
 }
 
 .idea__profile-photo {
@@ -129,7 +129,7 @@
 }
 
 .idea__author {
-  color: #4d1a5f;
+  color: var(--color);
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.2rem;
@@ -137,7 +137,7 @@
 
 .idea__text {
   font-size: 1.8rem;
-  color: #686868;
+  color: var(--color);
   font-weight: 400;
 }
 
@@ -147,7 +147,7 @@
   left: -2.15rem;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #4d1a5f;
+  background-color: var(--indicator-background-color);
   width: 0.2rem;
   height: 50%;
 }
@@ -165,14 +165,14 @@
 }
 
 .idea__administration-menu a {
-  color: #444;
+  color: var(--color);
   cursor: pointer;
   transition: color 0.2s ease;
   text-decoration: none;
 }
 
 .idea__administration-menu a:hover {
-  color: #666;
+  color: var(--hover-color);
 }
 
 .idea:not(.idea-comment):nth-of-type(n + 3)::before {
@@ -181,13 +181,13 @@
   left: 50%;
   top: -2.15rem;
   transform: translateX(-50%);
-  background-color: #4d1a5f;
+  background-color: var(--indicator-background-color);
   width: 75%;
   height: 0.2rem;
 }
 
 .idea__interaction-icon:hover {
-  color: #5a2a76;
+  color: var(--hover-color);
   /* background-color: black; */
 }
 

@@ -1,4 +1,6 @@
 import datetime
+import random
+import string
 import httpagentparser
 import random
 
@@ -11,7 +13,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
 
 from user_profile.models import Profile
-from idea.models import Idea, Comment, Topic, Update
+from idea.models import Idea, Comment, Topic, Update, Product
 
 from django.template import Context
 from django.template.loader import render_to_string
@@ -56,6 +58,24 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
+
+def get_time_span(compared):
+    compared = datetime.datetime.strptime(compared, '%Y-%m-%d %H:%M:%S')
+    time_span = (datetime.datetime.now() - compared).seconds
+    if ((time_span // 60) // 60) // 24 >= 1:
+      time_span = f'{((time_span // 60) // 60)} gün önce'
+    elif (time_span // 60) // 60 >= 1:
+      time_span = f'{(time_span // 60) // 60} saat önce'
+    elif (time_span // 60) >= 1:
+      time_span = f'{(time_span // 60)} dakika önce'
+    else:
+      time_span = f'{(time_span)} saniye önce'
+    return time_span
+  
+def create_hash(length):
+    letters = string.ascii_lowercase
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str
 
 def IncrementLogin(request):
     if not request.user.is_anonymous:
@@ -106,8 +126,6 @@ def IncrementLogin(request):
                 user_profile.ip_addresses = {}
                 user_profile.ip_addresses[get_client_ip(request)] = str(user_profile.last_logged_in)
 
-            # print(request.META)
-
             user_profile.profile_user = "Belirlenemedi"
 
             try:
@@ -139,6 +157,32 @@ def IncrementLogin(request):
             user_profile.is_bot = is_bot
             if user_profile.profile_rank is None:
                 user_profile.profile_rank = "rookie"
+            
+            today_topic = Topic.objects.first()
+            
+            try:
+              user_profile.user_notifications[today_topic.topic_name]
+            except TypeError:
+              user_profile.user_notifications = {}
+              
+              user_profile.user_notifications[today_topic.topic_name] = {
+                'notification_content': f'Günün konusu yayında: {today_topic.topic_name}',
+                'notification_details': str(today_topic.topic_date),
+                'notification_image': 'robot',
+                'notification_link': '/',
+                'viewed': False
+              }
+            except KeyError: 
+              
+              user_profile.user_notifications[today_topic.topic_name] = {
+                'notification_content': f'Günün konusu yayında: {today_topic.topic_name}',
+                'notification_details': str(today_topic.topic_date),
+                'notification_image': 'robot',
+                'notification_link': '/',
+                'viewed': False
+              }
+              
+            
 
             user_profile.save()
 
@@ -175,6 +219,14 @@ def get_user_profile(user):
     except TypeError:
         return False
     else:
+        profile.user_notifications = dict(
+          sorted(profile.user_notifications.items(), 
+                key=lambda notification: notification[1]['notification_details'],
+                reverse=True
+                )
+          )
+
+        profile.save()
         return profile
 
 def DashBoardView(request):
@@ -203,18 +255,84 @@ def IndexView(request):
 
     return DashBoardView(request)
 
-
+@user_passes_test(lambda u: not u.is_anonymous)
 def ShopView(request):
+    user_profile = get_user_profile(request.user)
+  
+  
+    if request.POST:
+      product_name = request.POST['product_name']
+      
+      try:
+        product = Product.objects.get(Q(product_name=product_name))
+      except Product.DoesNotExist:
+        messages.error(request, 'Ürün veritabanında bulunamadı!', extra_tags=NOTIFICATION_TAGS['error'])
+      else:
+        if user_profile.total_point >= product.product_fee:
+          try:
+            user_profile.shop_bought_products[product_name]
+          except KeyError:
+            pass 
+          except TypeError:
+            user_profile.shop_bought_products = {}
+          else:
+            return messages.error(request, 'Bu ürünü zaten almışsın!', extra_tags=NOTIFICATION_TAGS["error"])
+          
+          user_profile.web_theme = product_name
+          user_profile.total_point -= product.product_fee
+          user_profile.shop_bought_products[product_name] = str(datetime.datetime.now())
+          product.product_sold_count += 1
+          
+          user_profile.save()
+          product.save()
+          
+          messages.success(request, 'Ürün başarıyla satın alındı!', extra_tags=NOTIFICATION_TAGS['success'])
+          
+        else:
+          messages.error(request, 'Puanınız yetersiz!', extra_tags=NOTIFICATION_TAGS['error'])
+          
+
     IncrementLogin(request)
 
     return render(
         request,
         "shop.html",
         {
-            "profile": get_user_profile(request.user),
+            "profile": user_profile,
             "section": "shop",
+            "products": Product.objects.all()
         },
     )
+
+@user_passes_test(lambda u: not u.is_anonymous)
+def ChangeThemeView(request):
+  if request.GET:
+    user_profile = get_user_profile(request.user)
+    product_name = request.GET['product_name']
+    
+    try:
+      user_profile.shop_bought_products[product_name]
+    except KeyError:
+      messages.error(request, 'Bu ürün satın alınmamış.', extra_tags=NOTIFICATION_TAGS['error'])
+    except TypeError:
+      user_profile.shop_bought_products = {}
+      user_profile.save()
+      messages.error(request, 'Bu ürün satın alınmamış.', extra_tags=NOTIFICATION_TAGS['error'])
+    else:
+      product_code = product_name
+      if user_profile.web_theme != product_code:
+        user_profile.web_theme = product_code
+        user_profile.save()
+        messages.success(request, f'Tema değiştirildi: {product_name}', extra_tags=NOTIFICATION_TAGS["success"])
+      else:
+        messages.error(request, 'Zaten bu tema aktifleştirilmiş.', extra_tags=NOTIFICATION_TAGS['error'])
+    finally:
+      return render(request, 'shop.html',         {
+            "profile": user_profile,
+            "section": "shop",
+            "products": Product.objects.all(),
+        },)
+
 
 def LandingView(request):
     IncrementLogin(request)
@@ -235,7 +353,7 @@ def LandingView(request):
 def AboutUsView(request):
   IncrementLogin(request)
   
-  return render(request, "about_us.html", {"section": "about-us"})
+  return render(request, "about_us.html", {"section": "about-us", "profile": get_user_profile(request.user)})
 
 @user_passes_test(lambda u: u.is_anonymous)
 def AuthenticationView(request):
@@ -513,7 +631,7 @@ def InspectIdeaView(request, idea_id: int):
                 "comments_count": len(all_comments),
                 "ideas_count": len(ideas),
                 "section": "inspect-idea",
-                "profile": Profile.objects.get(account=request.user)
+                "profile": get_user_profile(request.user)
             },
         )
 
@@ -710,6 +828,16 @@ def LikePostView(request, post_id: int):
             idea_object.idea_likes[request.user.username] = True
             idea_object.save()
 
+            idea_object.idea_author.user_notifications[create_hash(16)] = {
+              'notification_content': f'{request.user.username} fikrinizi beğendi',
+              'notification_details': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+              'notification_image': 'robot',
+              'notification_link': f'/inspect-idea/{post_id}',
+              'viewed': False
+            }
+            
+            idea_object.idea_author.save()
+            
             GivePoint(idea_object.idea_author.account, POINT_POLICY["like_idea"])
 
         else:
@@ -746,6 +874,16 @@ def SendCommentView(request, idea_id: int):
             idea_object.idea_comments += 1
             idea_object.save()
             
+            idea_object.idea_author.user_notifications[create_hash(16)] = {
+              'notification_content': f'{request.user.username} fikrinize yorum yaptı',
+              'notification_details': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+              'notification_image': 'robot',
+              'notification_link': f'/inspect-idea/{idea_id}',
+              'viewed': False
+              }
+            
+            idea_object.idea_author.save()
+            
             messages.success(
                     request,
                     "Başarıyla yorumunuzu paylaştınız!",
@@ -755,18 +893,6 @@ def SendCommentView(request, idea_id: int):
 
     return redirect("inspect-idea-page", idea_id)
     
-
-def LikeCommentView(request, idea_id: int, comment_id: int):
-    if request.user.is_anonymous:
-        messages.error(
-            request,
-            "Bu işlem için giriş yapman gerekiyor!",
-            extra_tags=NOTIFICATION_TAGS["error"],
-        )
-        return redirect(request.META["HTTP_REFERER"])
-
-
-    return redirect("inspect-idea-page", idea_id)
     
 def LikeCommentView(request, idea_id: int,  comment_id: int):
     if request.user.is_anonymous: 
@@ -790,14 +916,26 @@ def LikeCommentView(request, idea_id: int,  comment_id: int):
             except KeyError:
                 pass
             else:
+
                 comment_object.comment_dislike_count -= 1
                 del comment_object.comment_dislikes[request.user.username]
             finally:
+                comment_object.comment_author.user_notifications[create_hash(16)] = {
+                  'notification_content': f'{request.user.username} yorumunuzu beğendi',
+                  'notification_details': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                  'notification_image': 'robot',
+                  'notification_link': f'/inspect-idea/{idea_id}',
+                  'viewed': False
+                }
+            
+                comment_object.comment_author.save()
+              
                 comment_object.comment_like_count += 1
                 comment_object.comment_likes[request.user.username] = True
                 comment_object.save()
 
         else:
+          
             comment_object.comment_like_count -= 1
             del comment_object.comment_likes[request.user.username]
             comment_object.save()
@@ -827,9 +965,21 @@ def DislikeCommentView(request, idea_id: int, comment_id: int):
             except KeyError:
                 pass
             else:
+              
+              
                 comment_object.comment_like_count -= 1
                 del comment_object.comment_likes[request.user.username]
             finally:
+                comment_object.comment_author.user_notifications[create_hash(16)] = {
+                  'notification_content': f'{request.user.username} yorumunuzu beğenmedi',
+                  'notification_details': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                  'notification_image': 'robot',
+                  'notification_link': f'/inspect-idea/{idea_id}',
+                  'viewed': False
+                }
+            
+                comment_object.comment_author.save()
+              
                 comment_object.comment_dislike_count += 1
                 comment_object.comment_dislikes[request.user.username] = True
                 comment_object.save()
@@ -840,6 +990,30 @@ def DislikeCommentView(request, idea_id: int, comment_id: int):
 
         return redirect("inspect-idea-page", idea_id)
 
-
+def ViewNotificationView(request, notification_key):
+  profile = get_user_profile(request.user)
+  try:
+    profile.user_notifications[notification_key]
+  except KeyError:
+    return False 
+  else:
+    profile.user_notifications[notification_key]['viewed'] = True 
+    profile.save()
+    return True 
+    
 def handle_404(request, exception):
     return render(request, "404.html")
+
+@user_passes_test(lambda u: u.is_anonymous)
+def ForgotPasswordView(request):
+  IncrementLogin(request)
+  if request.POST:
+    return 
+  else:
+    return render(
+        request,
+        "forgot_password.html",
+        {
+            "section": "forgot-password",
+        },
+    ) 
