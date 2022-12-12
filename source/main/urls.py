@@ -24,10 +24,14 @@ from .views import (
     AboutUsView,
     UpdatesView,
     IpToLocView,
-    DashBoardView
+    DashBoardView,
+    ViewNotificationView,
+    ForgotPasswordView,
+    ChangeThemeView
 )
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSiteMap 
+
 sitemaps = {
     'static': StaticViewSiteMap
 }
@@ -39,12 +43,14 @@ urlpatterns = [
     path("about-us", AboutUsView, name = "about-us-page"),
     path("login", AuthenticationView, name = "authentication"),
     path("register", RegisterView, name="register-page"),
+    path('forgot-password', ForgotPasswordView, name = 'forgot-password-page'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     path('robots.txt', include('robots.urls')),
     path('shuffle-ideas', IdeasOverview, name = 'random-ideas-page'),
     path('status', StatusView),
     path('stats', StatisticsView),
     path('shop', ShopView, name = 'shop-page'),
+    path('change-theme', ChangeThemeView, name = 'change-theme-page'),
     path('updates', UpdatesView),
     path('ideas', FavouriteIdeasView, name = 'ideas-page'),
     path('leaderboard', LeaderboardView, name = 'leaderboard-page'),
@@ -59,6 +65,7 @@ urlpatterns = [
     path("send-comment/<int:idea_id>", SendCommentView, name = 'send-comment-page'),
     path('like-comment/<int:idea_id>/<int:comment_id>', LikeCommentView, name = 'like-comment-page'),
     path('dislike-comment/<int:idea_id>/<int:comment_id>', DislikeCommentView, name = 'dislike-comment-page'),
-    path('profile', ProfileView, name = 'profile-page')
+    path('profile', ProfileView, name = 'profile-page'),
+    path('view-notification/<str:notification_key>', ViewNotificationView, name = 'view-notification-page')
 
 ]

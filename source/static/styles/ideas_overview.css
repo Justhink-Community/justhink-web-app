@@ -28,8 +28,8 @@
 }
 
 .user-copyright {
-  background-color: #F0F0F0;
-  color: #1E1D1E;
+  background-color: var(--background-color);
+  color: var(--color);
   padding: clamp(.6rem, 1.4vh,1.8rem) clamp(.4rem, 1vh, 1.2rem);
   display: flex;
   justify-content: center;
@@ -77,7 +77,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1.5fr;
   gap: .5rem;
-  background-color: #F0F0F0;
+  background-color: var(--background-color);
   border-radius: 11px;
   padding: clamp(.8rem, 1.2vh, 1.6rem) clamp(.4rem, 1vh, 1.2rem);
   justify-items: center;
@@ -85,7 +85,7 @@
 
 .controller__header {
   text-align: center;
-  color: #1E1D1E;
+    color: var(--color);
 }
 
 .controller__heading, .countdown {
@@ -93,7 +93,7 @@
 }
 
 .controller__item {
-  color: #4A155D;
+  color: var(--color);
   font-size: 6rem;
 }
 
@@ -117,7 +117,7 @@
 }
 
 .controller__item:hover, .controller__item:active {
-  color: #5a2a76;
+  color: var(--hover-color);
 }
 
 

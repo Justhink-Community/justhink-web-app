@@ -4,7 +4,7 @@ html, body, main {
 
 body {
   height: 100vh;  font-size: 1.6rem;
-  color: #777;
+  color: var(--color);
 }
 
 main {
@@ -29,19 +29,6 @@ main {
 display: inline-block;    
 }
 
-.header__link {
-  text-decoration: none;
-  color: #844268;
-  font-size: 2rem;
-  font-weight: 500;
-  transition: all .2s ease;
-  z-index: 55;
-}
-
-.header__link:hover 
-{
-  color: hsl(325, 33%, 48%);
-}
 
 /* ABOUT US  */
 
@@ -78,7 +65,7 @@ display: inline-block;
   font-size: 3.5rem;
   text-transform: uppercase;
   font-weight: 700;
-  background-image: linear-gradient(to right, #C74B55, #552878);
+  background-image: var(--background);
   -webkit-background-clip: text;
   color: transparent;
   letter-spacing: 0.2rem;

@@ -26,7 +26,7 @@ with open(BASE_DIR / 'secret_key.txt') as secret_key_file:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["justhink.net", "www.justhink.net", "37.59.221.234"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -83,8 +83,11 @@ CORS_ALLOWED_ORIGINS = [
     "https://justhink.net",
     "https://www.justhink.net",
     "http://37.59.221.234",
-    "https://ipapi.co"
+    "https://ipapi.co",  
+    "http://localhost",
+    "http://127.0.0.1"
 ]
+
 
 WSGI_APPLICATION = "source.wsgi.application"
 
@@ -138,6 +141,9 @@ STATIC_ROOT = "static/"
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+MEDIA_ROOT = ''
+MEDIA_URL = ''
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -145,7 +151,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 
-CSRF_TRUSTED_ORIGINS = ["https://justhink.net", "https://www.justhink.net","http://37.59.221.234", ]
+CSRF_TRUSTED_ORIGINS = ["http://localhost", "http://127.0.0.1"]
 
 # EMAIL SETTINGS 
 
@@ -162,10 +168,10 @@ SESSION_COOKIE_AGE = 525948 * 60 * 10
 
 # HTTPS SETTINGS
 
-SESSION_COOKIE_SECURE = True 
-CSRF_COOKIE_SECURE = True 
-SECURE_SSL_REDIRECT = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SESSION_COOKIE_SECURE = True 
+# CSRF_COOKIE_SECURE = True 
+# SECURE_SSL_REDIRECT = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # HSTS SETTINGS 
@@ -176,8 +182,8 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 # USER PRIVACY
 
-SECURE_REFERRER_POLICY = 'strict-origin'
+# SECURE_REFERRER_POLICY = 'strict-origin'
 
 # XSS FILTER
 
-SECURE_BROWSER_XSS_FILTER = True
+# SECURE_BROWSER_XSS_FILTER = True

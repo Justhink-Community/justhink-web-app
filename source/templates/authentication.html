@@ -46,11 +46,11 @@
         </div>
           <a href="#" class="auth__forget-password">İlgili politikaları okumak için tıkla</a>
           <div class="bottom-box">
-              <a href="#login" class="auth__forget-password auth__new-account" style="text-decoration: none;margin-top: 1.2rem;">Zaten hesabın var mı? <span style="font-weight: 600; color: #000; ">Giriş yap!</span></a>
+              <a href="#login" class="auth__forget-password auth__new-account" style="text-decoration: none;margin-top: 1.2rem;">Zaten hesabın var mı? <span style="font-weight: 600; ">Giriş yap!</span></a>
                   <div class="bottom-box__controller">
                     <div class="auth-box__checkbox-box">
-                        <input type="checkbox" name="remember-me" id="remember-me" class="auth-box__input-checkbox">
-                        <label for="remember-me" class="auth-box__checkbox-label"><a href="/static/policies/user-terms.pdf" target="_blank " style="color: inherit">KVKK'yı</a> kabul ediyorum.</label>
+                        <input type="checkbox" name="kvkk-agreed" id="kvkk-agreed" class="auth-box__input-checkbox">
+                        <label for="kvkk-agreed" class="auth-box__checkbox-label"><a href="/static/policies/user-terms.pdf" target="_blank " style="color: inherit">KVKK'yı</a> kabul ediyorum.</label>
                     </div>
                     <a href="#login" class="auth__forget-password" style="text-decoration: none">Yardım ister misiniz?</a>
                   </div>
@@ -73,9 +73,9 @@
                 <label for="current-password" class="auth-box__label">Şifre:</label>
                 <input type="password" name="current-password" id="current-password" placeholder="*******" class="auth-box__input" oninvalid="setCustomValidity('Şifreniz; en az bir büyük harf, bir küçük harf, bir özel karakter veya rakamdan oluşan, minimum 8 haneli bir yapıda olmalı.')" required>
             </div>
-            <a href="#" class="auth__forget-password">Şifremi unuttum</a>
+            <a href="{% url 'forgot-password-page' %}" class="auth__forget-password">Şifremi unuttum</a>
             <div class="bottom-box">
-                <a href="#register" class="auth__forget-password auth__new-account" style="text-decoration: none;margin-top: 1.2rem;">jusTHINK'e katılmak ister misin? <span style="font-weight: 600; color: #000; ">Şimdi kaydol!</span></a>
+                <a href="#register" class="auth__forget-password auth__new-account" style="text-decoration: none;margin-top: 1.2rem;">jusTHINK'e katılmak ister misin? <span style="font-weight: 600; ">Şimdi kaydol!</span></a>
                 <div class="bottom-box__controller">
                   <div class="auth-box__checkbox-box">
                       <input type="checkbox" name="remember-me" id="remember-me" class="auth-box__input-checkbox">

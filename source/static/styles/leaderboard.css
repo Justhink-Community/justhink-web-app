@@ -1,7 +1,7 @@
 
 .title {
     position: relative;
-    color: #222;
+    color: var(--color);
     text-align: center;
   }
   
@@ -17,7 +17,7 @@
   }
   
   .leaderboard {
-    background-color: #f0f0f0;
+    background-color: var(--background-color);
     border-radius: 11px;
     max-height: 80vh;
   
@@ -30,27 +30,28 @@
     flex-direction: column;
     gap: 1.6rem;
     overflow-y: scroll;
+    margin-top: .5rem;
   }
 
   .leaderboard__list-item {
     display: flex;
     flex-direction: row;
     align-items: center;
-    
+    color: var(--color);
   }
 
   .notch-list > .leaderboard__index {
-    color: hsl(284, 57%, 95%);
-    background-color: hsl(284, 57%, 24%);
+    color: var(--color);
+    background-color: var(--background-color);
   }
   .notch-list > .leaderboard__username {
-    color: hsl(284, 57%, 39%);
+    color: var(--color);
     font-weight: 400;
   }
 
   .leaderboard__index {
-    color: hsl(0, 0%, 70%);
-    background-color: hsl(0, 0%, 85%);
+    color: var(--color);
+    background-color: var(--background-color);
     border-radius: 50%;
     display: flex;
     align-items: center;

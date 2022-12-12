@@ -11,7 +11,6 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.core.mail import get_connection, EmailMultiAlternatives
 
-import threading
 
 def send_mass_html_mail(datatuple, fail_silently=False, user=None, password=None, 
                         connection=None):
@@ -72,7 +71,7 @@ class Topic(models.Model):
   topic_name = models.CharField(max_length=100)
   topic_sources = models.TextField()
   topic_keywords = models.CharField(max_length=40)
-  topic_date = models.DateField(auto_created=True)
+  topic_date = models.DateTimeField(auto_created=True)
   topic_suggested_user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=User.objects.get(models.Q(username = 'justhink')))
   topic_video_id = models.CharField(max_length=16)
 
@@ -84,6 +83,7 @@ class Topic(models.Model):
         
         not_archived_comments = Comment.objects.filter(comment_archived = False)
         not_archived_comments.update(comment_archived = True)
+        
 
     # t = threading.Thread(target=self.send_mail,)
     # t.start()   
@@ -116,3 +116,10 @@ class Update(models.Model):
     update_work = models.CharField(max_length=75)
     update_date = models.DateTimeField(auto_now_add=True)
     update_authors = models.CharField(max_length=20)
+    
+class Product(models.Model):
+  product_name = models.CharField(max_length=20)
+  product_description = models.CharField(max_length=100)
+  product_fee = models.IntegerField()
+  product_image = models.URLField()
+  product_sold_count = models.IntegerField(editable=False, null=False, default=0)
