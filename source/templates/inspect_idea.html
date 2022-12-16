@@ -18,6 +18,8 @@
 
 {% block daily_summary %} {% endblock %} 
 
+{% block title %} &ndash; {{ idea.idea_author.account.username }}'nin Fikri{% endblock %}
+
 {% block main %} 
 
 
@@ -131,7 +133,7 @@
     <div class="send-comment">
       <form method="post" class="send-comment-form">
         {% csrf_token %}
-        <input type="text" name="comment-content" id="comment-content" class="send-comment-textbox" placeholder="Yorum ekle..." required minlength="10" maxlength="300">
+        <input type="text" name="comment-content" id="comment-content" class="send-comment-textbox" placeholder="Yorum ekle..." required minlength="10" maxlength="500">
         <input type="submit" value="Paylaş" class="send-comment-btn" data-url = "/send-comment/{{idea.id}}"> <!-- setTimeout(() => {document.querySelector('.send-comment-form').reset()}, 100) -->
       </form>
     </div>

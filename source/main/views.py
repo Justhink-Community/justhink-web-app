@@ -60,6 +60,7 @@ def get_client_ip(request):
     return ip
 
 def get_time_span(compared):
+    compared = compared.split('.')[0]
     compared = datetime.datetime.strptime(compared, '%Y-%m-%d %H:%M:%S')
     time_span = (datetime.datetime.now() - compared).seconds
     if ((time_span // 60) // 60) // 24 >= 1:
@@ -79,7 +80,6 @@ def create_hash(length):
 
 def IncrementLogin(request):
     if not request.user.is_anonymous:
-
         agent = request.META["HTTP_USER_AGENT"]
         parsed_agent = httpagentparser.detect(agent)
         platform, os, is_bot, browser = (
@@ -157,6 +157,8 @@ def IncrementLogin(request):
             user_profile.is_bot = is_bot
             if user_profile.profile_rank is None:
                 user_profile.profile_rank = "rookie"
+
+            # print(user_profile.web_theme)
             
             today_topic = Topic.objects.first()
             
@@ -310,28 +312,43 @@ def ChangeThemeView(request):
     user_profile = get_user_profile(request.user)
     product_name = request.GET['product_name']
     
-    try:
-      user_profile.shop_bought_products[product_name]
-    except KeyError:
-      messages.error(request, 'Bu ürün satın alınmamış.', extra_tags=NOTIFICATION_TAGS['error'])
-    except TypeError:
-      user_profile.shop_bought_products = {}
-      user_profile.save()
-      messages.error(request, 'Bu ürün satın alınmamış.', extra_tags=NOTIFICATION_TAGS['error'])
+    if product_name != 'Thinker Tema':
+
+        try:
+            user_profile.shop_bought_products[product_name]
+        except KeyError:
+            messages.error(request, 'Bu ürün satın alınmamış.', extra_tags=NOTIFICATION_TAGS['error'])
+        except TypeError:
+            user_profile.shop_bought_products = {}
+            user_profile.save()
+            messages.error(request, 'Bu ürün satın alınmamış.', extra_tags=NOTIFICATION_TAGS['error'])
+        else:
+            product_code = product_name
+            if user_profile.web_theme != product_code:
+                user_profile.web_theme = product_code
+                user_profile.save()
+                messages.success(request, f'Tema değiştirildi: {product_name}', extra_tags=NOTIFICATION_TAGS["success"])
+            else:
+                messages.error(request, 'Zaten bu tema aktifleştirilmiş.', extra_tags=NOTIFICATION_TAGS['error'])
+        finally:
+            return render(request, 'shop.html',         {
+                    "profile": user_profile,
+                    "section": "shop",
+                    "products": Product.objects.all(),
+                },)
     else:
-      product_code = product_name
-      if user_profile.web_theme != product_code:
-        user_profile.web_theme = product_code
-        user_profile.save()
-        messages.success(request, f'Tema değiştirildi: {product_name}', extra_tags=NOTIFICATION_TAGS["success"])
-      else:
-        messages.error(request, 'Zaten bu tema aktifleştirilmiş.', extra_tags=NOTIFICATION_TAGS['error'])
-    finally:
-      return render(request, 'shop.html',         {
-            "profile": user_profile,
-            "section": "shop",
-            "products": Product.objects.all(),
-        },)
+        product_code = product_name
+        if user_profile.web_theme != product_code:
+            user_profile.web_theme = product_code
+            user_profile.save()
+            messages.success(request, f'Tema değiştirildi: {product_name}', extra_tags=NOTIFICATION_TAGS["success"])
+        else:
+            messages.error(request, 'Zaten bu tema aktifleştirilmiş.', extra_tags=NOTIFICATION_TAGS['error'])
+    return render(request, 'shop.html',         {
+        "profile": user_profile,
+        "section": "shop",
+        "products": Product.objects.all(),
+    },)
 
 
 def LandingView(request):
@@ -527,25 +544,25 @@ def StatisticsView(request):
 
         for user in users:
             try:
-                user_register_dates[user.date_joined.day] += 1
+                user_register_dates[str(user.date_joined.day) +  '-' + str(user.date_joined.month)] += 1
             except KeyError:
-                user_register_dates[user.date_joined.day] = 1
+                user_register_dates[str(user.date_joined.day) + '-' + str(user.date_joined.month)] = 1
 
         idea_publish_dates = {}
 
         for idea in ideas:
             try:
-                idea_publish_dates[idea.idea_publish_date.day] += 1
+                idea_publish_dates[str(idea.idea_publish_date.day) +  '-' + str(idea.idea_publish_date.month)] += 1
             except KeyError:
-                idea_publish_dates[idea.idea_publish_date.day] = 1
+                idea_publish_dates[str(idea.idea_publish_date.day) + '-' + str(idea.idea_publish_date.month)] = 1
 
         comment_publish_dates = {}
 
         for comment in comments:
             try:
-                comment_publish_dates[comment.comment_publish_date.day] += 1
+                comment_publish_dates[str(comment.comment_publish_date.day) +  '-' + str(comment.comment_publish_date.month)] += 1
             except KeyError:
-                comment_publish_dates[comment.comment_publish_date.day] = 1
+                comment_publish_dates[str(comment.comment_publish_date.day) +  '-' + str(comment.comment_publish_date.month)] = 1
 
         print(
             """JUSTHINK STATS 
@@ -688,7 +705,7 @@ def RegisterView(request):
             except User.DoesNotExist:
                 pass 
             else:
-                if found_user or found_profile:
+                if found_user or False:
                     messages.error(
                         request,
                         "Bu bilgilere ait bir hesap zaten var!",
@@ -731,7 +748,7 @@ def RegisterView(request):
 
                 Profile.objects.create(
                     account=user,
-                    web_theme="default-theme",
+                    web_theme="Thinker Tema",
                     kvkk_agreed=kvkk_check,
                     email_permission=email_perm,
                     total_logged_time=datetime.timedelta(seconds=1),
@@ -830,7 +847,7 @@ def LikePostView(request, post_id: int):
 
             idea_object.idea_author.user_notifications[create_hash(16)] = {
               'notification_content': f'{request.user.username} fikrinizi beğendi',
-              'notification_details': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+              'notification_details': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'),
               'notification_image': 'robot',
               'notification_link': f'/inspect-idea/{post_id}',
               'viewed': False
@@ -995,11 +1012,12 @@ def ViewNotificationView(request, notification_key):
   try:
     profile.user_notifications[notification_key]
   except KeyError:
-    return False 
+    return redirect('index-page')
   else:
     profile.user_notifications[notification_key]['viewed'] = True 
     profile.save()
-    return True 
+
+    return redirect(profile.user_notifications[notification_key]["notification_link"])
     
 def handle_404(request, exception):
     return render(request, "404.html")
@@ -1017,3 +1035,25 @@ def ForgotPasswordView(request):
             "section": "forgot-password",
         },
     ) 
+
+@user_passes_test(lambda u: not u.is_anonymous)
+def RateTopicView(request):
+    if request.GET:
+        topic = Topic.objects.first()
+        try:
+            topic_voted = topic.topic_rate['voted']
+        except KeyError:
+            topic.topic_rate = {'rate': 0, 'voted': {}}
+            topic_voted = topic.topic_rate['voted']
+        except TypeError:
+            topic.topic_rate = {'rate': 0, 'voted': {}}
+            topic_voted = topic.topic_rate['voted']
+        
+        if request.user.username not in topic_voted:
+            user_rate = request.GET['rate']
+            topic.topic_rate['voted'][request.user.username] = int(user_rate) 
+            topic.topic_rate['rate'] = sum([int(topic_rate) for topic_rate in topic.topic_rate['voted'].values()]) / len(topic.topic_rate['voted'])
+            topic.save()
+            return redirect('index-page')
+        else:
+            return redirect('index-page')

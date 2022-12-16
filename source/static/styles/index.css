@@ -22,6 +22,36 @@
   overflow-y: scroll;
   color: var(--color);
 }
+
+.rating-section {
+  display: flex;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.rating {
+  display: inline-block;
+  text-decoration: none;
+  line-height: 1.0;
+}
+
+.rating-icon {
+  color: var(--background-color);
+  transition: all .2s ease;
+  font-size: 2rem;
+}
+
+.rating:hover .rating-icon {
+  color: var(--hover-background-color);
+}
+
+
+
 .embedded_video {
   margin-left: auto;
   width: 56rem;

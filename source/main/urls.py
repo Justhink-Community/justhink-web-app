@@ -27,7 +27,8 @@ from .views import (
     DashBoardView,
     ViewNotificationView,
     ForgotPasswordView,
-    ChangeThemeView
+    ChangeThemeView,
+    RateTopicView
 )
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSiteMap 
@@ -66,6 +67,6 @@ urlpatterns = [
     path('like-comment/<int:idea_id>/<int:comment_id>', LikeCommentView, name = 'like-comment-page'),
     path('dislike-comment/<int:idea_id>/<int:comment_id>', DislikeCommentView, name = 'dislike-comment-page'),
     path('profile', ProfileView, name = 'profile-page'),
-    path('view-notification/<str:notification_key>', ViewNotificationView, name = 'view-notification-page')
-
+    path('view-notification/<str:notification_key>', ViewNotificationView, name = 'view-notification-page'),
+    path('rate-topic', RateTopicView, name = 'rate-topic-page')
 ]

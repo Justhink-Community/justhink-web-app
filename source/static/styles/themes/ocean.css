@@ -1,4 +1,4 @@
-@media (prefers-color-scheme: light) {
+
   #linear-gradient > stop:nth-of-type(1) {
     stop-color: #009DA4;
   }
@@ -27,7 +27,7 @@
     --color: #49798B;
   }
   
-  .btn--primary {
+  .btn--primary, .rating-icon {
     --background-color: #0C1D68;
     --hover-background-color: hsl(229, 79%, 32%);
   }
@@ -276,10 +276,4 @@
   .publish-idea__textarea {
     --color: #eee;
   }
-}
 
-@media (prefers-color-scheme: dark) {
-  .darken {
-    background-image: linear-gradient(to bottom right, rgb(30, 29, 30, .9), rgb(30, 29, 30, .9)), linear-gradient(to bottom right, #D0505A, #562878);
-  }
-}

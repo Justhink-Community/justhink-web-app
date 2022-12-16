@@ -14,7 +14,7 @@ class Profile(models.Model):
     account = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
 
     shop_bought_products = models.JSONField(default=dict, editable=False)
-    web_theme = models.CharField(editable=True, max_length=30) 
+    web_theme = models.CharField(editable=False, max_length=30) 
 
     kvkk_agreed = models.BooleanField(editable=False)
     email_permission = models.BooleanField(editable=False)
@@ -23,7 +23,7 @@ class Profile(models.Model):
     total_logged_time = models.DurationField(editable=False)
     last_logged_in = models.DateTimeField(editable=False)
 
-    total_point = models.IntegerField(default=0, editable=False)
+    total_point = models.IntegerField(default=0, editable=True)
     login_strike = models.IntegerField(default=0, editable=False, null=False)
 
     # PROFILE FIELDS

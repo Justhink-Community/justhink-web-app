@@ -1,8 +1,13 @@
 {% extends 'base.html' %} 
 
 {% block head %}
-<link rel="stylesheet" href="/static/styles/index.css" />
+<link rel="stylesheet" href="/static/styles/index.css?version=10" />
 {% endblock head %} 
+
+
+{% block title %} &ndash; {% if section == "summary" %} Anasayfa{% else %} Fikirler{% endif %}{% endblock %}
+
+
 
 
 {% block main %}
@@ -10,10 +15,46 @@
 {% if section == "summary" %} 
 
 <div class="wrapper summary-page">
-  <article class="article-side">
-    {{ topic.topic_sources }}
-  </article>
+  <div class="article-container">
+    <article class="article-side">
+      {{ topic.topic_sources }}
+    </article>
+    {% if "voted" not in topic.topic_rate or user.username not in topic.topic_rate.voted %}
+    <div class="rating-container">
+      <p class="rating-text">Günün konusunu oylayın:</p>
+      <div class="rating-section">
+        {% csrf_token %}
+        <a href="#" class="rating 1">
+          <svg class="rating-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path fill="currentColor" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/>
+          </svg>
+        </a>
+        <a href="#" class="rating 2">
+          <svg class="rating-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path fill="currentColor" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/>
+          </svg>
+        </a>
+        <a href="#" class="rating 3">
+          <svg class="rating-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path fill="currentColor" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/>
+          </svg>
+        </a>
+        <a href="#" class="rating 4">
+          <svg class="rating-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path fill="currentColor" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/>
+          </svg>
+        </a>
+        <a href="#" class="rating 5">
+          <svg class="rating-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path fill="currentColor" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    {% endif %}
+  </div>
   
+
   <iframe class="embedded_video"  width="560" height="315" src="https://www.youtube.com/embed/{{ topic.topic_video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -103,5 +144,23 @@
   {% endfor %}
 </div>
 {% endif %}
+<script>
+  // RATING 
 
+const ratings = document.querySelectorAll('.rating'),
+ratingText = document.querySelector('.rating-text'),
+ratingSection = document.querySelector('.rating-section')
+
+ratings.forEach(rating => {
+  rating.addEventListener('click', (_e) => {
+    $.ajax({
+      method: 'GET',
+      url: "{% url 'rate-topic-page' %}",
+      data: {rate: parseInt(rating.classList[1])}
+    })
+    ratingSection.style.display = 'none'
+    ratingText.innerHTML = 'Oy verdiğiniz için teşekkür ederiz.'
+  })
+});
+</script>
 {% endblock main %}

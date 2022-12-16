@@ -1,4 +1,4 @@
-@media (prefers-color-scheme: light) {
+
   .header {
     --background-color: #fff
   }
@@ -19,7 +19,7 @@
     --color: #4d1a5f;
   }
   
-  .btn--primary {
+  .btn--primary, .rating {
     --background-color: hsl(284, 57%, 24%);
     --hover-background-color: #5a2a76;
   }
@@ -263,10 +263,3 @@
   .publish-idea__textarea {
     --color: #eee;
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  .darken {
-    background-image: linear-gradient(to bottom right, rgb(30, 29, 30, .9), rgb(30, 29, 30, .9)), linear-gradient(to bottom right, #D0505A, #562878);
-  }
-}

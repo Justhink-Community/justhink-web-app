@@ -1,6 +1,6 @@
 {% extends 'base.html' %} 
 
-{% block title %} &ndash; Market{% endblock title %} 
+{% block title %} &ndash; Justhink Marketi{% endblock title %} 
 
 {% block daily_summary %} 
 
@@ -37,7 +37,20 @@
           <p class="product-description">{{ product.product_description }}</p>
           <div class="product-details">
             <span class="product-fee">Ücret: <span>{{ product.product_fee }} Puan</span></span>
-            {% if product.product_name in profile.shop_bought_products %}
+            {% if product.product_name == "Thinker Tema" %}
+            {% if profile.web_theme == "default-theme" or profile.web_theme == "Thinker Tema" %} 
+            <a href="#" class="btn btn--primary product-active" data-product="{{ product.product_name }}" data-fee = "{{ product.product_fee }}" data-niche = "theme">
+
+              Aktif</a>
+            {% else %} 
+            <a href="#" class="btn btn--primary product-use" data-product="{{ product.product_name }}" data-fee = "{{ product.product_fee }}" data-niche = "theme">
+
+              Kullan</a>
+              {% csrf_token %}
+            {% endif %}
+ 
+
+            {% elif product.product_name in profile.shop_bought_products %}
             {% if profile.web_theme == product.product_name %} 
             <a href="#" class="btn btn--primary product-active" data-product="{{ product.product_name }}" data-fee = "{{ product.product_fee }}" data-niche = "theme">
 

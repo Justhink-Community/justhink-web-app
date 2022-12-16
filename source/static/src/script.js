@@ -149,3 +149,4 @@ productUseBtns.forEach(productUseBtn => {
       success: function(res) { window.location.reload() } 
     })
   });
+

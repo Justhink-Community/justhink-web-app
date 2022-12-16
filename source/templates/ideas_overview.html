@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% block title %} &ndash; Fikirler{% endblock title %}
-
 {% block head %} 
 <link rel="stylesheet" href="/static/styles/ideas_overview.css">
 
@@ -11,6 +9,7 @@
 <script src="/static/src/ideas.js" defer></script>
 {% endblock %}
 
+{% block title %} &ndash; Rastgele Fikir{% endblock %}
 
 {% block main %} 
 
@@ -71,7 +70,7 @@
   <section class="idea-administration">
     <div class="user-copyright">
       <p>
-        Bugünkü konunun geliştirilmesinde katkıda bulunan <span>{{ topic.topic_suggested_user.username }}</span>'a teşekkür ederiz.
+        Bugünkü konunun geliştirilmesinde katkıda bulunan <span>justhink</span>'e teşekkür ederiz.
       </p>
     </div>
     <a href="#" class="purple-box information-topic" aria-label="Konu hakkında fikir almak için tıkla.">

@@ -71,18 +71,25 @@ class Topic(models.Model):
   topic_name = models.CharField(max_length=100)
   topic_sources = models.TextField()
   topic_keywords = models.CharField(max_length=40)
-  topic_date = models.DateTimeField(auto_created=True)
-  topic_suggested_user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=User.objects.get(models.Q(username = 'justhink')))
+  topic_date = models.DateTimeField()
+#   topic_suggested_user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=User.objects.get(models.Q(username = 'justhink')))
   topic_video_id = models.CharField(max_length=16)
+  topic_rate = models.JSONField(default=dict, null=True, blank=True, editable=True)
 
   def save(self, *args, **kwargs):
-    today = datetime.datetime.now().date()
-    if today != self.topic_date: 
+    today = datetime.datetime.now()
+    if today.date() != self.topic_date.date(): 
+        self.topic_date = today
+        
         not_archived_ideas = Idea.objects.filter(idea_archived = False)
         not_archived_ideas.update(idea_archived = True)
         
         not_archived_comments = Comment.objects.filter(comment_archived = False)
         not_archived_comments.update(comment_archived = True)
+
+        Profile.objects.all().update(user_notifications = {})
+
+        self.topic_rate = {}
         
 
     # t = threading.Thread(target=self.send_mail,)

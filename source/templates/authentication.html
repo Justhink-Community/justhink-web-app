@@ -6,6 +6,9 @@
 
 {% endblock %} 
 
+{% block title %} &ndash; Giriş Yap{% endblock %}
+
+
 {% block main %}
 <div class="wrapper auth">
     <div class="auth__title">
@@ -29,7 +32,7 @@
         {% csrf_token %}
          <div class="auth-box__input-box">
               <label for="username" class="auth-box__label">Kullanıcı adı:</label>
-              <input type="text" name="username" id="username" placeholder="meredith_grey" class="auth-box__input" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" oninvalid="setCustomValidity('Kullanıcı adınız 2 - 20 karakter arasında, alfanumerik bir yapıda olmalı.')" required>
+              <input type="text" name="username" id="username" placeholder="meredith_grey" class="auth-box__input" minlength="2" maxlength="20" oninvalid="setCustomValidity('Kullanıcı adınız 2 - 20 karakter arasında, alfanumerik bir yapıda olmalı.')" required>
          </div>
          <div class="auth-box__input-box">
               <label for="email" class="auth-box__label">Elektronik Posta:</label>

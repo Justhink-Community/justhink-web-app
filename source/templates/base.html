@@ -30,18 +30,19 @@
 
     <title>Justhink{% block title %}{% endblock %}</title>
 
-    {% if profile.web_theme == "Thinker Teması" %}
-      <link rel="stylesheet" href="/static/styles/themes/thinker.css">
+    {% if profile.web_theme == "Thinker Tema" %}
+      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=8">
+    {% elif profile.web_theme == "Ocean Tema" %}
+      <link rel="stylesheet" href="/static/styles/themes/ocean.css?version=9">
+    {% else %}
+    <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=8">
+
     {% endif %}
 
-    {% if profile.web_theme == "Ocean Teması" %}
-      <link rel="stylesheet" href="/static/styles/themes/ocean.css">
-    {% endif %}
-
-    <link rel="stylesheet" href="/static/styles/themes/dark.css">
+    <!-- <link rel="stylesheet" href="/static/styles/themes/dark.css"> -->
     
     {% if user.is_anonymous %}
-    <link rel="stylesheet" href="/static/styles/themes/thinker.css"> 
+    <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=8"> 
     {% endif %}
 
     <link rel="stylesheet" href="/static/fonts/stylesheet.css" />
@@ -494,10 +495,7 @@ JusTHINK sayesinde seçilen günün konusu hakkında editörlerimiz tarafından 
             <ul class="notificaons-list">
               {% for key, notification in profile.user_notifications.items %}
               <li>
-                <a href="{{notification.notification_link}}" class="notification-item {{notification.viewed}} {{key}}" style="color: inherit; text-decoration: none;" onclick=" $.ajax({
-                  type: 'GET',
-                  url: `/view-notification/{{key}}` 
-                })">
+                <a href="/view-notification/{{key}}" class="notification-item {{notification.viewed}} {{key}}" style="color: inherit; text-decoration: none;">
                   <p class="notification-item__content">{{ notification.notification_content }}</p>
                   <p class="notification-item__details">{% get_notification_time notification.notification_details %}</p>
                   <div class="notification-item__image-box">
@@ -1124,7 +1122,7 @@ JusTHINK sayesinde seçilen günün konusu hakkında editörlerimiz tarafından 
               required
             ></textarea>
 
-            <button type="submit" class="btn btn-form publish-idea-submit">
+            <button type="submit" class="btn btn-form publish-idea-submit" onclick="document.querySelector('.publish-idea-box').classList.replace('writing-idea', 'inspecting-ideas')">
               Fikri Paylaş
             </button>
           </form>

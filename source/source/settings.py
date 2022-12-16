@@ -26,12 +26,15 @@ with open(BASE_DIR / 'secret_key.txt') as secret_key_file:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["justhink.net", "www.justhink.net"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "maintenance_mode",
+    "admin_interface",
+    "colorfield",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -51,13 +54,26 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.middleware.security.SecurityMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "maintenance_mode.middleware.MaintenanceModeMiddleware"
 ]
+
+# if True the maintenance-mode will be activated
+MAINTENANCE_MODE = False
+MAINTENANCE_MODE_IGNORE_ADMIN_SITE = True
+MAINTENANCE_MODE_IGNORE_SUPERUSER = True
+
+LANGUAGES = (
+    ("tr", ("Türkçe")),
+    ("en", ("English")),
+)
+USE_I18N = True
 
 ROOT_URLCONF = "source.urls"
 
@@ -125,7 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "tr-TR"
 
 TIME_ZONE = "Europe/Istanbul"
 
@@ -151,7 +167,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost", "http://127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["https://justhink.net", "https://www.justhink.net"]
 
 # EMAIL SETTINGS 
 
@@ -168,10 +184,10 @@ SESSION_COOKIE_AGE = 525948 * 60 * 10
 
 # HTTPS SETTINGS
 
-# SESSION_COOKIE_SECURE = True 
-# CSRF_COOKIE_SECURE = True 
-# SECURE_SSL_REDIRECT = True
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True 
+CSRF_COOKIE_SECURE = True 
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # HSTS SETTINGS 
@@ -182,8 +198,8 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 # USER PRIVACY
 
-# SECURE_REFERRER_POLICY = 'strict-origin'
+SECURE_REFERRER_POLICY = 'strict-origin'
 
 # XSS FILTER
 
-# SECURE_BROWSER_XSS_FILTER = True
+SECURE_BROWSER_XSS_FILTER = True
