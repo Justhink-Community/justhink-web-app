@@ -133,6 +133,16 @@
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.idea__author span:first-child {
+  margin-right: .6rem;
+}
+
+.idea__author span:last-child {
+  margin-left: .3rem;
 }
 
 .idea__text {

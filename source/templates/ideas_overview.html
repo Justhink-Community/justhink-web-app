@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
+{% load groups_extras %}
+
 
 {% block head %} 
-<link rel="stylesheet" href="/static/styles/ideas_overview.css">
+<link rel="stylesheet" href="/static/styles/ideas_overview.css?version={% now 'U' %}">
 
 {% endblock head %}
 
@@ -61,7 +63,8 @@
         </a>
       </div>
       <div class="idea__content">
-        <p class="idea__author">{{ random_idea.idea_author.account.username }}{% if random_idea.idea_author.account.is_superuser %} (admin){% endif %}:</p>
+        <p class="idea__author">
+          <span>{{ random_idea.idea_author.account.username }}</span>{% get_group_icon random_idea.idea_author.account %}<span> :</span></p>
         <p class="idea__text">{{ random_idea.idea_content }} {% if random_idea.idea_content|length >= 500 %} <a style="text-decoration: none; color: inherit; font: inherit;" href="inspect-idea/{{ random_idea.id }}" aria-label="Bu fikir çok uzun, devamını okumak için tıkla."><u>devamını oku</u></a> {% endif %}</p>
       </div>
     </div>

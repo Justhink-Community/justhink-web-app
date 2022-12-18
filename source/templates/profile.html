@@ -1,4 +1,5 @@
 {% extends 'base.html' %} 
+{% load groups_extras %}
 
 {% block head %} 
 <link rel="stylesheet" href="/static/styles/profile.css">
@@ -46,7 +47,7 @@
   </header>
   <div class="profile__details">
     <div class="profile__user-details">
-      <p class="profile__username">{{ user.username }}</p>
+      <p class="profile__username"><span>{{ user.username }}</span> {% get_group_icon user %}</p>
       <ul class="profile__statistics">
         <li class="profile__statistics-item"><span class="profile__statistics-value">0</span><span class="profile__statistics-tag">Takipçi</span></li>
         <li class="profile__statistics-item"><span class="profile__statistics-value">{{ user_ideas|length }}</span><span class="profile__statistics-tag">Fikir</span></li>

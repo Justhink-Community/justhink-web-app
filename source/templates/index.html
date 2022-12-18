@@ -1,7 +1,8 @@
 {% extends 'base.html' %} 
+{% load groups_extras %}
 
 {% block head %}
-<link rel="stylesheet" href="/static/styles/index.css?version=10" />
+<link rel="stylesheet" href="/static/styles/index.css?version={% now 'U' %}" />
 {% endblock head %} 
 
 
@@ -17,7 +18,7 @@
 <div class="wrapper summary-page">
   <div class="article-container">
     <article class="article-side">
-      {{ topic.topic_sources }}
+      {{ topic.topic_sources|linebreaksbr }}
     </article>
     {% if "voted" not in topic.topic_rate or user.username not in topic.topic_rate.voted %}
     <div class="rating-container">
@@ -115,7 +116,8 @@
       </a>
     </div>
     <div class="idea__content">
-      <p class="idea__author">{{ top_idea.idea_author.account.username }}{% if top_idea.idea_author.account.is_superuser %} (admin){% endif %}:</p>
+      <p class="idea__author">
+        <span>{{ top_idea.idea_author.account.username }}</span>{% get_group_icon top_idea.idea_author.account %}<span> :</span></p>
       <p class="idea__text">{{ top_idea.idea_content }} {% if top_idea.idea_content|length >= 500 %} <a style="text-decoration: none; color: inherit; font: inherit;" href="inspect-idea/{{ top_idea.id }}" aria-label="Bu fikir çok uzun! Devamını okumak için tıkla."><u>devamını oku</u></a> {% endif %}</p>
     </div>
     <menu class="idea__administration-menu">

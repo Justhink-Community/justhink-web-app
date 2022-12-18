@@ -51,6 +51,27 @@ POINT_POLICY = {
     },
 }
 
+BADGES = {
+    'ADMINISTRATION_TEAM': 'static/images/badges/admin.svg',
+    'CONTENT_TEAM': 'static/images/badges/content-team.svg',
+    'SOFTWARE_TEAM': 'static/images/badges/software-team.svg',
+    'SOFTWARE_LEAD': 'static/images/badges/software-lead.svg'
+}
+
+
+def get_user_badge(user) -> str:
+    user_groups = [str(group) for group in user.groups.all()]
+
+    if 'Administration Team' in user_groups:
+        user_admin_badge = 'SOFTWARE_LEAD' if 'Software Team' in user_groups else 'ADMINISTRATION_TEAM'
+        return open(BADGES[user_admin_badge], encoding='utf-8').read() 
+    elif 'Content Team' in user_groups:
+        return open(BADGES['CONTENT_TEAM'], encoding='utf-8').read()
+    elif 'Software Team' in user_groups:
+        return open(BADGES['SOFTWARE_TEAM'], encoding='utf-8').read()
+
+    return ''
+
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
@@ -648,7 +669,8 @@ def InspectIdeaView(request, idea_id: int):
                 "comments_count": len(all_comments),
                 "ideas_count": len(ideas),
                 "section": "inspect-idea",
-                "profile": get_user_profile(request.user)
+                "profile": get_user_profile(request.user),
+                "user_icon": get_user_badge(idea_object.idea_author.account)
             },
         )
 

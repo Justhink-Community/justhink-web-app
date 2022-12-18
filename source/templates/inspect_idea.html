@@ -1,7 +1,9 @@
 {% extends 'base.html' %} 
+{% load groups_extras %}
+
 
 {% block head %}
-<link rel="stylesheet" href="/static/styles/idea.css">
+<link rel="stylesheet" href="/static/styles/idea.css?version=11">
 <style>
 
 
@@ -46,7 +48,10 @@
       <div class="idea">
 
         <div class="idea__content">
-          <p class="idea__author">{{ idea.idea_author.account.username }}{% if idea.idea_author.account.is_superuser %} (admin){% endif %}:</p>
+          <p class="idea__author">
+            {{ idea.idea_author.account.username }} 
+            {{ user_icon|safe }}
+            :</p>
           <p class="idea__text">{{ idea.idea_content }}</p>
         </div>
   
@@ -97,7 +102,7 @@
         {% for comment in comments %} 
         <div class="idea-comment idea">
           <div class="idea__content">
-            <p class="idea__author">{{ comment.comment_author.account.username }}{% if comment.comment_author.account.is_superuser %} (admin){% endif %}:</p>
+            <p class="idea__author"><span>{{ comment.comment_author.account.username }}</span>{% get_group_icon comment.comment_author.account %}<span> :</span></p>
             <p class="idea__text">{{ comment.comment_content }}</p>
           </div>
     
@@ -133,7 +138,7 @@
     <div class="send-comment">
       <form method="post" class="send-comment-form">
         {% csrf_token %}
-        <input type="text" name="comment-content" id="comment-content" class="send-comment-textbox" placeholder="Yorum ekle..." required minlength="10" maxlength="500">
+        <input type="text" name="comment-content" id="comment-content" class="send-comment-textbox" placeholder="Yorum ekle..." required minlength="10" maxlength="1000">
         <input type="submit" value="Paylaş" class="send-comment-btn" data-url = "/send-comment/{{idea.id}}"> <!-- setTimeout(() => {document.querySelector('.send-comment-form').reset()}, 100) -->
       </form>
     </div>

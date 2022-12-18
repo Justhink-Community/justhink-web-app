@@ -1,9 +1,9 @@
 
-  #linear-gradient > stop:nth-of-type(1) {
+  linearGradient > stop:nth-of-type(1) {
     stop-color: #009DA4;
   }
 
-  #linear-gradient > stop:nth-of-type(2) {
+  linearGradient > stop:nth-of-type(2) {
     stop-color: #0D1665;
   }
 
@@ -15,7 +15,7 @@
     --background-color: #009BA3
   }
   
-  .header__logo use, .header__logo g path {
+  .header__logo use, .header__logo g path, .header__logo--mobile use, .header__logo--mobile g path {
     --background-color: #028A9B;
   }
   

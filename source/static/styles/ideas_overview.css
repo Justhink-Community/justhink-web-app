@@ -138,7 +138,7 @@
 @media only screen and (max-width: 70em) {
   .wrapper {
     grid-template-columns: 1fr  !important;
-    grid-template-rows: repeat(3, auto) !important;
+    grid-template-rows: repeat(3, 1fr) !important;
     column-gap: 0 !important;
     row-gap: 4.5rem !important;
     width: 80vw !important;

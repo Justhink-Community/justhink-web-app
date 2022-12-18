@@ -1230,6 +1230,7 @@ main {
   color: #777;
 }
 
+
 .header__link {
   text-decoration: none;
   color: var(--color);
@@ -1409,8 +1410,9 @@ main {
     row-gap: clamp(1rem, 1vh, 4rem) !important;
     padding: clamp(1rem, 1vh, 3.6rem) clamp(1rem, 1vw, 2.4rem) !important;
     width: 80vw !important;
+    height: auto;
   }
-
+  
   .latest-ideas {
     width: 80vw !important;
   }
@@ -1433,22 +1435,22 @@ main {
     width: clamp(6rem, 6vh, 11rem) !important;
     height: clamp(6rem, 6vh, 11rem) !important;
     right: clamp(1rem, 2vw, 2rem) !important;
-    bottom: clamp(4rem, 5vh, 7rem) !important;
+    bottom: clamp(4rem, 7vh, 7rem) !important;
   }
 
-  .footer,
-  .social-links {
+  .footer__footer {
     height: clamp(3.5rem, 3.5vh, 5rem) !important;
     align-items: center;
   }
 
   .social-links {
-    padding-right: clamp(1rem, 2vh, 3rem) !important;
-    gap: clamp(0.1rem, 0.75vw, 0.9rem);
+    padding-right: 0 !important;
+    gap: clamp(0.1rem, 1vw, 0.9rem);
   }
 
+
   .social-link {
-    height: clamp(0.5rem, 1.2vh, 2.2rem) !important;
+    font-size: clamp(0.5rem, 1.2vw, 1.6rem) !important;
   }
 
   .idea:nth-of-type(even)::before,
@@ -1479,6 +1481,10 @@ main {
 
   .information-box {
     width: 75vw;
+  }
+
+  .articles {
+    display: none !important;
   }
 }
 

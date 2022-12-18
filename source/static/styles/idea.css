@@ -163,6 +163,19 @@ footer {
 
 @media only screen and (max-width: 37em) {
   .daily-summary_statistics {flex-direction: column !important; gap: 1rem !important; text-align: center;}
+
+  main {
+    grid-template-rows: .5fr 1fr .5fr !important;
+  }
+
+  .daily-summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
 }
 
 @media only screen and (max-width: 80em) {
