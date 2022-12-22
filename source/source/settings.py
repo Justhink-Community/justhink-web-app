@@ -65,9 +65,11 @@ MIDDLEWARE = [
 ]
 
 # if True the maintenance-mode will be activated
-MAINTENANCE_MODE = False
+MAINTENANCE_MODE = True
 MAINTENANCE_MODE_IGNORE_ADMIN_SITE = True
 MAINTENANCE_MODE_IGNORE_SUPERUSER = True
+MAINTENANCE_MODE_IGNORE_STAFF = True
+
 
 LANGUAGES = (
     ("tr", ("Türkçe")),

@@ -49,9 +49,9 @@
 
         <div class="idea__content">
           <p class="idea__author">
-            {{ idea.idea_author.account.username }} 
+            <span>{{ idea.idea_author.account.username }}</span> 
             {{ user_icon|safe }}
-            :</p>
+           <span> :</span></p>
           <p class="idea__text">{{ idea.idea_content }}</p>
         </div>
   

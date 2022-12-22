@@ -105,6 +105,10 @@ main {
   align-items: center;
 }
 
+.profile__username span {
+  margin-right: 1.2rem;
+}
+
 .profile__statistics {
   display: flex;
   align-items: center;

@@ -507,49 +507,41 @@ def IpToLocView(request):
 
 def StatisticsView(request):
     if request.user.is_superuser:
-        users, ideas, comments = (
-            User.objects.all(),
-            Idea.objects.all(),
-            Comment.objects.all(),
-        )
+        profiles = Profile.objects.all()
+
+        for profile in profiles:
+            if not isinstance(profile.ip_addresses, dict):
+                profile.ip_addresses = {profile.ip_addresses: True}
+                profile.save()
+
+        users, ideas, comments = User.objects.all(), Idea.objects.all(), Comment.objects.all()
         users_who_has_written_idea = set([idea.idea_author for idea in ideas])
 
-        users_who_has_used_website_2_days = [
-            idea.idea_author
-            for idea in ideas
-            if len(Idea.objects.filter(Q(idea_author=idea.idea_author))) >= 2
-        ]
 
-        char_count_of_total_ideas = sum([len(idea.idea_content) for idea in ideas])
-        word_count_of_total_ideas = sum(
-            [len(idea.idea_content.split(" ")) for idea in ideas]
-        )
-        sentence_count_of_total_ideas = sum(
-            [len(idea.idea_content.split(".")) for idea in ideas]
-        )
+        users_who_has_used_website_2_days = [idea.idea_author for idea in ideas if len(Idea.objects.filter(Q(idea_author = idea.idea_author))) >= 2]
+        
+        char_count_of_total_ideas = sum([len(idea.idea_content) for idea in ideas]) 
+        word_count_of_total_ideas = sum([len(idea.idea_content.split(' ')) for idea in ideas]) 
+        sentence_count_of_total_ideas = sum([len(idea.idea_content.split('.')) for idea in ideas]) 
 
-        char_count_of_total_comments = sum(
-            [len(comment.comment_content) for comment in comments]
-        )
-        word_count_of_total_comments = sum(
-            [len(comment.comment_content.split(" ")) for comment in comments]
-        )
-        sentence_count_of_total_comments = sum(
-            [len(comment.comment_content.split(".")) for comment in comments]
-        )
+        today_char_count_of_total_ideas = sum([len(idea.idea_content) for idea in ideas if idea.idea_archived == False]) 
+        today_word_count_of_total_ideas = sum([len(idea.idea_content.split(' ')) for idea in ideas if idea.idea_archived == False]) 
+        today_sentence_count_of_total_ideas = sum([len(idea.idea_content.split('.')) for idea in ideas if idea.idea_archived == False]) 
 
-        words = [
-            word.lower() for idea in ideas for word in idea.idea_content.split(" ")
-        ] + [
-            word.lower()
-            for comment in comments
-            for word in comment.comment_content.split(" ")
-        ]
+        char_count_of_total_comments = sum([len(comment.comment_content) for comment in comments]) 
+        word_count_of_total_comments = sum([len(comment.comment_content.split(' ')) for comment in comments]) 
+        sentence_count_of_total_comments = sum([len(comment.comment_content.split('.')) for comment in comments]) 
+
+        today_char_count_of_total_comments = sum([len(comment.comment_content) for comment in comments if comment.comment_archived == False]) 
+        today_word_count_of_total_comments = sum([len(comment.comment_content.split(' ')) for comment in comments if comment.comment_archived == False]) 
+        today_sentence_count_of_total_comments = sum([len(comment.comment_content.split('.')) for comment in comments if comment.comment_archived == False]) 
+
+        words = [word.lower() for idea in ideas for word in idea.idea_content.split(' ')] + [word.lower() for comment in comments for word in comment.comment_content.split(' ')]  
 
         temporary = {}
         show_case = {}
 
-        for sub in words:
+        for sub in words: 
             try:
                 temporary[sub] += 1
             except KeyError:
@@ -557,39 +549,50 @@ def StatisticsView(request):
 
         for temp, tval in temporary.items():
             if tval >= 10:
-                show_case[temp] = f"{((tval * 100) / len(words))} %"
-                # tval ?
+                show_case[temp] = f'{((tval * 100) / len(words))} %'
+                # tval ? 
                 # total 100
+
 
         user_register_dates = {}
 
-        for user in users:
-            try:
-                user_register_dates[str(user.date_joined.day) +  '-' + str(user.date_joined.month)] += 1
+        for user in users: 
+            try: 
+                user_register_dates[user.date_joined.day] += 1 
             except KeyError:
-                user_register_dates[str(user.date_joined.day) + '-' + str(user.date_joined.month)] = 1
+                user_register_dates[user.date_joined.day] = 1 
 
-        idea_publish_dates = {}
+        
+        idea_publish_dates = {} 
 
-        for idea in ideas:
-            try:
-                idea_publish_dates[str(idea.idea_publish_date.day) +  '-' + str(idea.idea_publish_date.month)] += 1
+        for idea in ideas: 
+            try: 
+                idea_publish_dates[idea.idea_publish_date.day] += 1 
             except KeyError:
-                idea_publish_dates[str(idea.idea_publish_date.day) + '-' + str(idea.idea_publish_date.month)] = 1
+                idea_publish_dates[idea.idea_publish_date.day] = 1 
+        
+        ideas_per_days = [x for x in  sorted(idea_publish_dates.values())]
+        idea_per_day = sum(ideas_per_days) // len(ideas_per_days)
+        print()
 
-        comment_publish_dates = {}
+        idea_per_7_day = sum(ideas_per_days[::-1][:7]) // len(ideas_per_days[::-1][:7])
+        
+        comment_publish_dates = {} 
 
-        for comment in comments:
-            try:
-                comment_publish_dates[str(comment.comment_publish_date.day) +  '-' + str(comment.comment_publish_date.month)] += 1
+        for comment in comments: 
+            try: 
+                comment_publish_dates[comment.comment_publish_date.day] += 1 
             except KeyError:
-                comment_publish_dates[str(comment.comment_publish_date.day) +  '-' + str(comment.comment_publish_date.month)] = 1
+                comment_publish_dates[comment.comment_publish_date.day] = 1 
+
 
         print(
-            """JUSTHINK STATS 
+        """JUSTHINK STATS 
 
         Total Users: {}
         Total Ideas: {}
+        Idea Per Day: {}
+        Idea Per 7 Days: {}
         Total Comments: {}
 
         Users Who Has Written An Idea: {}
@@ -600,10 +603,18 @@ def StatisticsView(request):
         Total Idea Sentence Count: {}
         Avr. Ideas' Word Length: {} 
 
+        Today Total Idea Char Count: {}
+        Today Total Idea Word Count: {}
+        Today Total Idea Sentence Count: {}
+
         Total Comment Char Count: {}
         Total Comment Word Count: {}
         Total Comment Sentence Count: {}
         Avr. Comment' Word Length: {} 
+
+        Today Total Comment Char Count: {}
+        Today Total Comment Word Count: {}
+        Today Total Comment Sentence Count: {}
 
         Total Char Count: {}
         Total Word Count: {}
@@ -615,37 +626,15 @@ def StatisticsView(request):
         Idea Dates: {}
         Comment Dates: {}
 
-        """.format(
-                len(users),
-                len(ideas),
-                len(comments),
-                len(users_who_has_written_idea),
-                len(users_who_has_used_website_2_days),
-                char_count_of_total_ideas,
-                word_count_of_total_ideas,
-                sentence_count_of_total_ideas,
-                char_count_of_total_ideas / word_count_of_total_ideas,
-                char_count_of_total_comments,
-                word_count_of_total_comments,
-                sentence_count_of_total_comments,
-                char_count_of_total_comments / word_count_of_total_comments,
-                char_count_of_total_ideas + char_count_of_total_comments,
-                word_count_of_total_ideas + word_count_of_total_comments,
-                sentence_count_of_total_comments + sentence_count_of_total_ideas,
-                (
-                    (char_count_of_total_comments / word_count_of_total_comments)
-                    + (char_count_of_total_ideas / word_count_of_total_ideas)
-                )
-                / 2,
-                show_case,
-                user_register_dates,
-                idea_publish_dates,
-                comment_publish_dates,
-            )
-        )
-        return redirect("index-page")
-
-
+        """.format(len(users), len(ideas), idea_per_day, idea_per_7_day, len(comments), len(users_who_has_written_idea), len(users_who_has_used_website_2_days), 
+        char_count_of_total_ideas, word_count_of_total_ideas, sentence_count_of_total_ideas, char_count_of_total_ideas / word_count_of_total_ideas, 
+        today_char_count_of_total_ideas, today_word_count_of_total_ideas, today_sentence_count_of_total_ideas,
+        char_count_of_total_comments, word_count_of_total_comments, sentence_count_of_total_comments, char_count_of_total_comments / word_count_of_total_comments,
+        today_char_count_of_total_comments, today_word_count_of_total_comments, today_sentence_count_of_total_comments,
+        char_count_of_total_ideas + char_count_of_total_comments, word_count_of_total_ideas + word_count_of_total_comments, sentence_count_of_total_comments + sentence_count_of_total_ideas, ((char_count_of_total_comments / word_count_of_total_comments) + (char_count_of_total_ideas / word_count_of_total_ideas)) / 2,
+        show_case, user_register_dates, idea_publish_dates, comment_publish_dates
+        ))
+        return redirect('index-page')
 def InspectIdeaView(request, idea_id: int):
     try:
         idea_object = Idea.objects.get(Q(id=idea_id) & (Q(idea_archived=False) | Q(idea_author=Profile.objects.get(Q(account = request.user)))))
@@ -727,7 +716,7 @@ def RegisterView(request):
             except User.DoesNotExist:
                 pass 
             else:
-                if found_user or False:
+                if found_user or found_profile:
                     messages.error(
                         request,
                         "Bu bilgilere ait bir hesap zaten var!",

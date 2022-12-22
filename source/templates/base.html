@@ -15,7 +15,7 @@
     />
     <meta
       name="keywords"
-      content="Justhink, justhink, jusTHINK, jusTHİNK, fikir, insanlar, düşünce, etik, süper insanlar, ekşisözlük, twitter, fikirler, düşünceler, ölümsüz, yok olmak, okul, ortam, beyin, fırtına, beyin fırtınası, mindstorming, inovasyon, gündelik, sohbet, akademik tartışma, tartışma"
+      content="Justhink, justhink, jusTHINK, jusTHİNK, fikir, insanlar, düşünce, etik, süper insanlar, ekşisözlük, twitter, fikirler, düşünceler, ölümsüz, yok olmak, okul, ortam, beyin, fırtına, beyin fırtınası, mindstorming, inovasyon, gündelik, sohbet, akademik tartışma, tartışma, inovasyon,fikir,düşünmek,justhiink,bilgi,sözcük,karakter,cümle,düşünce,girişim,platform,fikir paylaşma,fikir paylaşma platformu ,limitless makers,startup,günlük düşünce,günlük fikir,inovatif düşünce,inovatif,akademik,justthink,justhing,justthink,justhınk,justhibk,justink,rutin,alışkanlık,üretim,üretmek,savunmak,fikir paylaş,yorum yap,argüman,metin,mantık,beyin,günlük konu,konu,içerik,yazılım,metin,departman,proje,akademik sohbet,sohbet,duygusal konular,akademik konular,felsefe,felsefi düşünce,teknoloji,teknolojik düşünce,oylama,puan,hesap,tema,kişiselleştirme,yorum,ayarlar,münazara,tartışma,akademik tartışma,elit ortam,elit tartışma,ekip,takım,yazılım ekibi ,yenilik,yenilikçi düşünce,tasarım odaklı düşünce,genç girişimciler,genç girişim,tasarım,misyon,vizyon,düşünme alışkanlığı,fikir üretme alışkanlığı,ifade özgürlüğü,özgürlük,ifade,website,uygulama,internet sitesi,desteklemek,desteklememek,just,liderlik tablosu,sıralama,trendler,favoriler,popülerite,popülerlik,popüler,beğeni,paylaşmak,paylaş ,yaratıcılık,üretkenlik,discord,twitter,instagram,gönderi,reels,video,youtube,eposta,mail,gmail,rekor,genç,yaşlı,öğrenci,yetişkin,hedef kitle,lise,üniversite,etkileşim,erişim,kolay erişim,problem,sorun,çözüm,inovatif çözüm,tarih,bilim,toplum,psikoloji,kişilik testleri,avcılık toplayıcılık,MBTI,yapay zeka,coğrafya mühendisliği,coğrafya ,ekonomi,şirket,marka,ikna etmek,hayvanat bahçeleri,arabalar,benzinli arabalar,elektrikli arabalar,acının kaynağı,aşkın kimyası,başarı,IQ,karizma,anaerkillik,anaerkil toplum,ataerkil toplum,aterkillik,bebek ehliyeti,sanat ,sanatçı,e-kitap,fiziksel kitap,kitap,mars,GDO,Etik,müzeler,sanal müzeler,fiziksel müzeler,nostalji ,nükleer enerji,tıp,endüstri,bilgisayar,telefon,akıllı telefon,cep telefonu,iletişim,kurgu,süper insan,insan,insanlık,ilk insan,çağ,yüzyıl,21.yüzyıl,tarım,çiftçilik,çiftçi,tükenmişlik sendromu,tükenmişlik ,adalet,hukuk,sağlık,sektör,gelcek,geçmiş,şimdi,arkadaşlık,arkadaş,hayat,an,tasarlamak,dizayn,bağlantı,link,şeffaflık,şeffaf ,topluluk,para,üyelik,üye,giriş ,dönüt,feedback,bildirim,dönüş,kavram,tematik,reklam,reklamcılık,artikel,enerji,biyolojik silah,söz,yazı,takas,çalışma,çalışmak,eğitim,değişim,eğitimde değişim,ekolojik sentez,ekoloji,bilim insanı,biyoloji,Kimya,yaşam,yaşam tarzı,alışmak,fikir belirtmek,katılım,her gün,puan sistemi,Alphan Bartu Altıntaş,Aybüke Uludemir,Berkay Şahin,İrem Aslı Baş,Furkan Esen,Kerem Kaya,Öykü Deniz Yaman,Kadircan Tüzüner,Oğulcan Öztürk,Dilau Pala,fizik,modern,kendimi nasıl geliştiririm,kişisel gelişim,bireysel fayda,birey ,halk,dünya,gezegenler,uzay,merak,araştırma,sosyal,sosyal medya,justhinnk,justjınk,justhıng,justhınk,mühendislik,mühendis ,zaman,alışmak,bağımlılık,meredith grey,thinkink app,thinkink  ,justhink uygulaması,justhink website,innovation,idea,topic,daily topic,idea sharing,social media,innovative thinking,new social media,yeni sosyal medya,özgür fikir,günün konusu,hizmet,sağlayıcı,ortam,fikir ortamı,düşünen insanlar,toplumsal bilinç,justhinkk,justtthink,düşünceli,film,kitap,bilgi kütüphanesi,bilgiler,justhink"
     />
     <meta
       name="google-site-verification"
@@ -23,27 +23,27 @@
     />
 
     <link rel="canonical" contenteditable="{{request.path}}">
-    <link rel="home" href="{% url 'index-page' %}">
+    <link rel="home" href="{% url 'index-page' %}"> 
 
     <link rel="icon" type="image/x-icon" href="/static/favicon.svg" />
     <link rel="apple-touch-icon" href="/static/favicon.svg" />
 
     <title>Justhink{% block title %}{% endblock %}</title>
-
-    {% if profile.web_theme == "Thinker Tema" %}
-      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=8">
-    {% elif profile.web_theme == "Ocean Tema" %}
-      <link rel="stylesheet" href="/static/styles/themes/ocean.css?version=14">
-    {% else %}
-    <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=8">
-
-    {% endif %}
-
-    <!-- <link rel="stylesheet" href="/static/styles/themes/dark.css"> -->
     
     {% if user.is_anonymous %}
     <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=8"> 
+    {% elif profile.web_theme == "Thinker Tema" %}
+      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=8">
+    {% elif profile.web_theme == "Ocean Tema" %}
+      <link rel="stylesheet" href="/static/styles/themes/ocean.css?version=14">
+    {% elif profile.web_theme == "Forest Tema" %}
+      <link rel="stylesheet" href="/static/styles/themes/forest.css?version={% now 'U' %}">
+    {% else %}
+      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=8">
     {% endif %}
+
+    <!-- <link rel="stylesheet" href="/static/styles/themes/dark.css"> -->
+
 
     <link rel="stylesheet" href="/static/fonts/stylesheet.css" />
     <link rel="stylesheet" href="/static/styles/base.css?version={% now 'U' %}" />
@@ -182,7 +182,7 @@
             
           }
           document.querySelector('body').classList.add('fully-loaded')
-          let vpnDetected = detectVPN()
+          // let vpnDetected = detectVPN()
       }
       document.addEventListener("DOMContentLoaded", fixBackground);
 
