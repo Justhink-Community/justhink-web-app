@@ -40,6 +40,16 @@ main {
 
 /* AUTH TITLE  */
 
+.auth__heading,
+.auth__description {
+  --color: #4D1B60;
+}
+
+.auth-box {
+  --background-color: #987FA2;
+}
+
+
 .auth__heading {
     font-size: 5.6rem;
     font-weight: 400;

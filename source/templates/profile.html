@@ -1,14 +1,15 @@
 {% extends 'base.html' %} 
 {% load groups_extras %}
+{% load themes_extras %}
 
 {% block head %} 
-<link rel="stylesheet" href="/static/styles/profile.css?version={% now 'U' %}">
+<link rel="stylesheet" href="/static/styles/profile.css?version=50">
 {% endblock %} 
 
 {% block main %} 
 <div class="profile-card">
   <header class="profile__header">
-    <img src="https://media.discordapp.net/attachments/1017446589331152969/1048644892626255902/image.png?width=1394&height=359" alt="{{ user.username }} isimli kullanıcının banner'ı" class="profile__banner">
+    <img src="/static/banners/{% get_theme_banner profile.web_theme %}" alt="{{ user.username }} isimli kullanıcının banner'ı" class="profile__banner">
     <a href="#" class="profile__header-link profile__change-banner">
       <svg class="profile__header-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
         <path fill="currentColor" d="M12 17.5q1.875 0 3.188-1.312Q16.5 14.875 16.5 13q0-1.875-1.312-3.188Q13.875 8.5 12 8.5q-1.875 0-3.188 1.312Q7.5 11.125 7.5 13q0 1.875 1.312 3.188Q10.125 17.5 12 17.5Zm0-2q-1.05 0-1.775-.725Q9.5 14.05 9.5 13q0-1.05.725-1.775Q10.95 10.5 12 10.5q1.05 0 1.775.725q.725.725.725 1.775q0 1.05-.725 1.775q-.725.725-1.775.725ZM4 21q-.825 0-1.412-.587Q2 19.825 2 19V7q0-.825.588-1.412Q3.175 5 4 5h3.15L9 3h6l1.85 2H20q.825 0 1.413.588Q22 6.175 22 7v12q0 .825-.587 1.413Q20.825 21 20 21Zm16-2V7h-4.05l-1.825-2h-4.25L8.05 7H4v12Zm-8-6Z"/>
@@ -42,7 +43,7 @@
         </li>
       </ul>
     </nav>
-    <img src="/static/black_logo.svg" alt="{{ user.username }} isimli kullanıcının profil fotoğrafı" class="profile__photo">
+    <img src="/static/logos/{% get_theme_logo profile.web_theme %}" alt="{{ user.username }} isimli kullanıcının profil fotoğrafı" class="profile__photo">
 
   </header>
   <div class="profile__details">

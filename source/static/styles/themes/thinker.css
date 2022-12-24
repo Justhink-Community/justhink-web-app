@@ -20,13 +20,18 @@
   }
   
   .btn--primary, .rating {
-    --background-color: hsl(284, 57%, 24%);
+    --background-color: hsl(284, 57%, 24%); 
     --hover-background-color: #5a2a76;
   }
   
   .header__notifications {
     --color: hsl(284, 57%, 24%);
     --hover-color: hsl(285, 28%, 39%);
+  }
+
+  
+  .notification-item.False::before {
+    --background-color: #4d1a5f;
   }
   
   .header__language-switch {
@@ -250,16 +255,14 @@
 
   /* AUTHENTICATION  */
 
-  .auth__heading,
-  .auth__description {
-    --color: #4D1B60  
+  .my-account__link {
+    --hover-color: #48135c;
   }
 
-  .auth-box {
-    --background-color: #987FA2;
-  }
 
-  .publish-idea-container,
-  .publish-idea__textarea {
-    --color: #eee;
+  /* SHOP  */
+  
+  .confirm-purchase__btn--confirm {
+    --background-color: #4d1a5f;
+    --hover-background-color: #51266a;
   }

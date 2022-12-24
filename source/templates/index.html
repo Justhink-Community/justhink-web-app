@@ -2,7 +2,7 @@
 {% load groups_extras %}
 
 {% block head %}
-<link rel="stylesheet" href="/static/styles/index.css?version={% now 'U' %}" />
+<link rel="stylesheet" href="/static/styles/index.css?version=50" />
 {% endblock head %} 
 
 
@@ -20,6 +20,7 @@
     <article class="article-side">
       {{ topic.topic_sources|linebreaksbr }}
     </article>
+    {% if user.is_authenticated %}
     {% if "voted" not in topic.topic_rate or user.username not in topic.topic_rate.voted %}
     <div class="rating-container">
       <p class="rating-text">Günün konusunu oylayın:</p>
@@ -52,6 +53,7 @@
         </a>
       </div>
     </div>
+    {% endif %}
     {% endif %}
   </div>
   

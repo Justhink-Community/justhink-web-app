@@ -78,6 +78,26 @@ def get_client_ip(request):
         ip = x_forwarded_for.split(',')[0]
     else:
         ip = request.META.get('REMOTE_ADDR')
+
+    try:
+        found_profile = Profile.objects.get(Q(ip_addresses__has_key = ip))
+    except Profile.DoesNotExist:
+        pass 
+    else:
+        if found_profile and (request.user.is_anonymous or found_profile.account != request.user):
+            try:
+                user_profile = Profile.objects.get(account=request.user)
+            except:
+                ip = '{}.{}.{}.{}'.format(*random.sample(range(0,255),4))
+                return ip
+            else: 
+                print(not isinstance(user_profile.ip_addresses, dict), len(user_profile.ip_addresses) < 2)
+                if not isinstance(user_profile.ip_addresses, dict) or len(user_profile.ip_addresses) < 2:
+                    ip = '{}.{}.{}.{}'.format(*random.sample(range(0,255),4))
+                    return ip
+                else:
+                    return list(user_profile.ip_addresses.keys())[1]
+
     return ip
 
 def get_time_span(compared):
@@ -489,7 +509,7 @@ def IdeasOverview(request):
         {
             "profile": get_user_profile(request.user),
             "topic": Topic.objects.first(),
-            "random_idea": random.choice(ideas) if len(ideas) >= 2 else ideas,
+            "random_idea": random.choice(ideas) if len(ideas) >= 2 else ideas[0],
             "comments_count": len(comments),
             "ideas_count": len(ideas),
             "section": "idea-overview",
@@ -635,9 +655,13 @@ def StatisticsView(request):
         show_case, user_register_dates, idea_publish_dates, comment_publish_dates
         ))
         return redirect('index-page')
+
 def InspectIdeaView(request, idea_id: int):
     try:
-        idea_object = Idea.objects.get(Q(id=idea_id) & (Q(idea_archived=False) | Q(idea_author=Profile.objects.get(Q(account = request.user)))))
+        if request.user.is_anonymous:
+            idea_object = Idea.objects.get(Q(id=idea_id) & Q(idea_archived=False))
+        else:
+            idea_object = Idea.objects.get(Q(id=idea_id) & (Q(idea_archived=False) | Q(idea_author=Profile.objects.get(Q(account = request.user)))))
         comments = (
             Comment.objects.filter(comment_idea=idea_object)
             .order_by("comment_like_count")
@@ -784,8 +808,6 @@ def RegisterView(request):
                     extra_tags=NOTIFICATION_TAGS["error"],
                 )
 
-    return redirect("index-page")
-
     return redirect('authentication')
 
 @user_passes_test(lambda u: not u.is_anonymous)
@@ -815,7 +837,7 @@ def PublishIdeaView(request):
             "Bu işlem için giriş yapman gerekiyor!",
             extra_tags=NOTIFICATION_TAGS["error"],
         )
-        return redirect(request.META["HTTP_REFERER"])
+        return redirect('authentication')
 
     if request.POST:
         idea_content = request.POST["idea-content"]
@@ -842,7 +864,7 @@ def LikePostView(request, post_id: int):
             "Bu işlem için giriş yapman gerekiyor!",
             extra_tags=NOTIFICATION_TAGS["error"],
         )
-        return redirect("index-page")
+        return redirect('authentication')
 
     try:
         idea_object = Idea.objects.get(id=post_id)
@@ -887,7 +909,7 @@ def SendCommentView(request, idea_id: int):
             "Bu işlem için giriş yapman gerekiyor!",
             extra_tags=NOTIFICATION_TAGS["error"],
         )
-        return redirect('index-page')
+        return redirect('authentication')
     if request.POST:
         try:
             idea_object = Idea.objects.get(id=idea_id)
@@ -929,7 +951,7 @@ def LikeCommentView(request, idea_id: int,  comment_id: int):
           "Bu işlem için giriş yapman gerekiyor!",
           extra_tags=NOTIFICATION_TAGS["error"],
       )
-      return redirect(request.META['HTTP_REFERER'])
+      return redirect('authentication')
   
     try:
         comment_object = Comment.objects.get(id=comment_id)
@@ -978,7 +1000,7 @@ def DislikeCommentView(request, idea_id: int, comment_id: int):
             "Bu işlem için giriş yapman gerekiyor!",
             extra_tags=NOTIFICATION_TAGS["error"],
         )
-        return redirect(request.META["HTTP_REFERER"])
+        return redirect('authentication')
 
     try:
         comment_object = Comment.objects.get(id=comment_id)

@@ -72,7 +72,7 @@ class Topic(models.Model):
   topic_sources = models.TextField()
   topic_keywords = models.CharField(max_length=40)
   topic_date = models.DateTimeField()
-#   topic_suggested_user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=User.objects.get(models.Q(username = 'justhink')))
+  topic_suggested_user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=User.objects.get(models.Q(username = 'justhink')))
   topic_video_id = models.CharField(max_length=16)
   topic_rate = models.JSONField(default=dict, null=True, blank=True, editable=True)
 

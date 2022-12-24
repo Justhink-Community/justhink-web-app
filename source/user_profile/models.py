@@ -23,7 +23,7 @@ class Profile(models.Model):
     total_logged_time = models.DurationField(editable=False)
     last_logged_in = models.DateTimeField(editable=False)
 
-    total_point = models.IntegerField(default=0, editable=True)
+    total_point = models.IntegerField(default=0, editable=False)
     login_strike = models.IntegerField(default=0, editable=False, null=False)
 
     # PROFILE FIELDS

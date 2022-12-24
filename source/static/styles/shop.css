@@ -189,14 +189,14 @@ body {
 }
 
 .confirm-purchase__btn--confirm {
-  background-color: #4d1a5f;
+  background-color: var(--background-color); /* 4d1a5f  51266a */
   color: #fafafa;
   border-bottom-left-radius: 0rem;
   border-bottom-right-radius: 0.3rem;
 }
 
 .confirm-purchase__btn.confirm-purchase__btn--confirm:hover {
-  background-color: #51266a;
+  background-color: var(--hover-background-color);
 }
 
 @media only screen and (max-width: 50em) {

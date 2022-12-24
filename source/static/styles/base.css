@@ -432,6 +432,12 @@ main {
   text-decoration: none; color: var(--color); font-weight: 400
 }
 
+
+.publish-idea-container,
+.publish-idea__textarea {
+  --color: #eee;
+}
+
 .publish-idea-container {
   visibility: hidden;
   opacity: 0;
@@ -459,6 +465,10 @@ main {
   font: inherit;
   border: 1px solid #ccc;
   border-radius: 3px;
+}
+
+.publish-idea__input-label {
+  color: #efeefe;
 }
 
 .publish-idea__textarea::-webkit-input-placeholder {
@@ -1051,7 +1061,7 @@ main {
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-  background-color: #4d1a5f;
+  background-color: var(--background-color); /*  4d1a5f */
 }
 
 .notification-item:not(:last-child)::after {
@@ -1163,6 +1173,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
+  margin-right: auto;
+
 }
 
 .my-account__information--id {
@@ -1213,7 +1225,7 @@ main {
 .my-account__link:hover,
 .my-account__link:active {
   background-color: #e4e4e4;
-  color: #48135c;
+  color: var(--hover-color); /* 48135c */
 }
 
 .my-account__link:hover svg,
