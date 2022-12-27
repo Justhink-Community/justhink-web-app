@@ -32,17 +32,17 @@
     <title>Justhink{% block title %}{% endblock %}</title>
     
     {% if user.is_anonymous %}
-      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=50"> 
+      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=52"> 
     {% elif profile.web_theme == "Thinker Tema" %}
-      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=50">
+      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=52">
     {% elif profile.web_theme == "Ocean Tema" %}
-      <link rel="stylesheet" href="/static/styles/themes/ocean.css?version=50">
+      <link rel="stylesheet" href="/static/styles/themes/ocean.css?version=55">
     {% elif profile.web_theme == "Forest Tema" %}
-      <link rel="stylesheet" href="/static/styles/themes/forest.css?version=50">
+      <link rel="stylesheet" href="/static/styles/themes/forest.css?version=52">
     {% elif profile.web_theme == "Sand Tema" %}
-      <link rel="stylesheet" href="/static/styles/themes/sand.css?version=50">
+      <link rel="stylesheet" href="/static/styles/themes/sand.css?version=52">
     {% else %}
-      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=50">
+      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=52">
     {% endif %}
 
     <!-- <link rel="stylesheet" href="/static/styles/themes/dark.css"> -->
@@ -50,7 +50,7 @@
 
     <link rel="stylesheet" href="/static/fonts/stylesheet.css?version=50" />
     <link rel="stylesheet" href="/static/styles/base.css?version=50" />
-    <link rel="stylesheet" href="/static/styles/utilities.css?version=50" />
+    <link rel="stylesheet" href="/static/styles/utilities.css?version=51" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6939739457122929"
@@ -489,7 +489,7 @@ JusTHINK sayesinde seçilen günün konusu hakkında editörlerimiz tarafından 
             <ul class="notificaons-list">
               {% for key, notification in profile.user_notifications.items %}
               <li>
-                <a href="/view-notification/{{key}}" class="notification-item {{notification.viewed}} {{key}}" style="color: inherit; text-decoration: none;">
+                <a href="/view-notification/{{key}}" target="{% if key == 'GenelAnket' %}_blank{% else %}_self{% endif %}" class="notification-item {{notification.viewed}} {{key}}" style="color: inherit; text-decoration: none;">
                   <p class="notification-item__content">{{ notification.notification_content }}</p>
                   <p class="notification-item__details">{% get_notification_time notification.notification_details %}</p>
                   <div class="notification-item__image-box">

@@ -3,7 +3,7 @@
 
 
 {% block head %}
-<link rel="stylesheet" href="/static/styles/idea.css?version=11">
+<link rel="stylesheet" href="/static/styles/idea.css?version={% now 'U' %}">
 <style>
 
 
@@ -99,39 +99,50 @@
       </div> 
   
       <div class="idea-comments">
-        {% for comment in comments %} 
-        <div class="idea-comment idea">
-          <div class="idea__content">
-            <p class="idea__author"><span>{{ comment.comment_author.account.username }}</span>{% get_group_icon comment.comment_author.account %}<span> :</span></p>
-            <p class="idea__text">{{ comment.comment_content }}</p>
-          </div>
-    
-          <div class="idea__interaction-btns">
-            <a href="/like-comment/{{ idea.id }}/{{ comment.id }}" class="idea__like-btn idea__btn" aria-label="Bu yorumu beğenmek için tıkla.">
-              <svg class="idea__interaction-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
-              </svg>
-
-              <p class="idea__like-count idea__counter">
-                {{ comment.comment_like_count }}
-              </p>
-            </a>
-            <a
-              href="/dislike-comment/{{ idea.id }}/{{ comment.id }}"
-              class="idea__comment-btn idea__btn"
-              aria-label="Bu yorumu beğenmemek için tıkla."
-            >
-            <svg class="idea__interaction-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
+        {% if comments|length > 0 %} 
+          <a href="{{ redirect_to }}" class="sort-by">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M8 18H4q-.425 0-.712-.288Q3 17.425 3 17t.288-.712Q3.575 16 4 16h4q.425 0 .713.288Q9 16.575 9 17t-.287.712Q8.425 18 8 18ZM20 8H4q-.425 0-.712-.287Q3 7.425 3 7t.288-.713Q3.575 6 4 6h16q.425 0 .712.287Q21 6.575 21 7t-.288.713Q20.425 8 20 8Zm-6 5H4q-.425 0-.712-.288Q3 12.425 3 12t.288-.713Q3.575 11 4 11h10q.425 0 .713.287q.287.288.287.713t-.287.712Q14.425 13 14 13Z"/>
             </svg>
-              <p class="idea__comment-count idea__counter">
-                {{ comment.comment_dislike_count }}
-              </p>
-            </a>
-  
+            <div class="sort-method">{{ sort_msg }}</div>
+          </a>
+          {% for comment in comments %} 
+          <div class="idea-comment idea">
+            <div class="idea__content">
+              <p class="idea__author"><span>{{ comment.comment_author.account.username }}</span>{% get_group_icon comment.comment_author.account %}<span> :</span></p>
+              <p class="idea__text">{{ comment.comment_content }}</p>
+            </div>
+      
+            <div class="idea__interaction-btns">
+              <a href="/like-comment/{{ idea.id }}/{{ comment.id }}" class="idea__like-btn idea__btn" aria-label="Bu yorumu beğenmek için tıkla.">
+                <svg class="idea__interaction-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/>
+                </svg>
+
+                <p class="idea__like-count idea__counter">
+                  {{ comment.comment_like_count }}
+                </p>
+              </a>
+              <a
+                href="/dislike-comment/{{ idea.id }}/{{ comment.id }}"
+                class="idea__comment-btn idea__btn"
+                aria-label="Bu yorumu beğenmemek için tıkla."
+              >
+              <svg class="idea__interaction-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M19 12.998H5v-2h14z"/>
+              </svg>
+                <p class="idea__comment-count idea__counter">
+                  {{ comment.comment_dislike_count }}
+                </p>
+              </a>
+    
+            </div>
           </div>
-        </div>
-        {% endfor %}
+          {% endfor %}
+        {% endif %}
+
+        
+  
       </div>
     </div>
 

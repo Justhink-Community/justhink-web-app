@@ -156,8 +156,33 @@ footer {
 }
 
 
-/* ARTICLES  */
+/* SORTING  */
 
+.sort-by {
+  margin-top: 1.6rem;
+  margin-bottom: 1.2rem;
+  display: inline-flex;
+  margin-left: 1.5rem;
+  padding: .5rem;
+  gap: .4rem;
+  align-items: center;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: .3rem;
+  transition: all .2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.sort-by:hover {
+  background-color: hsl(0, 0%, 91%);
+}
+
+.sort-by svg {
+  font-size: 2rem;
+}
+
+/* ARTICLES  */
 
 
 
@@ -175,6 +200,12 @@ footer {
     align-items: center;
   }
 
+  .sort-by {
+    padding: 0;
+    margin-left: clamp(1rem,1vw,2.4rem);
+    margin-bottom: .6rem;
+    margin-top: .8rem;
+  }
 
 }
 

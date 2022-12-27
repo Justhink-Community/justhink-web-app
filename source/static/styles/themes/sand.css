@@ -1,4 +1,8 @@
-
+:root {
+  --custom-hover-color: hsl(5, 60%, 96%);
+}
+  
+  
   linearGradient > stop:nth-of-type(1) {
     stop-color: #DB7439;
   }

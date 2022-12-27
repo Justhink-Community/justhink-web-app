@@ -3,6 +3,9 @@ import random
 import string
 import httpagentparser
 import random
+import os
+import sys
+import magic
 
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -18,7 +21,7 @@ from idea.models import Idea, Comment, Topic, Update, Product
 from django.template import Context
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
@@ -26,10 +29,13 @@ from django.core.mail import get_connection, EmailMultiAlternatives
 
 from idea.models import send_mass_html_mail
 
+from django.conf import settings
+
 from django.core.cache import cache
 
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+from django.core.management import call_command
 
 NOTIFICATION_TAGS = {
     "success": "/static/images/icons/check-circle-outline.svg",
@@ -72,31 +78,32 @@ def get_user_badge(user) -> str:
 
     return ''
 
-def get_client_ip(request):
+def get_client_ip(request, method: str = "classic"):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
         ip = x_forwarded_for.split(',')[0]
     else:
         ip = request.META.get('REMOTE_ADDR')
 
-    try:
-        found_profile = Profile.objects.get(Q(ip_addresses__has_key = ip))
-    except Profile.DoesNotExist:
-        pass 
-    else:
-        if found_profile and (request.user.is_anonymous or found_profile.account != request.user):
-            try:
-                user_profile = Profile.objects.get(account=request.user)
-            except:
-                ip = '{}.{}.{}.{}'.format(*random.sample(range(0,255),4))
-                return ip
-            else: 
-                print(not isinstance(user_profile.ip_addresses, dict), len(user_profile.ip_addresses) < 2)
-                if not isinstance(user_profile.ip_addresses, dict) or len(user_profile.ip_addresses) < 2:
+    if method == "classic":
+        try:
+            found_profile = Profile.objects.get(Q(ip_addresses__has_key = ip))
+        except Profile.DoesNotExist:
+            pass 
+        else:
+            if found_profile and (request.user.is_anonymous or found_profile.account != request.user):
+                try:
+                    user_profile = Profile.objects.get(account=request.user)
+                except:
                     ip = '{}.{}.{}.{}'.format(*random.sample(range(0,255),4))
                     return ip
-                else:
-                    return list(user_profile.ip_addresses.keys())[1]
+                else: 
+                    # print(not isinstance(user_profile.ip_addresses, dict), len(user_profile.ip_addresses) < 2)
+                    if not isinstance(user_profile.ip_addresses, dict) or len(user_profile.ip_addresses) < 2:
+                        ip = '{}.{}.{}.{}'.format(*random.sample(range(0,255),4))
+                        return ip
+                    else:
+                        return list(user_profile.ip_addresses.keys())[1]
 
     return ip
 
@@ -226,7 +233,29 @@ def IncrementLogin(request):
               }
               
             
-
+            if today_topic.topic_survey['active']:
+            
+                try:
+                    user_profile.user_notifications[today_topic.topic_survey['survey_name']]
+                except TypeError:
+                    user_profile.user_notifications = {}
+                    
+                    user_profile.user_notifications[today_topic.topic_survey['survey_name']] = {
+                        'notification_content': 'Yeni anketiniz var: ' + today_topic.topic_survey['survey_name'],
+                        'notification_details': str(today_topic.topic_date),
+                        'notification_image': 'robot',
+                        'notification_link': today_topic.topic_survey['survey_url'],
+                        'viewed': False
+                    }
+                except KeyError: 
+                
+                    user_profile.user_notifications[today_topic.topic_survey['survey_name']] = {
+                        'notification_content': 'Yeni anketiniz var: ' + today_topic.topic_survey['survey_name'],
+                        'notification_details': str(today_topic.topic_date),
+                        'notification_image': 'robot',
+                        'notification_link': today_topic.topic_survey['survey_url'],
+                        'viewed': False
+                    }
             user_profile.save()
 
 
@@ -558,29 +587,15 @@ def StatisticsView(request):
 
         words = [word.lower() for idea in ideas for word in idea.idea_content.split(' ')] + [word.lower() for comment in comments for word in comment.comment_content.split(' ')]  
 
-        temporary = {}
-        show_case = {}
-
-        for sub in words: 
-            try:
-                temporary[sub] += 1
-            except KeyError:
-                temporary[sub] = 1
-
-        for temp, tval in temporary.items():
-            if tval >= 10:
-                show_case[temp] = f'{((tval * 100) / len(words))} %'
-                # tval ? 
-                # total 100
 
 
         user_register_dates = {}
 
         for user in users: 
             try: 
-                user_register_dates[user.date_joined.day] += 1 
+                user_register_dates[f'{user.date_joined.day}-{user.date_joined.month}'] += 1 
             except KeyError:
-                user_register_dates[user.date_joined.day] = 1 
+                user_register_dates[f'{user.date_joined.day}-{user.date_joined.month}'] = 1 
 
         
         idea_publish_dates = {} 
@@ -604,7 +619,6 @@ def StatisticsView(request):
                 comment_publish_dates[comment.comment_publish_date.day] += 1 
             except KeyError:
                 comment_publish_dates[comment.comment_publish_date.day] = 1 
-
 
         print(
         """JUSTHINK STATS 
@@ -641,7 +655,7 @@ def StatisticsView(request):
         Total Sentence Count: {}
         Avr. Word Length: {}
 
-        Max Used Words: {}
+        Max Used Words: 
         User Dates: {}
         Idea Dates: {}
         Comment Dates: {}
@@ -652,21 +666,28 @@ def StatisticsView(request):
         char_count_of_total_comments, word_count_of_total_comments, sentence_count_of_total_comments, char_count_of_total_comments / word_count_of_total_comments,
         today_char_count_of_total_comments, today_word_count_of_total_comments, today_sentence_count_of_total_comments,
         char_count_of_total_ideas + char_count_of_total_comments, word_count_of_total_ideas + word_count_of_total_comments, sentence_count_of_total_comments + sentence_count_of_total_ideas, ((char_count_of_total_comments / word_count_of_total_comments) + (char_count_of_total_ideas / word_count_of_total_ideas)) / 2,
-        show_case, user_register_dates, idea_publish_dates, comment_publish_dates
+        user_register_dates, idea_publish_dates, comment_publish_dates
         ))
         return redirect('index-page')
 
-def InspectIdeaView(request, idea_id: int):
+def InspectIdeaView(request, idea_id: int, sorting_method: str = "sort-by-date"):
     try:
         if request.user.is_anonymous:
             idea_object = Idea.objects.get(Q(id=idea_id) & Q(idea_archived=False))
         else:
             idea_object = Idea.objects.get(Q(id=idea_id) & (Q(idea_archived=False) | Q(idea_author=Profile.objects.get(Q(account = request.user)))))
-        comments = (
-            Comment.objects.filter(comment_idea=idea_object)
-            .order_by("comment_like_count")
-            .reverse()
-        )
+        if sorting_method == "sort-by-date":
+            comments = (
+                Comment.objects.filter(comment_idea=idea_object)
+                .order_by("comment_publish_date")
+                
+            )
+        else: 
+            comments = (
+                Comment.objects.filter(comment_idea=idea_object)
+                .order_by("comment_like_count")
+                .reverse()
+            )
     except Idea.DoesNotExist:
         return redirect("index-page")
     else:
@@ -683,7 +704,9 @@ def InspectIdeaView(request, idea_id: int):
                 "ideas_count": len(ideas),
                 "section": "inspect-idea",
                 "profile": get_user_profile(request.user),
-                "user_icon": get_user_badge(idea_object.idea_author.account)
+                "user_icon": get_user_badge(idea_object.idea_author.account),
+                "redirect_to": f"/inspect-idea/{idea_id}/sort-by-likes" if sorting_method == "sort-by-date" else f"/inspect-idea/{idea_id}/sort-by-date",
+                "sort_msg": "Tarihe Göre" if sorting_method == "sort-by-date" else "Beğeniye Göre",
             },
         )
 
@@ -736,7 +759,7 @@ def RegisterView(request):
 
             try:
                 found_user = User.objects.filter(Q(username=username) | Q(email=email))
-                found_profile = Profile.objects.filter(Q(ip_addresses__has_key = get_client_ip(request)))
+                found_profile = Profile.objects.filter(Q(ip_addresses__has_key = get_client_ip(request, 'server')))
             except User.DoesNotExist:
                 pass 
             else:
@@ -1090,3 +1113,42 @@ def RateTopicView(request):
             return redirect('index-page')
         else:
             return redirect('index-page')
+
+def DailyResetView(request, token: str):   
+    if token == "DAILY_RESET" and get_client_ip(request, 'server') == '37.59.221.234':
+        mail = EmailMessage('Günlük Veritabanı Yedeği Alındı - justhink.net', 'Bugüne ait veritabanı yedeğinin SQL ve JSON dosyaları.', settings.EMAIL_HOST_USER, ['furkanesen1900@gmail.com', 'ogulcanozturk72@gmail.com'])
+        backup_file_name = fr'C:\Users\Administrator\Desktop\Database Backups\Daily Backups\Database Backup'
+        sysout = sys.stdout
+        with open(f'{backup_file_name}.json' , 'w+', encoding='utf-8') as f:
+            sys.stdout = f 
+            call_command('dumpdata',)
+            sys.stdout = sysout
+        
+        with open(f'{backup_file_name}.json' , 'r', encoding='utf-8') as f:
+            mime = magic.Magic(mime=True)
+            mail.attach(f.name, f.read(), mime.from_file(f'{backup_file_name}.json'))
+
+        sysout = sys.stdout
+        with open(f'{backup_file_name}.sql' , 'w+', encoding='utf-8') as f:
+            sys.stdout = f 
+            call_command('dumpdata',)
+            sys.stdout = sysout
+
+        with open(f'{backup_file_name}.sql' , 'r', encoding='utf-8') as f:
+            mime = magic.Magic(mime=True)
+            mail.attach(f.name, f.read(), mime.from_file(f'{backup_file_name}.sql'))
+        mail.send()
+
+        not_archived_ideas = Idea.objects.filter(idea_archived = False)
+        not_archived_ideas.update(idea_archived = True)
+        
+        not_archived_comments = Comment.objects.filter(comment_archived = False)
+        not_archived_comments.update(comment_archived = True)
+
+        Profile.objects.all().update(user_notifications = {})
+
+        topic = Topic.objects.first()
+        topic.topic_rate = {}
+        topic.save()
+
+    return redirect('index-page')

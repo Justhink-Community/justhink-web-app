@@ -28,7 +28,8 @@ from .views import (
     ViewNotificationView,
     ForgotPasswordView,
     ChangeThemeView,
-    RateTopicView
+    RateTopicView,
+    DailyResetView
 )
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSiteMap 
@@ -63,10 +64,12 @@ urlpatterns = [
     path("publish-idea", PublishIdeaView, name="publish-idea-page"),
     path("like-idea/<int:post_id>", LikePostView, name="like-post-page"),
     path("inspect-idea/<int:idea_id>", InspectIdeaView, name="inspect-idea-page"),
+    path("inspect-idea/<int:idea_id>/<str:sorting_method>", InspectIdeaView, name="inspect-idea-page-sorted"),
     path("send-comment/<int:idea_id>", SendCommentView, name = 'send-comment-page'),
     path('like-comment/<int:idea_id>/<int:comment_id>', LikeCommentView, name = 'like-comment-page'),
     path('dislike-comment/<int:idea_id>/<int:comment_id>', DislikeCommentView, name = 'dislike-comment-page'),
     path('profile', ProfileView, name = 'profile-page'),
     path('view-notification/<str:notification_key>', ViewNotificationView, name = 'view-notification-page'),
-    path('rate-topic', RateTopicView, name = 'rate-topic-page')
+    path('rate-topic', RateTopicView, name = 'rate-topic-page'),
+    path('daily-reset/<str:token>', DailyResetView),
 ]

@@ -1,4 +1,8 @@
 
+  :root {
+    --custom-hover-color: hsl(284, 57%, 96%);
+  }
+
   .header {
     --background-color: #fff
   }

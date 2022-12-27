@@ -176,7 +176,7 @@ CSRF_TRUSTED_ORIGINS = ["https://justhink.net", "https://www.justhink.net"]
 EMAIL_HOST = "smtp.gmail.com" 
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "jthink011@gmail.com"
-EMAIL_HOST_PASSWORD = "deuzpdagixxegpte"
+EMAIL_HOST_PASSWORD = "fzxwwdtydnpyjaqd"
 EMAIL_USE_TLS = True
 
 # SITE ID 
