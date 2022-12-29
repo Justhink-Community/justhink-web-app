@@ -763,7 +763,7 @@ def RegisterView(request):
             except User.DoesNotExist:
                 pass 
             else:
-                if found_user or found_profile:
+                if found_user or False:
                     messages.error(
                         request,
                         "Bu bilgilere ait bir hesap zaten var!",

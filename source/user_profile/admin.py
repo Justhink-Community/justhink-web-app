@@ -5,7 +5,7 @@ from .models import Profile
 
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('get_account', 'web_theme', 'shop_bought_products', 'login_count', 'last_logged_in', 'total_point')
+    list_display = ('get_account', 'web_theme', 'shop_bought_products', 'login_count', 'last_logged_in', 'total_point', 'get_created_date')
     list_filter = ('web_theme', 'shop_bought_products', 'login_count', 'last_logged_in', 'total_point')
     
     def get_readonly_fields(self, request, obj=None):
@@ -17,5 +17,10 @@ class ProfileAdmin(admin.ModelAdmin):
     def get_account(self, obj):
         return obj.account.username
     
+     
+    @admin.display(ordering='get_created_date', description='get_created_date')
+    def get_created_date(self, obj):
+        return obj.account.date_joined.strftime('%d.%m.%Y')
+
 
 admin.site.register(Profile, ProfileAdmin)

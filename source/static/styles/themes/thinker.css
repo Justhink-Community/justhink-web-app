@@ -3,6 +3,13 @@
     --custom-hover-color: hsl(284, 57%, 96%);
   }
 
+  
+  ::selection {
+    background-color: #4d1a5f;
+    color: #fafafa;
+  }
+  
+
   .header {
     --background-color: #fff
   }

@@ -1,7 +1,11 @@
-:root {
-  --custom-hover-color: hsl(229, 79%, 96%);
-}
+  :root {
+    --custom-hover-color: hsl(229, 79%, 96%);
+  }
   
+  ::selection {
+    background-color: #017C8C;
+    color: #fafafa;
+  }
   
   linearGradient > stop:nth-of-type(1) {
     stop-color: #009DA4;

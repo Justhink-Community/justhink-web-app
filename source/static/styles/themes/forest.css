@@ -3,6 +3,11 @@
 
 }
 
+::selection {
+  background-color: #637B1C;
+  color: #fafafa;
+}
+
   linearGradient > stop:nth-of-type(1) {
     stop-color: #8DA627;
   }

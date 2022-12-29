@@ -6,6 +6,8 @@ register = template.Library()
 def get_theme_logo(theme):
     if theme == 'default-theme': return 'thinker_logo.svg'
     theme_formatted: str = theme.split(' ')[0].lower()
+    if theme_formatted == '':
+        return 'thinker_logo.svg'
     return f'{theme_formatted}_logo.svg'
   
 @register.simple_tag(name='get_theme_banner')
