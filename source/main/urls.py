@@ -29,7 +29,9 @@ from .views import (
     ForgotPasswordView,
     ChangeThemeView,
     RateTopicView,
-    DailyResetView
+    DailyResetView,
+    ContactUsView,
+    SurveyView
 )
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSiteMap 
@@ -43,6 +45,7 @@ urlpatterns = [
     path("home", LandingView, name="home"),
     path("dashboard", DashBoardView, name="dashboard-page"),
     path("about-us", AboutUsView, name = "about-us-page"),
+    path('contact-us', ContactUsView, name = 'contact-us-page'),
     path("login", AuthenticationView, name = "authentication"),
     path("register", RegisterView, name="register-page"),
     path('forgot-password', ForgotPasswordView, name = 'forgot-password-page'),
@@ -72,4 +75,5 @@ urlpatterns = [
     path('view-notification/<str:notification_key>', ViewNotificationView, name = 'view-notification-page'),
     path('rate-topic', RateTopicView, name = 'rate-topic-page'),
     path('daily-reset/<str:token>', DailyResetView),
+    path('anket', SurveyView)
 ]

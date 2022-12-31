@@ -1,0 +1,11 @@
+{
+    "short_name": "Justhink",
+    "start_url": "/",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "/static/logos/app_logo.png",
+        "type": "image/png", "sizes": "1080x1080", "purpose": "any"
+      }
+    ]
+  }

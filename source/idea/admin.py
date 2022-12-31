@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Idea, Comment, Topic, Update, Product
+from .models import Idea, Comment, Topic, Update, Product, Feedback
 
 # Register your models here.
 
@@ -47,3 +47,13 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('product_name', 'product_fee', 'product_sold_count')
 
 admin.site.register(Product, ProductAdmin)
+
+
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ('get_feedback_author','pk')
+
+    @admin.display(ordering='feedback_author', description='Feedback Author')
+    def get_feedback_author(self, obj):
+        return obj.feedback_author.account.username
+
+admin.site.register(Feedback, FeedbackAdmin)

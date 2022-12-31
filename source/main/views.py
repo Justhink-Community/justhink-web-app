@@ -16,7 +16,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
 
 from user_profile.models import Profile
-from idea.models import Idea, Comment, Topic, Update, Product
+from idea.models import Idea, Comment, Topic, Update, Product, Feedback
 
 from django.template import Context
 from django.template.loader import render_to_string
@@ -147,7 +147,6 @@ def IncrementLogin(request):
                     return render(request, "404.html")
             except KeyError:
                 pass 
-
             if user_profile.last_logged_in.day != datetime.datetime.now().day: 
                 if user_profile.login_strike is None: 
                     user_profile.login_strike = 0 
@@ -738,6 +737,8 @@ def EditIdeaView(request, idea_id: int):
     return redirect(request.META.get("HTTP_REFERER"))
 
 
+def SurveyView(request):
+    return redirect('https://forms.gle/B6ER4AqcpXQZFsSd9')
 
 
 @user_passes_test(lambda u: u.is_anonymous)
@@ -763,7 +764,7 @@ def RegisterView(request):
             except User.DoesNotExist:
                 pass 
             else:
-                if found_user or False:
+                if found_user or found_profile:
                     messages.error(
                         request,
                         "Bu bilgilere ait bir hesap zaten var!",
@@ -1152,3 +1153,20 @@ def DailyResetView(request, token: str):
         topic.save()
 
     return redirect('index-page')
+
+def ContactUsView(request):
+    if request.POST:
+        full_name, email_address, message = request.POST['full-name'], request.POST['email-address'], request.POST['message']
+
+        author = False
+        if request.user.is_anonymous:
+            author = Profile.objects.first()
+        else:
+            author = Profile.objects.get(account=request.user)
+
+        feedback = Feedback.objects.create(feedback_author = author, feedback_fullname=full_name, feedback_email=email_address, feedback_message=message)
+
+        send_mail('Yeni bir geribildirim var! - justhink.net', f'Yeni bir geribildirim mevcut! \n\nGönderen: {full_name} ({email_address})\nMesaj: {message}\n\nAdmin Panelde Görüntülemek için: https://justhink.net/admin/idea/feedback/{feedback.pk}/change/', 'iletisim@justhink.net', ['furkanesen1900@gmail.com', 'paladilasu@gmail.com', 'ogulcanozturk72@gmail.com'], fail_silently=True) #, 'kadircantuzuner@gmail.com', 'paladilasu@gmail.com'
+
+
+    return render(request, 'contact_us.html')

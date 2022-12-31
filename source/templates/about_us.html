@@ -1,7 +1,13 @@
 {% extends 'base.html' %} 
 
+
 {% block head %} 
-<link rel="stylesheet" href="/static/styles/about_us.css">
+<link rel="stylesheet" href="/static/styles/about_us.css?version=2">
+{% endblock %}
+
+{% block scripts %} 
+<script src="//code.jivosite.com/widget/EECNwVyQi1" async></script>
+
 {% endblock %}
 
 {% block header_center %} 
@@ -10,7 +16,7 @@
     <a href="{% url 'about-us-page' %}" class="header__link">hakkımızda</a>
 </li>
 <li class="header__list-item">
-    <a href="#" class="header__link">forum</a>
+    <a href="{% url 'contact-us-page' %}" class="header__link">iletişime geç</a>
 </li>
 <li class="header__list-item">
     <a href="{% url 'dashboard-page' %}" class="header__link">beta versiyon</a>

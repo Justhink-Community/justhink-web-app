@@ -71,7 +71,7 @@ class Topic(models.Model):
   topic_sources = models.TextField()
   topic_keywords = models.CharField(max_length=40)
   topic_date = models.DateTimeField()
-  topic_suggested_user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=User.objects.get(models.Q(username = 'justhink')))
+#   topic_suggested_user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=User.objects.get(models.Q(username = 'justhink')))
   topic_video_id = models.CharField(max_length=16)
   topic_rate = models.JSONField(default=dict, null=True, blank=True, editable=True)
   topic_survey = models.JSONField(null=True, blank=True, default=dict)
@@ -122,3 +122,10 @@ class Product(models.Model):
   product_fee = models.IntegerField()
   product_image = models.URLField()
   product_sold_count = models.IntegerField(editable=False, null=False, default=0)
+
+
+class Feedback(models.Model):
+    feedback_author = models.ForeignKey(to=Profile, on_delete=models.CASCADE)
+    feedback_fullname = models.CharField(max_length=40)
+    feedback_email = models.EmailField()
+    feedback_message = models.TextField()

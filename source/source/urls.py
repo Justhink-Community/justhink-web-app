@@ -4,12 +4,15 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.views.static import serve
 from django.conf.urls.i18n import i18n_patterns
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path("", include("main.urls")),
-    path("admin/", admin.site.urls),
     path("i18n/", include("django.conf.urls.i18n")),
-
+    path("admin/", admin.site.urls),
+    path('manifest.json', TemplateView.as_view(template_name="manifest.json")),
+    path('offline.html', TemplateView.as_view(template_name="offline.html", content_type='text/html')),
+    path('service-worker.js', TemplateView.as_view(template_name="service-worker.js", content_type='text/javascript')),
 ]
 
 handler404 = 'main.views.handle_404' 

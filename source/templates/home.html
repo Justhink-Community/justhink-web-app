@@ -8,20 +8,22 @@
 <script>
   document.querySelector('html').classList.add('home')
 </script>
+<script src="//code.jivosite.com/widget/EECNwVyQi1" async></script>
+
 {% endblock %}
 
 {% block header_center %} 
 <ul class="header-center__list">
     <li class="header__list-item">
-        <a href="{% url 'about-us-page' %}" class="header__link">hakkımızda</a>
-    </li>
-    <li class="header__list-item">
-        <a href="#" class="header__link">forum</a>
-    </li>
-    <li class="header__list-item">
-        <a href="{% url 'dashboard-page' %}" class="header__link">beta versiyon</a>
-    </li>
-</ul>
+      <a href="{% url 'about-us-page' %}" class="header__link">hakkımızda</a>
+  </li>
+  <li class="header__list-item">
+      <a href="{% url 'contact-us-page' %}" class="header__link">iletişime geç</a>
+  </li>
+  <li class="header__list-item">
+      <a href="{% url 'dashboard-page' %}" class="header__link">beta versiyon</a>
+  </li>
+  </ul>
 {% endblock %}
 
 {% block heading_link %} 
