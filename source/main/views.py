@@ -1117,7 +1117,7 @@ def RateTopicView(request):
 
 def DailyResetView(request, token: str):   
     if token == "DAILY_RESET" and get_client_ip(request, 'server') == '37.59.221.234':
-        mail = EmailMessage('Günlük Veritabanı Yedeği Alındı - justhink.net', 'Bugüne ait veritabanı yedeğinin SQL ve JSON dosyaları.', settings.EMAIL_HOST_USER, ['furkanesen1900@gmail.com', 'ogulcanozturk72@gmail.com'])
+        mail = EmailMessage('Günlük Veritabanı Yedeği Alındı - justhink.net', 'Bugüne ait veritabanı yedeğinin SQL ve JSON dosyaları.', settings.EMAIL_HOST_USER, ['furkanesen1900@gmail.com', 'ogulcanozturk72@gmail.com', 'caglarahmetdev@gmail.com'])
         backup_file_name = fr'C:\Users\Administrator\Desktop\Database Backups\Daily Backups\Database Backup'
         sysout = sys.stdout
         with open(f'{backup_file_name}.json' , 'w+', encoding='utf-8') as f:

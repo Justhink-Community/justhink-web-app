@@ -12,7 +12,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('manifest.json', TemplateView.as_view(template_name="manifest.json")),
     path('offline.html', TemplateView.as_view(template_name="offline.html", content_type='text/html')),
-    path('service-worker.js', TemplateView.as_view(template_name="service-worker.js", content_type='text/javascript')),
+    path('serviceworker.js', TemplateView.as_view(template_name="serviceworker.js", content_type='text/javascript')),
 ]
 
 handler404 = 'main.views.handle_404' 

@@ -24,6 +24,7 @@
     name="google-site-verification"
     content="MUpgXMLwErTODhvmdYiBd4iP2vJ9YTCh-ywN2vBigbY"
     />
+    <meta name="theme-color" content="#4d1a5f">
     
     <link rel="manifest" href="manifest.json">
     <link rel="canonical" contenteditable="{{request.path}}">
@@ -60,44 +61,10 @@
     <link rel="stylesheet" href="/static/styles/utilities.css?version=60" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6939739457122929"
-    crossorigin="anonymous"></script>
     <script src="/static/src/script.js?version=503" defer></script>
     {% block scripts %} {% endblock scripts %}
 
 
-    <!-- Event snippet for Kaydolma işlemi conversion page
-    In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-    <script>
-      function gtag_report_conversion(url) {
-        var callback = function () {
-          if (typeof(url) != 'undefined') {
-            window.location = url;
-          }
-        };
-        gtag('event', 'conversion', {
-            'send_to': 'AW-10950066829/p0dKCMDfs4MYEI2Fs-Uo',
-            'event_callback': callback
-        });
-        return false;
-      }
-      </script>
-      
-
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-9NKQ7T7XYV"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-9NKQ7T7XYV");
-    </script>
 
     {% if section == "ideas" %}
     <style>
@@ -216,7 +183,7 @@
             
           }
           document.querySelector('body').classList.add('fully-loaded')
-          let vpnDetected = detectVPN()
+          // let vpnDetected = detectVPN()
       }
       document.addEventListener("DOMContentLoaded", fixBackground);
 
