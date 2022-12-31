@@ -80,6 +80,7 @@
   margin-top: 2.5rem;
   margin-bottom: auto;
   grid-column: 2 / -1;
+
 }
 
 .idea__interaction-btns {
@@ -149,7 +150,10 @@
   font-size: 1.8rem;
   color: var(--color);
   font-weight: 400;
-  word-break: break-all;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
 
 .idea:not(.idea-comment):nth-of-type(even)::after {

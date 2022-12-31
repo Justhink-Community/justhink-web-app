@@ -1140,17 +1140,19 @@ def DailyResetView(request, token: str):
             mail.attach(f.name, f.read(), mime.from_file(f'{backup_file_name}.sql'))
         mail.send()
 
-        not_archived_ideas = Idea.objects.filter(idea_archived = False)
-        not_archived_ideas.update(idea_archived = True)
+        # not_archived_ideas = Idea.objects.filter(idea_archived = False)
+        # not_archived_ideas.update(idea_archived = True)
         
-        not_archived_comments = Comment.objects.filter(comment_archived = False)
-        not_archived_comments.update(comment_archived = True)
+        # not_archived_comments = Comment.objects.filter(comment_archived = False)
+        # not_archived_comments.update(comment_archived = True)
 
-        Profile.objects.all().update(user_notifications = {})
+        # Profile.objects.all().update(user_notifications = {})
 
-        topic = Topic.objects.first()
-        topic.topic_rate = {}
-        topic.save()
+        # topic = Topic.objects.first()
+        # topic.topic_rate = {}
+        # topic.save()
+
+
 
     return redirect('index-page')
 
