@@ -74,7 +74,8 @@ class Topic(models.Model):
 #   topic_suggested_user = models.ForeignKey(to=User, on_delete=models.CASCADE, default=User.objects.get(models.Q(username = 'justhink')))
   topic_video_id = models.CharField(max_length=16)
   topic_rate = models.JSONField(default=dict, null=True, blank=True, editable=True)
-  topic_survey = models.JSONField(null=True, blank=True, default=dict)
+  topic_survey = models.JSONField(null=False, blank=False, default=dict)
+  special_topic_message = models.CharField(max_length=70, default="Bu pazar günü Yıldızlararası filmini tartışıyoruz!", blank=False, null=False)
 
   def save(self, *args, **kwargs):
     today = datetime.datetime.now()

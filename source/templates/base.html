@@ -14,7 +14,7 @@
     <meta name="author" content="Justhink Yazılım Ekibi" />
     <meta
     name="description"
-    content="Justhink, insanları belirli bir konu hakkında tartışmak için bir araya getiren ve bunları etik bir ortamda yapmalarına aracılık eden öncü bir yeni nesil sosyal medya platformudur. jusTHINK, Limitless Makers kapsamında başlatılmış bir proje olup 6 üniversite ve 4 lise öğrencisi tarafından yürütülen bir fikir paylaşma platformudur. 12 Kasım’dan bari aktif olan ve inovatif fikirlerin öncelendiği bu platformda kullanıcılar jusTHINK ekibi tarafından seçilen günün konusu hakkındaki fikirlerini belirtirler. JusTHINK sayesinde seçilen günün konusu hakkında editörlerimiz tarafından hazırlanan bilgi metninden/videosundan faydalanabilir, diğer insanların bu konu hakkındaki fikirlerinini görebilir ve fikirleri beğenip yorum atabilir. Her fikre saygı duyulan jusTHINK ortamında kullanıcılar, alınan beğeniler sayesinde puan kazanabilir, bu puanlarla liderlik tablosunda diğer kullanıcılar ile yarışabilir ve uygulama arayüzünü kişiselleştirebilirler."
+    content="{% block page_description %}Justhink, insanları belirli bir konu hakkında tartışmak için bir araya getiren ve bunları etik bir ortamda yapmalarına aracılık eden öncü bir yeni nesil sosyal medya platformudur. jusTHINK, Limitless Makers kapsamında başlatılmış bir proje olup 6 üniversite ve 4 lise öğrencisi tarafından yürütülen bir fikir paylaşma platformudur. 12 Kasım’dan bari aktif olan ve inovatif fikirlerin öncelendiği bu platformda kullanıcılar jusTHINK ekibi tarafından seçilen günün konusu hakkındaki fikirlerini belirtirler. JusTHINK sayesinde seçilen günün konusu hakkında editörlerimiz tarafından hazırlanan bilgi metninden/videosundan faydalanabilir, diğer insanların bu konu hakkındaki fikirlerinini görebilir ve fikirleri beğenip yorum atabilir. Her fikre saygı duyulan jusTHINK ortamında kullanıcılar, alınan beğeniler sayesinde puan kazanabilir, bu puanlarla liderlik tablosunda diğer kullanıcılar ile yarışabilir ve uygulama arayüzünü kişiselleştirebilirler.{% endblock %}" 
     />
     <meta
     name="keywords"
@@ -31,37 +31,37 @@
     <link rel="home" href="{% url 'index-page' %}"> 
 
 
-    <link rel="icon" type="image/x-icon" href="/static/logos/thinker_logo.svg?version=17"/>
-    <link rel="shortcut icon" type="image/x-icon" href="/static/logos/thinker_logo.svg?version=17" />
-    <link rel="apple-touch-icon" href="/static/logos/thinker_logo.svg?version=17"/>
+    <link rel="icon" type="image/x-icon" href="/static/logos/thinker_logo.svg?version=1001017"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/logos/thinker_logo.svg?version=1001017" />
+    <link rel="apple-touch-icon" href="/static/logos/thinker_logo.svg?version=1001017"/>
 
 
-    <title>Justhink{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
 
     
     {% if user.is_anonymous %}
-      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=56"> 
+      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=1001070"> 
     {% elif profile.web_theme == "Thinker Tema" %}
-      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=56">
+      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=1001070">
     {% elif profile.web_theme == "Ocean Tema" %}
-      <link rel="stylesheet" href="/static/styles/themes/ocean.css?version=61">
+      <link rel="stylesheet" href="/static/styles/themes/ocean.css?version=1001070">
     {% elif profile.web_theme == "Forest Tema" %}
-      <link rel="stylesheet" href="/static/styles/themes/forest.css?version=54">
+      <link rel="stylesheet" href="/static/styles/themes/forest.css?version=1001070">
     {% elif profile.web_theme == "Sand Tema" %}
-      <link rel="stylesheet" href="/static/styles/themes/sand.css?version=54">
+      <link rel="stylesheet" href="/static/styles/themes/sand.css?version=1001070">
     {% else %}
-      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=56">
+      <link rel="stylesheet" href="/static/styles/themes/thinker.css?version=1001070">
     {% endif %}
 
     <!-- <link rel="stylesheet" href="/static/styles/themes/dark.css"> -->
 
 
-    <link rel="stylesheet" href="/static/fonts/stylesheet.css?version=55" />
-    <link rel="stylesheet" href="/static/styles/base.css?version=120" />
-    <link rel="stylesheet" href="/static/styles/utilities.css?version=85" />
+    <link rel="stylesheet" href="/static/fonts/stylesheet.css?version=1001066" />
+    <link rel="stylesheet" href="/static/styles/base.css?version=10010140" />
+    <link rel="stylesheet" href="/static/styles/utilities.css?version=10010100" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="/static/src/script.js?version=503" defer></script>
+    <script src="/static/src/script.js?version=10010503" defer></script>
     {% block scripts %} {% endblock scripts %}
 
     <!-- Event snippet for Kaydolma işlemi conversion page
@@ -229,10 +229,11 @@
     <p lang="tr" class="onseo" style="  visibility: hidden;
     opacity: 0;
     position: absolute;">
+      {% block onseo_text %} 
       jusTHINK, Limitless Makers kapsamında başlatılmış bir proje olup 6 üniversite ve 4 lise öğrencisi tarafından yürütülen bir fikir paylaşma platformudur. 12 Kasım’dan bari aktif olan ve inovatif fikirlerin öncelendiği bu platformda kullanıcılar jusTHINK ekibi tarafından seçilen günün konusu hakkındaki fikirlerini belirtirler.
-JusTHINK sayesinde seçilen günün konusu hakkında editörlerimiz tarafından hazırlanan bilgi metninden/videosundan faydalanabilir, diğer insanların bu konu hakkındaki fikirlerinini görebilir ve fikirleri beğenip yorum atabilir. Her fikre saygı duyulan jusTHINK ortamında kullanıcılar, alınan beğeniler sayesinde puan kazanabilir, bu puanlarla liderlik tablosunda diğer kullanıcılar ile yarışabilir ve uygulama arayüzünü kişiselleştirebilirler.</p>
-
-
+      JusTHINK sayesinde seçilen günün konusu hakkında editörlerimiz tarafından hazırlanan bilgi metninden/videosundan faydalanabilir, diğer insanların bu konu hakkındaki fikirlerinini görebilir ve fikirleri beğenip yorum atabilir. Her fikre saygı duyulan jusTHINK ortamında kullanıcılar, alınan beğeniler sayesinde puan kazanabilir, bu puanlarla liderlik tablosunda diğer kullanıcılar ile yarışabilir ve uygulama arayüzünü kişiselleştirebilirler.</p>
+      
+      {% endblock %}
 
     <div class="darken">
       
@@ -577,7 +578,7 @@ JusTHINK sayesinde seçilen günün konusu hakkında editörlerimiz tarafından 
             >
   
             <div class="my-account" id="my-account">
-              <a href="{% url 'profile-page' %}" style="text-decoration: none; color: inherit;" class="my-account__information">
+              <a href="{% url 'profile-page' user.username %}" style="text-decoration: none; color: inherit;" class="my-account__information">
                 <div class="my-account__information--basic">
                   <div class="my-account__text-information">
                     <span class="my-account__username">{{ user.username }}</span>
@@ -597,7 +598,7 @@ JusTHINK sayesinde seçilen günün konusu hakkında editörlerimiz tarafından 
               <nav class="my-account__navigation">
                 <ul class="my-account__list">
                   <li class="my-account__list-item">
-                    <a href="{% url 'profile-page' %}" class="my-account__link">
+                    <a href="{% url 'profile-page' user.username %}" class="my-account__link">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="1em"
@@ -615,7 +616,7 @@ JusTHINK sayesinde seçilen günün konusu hakkında editörlerimiz tarafından 
                     >
                   </li>
                   <li class="my-account__list-item">
-                    <a href="{% url 'profile-page' %}" class="my-account__link">
+                    <a href="{% url 'profile-page' user.username %}" class="my-account__link">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="1em"
@@ -1304,7 +1305,7 @@ JusTHINK sayesinde seçilen günün konusu hakkında editörlerimiz tarafından 
                 type: 'POST',
                 url: "{% url 'authentication' %}",
                 data: {username:username, password: password, csrfmiddlewaretoken: loginForm.querySelector('input[name="csrfmiddlewaretoken"]').value},
-                success: function(response) {window.location.replace("{% url 'profile-page' %}")}
+                success: function(response) {window.location.replace("/profile/" + username)}
             })
 
             
@@ -1331,7 +1332,7 @@ JusTHINK sayesinde seçilen günün konusu hakkında editörlerimiz tarafından 
               type: 'POST',
               url: "{% url 'register-page' %}",
               data: {username:username, password: password, email: email, kvkk: kvkk, csrfmiddlewaretoken: registerForm.querySelector('input[name="csrfmiddlewaretoken"]').value},
-              success: function(response) {window.location.replace("{% url 'profile-page' %}")}
+              success: function(response) {window.location.replace("/profile/" + username)}
           })
           }, 3000)
 

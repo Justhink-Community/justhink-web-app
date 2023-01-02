@@ -234,10 +234,13 @@
     --hover-color: hsl(325, 33%, 48%);
   }
 
-  .heading-animated {
+  .heading-animated, .heading-secondary {
     --background: linear-gradient(to right, #C74B55, #552878);
   }
 
+  .btn-c--theme {
+    --background: #552878
+  }
   body {
     --color: #777;
   }

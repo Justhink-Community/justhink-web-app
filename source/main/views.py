@@ -255,6 +255,29 @@ def IncrementLogin(request):
                         'notification_link': today_topic.topic_survey['survey_url'],
                         'viewed': False
                     }
+
+            if isinstance(today_topic.special_topic_message, str) and len(today_topic.special_topic_message) >= 2:
+                try:
+                    user_profile.user_notifications[today_topic.special_topic_message]
+                except TypeError:
+                    user_profile.user_notifications = {}
+                    
+                    user_profile.user_notifications[today_topic.special_topic_message] = {
+                        'notification_content': today_topic.special_topic_message,
+                        'notification_details': str(today_topic.topic_date),
+                        'notification_image': 'robot',
+                        'notification_link': '/',
+                        'viewed': False
+                    }
+                except KeyError: 
+                
+                    user_profile.user_notifications[today_topic.special_topic_message] = {
+                        'notification_content': today_topic.special_topic_message,
+                        'notification_details': str(today_topic.topic_date),
+                        'notification_image': 'robot',
+                        'notification_link': '/',
+                        'viewed': False
+                    }
             user_profile.save()
 
 
@@ -479,13 +502,56 @@ def AuthenticationView(request):
         },
     ) 
 
-@user_passes_test(lambda u: not u.is_anonymous) 
-def ProfileView(request):
-  profile = Profile.objects.get(account = request.user)
-  ideas = Idea.objects.filter(Q(idea_author = profile)).order_by('-idea_publish_date')
-  return render(request, 'profile.html', {'profile': profile, 'user_ideas': ideas, 'user_comments': Comment.objects.filter(Q(comment_author = profile)).order_by('-comment_publish_date')})
+def ProfileView(request, username):
+  try: 
+    user = User.objects.get(username = username) 
+  except User.DoesNotExist:
+    user = request.user 
+  finally:
+    profile = Profile.objects.get(account = user)
+    ideas = Idea.objects.filter(Q(idea_author = profile)).order_by('-idea_publish_date')
+    return render(request, 'profile.html', {'pprofile': profile, 'profile':  get_user_profile(request.user),'puser': user, 'user_ideas': ideas, 'user_comments': Comment.objects.filter(Q(comment_author = profile)).order_by('-comment_publish_date')})
 
+@user_passes_test(lambda u: not u.is_anonymous)
+def FollowProfileView(request, profile_id: int):
+    try:
+        profile = Profile.objects.get(pk = profile_id)
+    except Profile.DoesNotExist:
+        return False 
+    else: 
+        if profile.account == request.user: return False
 
+        try:
+            profile.profile_followers[request.user.username]
+        except KeyError:
+            profile.profile_followers[request.user.username] = str(datetime.datetime.now())
+            profile.user_notifications[create_hash(16)] = {
+              'notification_content': f'{request.user.username} sizi takip etmeye başladı.',
+              'notification_details': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'),
+              'notification_image': 'robot',
+              'notification_link': f'/profile/{request.username}',
+              'viewed': False
+            }
+            
+            profile.save()
+        except TypeError:
+            profile.profile_followers = {}
+            profile.profile_followers[request.user.username] = str(datetime.datetime.now())
+
+            profile.user_notifications[create_hash(16)] = {
+              'notification_content': f'{request.user.username} sizi takip etmeye başladı.',
+              'notification_details': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'),
+              'notification_image': 'robot',
+              'notification_link': f'/profile/{profile.account.username}',
+              'viewed': False
+            }
+            
+            profile.save()
+        else:
+            del profile.profile_followers[request.user.username]
+        finally:
+            profile.save()
+            return redirect('profile-page', profile.account.username)
 
 
 def FavouriteIdeasView(request):
@@ -865,11 +931,12 @@ def PublishIdeaView(request):
 
     if request.POST:
         idea_content = request.POST["idea-content"]
-        Idea.objects.create(
+        idea = Idea.objects.create(
             idea_author=Profile.objects.get(account=request.user),
             idea_content=idea_content,
             idea_topic=Topic.objects.first().topic_name
-        ).save()
+        )
+        idea.save()
 
         messages.success(
             request,
@@ -878,7 +945,7 @@ def PublishIdeaView(request):
         )
 
 
-        return redirect(request.META['HTTP_REFERER'])
+        return redirect('inspect-idea-page', idea.pk)
 
 
 def LikePostView(request, post_id: int):
@@ -1116,8 +1183,8 @@ def RateTopicView(request):
             return redirect('index-page')
 
 def DailyResetView(request, token: str):   
-    if token == "DAILY_RESET" and get_client_ip(request, 'server') == '37.59.221.234':
-        mail = EmailMessage('Günlük Veritabanı Yedeği Alındı - justhink.net', 'Bugüne ait veritabanı yedeğinin SQL ve JSON dosyaları.', settings.EMAIL_HOST_USER, ['furkanesen1900@gmail.com', 'ogulcanozturk72@gmail.com', 'caglarahmetdev@gmail.com'])
+    if token == "DAILY_BACKUP" and get_client_ip(request, 'server') == '37.59.221.234':
+        mail = EmailMessage('Günlük Veritabanı Yedeği Alındı - justhink.net', 'Bugüne ait veritabanı yedeğinin SQL ve JSON dosyaları.', settings.EMAIL_HOST_USER, ['furkanesen1900@gmail.com', 'ogulcanozturk72@gmail.com'])
         backup_file_name = fr'C:\Users\Administrator\Desktop\Database Backups\Daily Backups\Database Backup'
         sysout = sys.stdout
         with open(f'{backup_file_name}.json' , 'w+', encoding='utf-8') as f:
@@ -1140,17 +1207,18 @@ def DailyResetView(request, token: str):
             mail.attach(f.name, f.read(), mime.from_file(f'{backup_file_name}.sql'))
         mail.send()
 
-        # not_archived_ideas = Idea.objects.filter(idea_archived = False)
-        # not_archived_ideas.update(idea_archived = True)
+    elif token == "DAILY_RESET" and get_client_ip(request, 'server') == '37.59.221.234':
+        not_archived_ideas = Idea.objects.filter(idea_archived = False)
+        not_archived_ideas.update(idea_archived = True)
         
-        # not_archived_comments = Comment.objects.filter(comment_archived = False)
-        # not_archived_comments.update(comment_archived = True)
+        not_archived_comments = Comment.objects.filter(comment_archived = False)
+        not_archived_comments.update(comment_archived = True)
 
-        # Profile.objects.all().update(user_notifications = {})
+        Profile.objects.all().update(user_notifications = {})
 
-        # topic = Topic.objects.first()
-        # topic.topic_rate = {}
-        # topic.save()
+        topic = Topic.objects.first()
+        topic.topic_rate = {}
+        topic.save()
 
 
 
@@ -1171,4 +1239,5 @@ def ContactUsView(request):
         send_mail('Yeni bir geribildirim var! - justhink.net', f'Yeni bir geribildirim mevcut! \n\nGönderen: {full_name} ({email_address})\nMesaj: {message}\n\nAdmin Panelde Görüntülemek için: https://justhink.net/admin/idea/feedback/{feedback.pk}/change/', 'iletisim@justhink.net', ['furkanesen1900@gmail.com', 'paladilasu@gmail.com', 'ogulcanozturk72@gmail.com'], fail_silently=True) #, 'kadircantuzuner@gmail.com', 'paladilasu@gmail.com'
 
 
-    return render(request, 'contact_us.html')
+    return render(request, 'contact_us.html', {"profile": get_user_profile(request.user),
+                    "section": "contact-us"})

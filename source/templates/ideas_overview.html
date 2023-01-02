@@ -3,15 +3,15 @@
 
 
 {% block head %} 
-<link rel="stylesheet" href="/static/styles/ideas_overview.css?version=51">
+<link rel="stylesheet" href="/static/styles/ideas_overview.css?version=1001051">
 
 {% endblock head %}
 
 {% block scripts %} 
-<script src="/static/src/ideas.js?version=51" defer></script>
+<script src="/static/src/ideas.js?version=1001051" defer></script>
 {% endblock %}
 
-{% block title %} &ndash; Rastgele Fikir{% endblock %}
+{% block title %}Justhink &ndash; Rastgele Fikir{% endblock %}
 
 {% block main %} 
 
@@ -63,8 +63,8 @@
         </a>
       </div>
       <div class="idea__content">
-        <p class="idea__author">
-          <span>{{ random_idea.idea_author.account.username }}</span>{% get_group_icon random_idea.idea_author.account %}<span> :</span></p>
+        <a href="{% url 'profile-page' random_idea.idea_author.account.username %}" class="idea__author">
+          <span>{{ random_idea.idea_author.account.username }}</span>{% get_group_icon random_idea.idea_author.account %}<span> :</span></a>
         <p class="idea__text">{{ random_idea.idea_content }} {% if random_idea.idea_content|length >= 500 %} <a style="text-decoration: none; color: inherit; font: inherit;" href="inspect-idea/{{ random_idea.id }}" aria-label="Bu fikir çok uzun, devamını okumak için tıkla."><u>devamını oku</u></a> {% endif %}</p>
       </div>
     </div>

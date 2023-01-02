@@ -4,11 +4,11 @@
 
 {% block head %}
 
-<link rel="stylesheet" href="/static/styles/index.css?version=50" />
+<link rel="stylesheet" href="/static/styles/index.css?version=1001050" />
 {% endblock head %} 
 
 
-{% block title %} &ndash; {% if section == "summary" %} Anasayfa{% else %} Fikirler{% endif %}{% endblock %}
+{% block title %}Justhink &ndash; {% if section == "summary" %} Anasayfa{% else %} Fikirler{% endif %}{% endblock %}
 
 
 
@@ -123,8 +123,8 @@
       </a>
     </div>
     <div class="idea__content">
-      <p class="idea__author">
-        <span>{{ top_idea.idea_author.account.username }}</span>{% get_group_icon top_idea.idea_author.account %}<span> :</span></p>
+      <a href="{% url 'profile-page' top_idea.idea_author.account.username %}" class="idea__author">
+        <span>{{ top_idea.idea_author.account.username }}</span>{% get_group_icon top_idea.idea_author.account %}<span> :</span></a>
       <p lang="tr" class="idea__text">{{ top_idea.idea_content }} {% if top_idea.idea_content|length >= 500 %} <a style="text-decoration: none; color: inherit; font: inherit;" href="inspect-idea/{{ top_idea.id }}" aria-label="Bu fikir çok uzun! Devamını okumak için tıkla."><u>devamını oku</u></a> {% endif %}</p>
     </div>
     <menu class="idea__administration-menu">

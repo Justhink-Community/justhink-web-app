@@ -35,6 +35,7 @@ main {
   transition: all .2s ease;
   position: relative;
   height: auto;
+  cursor: pointer;
 }
 
 .profile__header-icon {
@@ -53,7 +54,7 @@ main {
 .profile__change-banner {
   position: absolute !important;
   top: 1.4rem;
-  right: 1.4rem;
+  right: 2rem;
 }
 
 .profile__operations {

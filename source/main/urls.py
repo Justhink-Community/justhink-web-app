@@ -21,6 +21,7 @@ from .views import (
     LandingView,
     AuthenticationView,
     ProfileView,
+    FollowProfileView,
     AboutUsView,
     UpdatesView,
     IpToLocView,
@@ -34,10 +35,11 @@ from .views import (
     SurveyView
 )
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import StaticViewSiteMap 
+from .sitemaps import StaticViewSiteMap , ProfileSiteMap
 
 sitemaps = {
-    'static': StaticViewSiteMap
+    'static': StaticViewSiteMap,
+    'profiles': ProfileSiteMap
 }
 
 urlpatterns = [
@@ -49,7 +51,7 @@ urlpatterns = [
     path("login", AuthenticationView, name = "authentication"),
     path("register", RegisterView, name="register-page"),
     path('forgot-password', ForgotPasswordView, name = 'forgot-password-page'),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', include('robots.urls')),
     path('shuffle-ideas', IdeasOverview, name = 'random-ideas-page'),
     path('status', StatusView),
@@ -71,7 +73,8 @@ urlpatterns = [
     path("send-comment/<int:idea_id>", SendCommentView, name = 'send-comment-page'),
     path('like-comment/<int:idea_id>/<int:comment_id>', LikeCommentView, name = 'like-comment-page'),
     path('dislike-comment/<int:idea_id>/<int:comment_id>', DislikeCommentView, name = 'dislike-comment-page'),
-    path('profile', ProfileView, name = 'profile-page'),
+    path('profile/<str:username>', ProfileView, name = 'profile-page'),
+    path('follow-profile/<int:profile_id>', FollowProfileView, name = 'follow-profile'),
     path('view-notification/<str:notification_key>', ViewNotificationView, name = 'view-notification-page'),
     path('rate-topic', RateTopicView, name = 'rate-topic-page'),
     path('daily-reset/<str:token>', DailyResetView),

@@ -3,6 +3,7 @@ import hashlib
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Q
+from django.shortcuts import reverse
 
 import hashlib
 
@@ -54,8 +55,18 @@ class Profile(models.Model):
 
     user_notifications = models.JSONField(default=dict, editable=True, blank=True)
 
+    # SOCIAL 
+
+    profile_followers = models.JSONField(default=dict, editable=False, blank=True, null=True)
+
     @property
     def get_user_secret(self):
         return str(
             hashlib.sha256(str(self.account.id).encode()).hexdigest(),
         )[:30]
+
+    def __str__(self):
+        return self.account.username 
+
+    def get_absolute_url(self,):
+        return reverse('profile-page', args=[self.account.username,])

@@ -3,7 +3,7 @@
 
 
 {% block head %}
-<link rel="stylesheet" href="/static/styles/idea.css?version={% now 'U' %}">
+<link rel="stylesheet" href="/static/styles/idea.css?version=10010{% now 'U' %}">
 <style>
 
 
@@ -20,7 +20,7 @@
 
 {% block daily_summary %} {% endblock %} 
 
-{% block title %} &ndash; {{ idea.idea_author.account.username }}'nin Fikri{% endblock %}
+{% block title %}Justhink &ndash; {{ idea.idea_author.account.username }}'nin Fikri{% endblock %}
 
 {% block main %} 
 
@@ -48,10 +48,10 @@
       <div class="idea">
 
         <div class="idea__content">
-          <p class="idea__author">
+          <a href="{% url 'profile-page' idea.idea_author.account.username %}" class="idea__author">
             <span>{{ idea.idea_author.account.username }}</span> 
             {{ user_icon|safe }}
-           <span> :</span></p>
+           <span> :</span></a>
           <p class="idea__text">{{ idea.idea_content }}</p>
         </div>
   
@@ -109,7 +109,7 @@
           {% for comment in comments %} 
           <div class="idea-comment idea">
             <div class="idea__content">
-              <p class="idea__author"><span>{{ comment.comment_author.account.username }}</span>{% get_group_icon comment.comment_author.account %}<span> :</span></p>
+              <a href="{% url 'profile-page' comment.comment_author.account.username %}" class="idea__author"><span>{{ comment.comment_author.account.username }}</span>{% get_group_icon comment.comment_author.account %}<span> :</span></a>
               <p class="idea__text">{{ comment.comment_content }}</p>
             </div>
       
