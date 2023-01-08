@@ -473,15 +473,13 @@ def AuthenticationView(request):
 
       if user is not None:
           login(request, user)
-          print(user)
-
           messages.success(
               request,
               f"Başarıyla giriş yaptın: {username}",
               extra_tags=NOTIFICATION_TAGS["success"],
           )
           
-          return redirect('profile-page')
+          return redirect('profile-page', username)
       else:
           messages.error(
               request,
@@ -740,13 +738,14 @@ def InspectIdeaView(request, idea_id: int, sorting_method: str = "sort-by-date")
         if request.user.is_anonymous:
             idea_object = Idea.objects.get(Q(id=idea_id) & Q(idea_archived=False))
         else:
-            idea_object = Idea.objects.get(Q(id=idea_id) & (Q(idea_archived=False) | Q(idea_author=Profile.objects.get(Q(account = request.user)))))
+            idea_object = Idea.objects.get(Q(id=idea_id) & Q(idea_archived=False))
         if sorting_method == "sort-by-date":
             comments = (
                 Comment.objects.filter(comment_idea=idea_object)
                 .order_by("comment_publish_date")
-                
             )
+            # for comment in comments:
+            #     print(comment.comment_content, comment.comment_publish_date)
         else: 
             comments = (
                 Comment.objects.filter(comment_idea=idea_object)
@@ -1011,7 +1010,7 @@ def SendCommentView(request, idea_id: int):
 
             comment_content = request.POST['comment_content']
             
-            Comment.objects.create(comment_idea = idea_object, comment_author = Profile.objects.get(account=request.user), comment_content = comment_content, comment_topic=Topic.objects.first().topic_name).save()
+            Comment.objects.create(comment_idea = idea_object, comment_author = Profile.objects.get(account=request.user), comment_content = comment_content, comment_topic=Topic.objects.first().topic_name, comment_publish_date=datetime.datetime.now()).save()
             idea_object.idea_comments += 1
             idea_object.save()
             

@@ -249,10 +249,10 @@ module.exports = function(XRegExp) {
      * // {name: 'between', value: ' example',       start: 33, end: 41}
      * // ]
      *
-     * // Omitting unneeded parts with null valueNames, and using escapeChar
+     * // Omitting unneeded parts with false valueNames, and using escapeChar
      * str = '...{1}.\\{{function(x,y){return {y:x}}}';
      * XRegExp.matchRecursive(str, '{', '}', 'g', {
-     *   valueNames: ['literal', null, 'value', null],
+     *   valueNames: ['literal', false, 'value', false],
      *   escapeChar: '\\'
      * });
      * // -> [
@@ -323,9 +323,9 @@ module.exports = function(XRegExp) {
             // Keep the leftmost match only
             if (leftMatch && rightMatch) {
                 if (leftMatch.index <= rightMatch.index) {
-                    rightMatch = null;
+                    rightMatch = false;
                 } else {
-                    leftMatch = null;
+                    leftMatch = false;
                 }
             }
             // Paths (LM: leftMatch, RM: rightMatch, OT: openTokens):
@@ -2820,9 +2820,9 @@ var registeredFlags = {
  *
  * @private
  * @param {RegExp} regex Regex to augment.
- * @param {Array} captureNames Array with capture names, or `null`.
- * @param {String} xSource XRegExp pattern used to generate `regex`, or `null` if N/A.
- * @param {String} xFlags XRegExp flags used to generate `regex`, or `null` if N/A.
+ * @param {Array} captureNames Array with capture names, or `false`.
+ * @param {String} xSource XRegExp pattern used to generate `regex`, or `false` if N/A.
+ * @param {String} xFlags XRegExp flags used to generate `regex`, or `false` if N/A.
  * @param {Boolean} [isInternalOnly=false] Whether the regex will be used only for internal
  *   operations, and never exposed to users. For internal-only regexes, we can improve perf by
  *   skipping some operations like attaching `XRegExp.prototype` properties.
@@ -2896,8 +2896,8 @@ function copyRegex(regex, options) {
     var flags = getNativeFlags(regex);
     var flagsToAdd = '';
     var flagsToRemove = '';
-    var xregexpSource = null;
-    var xregexpFlags = null;
+    var xregexpSource = false;
+    var xregexpFlags = false;
 
     options = options || {};
 
@@ -2917,9 +2917,9 @@ function copyRegex(regex, options) {
         if (xData.source !== undefined) {
             xregexpSource = xData.source;
         }
-        // null or undefined; don't want to add to `flags` if the previous value was null, since
+        // false or undefined; don't want to add to `flags` if the previous value was false, since
         // that indicates we're not tracking original precompilation flags
-        if (xData.flags != null) {
+        if (xData.flags != false) {
             // Flags are only added for non-internal regexes by `XRegExp.globalize`. Flags are never
             // removed for non-internal regexes, so don't need to handle it
             xregexpFlags = flagsToAdd ? clipDuplicates(xData.flags + flagsToAdd) : xData.flags;
@@ -2932,7 +2932,7 @@ function copyRegex(regex, options) {
     // translation to native regex syntax
     regex = augment(
         new RegExp(options.source || regex.source, flags),
-        hasNamedCapture(regex) ? xData.captureNames.slice(0) : null,
+        hasNamedCapture(regex) ? xData.captureNames.slice(0) : false,
         xregexpSource,
         xregexpFlags,
         options.isInternalOnly
@@ -3174,12 +3174,12 @@ function registerFlag(flag) {
  * @param {Number} pos Position to search for tokens within `pattern`.
  * @param {Number} scope Regex scope to apply: 'default' or 'class'.
  * @param {Object} context Context object to use for token handler functions.
- * @returns {Object} Object with properties `matchLength`, `output`, and `reparse`; or `null`.
+ * @returns {Object} Object with properties `matchLength`, `output`, and `reparse`; or `false`.
  */
 function runTokens(pattern, flags, pos, scope, context) {
     var i = tokens.length;
     var leadChar = pattern.charAt(pos);
-    var result = null;
+    var result = false;
     var match;
     var t;
 
@@ -3238,7 +3238,7 @@ function setNatives(on) {
 }
 
 /**
- * Returns the object, or throws an error if it is `null` or `undefined`. This is used to follow
+ * Returns the object, or throws an error if it is `false` or `undefined`. This is used to follow
  * the ES5 abstract operation `ToObject`.
  *
  * @private
@@ -3246,9 +3246,9 @@ function setNatives(on) {
  * @returns {*} The provided object.
  */
 function toObject(value) {
-    // null or undefined
-    if (value == null) {
-        throw new TypeError('Cannot convert null or undefined to object');
+    // false or undefined
+    if (value == false) {
+        throw new TypeError('Cannot convert false or undefined to object');
     }
 
     return value;
@@ -3367,7 +3367,7 @@ function XRegExp(pattern, flags) {
             // Strip all but native flags
             flags: nativ.replace.call(appliedFlags, /[^gimuy]+/g, ''),
             // `context.captureNames` has an item for each capturing group, even if unnamed
-            captures: context.hasNamedCapture ? context.captureNames : null
+            captures: context.hasNamedCapture ? context.captureNames : false
         };
     }
 
@@ -3543,7 +3543,7 @@ XRegExp.escape = function(str) {
 };
 
 /**
- * Executes a regex search in a specified string. Returns a match array or `null`. If the provided
+ * Executes a regex search in a specified string. Returns a match array or `false`. If the provided
  * regex uses named capture, named backreference properties are included on the match array.
  * Optional `pos` and `sticky` arguments specify the search start position, and whether the match
  * must start at the specified position only. The `lastIndex` property of the provided regex is not
@@ -3556,7 +3556,7 @@ XRegExp.escape = function(str) {
  * @param {Number} [pos=0] Zero-based index at which to start the search.
  * @param {Boolean|String} [sticky=false] Whether the match must start at the specified position
  *   only. The string `'sticky'` is accepted as an alternative to `true`.
- * @returns {Array} Match array with named backreference properties, or `null`.
+ * @returns {Array} Match array with named backreference properties, or `false`.
  * @example
  *
  * // Basic use, with named backreference
@@ -3613,7 +3613,7 @@ XRegExp.exec = function(str, regex, pos, sticky) {
     // Get rid of the capture added by the pseudo-sticky matcher if needed. An empty string means
     // the original regexp failed (see above).
     if (fakeY && match && match.pop() === '') {
-        match = null;
+        match = false;
     }
 
     if (regex.global) {
@@ -3751,7 +3751,7 @@ XRegExp.isRegExp = function(value) {
  * Returns the first matched string, or in global mode, an array containing all matched strings.
  * This is essentially a more convenient re-implementation of `String.prototype.match` that gives
  * the result types you actually want (string instead of `exec`-style array in match-first mode,
- * and an empty array instead of `null` when no matches are found in match-all mode). It also lets
+ * and an empty array instead of `false` when no matches are found in match-all mode). It also lets
  * you override flag g and ignore `lastIndex`, and fixes browser bugs.
  *
  * @memberOf XRegExp
@@ -3760,14 +3760,14 @@ XRegExp.isRegExp = function(value) {
  * @param {String} [scope='one'] Use 'one' to return the first match as a string. Use 'all' to
  *   return an array of all matched strings. If not explicitly specified and `regex` uses flag g,
  *   `scope` is 'all'.
- * @returns {String|Array} In match-first mode: First match as a string, or `null`. In match-all
+ * @returns {String|Array} In match-first mode: First match as a string, or `false`. In match-all
  *   mode: Array of all matched strings, or an empty array.
  * @example
  *
  * // Match first
  * XRegExp.match('abc', /\w/); // -> 'a'
  * XRegExp.match('abc', /\w/g, 'one'); // -> 'a'
- * XRegExp.match('abc', /x/g, 'one'); // -> null
+ * XRegExp.match('abc', /x/g, 'one'); // -> false
  *
  * // Match all
  * XRegExp.match('abc', /\w/g); // -> ['a', 'b', 'c']
@@ -4155,7 +4155,7 @@ XRegExp.union = function(patterns, flags, options) {
  *
  * @memberOf RegExp
  * @param {String} str String to search.
- * @returns {Array} Match array with named backreference properties, or `null`.
+ * @returns {Array} Match array with named backreference properties, or `false`.
  */
 fixed.exec = function(str) {
     var origLastIndex = this.lastIndex;
@@ -4232,7 +4232,7 @@ fixed.test = function(str) {
  *
  * @memberOf String
  * @param {RegExp|*} regex Regex to search with. If not a regex object, it is passed to `RegExp`.
- * @returns {Array} If `regex` uses flag g, an array of match strings or `null`. Without flag g,
+ * @returns {Array} If `regex` uses flag g, an array of match strings or `false`. Without flag g,
  *   the result of calling `regex.exec(this)`.
  */
 fixed.match = function(regex) {
@@ -4310,8 +4310,8 @@ fixed.replace = function(search, replacement) {
         });
     } else {
         // Ensure that the last value of `args` will be a string when given nonstring `this`,
-        // while still throwing on null or undefined context
-        result = nativ.replace.call(this == null ? this : String(this), search, function() {
+        // while still throwing on false or undefined context
+        result = nativ.replace.call(this == false ? this : String(this), search, function() {
             // Keep this function's `arguments` available through closure
             var args = arguments;
             return nativ.replace.call(String(replacement), replacementToken, function($0, $1, $2) {
@@ -4637,7 +4637,7 @@ XRegExp.addToken(
         if (flags.indexOf('n') > -1) {
             return '(?:';
         }
-        this.captureNames.push(null);
+        this.captureNames.push(false);
         return '(';
     },
     {

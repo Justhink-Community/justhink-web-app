@@ -110,7 +110,7 @@
           {{ top_idea.idea_comments }}
         </p>
       </a>
-      <a href="#" class="idea__share-btn idea__btn" data-url = "/inspect-idea/{{ top_idea.id }}" onclick="navigator.clipboard.writeText(window.location.href.slice(0, -1) + this.getAttribute('data-url'));" aria-label="Bu fikri diğer arkadaşlarınla paylaşmak için tıkla.">
+      <a href="#" class="idea__share-btn idea__btn" data-url = "/inspect-idea/{{ top_idea.id }}" onclick="navigator.clipboard.writeText('https://justhink.net' + this.getAttribute('data-url'));" aria-label="Bu fikri diğer arkadaşlarınla paylaşmak için tıkla.">
         <svg class="idea__interaction-icon"  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
           <circle cx="128" cy="256" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
           <circle cx="384" cy="112" r="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>

@@ -35,11 +35,12 @@ from .views import (
     SurveyView
 )
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import StaticViewSiteMap , ProfileSiteMap
+from .sitemaps import StaticViewSiteMap , ProfileSiteMap, IdeaSiteMap
 
 sitemaps = {
     'static': StaticViewSiteMap,
-    'profiles': ProfileSiteMap
+    'profiles': ProfileSiteMap,
+    'ideas': IdeaSiteMap
 }
 
 urlpatterns = [

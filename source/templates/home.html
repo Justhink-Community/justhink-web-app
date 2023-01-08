@@ -30,12 +30,16 @@
 {% url 'home' %}
 {% endblock %}
 
+{% block title %} 
+Justhink &ndash; Anasayfa
+{% endblock %}
+
 {% block main %} 
 
 <div class="section-hero">
     <div class="heading">
         <h2 class="heading-secondary">Günlük <br> inovasyon dozu</h2>
-        <span class="topic-name">Günün konusu: {{ topic_name }}</span>
+        <h3 class="topic-name">Günün konusu: {{ topic_name }}</h3>
         <p class="topic-description">{{ topic_sources }}</p>
         <a href="{% if not user.is_anonymous %}{% url 'index-page' %}{% else %}{% url 'authentication' %}{% endif %}" class="btn topic-cta">Fikir Yaz</a>
     </div>

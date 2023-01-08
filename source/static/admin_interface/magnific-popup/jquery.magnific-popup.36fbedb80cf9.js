@@ -453,9 +453,9 @@
             if(mfp.st.autoFocusLast && mfp._lastFocusedEl) {
                 $(mfp._lastFocusedEl).focus(); // put tab focus back
             }
-            mfp.currItem = null;
-            mfp.content = null;
-            mfp.currTemplate = null;
+            mfp.currItem = false;
+            mfp.content = false;
+            mfp.currTemplate = false;
             mfp.prevHeight = 0;
 
             _mfpTrigger(AFTER_CLOSE_EVENT);
@@ -828,7 +828,7 @@
      * Public static functions
      */
     $.magnificPopup = {
-        instance: null,
+        instance: false,
         proto: MagnificPopup.prototype,
         modules: [],
 
@@ -865,7 +865,7 @@
 
             disableOn: 0,
 
-            key: null,
+            key: false,
 
             midClick: false,
 
@@ -891,7 +891,7 @@
 
             removalDelay: 0,
 
-            prependTo: null,
+            prependTo: false,
 
             fixedContentPos: 'auto',
 
@@ -972,7 +972,7 @@
         _putInlineElementsBack = function() {
             if(_lastInlineElement) {
                 _inlinePlaceholder.after( _lastInlineElement.addClass(_hiddenClass) ).detach();
-                _lastInlineElement = null;
+                _lastInlineElement = false;
             }
         };
 
@@ -1051,7 +1051,7 @@
     $.magnificPopup.registerModule(AJAX_NS, {
 
         options: {
-            settings: null,
+            settings: false,
             cursor: 'mfp-ajax-cur',
             tError: '<a href="%url%">The content</a> could not be loaded.'
         },
@@ -1446,7 +1446,7 @@
 
                                 setTimeout(function() {
                                     animatedImg.remove();
-                                    image = animatedImg = null;
+                                    image = animatedImg = false;
                                     _mfpTrigger('ZoomAnimationEnded');
                                 }, 16); // avoid blink when switching images
 
@@ -1490,7 +1490,7 @@
                         if(animatedImg) {
                             animatedImg.remove();
                         }
-                        image = null;
+                        image = false;
                     }
                 });
             },
@@ -1753,7 +1753,7 @@
 
                     mfp._preloadTimeout = setTimeout(function() {
                         mfp.preloadNearbyImages();
-                        mfp._preloadTimeout = null;
+                        mfp._preloadTimeout = false;
                     }, 16);
                 });
 
@@ -1761,7 +1761,7 @@
                 _mfpOn(CLOSE_EVENT+ns, function() {
                     _document.off(ns);
                     mfp.wrap.off('click'+ns);
-                    mfp.arrowRight = mfp.arrowLeft = null;
+                    mfp.arrowRight = mfp.arrowLeft = false;
                 });
 
             },

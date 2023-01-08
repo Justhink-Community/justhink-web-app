@@ -1,0 +1,2641 @@
+{
+    { 
+    
+"model":"idea.idea",
+"pk":1371,
+"fields":{
+    "idea_author":28,
+    "idea_content":"Doktorlar hastaları teşhis etmek için eğitilirler, ancak her zaman kendilerine teşhis koymak için eğitilmezler. AI doktorlarının artmasıyla bu, doktorların kendilerine ve sağlıklarına bakmalarının bir yolu olabilir. AI doktorları teşhis ve tedavi önerileri konusunda yardımcı olabilir. Ayrıca doktorun sağlığını, zindeliğini ve beslenmesini izleme ve takip etme yeteneğine de sahiptirler.\r\n\r\nYapay zeka doktorları, bir doktorun gözden kaçırmış olabileceği tıbbi kayıtlar veya semptomlar hakkında ikinci bir görüş sağlayarak teşhise yardımcı olabilir. Ayrıca, her bir hasta için özel olarak hazırlanmış ",
+    "idea_publish_date":"2023-01-02T23:42:55.441",
+    "idea_likes":{
+        "Kaan":true,
+        "CaganOrkat":true,
+        "Lukas":true,
+        "MemeliCanli":true,
+        "Mustafa":true,
+        "Neutrogena":true,
+        "Okan":true,
+        "Osman":true,
+        "d20":true,
+        "Peach":true,
+        "AU_gold":true,
+        "Ibrahim":true,
+        "HelveticaButFree":true,
+        "RTE":true,
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Engin":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Draven":true,
+        "AhmetÇağlar":true
+    },
+    "idea_like_count":37,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1372,
+"fields":{
+    "idea_author":201,
+    "idea_content":"Bir doktorun yerini bilgisayarın alması fikri yeni değil. Aslında, bir süredir yapım aşamasında. Yapay Zeka (AI), hastalara teşhis koymak ve doktorlara tedavi önerilerinde bulunmak için zaten kullanılıyor. Bütün bunlar, hastayla şahsen görüşmek zorunda kalmadan.\r\n\r\nAma AI doktorları için hazır mıyız? Faydaları nelerdir ve riskleri nelerdir?\r\n\r\nBilgisayarla çalışan doktorların tıbbi hataları daha az oluyor, hastaları daha hızlı iyileşiyor ve aileleriyle ya da özel hayatlarıyla ilgilenmek için daha fazla boş zamanları oluyor.",
+    "idea_publish_date":"2023-01-02T23:42:56.589",
+    "idea_likes":{
+        "CaganOrkat":true,
+        "Lukas":true,
+        "MemeliCanli":true,
+        "Mustafa":true,
+        "Neutrogena":true,
+        "Okan":true,
+        "Osman":true,
+        "d20":true,
+        "AU_gold":true,
+        "Peach":true,
+        "Ibrahim":true,
+        "HelveticaButFree":true,
+        "RTE":true,
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Engin":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true,
+        "Draven":true,
+        "AhmetÇağlar":true
+    },
+    "idea_like_count":37,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1373,
+"fields":{
+    "idea_author":175,
+    "idea_content":"Nicht nur Ärzte müssen mit vielen Daten umgehen. Daten sind allgegenwärtig und werden für viele Berufe immer wichtiger. Das Wichtigste ist, es zu verstehen, Informationen daraus zu extrahieren und es entsprechend zu verwenden. Ärzte mit künstlicher Intelligenz werden in Krankenhäusern eingesetzt, weil sie bei diesem Prozess helfen können. Sie können alle Daten lesen, die über einen Patienten gesammelt wurden, ihn mit dem richtigen Medikament oder Behandlungsplan diagnostizieren und ihn dann mit einer Behandlung versorgen, die ihm hilft, schneller gesund zu werden.\r\n\r\nÄrzte mit künstlicher Intell",
+    "idea_publish_date":"2023-01-02T23:42:57.791",
+    "idea_likes":{
+        "Lukas":true,
+        "MemeliCanli":true,
+        "Mustafa":true,
+        "Neutrogena":true,
+        "Okan":true,
+        "Osman":true,
+        "d20":true,
+        "Peach":true,
+        "AU_gold":true,
+        "Ibrahim":true,
+        "HelveticaButFree":true,
+        "RTE":true,
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Engin":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true,
+        "Draven":true,
+        "AhmetÇağlar":true
+    },
+    "idea_like_count":36,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1374,
+"fields":{
+    "idea_author":184,
+    "idea_content":"Doktorlar her zaman hastalara teşhis koyan ve tedavi eden kişiler olmuştur. Ancak Yapay Zekanın gelişiyle bu durum değişiyor. Yapay Zeka artık bir hastayı yüksek düzeyde doğrulukla teşhis edebiliyor, bu nedenle birçok doktor artık muayenehanelerinde AI kullanıyor.\r\n\r\nDoktorlar, hastaları teşhis etmek ve onlar için tedaviler önermek için AI kullanabilir, ancak yine de hastalarına duygusal destek ve bakım sağlayabilmeleri gerekir. Bu, yapay zekanın henüz yapamadığı bir şey.",
+    "idea_publish_date":"2023-01-02T23:43:00.446",
+    "idea_likes":{
+        "MemeliCanli":true,
+        "Mustafa":true,
+        "Neutrogena":true,
+        "Okan":true,
+        "Osman":true,
+        "d20":true,
+        "AU_gold":true,
+        "Peach":true,
+        "Ibrahim":true,
+        "HelveticaButFree":true,
+        "RTE":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true,
+        "Draven":true,
+        "AhmetÇağlar":true
+    },
+    "idea_like_count":33,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1375,
+"fields":{
+    "idea_author":195,
+    "idea_content":"Hastaları teşhis etmek için yapay zekayı kullanabilen sadece doktorlar değil. Yapay zeka artık radyoloji, kardiyoloji ve diğer tıp alanlarında kullanılıyor.\r\n\r\nYapay zekayı tıp alanında kullanmanın birçok avantajı vardır. Avantajlarından biri, bir insan doktorundan daha doğru teşhis sağlamasıdır. Diğer bir avantajı da, AI'nın hastalıkları ölümcül hale gelmeden tespit etmek için kullanılabilmesi ve maliyetli tedavilere veya ameliyatlara gerek kalmayacak olmasıdır.",
+    "idea_publish_date":"2023-01-02T23:42:59.092",
+    "idea_likes":{
+        "Mustafa":true,
+        "Neutrogena":true,
+        "Okan":true,
+        "Osman":true,
+        "d20":true,
+        "Peach":true,
+        "AU_gold":true,
+        "Ibrahim":true,
+        "HelveticaButFree":true,
+        "RTE":true,
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Engin":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true,
+        "Draven":true,
+        "AhmetÇağlar":true
+    },
+    "idea_like_count":34,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1376,
+"fields":{
+    "idea_author":188,
+    "idea_content":"Yapay Zeka Doktorları zaten Japonya'da kullanılıyor. Hastaları teşhis etme ve ilaç reçete etme yeteneğine sahiptirler. AI doktorlarının karmaşık hastalıklara teşhis koyabileceğine ve bu hastalıklar için tedaviler yazabileceğine inanmak abartılı bir fikir değil.\r\n\r\nGiriş, okuyucuya AI yazarlarının metin yazarlığının geleceğindeki rolü, Yapay Zeka Doktorlarının neler yapabileceği ve gelecekte nasıl kullanılabileceği hakkında bilgi verdiği için ikna edici ve alakalı.",
+    "idea_publish_date":"2023-01-02T23:43:01.863",
+    "idea_likes":{
+        "Neutrogena":true,
+        "Okan":true,
+        "Osman":true,
+        "d20":true,
+        "AU_gold":true,
+        "Peach":true,
+        "Ibrahim":true,
+        "HelveticaButFree":true,
+        "RTE":true,
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Engin":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true,
+        "Draven":true,
+        "AhmetÇağlar":true
+    },
+    "idea_like_count":33,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1377,
+"fields":{
+    "idea_author":179,
+    "idea_content":"AI doktorları yeni bir kavram değil. On yıllardır etraftalar, ancak daha da gelişiyorlar ve şimdi hastanelerde kullanılıyorlar. Bu, özellikle insan doktor sıkıntısı olan yerlerde geçerlidir.\r\n\r\nGelecekte, AI doktorları herhangi bir insan müdahalesi olmadan tıbbi durumları teşhis edebilecek ve tedavileri reçete edebilecek. Doktorlar, hastaları uzaktan uzaktan takip edebilecek ve onlara ihtiyaç duydukları bakımı internet bağlantısı üzerinden sağlayabilecek.",
+    "idea_publish_date":"2023-01-02T23:19:07.988",
+    "idea_likes":{
+        "Okan":true,
+        "Osman":true,
+        "d20":true,
+        "AU_gold":true,
+        "Peach":true,
+        "Ibrahim":true,
+        "HelveticaButFree":true,
+        "RTE":true,
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Engin":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true,
+        "Draven":true
+    },
+    "idea_like_count":31,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1378,
+"fields":{
+    "idea_author":178,
+    "idea_content":"Gelecekte yapay zeka doktorları, tıbbi kayıtlarını tarayarak ve bir semptom listesi derleyerek hastalarına teşhis koyacak. Daha sonra en olası tanıyı bulmak için semptomları bilinen hastalıkların veri tabanıyla karşılaştıracaklar.\r\n\r\nYapay zeka doktorlarının kullanım durumları sonsuzdur. Keşfedilen ve veritabanlarına kaydedilen, ancak henüz gerçek hayatta bulunmayan nadir hastalıkların teşhisinde yardımcı olabilirler. Ayrıca hastalara uzaktan tanı koymaya yardımcı olabilirler - böylece hem hasta hem de doktor için seyahatte zamandan, paradan ve emekten tasarruf sağlarlar.",
+    "idea_publish_date":"2023-01-02T23:19:10.755",
+    "idea_likes":{
+        "Osman":true,
+        "d20":true,
+        "AU_gold":true,
+        "Peach":true,
+        "Ibrahim":true,
+        "HelveticaButFree":true,
+        "RTE":true,
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true,
+        "Draven":true
+    },
+    "idea_like_count":29,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1379,
+"fields":{
+    "idea_author":43,
+    "idea_content":"Doktorlar, hastaları teşhis etmeye ve onlara mümkün olan en iyi bakımı sağlamaya yardımcı olmak için yapay zeka kullanıyor.\r\n\r\nDoktorlar uzun süredir yapay zeka kullanıyor, ancak teknoloji katlanarak ilerliyor. Yapay zeka artık ameliyattan hasta teşhisine kadar her şeyde kullanılıyor.\r\n\r\nYapay zeka, tıp dünyasında şimdiden büyük bir etki yarattı. Aslında, 2020 yılına kadar yapay zekanın teşhislerin %40'ından fazlasında kullanılacağı tahmin ediliyor.",
+    "idea_publish_date":"2023-01-02T23:19:11.193",
+    "idea_likes":{
+        "Overloq":true,
+        "d20":true,
+        "AU_gold":true,
+        "Peach":true,
+        "Ibrahim":true,
+        "HelveticaButFree":true,
+        "RTE":true,
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true,
+        "Draven":true
+    },
+    "idea_like_count":29,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1380,
+"fields":{
+    "idea_author":190,
+    "idea_content":"Doktorlar insandır ve bu nedenle kendi sınırlamaları vardır. Aynı anda iki yerde olamazlar, uyumaları ve yemek yemeleri gerekir. AI doktorları, insan doktorların yerine geçemez, onlara işlerinde yardımcı olacak bir asistandır.\r\n\r\nAI doktorları, hastanın doğru tanı veya tedaviyi aldığından emin olabilir. Ayrıca hastanın ilerlemesini izleyebilir ve bundan sonra ne yapılacağı hakkında bilgi verebilirler.\r\n\r\nDoktorlara her zaman ihtiyaç duyulacak, ancak yapay zeka asistanlarıyla daha karmaşık vakalara veya ameliyatlara odaklanabilir ve daha kolay olanları yapay zeka asistanlarına bırakabilirler.",
+    "idea_publish_date":"2023-01-02T23:19:14.645",
+    "idea_likes":{
+        "Peach":true,
+        "d20":true,
+        "AU_gold":true,
+        "Ibrahim":true,
+        "HelveticaButFree":true,
+        "RTE":true,
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true,
+        "Draven":true
+    },
+    "idea_like_count":28,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1381,
+"fields":{
+    "idea_author":136,
+    "idea_content":"Doktorlar, hastalıkları teşhis etmelerine ve tedaviler hakkında karar vermelerine yardımcı olmak için zaten yapay zekayı kullanıyor. Yapay zekayı ameliyathanede görmemiz an meselesi.\r\n\r\nBu bölümde, yapay zekanın şu anda doktorlar tarafından kullanıldığı farklı yolları inceleyeceğim.\r\n\r\nAI, hastalıkların teşhisine yardımcı olmak, tedavi seçenekleri hakkında karar vermek ve cerrahi prosedürlere yardımcı olmak için kullanılabilir.\r\n\r\nİlk iki uygulama türü bugün doktorlar tarafından kullanılırken, üçüncüsü henüz geliştirme aşamasındadır.\r\n\r\nDoktorlar, hastalıkları teşhis etmelerine ve tedavi seçenekleri h",
+    "idea_publish_date":"2023-01-02T23:19:12.441",
+    "idea_likes":{
+        "Ibrahim":true,
+        "HelveticaButFree":true,
+        "RTE":true,
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "d20":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "AU_gold":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true,
+        "Draven":true
+    },
+    "idea_like_count":27,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1382,
+"fields":{
+    "idea_author":165,
+    "idea_content":"Bazı insanlar yapay zeka doktorlarının sağlık hizmetlerinin geleceği olacağına inanıyor. Bu, onlarca yıldır olduğu gibi yeni bir fikir değil. Ancak yapay zeka ve derin öğrenmedeki son gelişmelerle birlikte bu fikir giderek daha gerçekçi hale geliyor.\r\n\r\nDoktorlar, hastaları teşhis etmelerine, tedavi seçenekleri sunmalarına ve kronik hastalara bakım sağlamalarına yardımcı olmak için yapay zekayı kullanabilir. Doktor, hastalarının sağlığını ve esenliğini uzaktan izlemek için yapay zekayı da kullanabilir.\r\n\r\nTıp alanı, doktor olmak için gereken kapsamlı eğitim nedeniyle girilmesi en zor sektörlerden ",
+    "idea_publish_date":"2023-01-02T23:15:51.353",
+    "idea_likes":{
+        "HelveticaButFree":true,
+        "RTE":true,
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "d20":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "AU_gold":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":25,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1383,
+"fields":{
+    "idea_author":174,
+    "idea_content":"Doktorların sağlık sektöründeki en yetenekli profesyoneller olduğu bilinmektedir. Farklı hastalıkları teşhis etmek, tedavi etmek ve önlemekten sorumludurlar. Sonuç olarak, onlar toplumumuzun en önemli insanlarından biridir. Bununla birlikte, zaman geçtikçe ve teknoloji ilerledikçe, giderek daha fazla doktor hastaları teşhis ve tedavi etmelerine yardımcı olmak için Yapay Zekayı (AI) kullanıyor.\r\n\r\nAI'nın gelecekte tüm tıp profesyonelleri tarafından kullanılacağı tahmin edilmektedir. Bunun nedeni, teşhis doğruluğu söz konusu olduğunda AI'nın insan doktorlara göre birçok avantajı olmasıdır. Örneğin",
+    "idea_publish_date":"2023-01-02T23:15:49.337",
+    "idea_likes":{
+        "RTE":true,
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "d20":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "AU_gold":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Engin":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":25,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1384,
+"fields":{
+    "idea_author":21,
+    "idea_content":"IBM Watson'ın yardımıyla hastalara teşhis koyabilen ve tedavi önerileri sağlayabilen sanal bir doktor olan Dr. Alice gibi piyasada halihazırda bazı yapay zeka doktorları var.\r\n\r\nYapay zeka doktorlarının geleceği sadece teşhis koymak ve tedavi tavsiyesi vermekle sınırlı değil, aynı zamanda hastalara ve bakıcılara duygusal destek sağlamayı da içeriyor. Örneğin, bir hastanın durumu için bir sonraki adımın ne olması gerektiğini bilmesi gerektiğinde, yapay zeka doktoru onlara, onları önemseyen insanlar olduğunu hatırlatarak duygusal desteğin yanı sıra onlara ne ya",
+    "idea_publish_date":"2023-01-02T23:15:51.509",
+    "idea_likes":{
+        "Sevda":true,
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "d20":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "AU_gold":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":23,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1385,
+"fields":{
+    "idea_author":189,
+    "idea_content":"AI doktorlarının sağlık hizmetlerinin geleceğinde önemli bir rol oynaması bekleniyor. Verileri analiz ederek ve en iyi hareket tarzını önererek doktorların daha iyi kararlar almasına yardımcı olabilirler.\r\n\r\nDoktorların yerini yapay zeka almayacak, bunun yerine onlarla birlikte çalışacak. AI doktorları, hastalara kişiselleştirilmiş bakım sağlayabilecek, ilerlemelerini takip edebilecek ve buna göre ilaç yazabilecek.",
+    "idea_publish_date":"2023-01-02T23:15:51.510",
+    "idea_likes":{
+        "Sokrates":true,
+        "SoluksuzKatil":true,
+        "d20":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "AU_gold":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":22,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1386,
+"fields":{
+    "idea_author":76,
+    "idea_content":"Bu masaüstü uygulaması bir efsane! ",
+    "idea_publish_date":"2023-01-02T23:40:55.873",
+    "idea_likes":{
+        "SoluksuzKatil":true,
+        "d20":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "AU_gold":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true,
+        "cfc.baris":true
+    },
+    "idea_like_count":22,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1387,
+"fields":{
+    "idea_author":76,
+    "idea_content":"Yapay zeka destekli doktor gerçek bir şey. Teşhis yapabilen ve hatta hastalara tedavi seçenekleri önerebilen bir makinedir.\r\n\r\nYapay zekanın yükselişinden etkilenen tek meslek doktorlar değil. Otomasyon, ekonominin tüm sektörlerinde birçok işi devralıyor ve zamanla daha da kötüye gidiyor.\r\n\r\nYapay zeka destekli doktorlar bugün bir gerçek ve dünyanın her yerindeki hastanelerde kullanılıyorlar.\r\n\r\nYapay zeka destekli ilk teşhis uzmanı, IBM Watson Health tarafından Memorial Sloan Kettering Kanser Merkezi ile birlikte geliştirildi ve 2016'dan beri meme kanseri hastalarına teşhis koymak için kullanılıyor",
+    "idea_publish_date":"2023-01-02T23:15:54.824",
+    "idea_likes":{
+        "d20":true,
+        "Tarkan":true,
+        "Swaloq":true,
+        "AU_gold":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":19,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1388,
+"fields":{
+    "idea_author":135,
+    "idea_content":"İletişim yerine nereden gidiyorduk onu yapamadım ben",
+    "idea_publish_date":"2023-01-02T23:15:56.607",
+    "idea_likes":{
+        "Tarkan":true,
+        "d20":true,
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":19,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1389,
+"fields":{
+    "idea_author":135,
+    "idea_content":"Yapay Zeka Doktorları, hastaları teşhis etmek ve tedavi etmek için Yapay Zekayı kullanan yeni bir doktor türüdür. Son birkaç yılda daha fazla popülerlik kazanıyorlar.\r\n\r\nİlk AI doktorlarından biri olan Ross, bir uygulama aracılığıyla erişilebilen sanal bir doktordur. Alerjiler veya cilt rahatsızlıkları gibi küçük sağlık sorunları olan kişilere yardımcı olabilir.",
+    "idea_publish_date":"2023-01-02T23:15:55.884",
+    "idea_likes":{
+        "d20":true,
+        "Swaloq":true,
+        "AU_gold":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":19,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1390,
+"fields":{
+    "idea_author":22,
+    "idea_content":"Doktorlar, bir süredir hastaları teşhis ve tedavi etmelerine yardımcı olmak için yapay zekayı kullanıyor. Bu, semptomlara ve diğer faktörlere dayalı olarak bir hastanın nelerden muzdarip olduğunu tahmin edebilen bilgisayar programları biçiminde AI kullanımını içerir. Doktorların olası sorunları veya anormallikleri belirlemek için taramaları ve görüntüleri okumasına yardımcı olabilecek yapay zeka programları da vardır.\r\n\r\nDoktorların kendi alanlarındaki bilgi miktarına ayak uydurmaları zor olduğundan, yapay zeka, bilgileri bir doktorun ihtiyaç duyduğunda erişebileceği veritabanlarında depolamanın",
+    "idea_publish_date":"2023-01-02T23:15:57.941",
+    "idea_likes":{
+        "d20":true,
+        "AU_gold":true,
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":19,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1391,
+"fields":{
+    "idea_author":22,
+    "idea_content":"Güncellemeden sonra daha fazla özelliğin gelmesini beklerdim, hayal kırıklığına uğradım.",
+    "idea_publish_date":"2023-01-02T23:16:01.159",
+    "idea_likes":{
+        "Swaloq":true,
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":17,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1392,
+"fields":{
+    "idea_author":197,
+    "idea_content":"Fikir yazma yerini açınca ekran zıplıyor gibi oluyor daralıyor ordinatsal olarak",
+    "idea_publish_date":"2023-01-02T23:16:00.495",
+    "idea_likes":{
+        "Sebnem":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":17,
+    "idea_comments":2,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1393,
+"fields":{
+    "idea_author":197,
+    "idea_content":"Doktorlar hastaları teşhis ve tedavi etmek için eğitilirler. Ancak nüfusun artmasıyla birlikte doktor sıkıntısı yaşanıyor. Bu sorunu çözmek için yapay zeka doktorları geliştirilmiştir.\r\n\r\nBu AI doktorları, bir hastayı tıpkı bir insan doktor kadar iyi teşhis edebilir. Makine öğrenimi algoritması, yeni bilgilerle gerçek zamanlı olarak güncellenebilir ve verileri insanlardan daha hızlı analiz edebilir.\r\n\r\nAI doktor, bir hastane için ihtiyaç duyulan doktor sayısını %10 oranında azaltabilecektir. Aynı zamanda tıbbi hataları azaltacak ve hastanelerde verimliliği artıracaktır.",
+    "idea_publish_date":"2023-01-02T23:16:04.077",
+    "idea_likes":{
+        "d20":true,
+        "TatliMuz":true,
+        "Yoksul.Ihtiyar":true,
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":17,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1394,
+"fields":{
+    "idea_author":146,
+    "idea_content":"Şu navigasyonun altındaki gri çizgi çok kalın, inceltin",
+    "idea_publish_date":"2023-01-02T23:16:09.114",
+    "idea_likes":{
+        "TimucinOkur":true,
+        "Yoksul.Ihtiyar":true,
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":15,
+    "idea_comments":2,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1395,
+"fields":{
+    "idea_author":146,
+    "idea_content":"Yapay Zeka Doktorları sadece gelecek değil, zaten buradalar. Carnegie Mellon Üniversitesi tarafından yapılan yeni bir çalışmada, AI doktorlarının cilt kanseri teşhisinde dermatologlardan daha doğru olduğu bulundu.\r\n\r\nAI doktorlarının kullanım durumları çok geniştir ve bunların sonu yoktur. Cilt kanseri için bir teşhis aracı olarak veya tıp öğrencilerinin öğrenmesi için bir araç olarak kullanılabilirler. Olasılıklar sınırsızdır ve bu AI doktorları yalnızca zamanla daha iyi olacaktır.",
+    "idea_publish_date":"2023-01-02T23:15:58.995",
+    "idea_likes":{
+        "TatliMuz":true,
+        "d20":true,
+        "TimucinOkur":true,
+        "Yoksul.Ihtiyar":true,
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":18,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1396,
+"fields":{
+    "idea_author":130,
+    "idea_content":"Yapay Zeka Doktorları, şu anda tıp endüstrisinde kullanılan yeni bir AI biçimidir. Bu doktorlar hastaları teşhis edebilir, tedavileri reçete edebilir ve hatta diğer doktorlara sevk edebilir.\r\n\r\nYapay Zeka Doktorlarının tıp endüstrisinde kullanımı geniş çapta kabul görmüştür. İnsan doktorların yapabileceğinden daha doğru teşhisler ve daha hızlı tedavi planları sunabildiler.\r\n\r\nDuygusal destek ve hastaları rahatlatmak veya ameliyattan sonra takip etmek gibi empati veya sezgi gerektiren görevler için doktorlara ihtiyaç duyulmaya devam edecek. Bununla birlikte, AI doktorları, hastaları teşhis etmek ve",
+    "idea_publish_date":"2023-01-02T23:16:03.304",
+    "idea_likes":{
+        "d20":true,
+        "TimucinOkur":true,
+        "Yoksul.Ihtiyar":true,
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":17,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1397,
+"fields":{
+    "idea_author":68,
+    "idea_content":"Bu hafta sonu Taylor Swift albümü oylayalım mı :)",
+    "idea_publish_date":"2023-01-02T23:16:06.164",
+    "idea_likes":{
+        "Yoksul.Ihtiyar":true,
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "d20":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Engin":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":17,
+    "idea_comments":5,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1398,
+"fields":{
+    "idea_author":68,
+    "idea_content":"Doktorlar genellikle toplumdaki en güvenilir profesyonellerdir. İnsanlara tıbbi bakım sağlamak için yüksek eğitimli ve eğitimlidirler. Yapay zeka doktorları ise henüz insan doktorlar kadar bilgili değiller ama çok fazla potansiyelleri var.\r\n\r\nAI doktorlarının insanlardan daha hızlı karar verebilmesi, hastanelerde kullanılmasının en büyük avantajlarından biridir. Aşırı iş yükü olan doktorlar, iş yüklerinde onlara yardımcı olmak ve süreci hızlandırmak için AI asistanlarını kullanabilir.\r\n\r\nAI doktorları hastalıkları insanlardan daha doğru bir şekilde tespit edebilirler çünkü ön yargıları yoktur ve d",
+    "idea_publish_date":"2023-01-02T23:16:10.015",
+    "idea_likes":{
+        "Yoksul.Ihtiyar":true,
+        "d20":true,
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":15,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1399,
+"fields":{
+    "idea_author":171,
+    "idea_content":"Doctors with AI have the potential to be more accurate and efficient than doctors without AI.\r\n\r\nThere are many ways in which AI can be integrated into the healthcare system. For example, it can be used to make diagnoses and recommend treatments, as well as help with administrative tasks like scheduling appointments and tracking patients’ progress.\r\n\r\nThis is because artificial intelligence has the potential to be more accurate and efficient than human doctors.",
+    "idea_publish_date":"2023-01-02T23:16:07.527",
+    "idea_likes":{
+        "JamesHutson":true,
+        "Yoksul.Ihtiyar":true,
+        "d20":true,
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":17,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1400,
+"fields":{
+    "idea_author":171,
+    "idea_content":"I'm getting the message \"Your device is located outside of Turkey Republic, it's quite possible that you are penetrating our site. Be careful.\". What the?",
+    "idea_publish_date":"2023-01-02T23:21:28.776",
+    "idea_likes":{
+        "Yoksul.Ihtiyar":true,
+        "d20":true,
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true,
+        "Kedi":true,
+        "FurkanEsen":true
+    },
+    "idea_like_count":16,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1401,
+"fields":{
+    "idea_author":168,
+    "idea_content":"Doktorlar genellikle toplumdaki en güvenilir profesyonellerdir. İnsanlara tıbbi bakım sağlamak için yüksek eğitimli ve eğitimlidirler. Yapay zeka doktorları ise henüz insan doktorlar kadar bilgili değiller ama çok fazla potansiyelleri var.\r\n\r\nAI doktorlarının insanlardan daha hızlı karar verebilmesi, hastanelerde kullanılmasının en büyük avantajlarından biridir. Aşırı iş yükü olan doktorlar, iş yüklerinde onlara yardımcı olmak ve süreci hızlandırmak için AI asistanlarını kullanabilir.\r\n\r\nAI doktorları hastalıkları insanlardan daha doğru bir şekilde tespit edebilirler çünkü ön yargıları yoktur ve d",
+    "idea_publish_date":"2023-01-02T23:16:19.744",
+    "idea_likes":{
+        "Yoksul.Ihtiyar":true,
+        "d20":true,
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":14,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1402,
+"fields":{
+    "idea_author":168,
+    "idea_content":"Dünyanın bazı yerlerinde, insanların bir doktora gitmesi ve tanısını bir bilgisayar aracılığıyla koyması zaten yaygın. Yakın gelecekte, yapay zeka doktorlarının hastaları insan doktorlardan daha hızlı ve daha doğru teşhis edebildiği için bu daha da yaygınlaşacaktır.\r\n\r\nAI doktorlarının avantajlarından bazıları, günün her saati çalışabilmeleri ve molalara veya uykuya ihtiyaç duymamalarıdır. Bu da hastalara 7/24 daha iyi hizmet verebilecekleri anlamına geliyor. Ayrıca dünyadaki tüm tıbbi verilere erişimleri olduğu için insan doktorlardan daha fazla bilgiye erişimleri var.\r\n\r\n",
+    "idea_publish_date":"2023-01-02T23:16:15.336",
+    "idea_likes":{
+        "Yoksul.Ihtiyar":true,
+        "d20":true,
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":14,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1403,
+"fields":{
+    "idea_author":182,
+    "idea_content":"Yapay zeka doktorları gerçeğe dönüşüyor. Bazı tıbbi durumlar için tedavileri teşhis edebilir ve reçete edebilirler. Bunu, hastanın semptomlarını, tıbbi geçmişini ve elektronik sağlık kayıtlarındaki diğer verileri analiz ederek yapabilirler.\r\n\r\nDoktorlar genellikle hastalarının kayıtlarına bakmak ve onlardan sonuçlar çıkarmak için çok zaman harcamak zorundadır. Tüm bu işi sadece birkaç dakika içinde yapabildikleri için AI doktorlarının kullanışlı olduğu yer burasıdır.\r\n\r\nBazı hastaneler zaten AI doktorları kullanıyor, ancak insan doktorların sahip olduğu empati ve sosyal becerilerden yoksun oldukla",
+    "idea_publish_date":"2023-01-02T23:16:15.868",
+    "idea_likes":{
+        "d20":true,
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":13,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1404,
+"fields":{
+    "idea_author":77,
+    "idea_content":"Dünkü şeyler yüzünden kusura bakmayın...",
+    "idea_publish_date":"2023-01-02T23:05:53.412",
+    "idea_likes":{
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":11,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1405,
+"fields":{
+    "idea_author":77,
+    "idea_content":"Doktorlar pek çok bilgiyi bilmeleri gereken bir konumdadır. En son tıbbi keşifler ve gelişmelerden haberdar olmaları, en son tedavileri bilmeleri ve hastalıkların insanları etkileyebileceği tüm farklı yolları anlamaları gerekir.\r\n\r\nAI doktorları, tüm bunları yorulmadan veya bilgilerini unutmadan yapabilecekler. Kendileri okumak zorunda kalmadan tüm bu bilgilere erişebilecekler. Bu, onların en iyi oldukları şeye, yani hasta bakımına odaklanmalarını sağlayacaktır.\r\n\r\nYapay zeka doktorları, dünyanın dört bir yanındaki bazı hastanelerde ve kliniklerde halihazırda geliştirilmektedir ve yakında dünya ge",
+    "idea_publish_date":"2023-01-02T23:05:54.527",
+    "idea_likes":{
+        "AU_gold":true,
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":12,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1406,
+"fields":{
+    "idea_author":170,
+    "idea_content":"Mailimi hunkarbegendirte@gmail.com\r\n yapar mısın",
+    "idea_publish_date":"2023-01-02T23:05:51.650",
+    "idea_likes":{
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "d20":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":12,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1407,
+"fields":{
+    "idea_author":17,
+    "idea_content":"Geleceğimizin yapay doktorlarına açıkça güvenmiyorum. İnsanın hata yaptığını düşünürsek insanın oluşturduğu bir şeyin hata yapmayacağını düşünmek komik. Ayrıca psikolojik olarak bir yüz yerine bir ekranı derdini anlatmak çok kötü bir plan. ",
+    "idea_publish_date":"2023-01-02T23:05:54.084",
+    "idea_likes":{
+        "Hunkar":true,
+        "CinarAlkan":true,
+        "d20":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":12,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1408,
+"fields":{
+    "idea_author":125,
+    "idea_content":"Ya küfür etmek istemiyorum ama artık firefoxta temayı çözün",
+    "idea_publish_date":"2023-01-02T23:05:57.795",
+    "idea_likes":{
+        "CinarAlkan":true,
+        "Hunkar":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":10,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1409,
+"fields":{
+    "idea_author":125,
+    "idea_content":"Doktorlar dünyadaki en yaygın meslektir ve yakın zamanda değişmeyecektir. Ancak yapay zeka ve makine öğreniminin ortaya çıkmasıyla birlikte gelecekte doktorlara ihtiyaç duyulmama ihtimali var.\r\n\r\nAI doktorları, Hindistan'da hastaları uzaktan teşhis etmek için insan doktorların sağlayabileceğinden daha fazla doğrulukla zaten kullanılıyor. Yapay zekanın yardımıyla, hastalıkları her zamankinden daha hızlı ve daha doğru bir şekilde teşhis edebiliriz.\r\n\r\nAyrıca yapay zeka doktorları, insan doktorların yapamadığı şeyleri günün 24 saati çalışmak veya ara vermeden çalışmak gibi yapabilir. Bu, hastanelerde",
+    "idea_publish_date":"2023-01-02T23:05:52.066",
+    "idea_likes":{
+        "CinarAlkan":true,
+        "d20":true,
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "AU_gold":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":12,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1410,
+"fields":{
+    "idea_author":23,
+    "idea_content":"Saatim yok, tam olarak bilemem. Biraz bira, biraz şarap önceydi.",
+    "idea_publish_date":"2023-01-02T23:06:00.478",
+    "idea_likes":{
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "d20":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":10,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1411,
+"fields":{
+    "idea_author":23,
+    "idea_content":"Çınar haklı firefox temalarına çekidüzen gelsin.",
+    "idea_publish_date":"2023-01-02T23:05:58.591",
+    "idea_likes":{
+        "Işıl":true,
+        "Mirac":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":9,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1412,
+"fields":{
+    "idea_author":23,
+    "idea_content":"Yapay zeka doktorları, halen geliştirme aşamasında olan yeni bir kavramdır. Henüz hastanelerde mevcut değiller, ancak fikir, karar vermek ve hastaları insan doktorlardan daha hızlı teşhis etmektir.\r\n\r\nYapay zeka doktorlarının, ilaçları reçete etmek veya tedavi önermek gibi hastaları teşhis etmekten daha fazlasını yapabilmesi mümkündür. Bunu insan doktorların yapabileceğinden daha hızlı ve daha doğru bir şekilde yapabilmeleri de mümkündür.",
+    "idea_publish_date":"2023-01-02T23:05:52.535",
+    "idea_likes":{
+        "Işıl":true,
+        "Mirac":true,
+        "d20":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "AU_gold":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":11,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1413,
+"fields":{
+    "idea_author":131,
+    "idea_content":"Google Asistan'a Justhink'i öğrettim",
+    "idea_publish_date":"2023-01-02T23:21:31.994",
+    "idea_likes":{
+        "Mirac":true,
+        "d20":true,
+        "SwampedGuy":true,
+        "AhmetÇağlar":true,
+        "Arif":true,
+        "Blade":true,
+        "AU_gold":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":12,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1414,
+"fields":{
+    "idea_author":131,
+    "idea_content":"Doktorlar, insan vücudunu ve nasıl çalıştığını anlamak için yıllarca eğitim almış insanlardır. Anatomiyi biliyorlar, hastalıkları biliyorlar, semptomlar hakkında her şeyi biliyorlar. Yapay Zeka doktorları, insan vücuduna ilişkin bu bilgi ve anlayışa sahip değildir. Yalnızca diğer doktorlar ve tıp uzmanları tarafından toplanan verilere erişebilirler.\r\n\r\nBu, bir doktorun tıp diplomasına veya makine öğrenimi algoritmasına sahip bir yapay zeka doktorundan daha fazlası olduğu anlamına gelir. Bir doktorun fizik muayene yapabilmesi, hastalara teşhis koyabilmesi, ilaç yazabilmesi ve hastalarının çıkarla",
+    "idea_publish_date":"2023-01-02T23:21:34.633",
+    "idea_likes":{
+        "d20":true,
+        "SwampedGuy":true,
+        "Arif":true,
+        "Blade":true,
+        "AU_gold":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true,
+        "Kedi":true
+    },
+    "idea_like_count":10,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1415,
+"fields":{
+    "idea_author":132,
+    "idea_content":"AI doktorları, hastaları teşhis eden ve tıbbi tavsiye sağlayan bilgisayar programlarıdır. Doktora erişimi olmayan kişiler veya teşhis konusunda yardıma ihtiyacı olan kişiler tarafından kullanılabilirler.\r\n\r\nAI doktorları, doktorların yerine geçmez. Bunlar sadece teşhise yardımcı olabilecek ve tıbbi tavsiye sağlayabilecek araçlardır.",
+    "idea_publish_date":"2023-01-02T23:05:59.025",
+    "idea_likes":{
+        "SwampedGuy":true,
+        "Arif":true,
+        "d20":true,
+        "Blade":true,
+        "AU_gold":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":9,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1416,
+"fields":{
+    "idea_author":132,
+    "idea_content":"Işıl başlatmış, devam. Nasıl oluyor zaman bir türlü geçmezken, yıllar hayatlar geçiyor. Takatim yok, yine de telefona sarıldım son bir özür için tüm sevdiğim kadınlardan.",
+    "idea_publish_date":"2023-01-02T23:06:08.739",
+    "idea_likes":{
+        "Arif":true,
+        "Blade":true,
+        "AU_gold":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "d20":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":8,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1417,
+"fields":{
+    "idea_author":193,
+    "idea_content":"Yapay zekanın tıp alanında kullanımı hızla artıyor. Artık hastalıkları teşhis etmek ve tavsiye vermek ve diğer doktorları eğitmek için kullanılıyor.\r\n\r\nAI sistemleri, büyük miktarda veriyi işleyebilir ve insanların gözden kaçırabileceği kalıpları tespit edebilir. Örneğin, bir hastanın şeker hastası veya yüksek tansiyonu olduğunu gösteren retinadaki anormallikleri tespit edebilirler.\r\n\r\nDoktorlar ayrıca geçmiş vakalardaki kalıpları arayarak ve ardından bu kalıplara dayalı öneriler sunarak daha doğru teşhisler yapmak için yapay zekayı kullanıyor.\r\n\r\nBu teknolojinin hem doktorlar hem de hastalar için f",
+    "idea_publish_date":"2023-01-02T23:06:02.648",
+    "idea_likes":{
+        "Arif":true,
+        "d20":true,
+        "Blade":true,
+        "AU_gold":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":8,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1418,
+"fields":{
+    "idea_author":193,
+    "idea_content":"Başlatmışlar ben de chain'i bozmayayım. Ama farklı şarkıyla. İnadına yenilmeden aşık olmadan gel, bu gidişin sonu kötü kalbi kaybetme gel. Siyahını bırak da gel.",
+    "idea_publish_date":"2023-01-02T23:06:09.170",
+    "idea_likes":{
+        "Arif":true,
+        "Blade":true,
+        "AU_gold":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "d20":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":8,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1419,
+"fields":{
+    "idea_author":160,
+    "idea_content":"Doktorlar artık sadece insan değil. Yapay zeka doktorları bir süredir gerçek oldu ve kalıcı olarak buradalar.\r\n\r\nAI doktorları hastalıkları insanlardan daha iyi teşhis edebilir ve ayrıca daha iyi tedavi önerebilir. Ayrıca tıbbi görüntülerdeki anormallikleri insan doktorlardan daha doğru bir şekilde tespit edebiliyorlar, bu nedenle birçok hastane zaten X-ışınlarını ve BT taramalarını okumak için bunları kullanıyor.\r\n\r\nGelecekte, yapay zeka doktorları hastalıkları teşhis etmekten veya tedavi reçete etmekten daha fazlasını yapabilecekler - hastaların ihtiyaçlarını anlayabilecek ve bu ihtiyaçlara göre",
+    "idea_publish_date":"2023-01-02T23:06:07.818",
+    "idea_likes":{
+        "d20":true,
+        "Blade":true,
+        "AU_gold":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":7,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1420,
+"fields":{
+    "idea_author":161,
+    "idea_content":"Doktorluk dünyanın en kritik mesleklerinden biridir. Hastaların teşhis ve tedavisinden sorumludurlar. Yapay Zeka doktorları, dünya çapında sağlık hizmetlerini iyileştirmenin harika bir yolu olabilir.\r\n\r\nAI yazma aracının kullanım durumları, sağlık, eğitim ve pazarlama dahil olmak üzere birçok farklı sektörde bulunabilir. Yapay zekanın sağlık hizmetlerinde kullanılma yollarından biri de doktorlara yardım sağlamaktır. Yapay zeka doktorları, hastaların diğer görevlere daha fazla zaman ayırmalarını sağlayacak şekilde tanı koymaya yardımcı olabilir. Ayrıca hasta tedavisine yardımcı olurlar ve bir has",
+    "idea_publish_date":"2023-01-02T23:06:10.054",
+    "idea_likes":{
+        "Blade":true,
+        "AU_gold":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "d20":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":6,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1421,
+"fields":{
+    "idea_author":162,
+    "idea_content":"Geçmişte, hastalara teşhis koyabilen ve tedavi edebilen tek kişi doktorlardı. Bununla birlikte, yapay zekanın ilerlemesiyle birlikte, AI doktorları artık çeşitli tıbbi durumlar için teşhis ve tedavi sağlayabiliyor.\r\n\r\nDoktorlar artık kalp problemlerini veya insanlar tarafından görülemeyen veya tespit edilemeyen diğer ciddi sağlık sorunlarını tespit etmek için AI tabanlı sistemleri kullanabilir. Bu önemlidir çünkü uzun vadede hayat kurtarabilir ve sağlık bakım maliyetlerini azaltabilir.",
+    "idea_publish_date":"2023-01-02T23:06:07.137",
+    "idea_likes":{
+        "AU_gold":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "d20":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":6,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1422,
+"fields":{
+    "idea_author":191,
+    "idea_content":"AI doktorları fikri yeni değil. Geçmişte, sağlık hizmetlerinde AI'nın geleceği hakkında birçok tahmin yapıldı. Bir tahmin, AI doktorlarının hastalara teşhis koyacağı ve ilaç yazacağı bir zaman olacağı yönündeydi.\r\n\r\nAncak, gerçekte durum böyle olmamıştır. Bunun nedeni, AI'nın bazı hastalıkları teşhis edip onlar için ilaç yazabilmesine rağmen, bunu tüm hastalıklar ve tüm ilaçlar için yapamamasıdır. Bunun nedeni, bilgi ve deneyimlerini hastanın tıbbi geçmişi, mevcut semptomları, aile geçmişi vb. bilgilerine dayalı olarak tanı koymak veya bir tedavi planı önermek için kullanabilen insanlardan farkl",
+    "idea_publish_date":"2023-01-02T23:06:20.095",
+    "idea_likes":{
+        "AU_gold":true,
+        "Orkun":true,
+        "H2SO4":true,
+        "d20":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":6,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1423,
+"fields":{
+    "idea_author":213,
+    "idea_content":"Yapay zeka doktorları, tıp alanındaki bir sonraki büyük şeydir. Hastaları teşhis etmeye ve onlara bir tedavi planı sağlamaya yardımcı olabilirler. AI doktorları ayrıca tıbbi kayıtları analiz etmek, araştırma yapmak ve daha önce hiç karşılaşmadıkları sorunlara çözüm bulmak için kullanılabilir.\r\n\r\nRutin kontrollerden evde bakıma kadar sağlık hizmetlerinin her alanında bulunabilen bu teknoloji sadece hastanelerle sınırlı değildir. AI doktorları, bize zamanında bilgi sağlayarak, bize doğru teşhis koyarak ve özel ihtiyaçlarımız için özelleştirilmiş tedavi planları sunarak hayatımızı kolaylaştıracak.",
+    "idea_publish_date":"2023-01-02T23:06:16.877",
+    "idea_likes":{
+        "Orkun":true,
+        "H2SO4":true,
+        "d20":true,
+        "AU_gold":true,
+        "Yalçın":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":6,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1424,
+"fields":{
+    "idea_author":214,
+    "idea_content":"Doktorlar her zaman tüm zamanların en güvenilir mesleği olmuştur. Hayat kurtarabilecek insanlar olarak saygı gördüler ve saygı gördüler. Yapay Zeka doktorları, sağlık sektöründe yükselen bir trend.\r\n\r\nAI doktorları, insan doktorların yerine geçmez, onların tamamlayıcısıdır. AI doktorları, teşhis ve tedavi konusunda yardımcı olabilir, hastalıklar ve semptomlar hakkında bilgi verebilir, tedavi seçenekleri için önerilerde bulunabilir ve doğru tahminler sağlayabilir.\r\n\r\n2020 yılına kadar hastanelerin %10'unun yapay zekayı bir şekilde hekimlere işlerinde yardımcı olmak için kullanacağı tahmin ediliyor.",
+    "idea_publish_date":"2023-01-02T23:06:19.511",
+    "idea_likes":{
+        "H2SO4":true,
+        "d20":true,
+        "AU_gold":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":6,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1425,
+"fields":{
+    "idea_author":214,
+    "idea_content":"Taylor Swift candır, bir sonrakine da Ariana ya da Adele'yi isterim.",
+    "idea_publish_date":"2023-01-02T23:06:17.323",
+    "idea_likes":{
+        "H2SO4":true,
+        "d20":true,
+        "AU_gold":true,
+        "Yalçın":true,
+        "Mandalina":true,
+        "MacentaColour":true
+    },
+    "idea_like_count":6,
+    "idea_comments":3,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1426,
+"fields":{
+    "idea_author":212,
+    "idea_content":"Yapay zeka çoğu konuda umut vadediyor tıp konusundada birçok konuda doktorlardan daha etkili olacağını düşünüyorum yani mesela \r\nbir yapay zeka sistemi düşünün bütün tıp literatürü bugüne kadar yazılmış bütün makaleler elde edilen deneysel sonuçlar yüklenmiş meydana gelen gelişmeler karşısında anında güncelleniyor kan idrar ultrason röntgen vs bütün ölçümleri yorumlayabiliyor ilaç sektöründeki bütün literatür yüklenmiş ve sürekli güncelleniyor sistem operatörü hastanın şikayetlerini sisteme giriyor tahlil sonuçları da geldiğinde sistem teşhisi koyuyor ve ilacını yazıyor",
+    "idea_publish_date":"2023-01-02T23:16:43.491",
+    "idea_likes":{
+        "AU_gold":true,
+        "Yalçın":true,
+        "Emrullah":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Gürses":true,
+        "d20":true
+    },
+    "idea_like_count":7,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1427,
+"fields":{
+    "idea_author":215,
+    "idea_content":"Doktorlar, hastalıkları teşhis etmelerine ve daha iyi tedavi planları sunmalarına yardımcı olmak için yapay zekayı kullanıyor. Yeni teknolojilerin benimsenmesi söz konusu olduğunda geleneksel olarak çok muhafazakar olan tıp endüstrisine yaklaşmanın yeni bir yolu.\r\n\r\nDoktorlar, bir hastalığın başlangıcını veya ani ölümü tahmin edebilen algoritmalar oluşturmak için yapay zekayı kullanıyor. Ayrıca kanser, kalp hastalığı ve diğer rahatsızlıkların teşhis ve tedavisi için AI kullanıyorlar.\r\n\r\nAI doktorları, hastanelerde ve kliniklerde doktorlara asistan olarak çalışır. Hastanın sağlık kayıtlarına ilişki",
+    "idea_publish_date":"2023-01-02T23:16:42.543",
+    "idea_likes":{
+        "Yalçın":true,
+        "AU_gold":true,
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Gürses":true,
+        "d20":true
+    },
+    "idea_like_count":6,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1428,
+"fields":{
+    "idea_author":216,
+    "idea_content":"Şarkı gördüm söyleyesim geldi. Biiir derdiim var artık tutaaamam içiiimdeeeeeeee",
+    "idea_publish_date":"2023-01-02T23:32:01.597",
+    "idea_likes":{
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Gürses":true,
+        "d20":true,
+        "AU_gold":true
+    },
+    "idea_like_count":5,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1429,
+"fields":{
+    "idea_author":216,
+    "idea_content":"Yapay Zeka Doktorları, sağlık hizmetlerinin geleceğidir. Tıbbi teşhis ve tedaviyi insan doktorlardan daha doğru bir şekilde gerçekleştirebilirler. En iyi tedavi yöntemini bulmak ve hastalarına daha iyi sonuçlar sağlamak için algoritmalar kullanırlar.",
+    "idea_publish_date":"2023-01-02T23:31:58.162",
+    "idea_likes":{
+        "Mandalina":true,
+        "MacentaColour":true,
+        "Gürses":true,
+        "d20":true,
+        "AU_gold":true
+    },
+    "idea_like_count":5,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1430,
+"fields":{
+    "idea_author":217,
+    "idea_content":"AI doktorları, hastaları teşhis etmek ve tedavi etmek için yapay zekayı kullanan yeni bir tür sağlık profesyonelidir. Ayrıca \"robo-dokümanlar\" olarak da bilinirler. Tanı koyabilir, ilaç yazabilir ve takip önerilerinde bulunabilirler.\r\n\r\nAI doktorları, insan doktorların yerini alması amaçlanmamıştır. Bunun yerine teşhis koyarak ve tedavi için önerilerde bulunarak doktora gitme sürecini çok daha verimli hale getirirler.",
+    "idea_publish_date":"2023-01-02T23:31:56.137",
+    "idea_likes":{
+        "MacentaColour":true,
+        "Gürses":true,
+        "MadeInTurkey":true,
+        "d20":true,
+        "AU_gold":true
+    },
+    "idea_like_count":5,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1431,
+"fields":{
+    "idea_author":217,
+    "idea_content":"Çok iyi bir platform fakat bana \"Your account has some problems\" hatası geldi sol üstte",
+    "idea_publish_date":"2023-01-02T23:31:53.417",
+    "idea_likes":{
+        "MacentaColour":true,
+        "Gürses":true,
+        "MadeInTurkey":true,
+        "FurkanEsen":true,
+        "AU_gold":true
+    },
+    "idea_like_count":5,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1432,
+"fields":{
+    "idea_author":218,
+    "idea_content":"Gelecekte yapay zekanın yerini alacak profesyoneller sadece doktorlar değil. AI halihazırda hukuk, finans ve eğitim dahil olmak üzere diğer birçok endüstri üzerinde önemli bir etki yapıyor.\r\n\r\nAI artık bazı hastalıkları teşhis edebiliyor ve doktorlar sorunun ne olduğundan emin olmadığında da teşhis koyabiliyor. Ayrıca tedavi planlarında, hastaların sağlığını izlemede ve hatta ilaç reçetesinde yardımcı olabilir.\r\n\r\nAI, MRI'lar ve CT taramaları gibi tıbbi görüntüleri insanlardan daha verimli bir şekilde analiz edebileceğinden, gelecekte sağlık hizmetleri üzerinde daha da önemli bir etkiye sahip olac",
+    "idea_publish_date":"2023-01-02T23:31:49.665",
+    "idea_likes":{
+        "Gürses":true,
+        "MadeInTurkey":true,
+        "Kalemlik":true,
+        "d20":true,
+        "AU_gold":true
+    },
+    "idea_like_count":5,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1433,
+"fields":{
+    "idea_author":218,
+    "idea_content":"Verilerimizi nasıl işlediğiniizi öğrenmek istyorum.",
+    "idea_publish_date":"2023-01-02T23:27:37.895",
+    "idea_likes":{
+        "MadeInTurkey":true,
+        "Kalemlik":true,
+        "d20":true
+    },
+    "idea_like_count":3,
+    "idea_comments":2,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1434,
+"fields":{
+    "idea_author":219,
+    "idea_content":"Doktorlar artık hastaları teşhis etmelerine ve tedavi etmelerine yardımcı olmak için AI kullanıyor. AI zaten hastanelerde hastaları izlemek için kullanılıyordu, ancak şimdi teşhis için de kullanılıyor. Teknoloji henüz mükemmel değil, ancak sağlık hizmetlerinde büyük bir oyun değiştirici olma potansiyeline sahip.\r\n\r\nAmerikan Tabipler Birliği tarafından yayınlanan bir araştırma, doktorların bir AI sistemi kullandıklarında, doğru teşhis koyma ve her hasta için daha az zaman harcama olasılıklarının daha yüksek olduğunu buldu. Bu, hızlı bir şekilde doğru teşhise ihtiyaç duyan hastalar için büyük bir ",
+    "idea_publish_date":"2023-01-02T23:31:47.523",
+    "idea_likes":{
+        "MadeInTurkey":true,
+        "Kalemlik":true,
+        "d20":true,
+        "Kedi":true,
+        "AU_gold":true
+    },
+    "idea_like_count":5,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1435,
+"fields":{
+    "idea_author":219,
+    "idea_content":"KVKK politikası baştan savma hazırlanmış.",
+    "idea_publish_date":"2023-01-03T15:53:24.586",
+    "idea_likes":{
+        "Kalemlik":true,
+        "FurkanEsen":true
+    },
+    "idea_like_count":2,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1436,
+"fields":{
+    "idea_author":220,
+    "idea_content":"Doktorlar karar verme ve teşhis için yapay zekaya güvenir. AI, büyük miktarda veriyi işleyebilir, eğilimleri ve kalıpları analiz edebilir ve birkaç dakika içinde teşhis koyabilir.\r\n\r\nAI'nın tıp alanında kullanımı son yıllarda artmaktadır. Doktorlar, büyük miktarda veriyi işleyebildiği, trendleri ve kalıpları analiz edebildiği ve birkaç dakika içinde teşhis koyabildiği için karar verme ve teşhis için teknolojiye güveniyor.\r\n\r\nAI, semptomlardaki değişiklikleri hızlı bir şekilde tanıyabilir ve bu da doktorların hastaları daha verimli bir şekilde teşhis etmesine yardımcı olabilir. Örneğin, AI, diyabet",
+    "idea_publish_date":"2023-01-02T23:31:43.416",
+    "idea_likes":{
+        "d20":true,
+        "Kedi":true,
+        "AU_gold":true
+    },
+    "idea_like_count":3,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1437,
+"fields":{
+    "idea_author":221,
+    "idea_content":"Site fevkalade olmuş, @FurkanEsen'den geldim",
+    "idea_publish_date":"2023-01-02T23:32:07.237",
+    "idea_likes":{
+        "d20":true,
+        "Kedi":true,
+        "AU_gold":true
+    },
+    "idea_like_count":3,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1438,
+"fields":{
+    "idea_author":221,
+    "idea_content":"AI doktorları yeni bir fenomen değil. Sağlık sektöründe uzun süredir kullanılmaktadırlar. Yapay zeka doktorları hastalara teşhis koymada, kişiselleştirilmiş tedavi planları sağlamada ve hatta ameliyatlarda yardımcı olabilir.\r\n\r\nYapay zekanın sağlık sektöründe kullanımı son on yılda katlanarak arttı. Ve sadece zaman geçtikçe daha da büyüyecek.\r\n\r\nYapay Zeka Doktorları, tıbbın geleceğinde giderek daha fazla göreceğimiz yeni bir olgudur.",
+    "idea_publish_date":"2023-01-02T23:31:39.548",
+    "idea_likes":{
+        "d20":true,
+        "Kedi":true,
+        "AU_gold":true
+    },
+    "idea_like_count":3,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1439,
+"fields":{
+    "idea_author":10,
+    "idea_content":"Yapay Zekalı Doktorlar ancak insan olan doktorların işlerini kolaylaştırmada kullanıldıkları taktirde yararlı olurlar.",
+    "idea_publish_date":"2023-01-03T00:07:49.162",
+    "idea_likes":{
+        "d20":true,
+        "Kedi":true,
+        "AU_gold":true,
+        "FurkanEsen":true
+    },
+    "idea_like_count":4,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1440,
+"fields":{
+    "idea_author":149,
+    "idea_content":"Yapay zekalı doktorlar, Furkan gibidir çünkü onların da Furkan'ın da DOĞAL bir zekası yoktur.",
+    "idea_publish_date":"2023-01-03T12:02:37.904",
+    "idea_likes":{
+        "canucan16":true,
+        "FurkanEsen":true
+    },
+    "idea_like_count":2,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1441,
+"fields":{
+    "idea_author":52,
+    "idea_content":"Türkiye'de hasta yakınları robotu da döver ",
+    "idea_publish_date":"2023-01-03T12:30:29.284",
+    "idea_likes":{
+        "FurkanEsen":true,
+        "d20":true,
+        "AU_gold":true
+    },
+    "idea_like_count":3,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1442,
+"fields":{
+    "idea_author":222,
+    "idea_content":"Yapay Zekalı Doktorların varlığına ve işlevine inanmıyor ve güvenmiyorum.",
+    "idea_publish_date":"2023-01-03T16:12:23.932",
+    "idea_likes":{
+        "Orhan":true,
+        "d20":true,
+        "FurkanEsen":true,
+        "AU_gold":true
+    },
+    "idea_like_count":4,
+    "idea_comments":0,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1443,
+"fields":{
+    "idea_author":223,
+    "idea_content":"Tasarım departmanıyla görüşebilir miyim?",
+    "idea_publish_date":"2023-01-03T17:11:01.018",
+    "idea_likes":{
+        "FurkanEsen":true,
+        "d20":true
+    },
+    "idea_like_count":2,
+    "idea_comments":1,
+    "idea_topic":"Yapay Zekâlı Doktorlar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1444,
+"fields":{
+    "idea_author":163,
+    "idea_content":"Yaşamak, hayatta kalmak? Belki de en temel hedef, ama Türkiye'de o kadar kolay değil sanki, h-hah?",
+    "idea_publish_date":"2023-01-03T19:17:20.686",
+    "idea_likes":{
+        "AU_gold":true,
+        "Kedi":true,
+        "Draven":true,
+        "d20":true,
+        "Emrullah":true,
+        "IAB":true
+    },
+    "idea_like_count":6,
+    "idea_comments":0,
+    "idea_topic":"Yeni yıl, yeni hedefler...",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1445,
+"fields":{
+    "idea_author":11,
+    "idea_content":"Günün konusundan daha fazla faydalanmak için metni unutmayınız.\r\nKendi fikrime gelince. Bence alışkanlık döngüsü içinde ele alınca ve basit hedefler başlayınca her türlü alışkanlık ve hedef elde edilebilir. İrade ancak bir yere kadar ilerletiyor, Bu durumda 19 Ocağa :)",
+    "idea_publish_date":"2023-01-03T20:18:43.312",
+    "idea_likes":{
+        "Kedi":true,
+        "Draven":true,
+        "AhmetÇağlar":true,
+        "d20":true,
+        "IAB":true,
+        "Emrullah":true,
+        "justhink":true,
+        "AU_gold":true
+    },
+    "idea_like_count":8,
+    "idea_comments":0,
+    "idea_topic":"Yeni yıl, yeni hedefler...",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1446,
+"fields":{
+    "idea_author":34,
+    "idea_content":"Döngünün kırıldığu 19 Ocak'ın tam da doğum günüm olması da ilginç ",
+    "idea_publish_date":"2023-01-03T20:19:05.475",
+    "idea_likes":{
+        "Draven":true,
+        "IAB":true,
+        "Kedi":true,
+        "d20":true,
+        "Emrullah":true,
+        "AU_gold":true
+    },
+    "idea_like_count":6,
+    "idea_comments":1,
+    "idea_topic":"Yeni yıl, yeni hedefler...",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1447,
+"fields":{
+    "idea_author":75,
+    "idea_content":"Hiçbir hedefim yok, teşekkürler.",
+    "idea_publish_date":"2023-01-03T18:59:12.349",
+    "idea_likes":{
+        "d20":true,
+        "Kedi":true,
+        "AU_gold":true
+    },
+    "idea_like_count":3,
+    "idea_comments":0,
+    "idea_topic":"Yeni yıl, yeni hedefler...",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1448,
+"fields":{
+    "idea_author":77,
+    "idea_content":"Tanrının gazabı üzerinize olsun kafirler! Bu ne biçim konu",
+    "idea_publish_date":"2023-01-03T18:58:56.485",
+    "idea_likes":{
+        "d20":true
+    },
+    "idea_like_count":1,
+    "idea_comments":1,
+    "idea_topic":"Yeni yıl, yeni hedefler...",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1449,
+"fields":{
+    "idea_author":137,
+    "idea_content":"Ya sitenizi seviyorum ama böyle konular olmaz ki",
+    "idea_publish_date":"2023-01-03T18:58:52.856",
+    "idea_likes":{
+        "d20":true,
+        "AU_gold":true
+    },
+    "idea_like_count":2,
+    "idea_comments":1,
+    "idea_topic":"Yeni yıl, yeni hedefler...",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1450,
+"fields":{
+    "idea_author":138,
+    "idea_content":"Ya yine yüksek oy verdim ama bu konu olmaz cidden.",
+    "idea_publish_date":"2023-01-03T18:58:34.659",
+    "idea_likes":{
+        "d20":true
+    },
+    "idea_like_count":1,
+    "idea_comments":1,
+    "idea_topic":"Yeni yıl, yeni hedefler...",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1451,
+"fields":{
+    "idea_author":134,
+    "idea_content":"Benim birçok hedefim var ve onları gerçekleştirmek için çaba sarf etsem de bir süre sonra vazgeçiyorum otomatikmen... Çok ilginç",
+    "idea_publish_date":"2023-01-03T18:58:03.342",
+    "idea_likes":{
+        "d20":true
+    },
+    "idea_like_count":1,
+    "idea_comments":0,
+    "idea_topic":"Yeni yıl, yeni hedefler...",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1452,
+"fields":{
+    "idea_author":183,
+    "idea_content":"19 Ocak'ta görüşmek üzsre.",
+    "idea_publish_date":"2023-01-03T20:19:12.629",
+    "idea_likes":{
+        "Draven":true,
+        "d20":true,
+        "IAB":true,
+        "Emrullah":true,
+        "AU_gold":true
+    },
+    "idea_like_count":5,
+    "idea_comments":0,
+    "idea_topic":"Yeni yıl, yeni hedefler...",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1453,
+"fields":{
+    "idea_author":23,
+    "idea_content":"Bitti Justhink. Bırakıyorum. Silin hesabımı.",
+    "idea_publish_date":"2023-01-03T18:57:23.499",
+    "idea_likes":{
+        "d20":true
+    },
+    "idea_like_count":1,
+    "idea_comments":1,
+    "idea_topic":"Kutsal Pazartesiler ve Yeni Yıl Sendromu",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1454,
+"fields":{
+    "idea_author":131,
+    "idea_content":"Pekala.... Güzelmiş Devam böyle",
+    "idea_publish_date":"2023-01-03T18:57:17.740",
+    "idea_likes":{
+        "d20":true
+    },
+    "idea_like_count":1,
+    "idea_comments":0,
+    "idea_topic":"Kutsal Pazartesiler ve Yeni Yıl Sendromu",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1455,
+"fields":{
+    "idea_author":223,
+    "idea_content":"Benim birçok alışkanlığım var... Fakat onları yürütmek ve düzene sokmak bir hayli zorluyor insanı. ",
+    "idea_publish_date":"2023-01-03T20:19:23.012",
+    "idea_likes":{
+        "Kedi":true,
+        "d20":true,
+        "IAB":true,
+        "Emrullah":true,
+        "AU_gold":true
+    },
+    "idea_like_count":5,
+    "idea_comments":0,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1456,
+"fields":{
+    "idea_author":14,
+    "idea_content":"Bence alışkanlıklar ve hedefler bizi bir diğer güne bağlayan etkenler. Bu hedefleri genelde bireysel koyuyoruz ve evet bazılarını çok devam ettirmiyoruz. Bir hareketin alışkanlığa dönmesi ortalama 21 gün alıyor ve bu süre bazen çok uzun geldiği için bir çok hedefimizi yarım bıraktık büyük ihtimalle. Metinde geçen 19 gün ibaresi 21 günlük alışkanlığa dönme bilgisinden sonra daha da garip geldi. 2 gün daha dayansak kim bilir neler yapardık. Kısaca hedefler önemli, hedeflere anca alışkanlıklarla varabiliriz ve bu bazen pazartesiyi bekleyince imkansız oluyor\r\n",
+    "idea_publish_date":"2023-01-03T20:18:44.538",
+    "idea_likes":{
+        "Kedi":true,
+        "Draven":true,
+        "AhmetÇağlar":true,
+        "IAB":true,
+        "Emrullah":true,
+        "d20":true,
+        "justhink":true,
+        "AU_gold":true
+    },
+    "idea_like_count":8,
+    "idea_comments":0,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1457,
+"fields":{
+    "idea_author":194,
+    "idea_content":"Alışkanlıklar insanı insan yapan şeylerdir. Ben çok fazla alışkanlık sahibiyim mesela. Sabahları kalktığım belli saat, yemek yediğim belli saatler vardır.",
+    "idea_publish_date":"2023-01-03T20:19:47.630",
+    "idea_likes":{
+        "DogmatikKafa":true,
+        "d20":true,
+        "IAB":true,
+        "Emrullah":true,
+        "AU_gold":true
+    },
+    "idea_like_count":5,
+    "idea_comments":0,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1458,
+"fields":{
+    "idea_author":213,
+    "idea_content":"Alışkanlıklar insanın temelini, yapısını oluştururlar. Onlarsız bir yaşam mümkün bile olamaz. Her daim alışkanlıklar önemlidir ve önemli kalacaklardır.",
+    "idea_publish_date":"2023-01-03T20:19:10.060",
+    "idea_likes":{
+        "Draven":true,
+        "d20":true,
+        "IAB":true,
+        "Emrullah":true,
+        "Kedi":true,
+        "AU_gold":true
+    },
+    "idea_like_count":6,
+    "idea_comments":0,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1459,
+"fields":{
+    "idea_author":216,
+    "idea_content":"Alışkanlıklar hayatımızda çok büyük bir önem arz ediyorlar, onlara bağlı kalmak onları edinmekten çok daha zor. Örnek olarak bir gün 8 saat ders çalışabilirsiniz, fakat bunu her gün yapmaya çalışmak bundan çok daha zor olacaktır. (Sitenin iyiliği için birkaç anahtar kelime: justhink, JUSTHINK, en iyi site, alışkanlıklar, sohbet, fikir)",
+    "idea_publish_date":"2023-01-03T20:19:11.197",
+    "idea_likes":{
+        "d20":true,
+        "Draven":true,
+        "IAB":true,
+        "Kedi":true,
+        "Emrullah":true,
+        "AU_gold":true
+    },
+    "idea_like_count":6,
+    "idea_comments":1,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1460,
+"fields":{
+    "idea_author":212,
+    "idea_content":"Bu aslında trajikomik bir durum çünkü 365 gün için koyduğunuz küçük bikaç hedef varken anlık bi kaçış her şeyi mahvedebiliyor koyduğunuz hedefler beklediğin sürede beklediğiniz sonucu vermeyebilir ama bu olmayacağı anlamına gelmez ben 3 ay spor yaptım gelişme yok bırakmalıyım değil bu spor eninde sonunda beni istediğim hale getirecek bir şeyleri yanlış yaptım demekki onlari düzelteyim demeli insan yeni alışkanlıklar içinde kendine yüklenmemeli ne istiyorsa başkasının etkisinde kalmadan onu yapmalı ve bu alışkanlıkları kendine aşırı yüklenmeyecek şekilde yavaş yavaş kazanmalı diye düşünüyorum",
+    "idea_publish_date":"2023-01-03T20:18:59.165",
+    "idea_likes":{
+        "d20":true,
+        "Draven":true,
+        "IAB":true,
+        "Kedi":true,
+        "AhmetÇağlar":true,
+        "Emrullah":true,
+        "justhink":true,
+        "AU_gold":true
+    },
+    "idea_like_count":8,
+    "idea_comments":1,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1461,
+"fields":{
+    "idea_author":140,
+    "idea_content":"Alışkanlıklar insanların hayatında sürekli var olan, yaşantısında etkili ve belirleyici rolü bulunan, fiziksel, duygusal, zihinsel ve toplumsal tutumlarına yön\r\nveren kişiliklerini ve karakterlerini oluşturan davranışlardır. Alışkanlıklar\r\ninsanların tutumları ile doğrudan ilişkili olduğundan psikoloji, sosyoloji, ekonomi\r\ngibi birçok disiplinin ilgi alanına girmekle birlikte bireylere olumlu davranış kazandırma yönüyle de eğitim biliminde önemli rol oynamaktadır.\r\nİnsan davranışı eğitim biliminin üzerinde en fazla durduğu konuların başında\r\ngelmektedir. Ertürk (1993) eğitimin tanımını bu yönde yap",
+    "idea_publish_date":"2023-01-03T20:24:49.830",
+    "idea_likes":{
+        "Kedi":true,
+        "d20":true,
+        "Emrullah":true,
+        "IAB":true,
+        "AhmetÇağlar":true,
+        "justhink":true,
+        "Edding":true,
+        "Edip":true,
+        "AU_gold":true,
+        "Draven":true
+    },
+    "idea_like_count":10,
+    "idea_comments":6,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1462,
+"fields":{
+    "idea_author":43,
+    "idea_content":"Alışkanlıkları sürdürebilmek çok önemli bir husus fakat bir o kadar da zor, açıkçası ben alışkanlıklarımı asla doğrusal bir şekilde devam ettirebildiğimi düşünmüyorum.",
+    "idea_publish_date":"2023-01-03T20:19:48.244",
+    "idea_likes":{
+        "Emrullah":true,
+        "Kedi":true,
+        "IAB":true,
+        "d20":true,
+        "AU_gold":true
+    },
+    "idea_like_count":5,
+    "idea_comments":0,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1463,
+"fields":{
+    "idea_author":34,
+    "idea_content":"Stabil bir hedeftense azdan başlayıp gittikçe artan hedefler bana daha uygun. Her gün 2 saat Almanca çalışmaktansa 10 dakika ile başlayıp arttırmayı planlıyorum. Yoksa 19 Ocak'a kadar bile dayanabileceğimi sanmam. :)) ",
+    "idea_publish_date":"2023-01-03T20:19:03.258",
+    "idea_likes":{
+        "IAB":true,
+        "AhmetÇağlar":true,
+        "Kedi":true,
+        "Emrullah":true,
+        "justhink":true,
+        "d20":true,
+        "AU_gold":true
+    },
+    "idea_like_count":7,
+    "idea_comments":0,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1464,
+"fields":{
+    "idea_author":12,
+    "idea_content":"Bence bir hedefe giden yol ya da alışkanlık ne olursa olsun monotonlaşmamalı, sürekli bir hareket olmalı insanın hayatında. Hedeflere giden yolda pes etmenin nedenlerinin birinin de bu olduğunu düşünüyorum. Her gün aynı şeyi yapan insan robotlaşır, o yaptığı işten belki de bir süre sonra hiç bir zevk almaz. Sürekli aynı şeyin tekrarlanması gerekiyorsa bile bence olabildiğince farklı yollardan, değişiklikler ile yapılmalı ki her seferinde yeni bir deneyim yaşıyormuşcasına ilgi çekici gelsin bize",
+    "idea_publish_date":"2023-01-03T20:19:00.592",
+    "idea_likes":{
+        "AhmetÇağlar":true,
+        "IAB":true,
+        "Emrullah":true,
+        "Kedi":true,
+        "justhink":true,
+        "d20":true,
+        "Yumurta_yiyen_civciv":true,
+        "AU_gold":true
+    },
+    "idea_like_count":8,
+    "idea_comments":0,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1465,
+"fields":{
+    "idea_author":201,
+    "idea_content":"Alışkanlıklarımız bizi tanımlayan şeylerdir. Onlarsız yaşamak mümkün değildir. Bu arada tasarım eleştirilerimi hiç dikkate almıyorsunuz, böyle devam.",
+    "idea_publish_date":"2023-01-03T20:25:52.027",
+    "idea_likes":{
+        "d20":true,
+        "AU_gold":true
+    },
+    "idea_like_count":2,
+    "idea_comments":1,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1466,
+"fields":{
+    "idea_author":186,
+    "idea_content":"Ezan saati allah belanızı",
+    "idea_publish_date":"2023-01-03T19:29:16.148",
+    "idea_likes":{
+        "d20":true
+    },
+    "idea_like_count":1,
+    "idea_comments":0,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1467,
+"fields":{
+    "idea_author":155,
+    "idea_content":"Allahın belaları. Yapmayın şu işi",
+    "idea_publish_date":"2023-01-03T19:29:08.150",
+    "idea_likes":{
+        "d20":true
+    },
+    "idea_like_count":1,
+    "idea_comments":0,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":true
+}
+},
+{
+"model":"idea.idea",
+"pk":1468,
+"fields":{
+    "idea_author":219,
+    "idea_content":"Şu sitedeki tasarımcı ve yazılımcılara acıyorum kendinizi harcamayın",
+    "idea_publish_date":"2023-01-03T20:19:50.356",
+    "idea_likes":{
+        "AU_gold":true
+    },
+    "idea_like_count":1,
+    "idea_comments":1,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1469,
+"fields":{
+    "idea_author":16,
+    "idea_content":"Çok fazla alışkanlığa sahip olmak insanı çok garip bir duruma sokabiliyor. Açıkçası ben gençken o kadar fazla yaptığım rutin iş vardı ki, kendimi benliğimi unutmuş gibiydim. Artık neyse ki durum böyle değil (Konuyu çok çözemedim açıkçası, fikir yazamadım)",
+    "idea_publish_date":"2023-01-03T20:53:25.830",
+    "idea_likes":{
+        "Kedi":true,
+        "Draven":true,
+        "IAB":true,
+        "AhmetÇağlar":true,
+        "d20":true,
+        "FurkanEsen":true
+    },
+    "idea_like_count":6,
+    "idea_comments":0,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+},
+{
+"model":"idea.idea",
+"pk":1470,
+"fields":{
+    "idea_author":77,
+    "idea_content":"Tamam pardon alışkanlıklar iyidir",
+    "idea_publish_date":"2023-01-03T20:33:39.174",
+    "idea_likes":{
+        "d20":true
+    },
+    "idea_like_count":1,
+    "idea_comments":0,
+    "idea_topic":"Alışkanlıklar",
+    "idea_archived":false
+}
+}
+}

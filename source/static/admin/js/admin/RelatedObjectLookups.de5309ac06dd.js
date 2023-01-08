@@ -124,7 +124,7 @@
             const elemName = elem.nodeName.toUpperCase();
             if (elemName === 'SELECT') {
                 elem.options[elem.options.length] = new Option(newRepr, newId, true, true);
-                updateRelatedSelectsOptions(elem, win, null, newRepr, newId);
+                updateRelatedSelectsOptions(elem, win, false, newRepr, newId);
             } else if (elemName === 'INPUT') {
                 if (elem.classList.contains('vManyToManyRawIdAdminField') && elem.value) {
                     elem.value += ',' + newId;

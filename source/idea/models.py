@@ -9,6 +9,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.core.mail import get_connection, EmailMultiAlternatives
+from django.shortcuts import reverse
 
 
 def send_mass_html_mail(datatuple, fail_silently=False, user=None, password=None, 
@@ -49,12 +50,18 @@ class Idea(models.Model):
     idea_topic = models.CharField(max_length=100, default="Belirlenemedi.", null=True, editable=True)
 
     idea_archived = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.idea_content
+
+    def get_absolute_url(self,):
+        return reverse('inspect-idea-page', args=[self.pk,])
     
 class Comment(models.Model):
     comment_idea = models.ForeignKey(to=Idea, on_delete=models.CASCADE)
     comment_author = models.ForeignKey(to=Profile, on_delete=models.CASCADE)
     comment_content = models.TextField()
-    comment_publish_date = models.DateTimeField(auto_now=True)
+    comment_publish_date = models.DateTimeField()
 
     comment_likes = models.JSONField(editable=False, default=dict)
     comment_like_count = models.IntegerField(editable=False, default=0)

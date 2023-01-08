@@ -45,7 +45,7 @@
           
           <div class="auth-box__input-box">
               <label for="password" class="auth-box__label">Şifre:</label>
-              <input type="password" name="password" id="password" placeholder="*******" class="auth-box__input" autocomplete="new-password" minlength="8" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="setCustomValidity('Şifreniz; en az bir büyük harf, bir küçük harf, bir özel karakter veya rakamdan oluşan, minimum 8 haneli bir yapıda olmalı.')" required>
+              <input type="password" name="password" id="password" placeholder="*******" class="auth-box__input" autocomplete="new-password" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" oninvalid="setCustomValidity('Şifreniz; en az bir büyük harf, bir küçük harf, bir özel karakter veya rakamdan oluşan, minimum 8 haneli bir yapıda olmalı.')" required>
           </div>
           <div class="auth-box__input-box ref-code">
             <label for="password" class="auth-box__label">Referans Kodu (Zorunlu Değil):</label>
@@ -57,7 +57,7 @@
                   <div class="bottom-box__controller">
                     <div class="auth-box__checkbox-box">
                         <input type="checkbox" name="kvkk-agreed" id="kvkk-agreed" class="auth-box__input-checkbox">
-                        <label for="kvkk-agreed" class="auth-box__checkbox-label"><a href="/static/policies/user-terms.pdf" target="_blank " style="color: inherit">KVKK'yı</a> kabul ediyorum.</label>
+                        <label for="kvkk-agreed" class="auth-box__checkbox-label"><a href="/static/policies/user-terms.pdf" target="_blank " style="color: inherit"><abbr title="Kullanıcı Sözleşmesi">KS</abbr>'yı</a> kabul ediyorum.</label>
                     </div>
                     <a href="#login" class="auth__forget-password" style="text-decoration: none">Yardım ister misiniz?</a>
                   </div>

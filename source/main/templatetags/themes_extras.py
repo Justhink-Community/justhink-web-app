@@ -14,4 +14,6 @@ def get_theme_logo(theme):
 def get_theme_banner(theme):
     if theme == 'default-theme': return 'thinker_banner.png'
     theme_formatted: str = theme.split(' ')[0].lower()
+    if theme_formatted == '':
+        return 'thinker_banner.png'
     return f'{theme_formatted}_banner.png'

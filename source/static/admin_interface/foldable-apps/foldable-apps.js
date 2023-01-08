@@ -2,7 +2,7 @@
     window.onload = function() {
         for (let moduleEl of document.querySelectorAll('.admin-interface.foldable-apps [class^="app-"].module')) {
             // apply collapsed value from localstorage value
-            let moduleAppClass = null;
+            let moduleAppClass = false;
             let moduleCollapsedClass = 'collapsed';
             moduleEl.classList.forEach(function(className) {
                 if (className.startsWith('app-')) {

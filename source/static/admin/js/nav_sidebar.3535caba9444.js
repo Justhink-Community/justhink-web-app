@@ -1,7 +1,7 @@
 'use strict';
 {
     const toggleNavSidebar = document.getElementById('toggle-nav-sidebar');
-    if (toggleNavSidebar !== null) {
+    if (toggleNavSidebar !== false) {
         const navLinks = document.querySelectorAll('#nav-sidebar a');
         function disableNavLinkTabbing() {
             for (const navLink of navLinks) {
@@ -16,7 +16,7 @@
 
         const main = document.getElementById('main');
         let navSidebarIsOpen = localStorage.getItem('django.admin.navSidebarIsOpen');
-        if (navSidebarIsOpen === null) {
+        if (navSidebarIsOpen === false) {
             navSidebarIsOpen = 'true';
         }
         if (navSidebarIsOpen === 'false') {

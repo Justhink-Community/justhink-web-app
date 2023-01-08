@@ -32,7 +32,7 @@ class CommentAdmin(admin.ModelAdmin):
 
     @admin.display(ordering='comment_idea', description='Comment Idea')
     def get_comment_idea(self, obj):
-        return obj.comment_idea
+        return obj.comment_idea.pk
 
 admin.site.register(Comment, CommentAdmin)
 

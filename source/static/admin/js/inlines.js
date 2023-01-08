@@ -45,7 +45,7 @@
          * The "Add another MyModel" button below the inline forms.
          */
         const addInlineAddButton = function() {
-            if (addButton === null) {
+            if (addButton === false) {
                 if ($this.prop("tagName") === "TR") {
                     // If forms are laid out as table rows, insert the
                     // "add" button in a new table row:
@@ -195,9 +195,9 @@
         deleteCssClass: "delete-row", // CSS class applied to the delete link
         emptyCssClass: "empty-row", // CSS class applied to the empty row
         formCssClass: "dynamic-form", // CSS class applied to each form in a formset
-        added: null, // Function called each time a new form is added
-        removed: null, // Function called each time a form is deleted
-        addButton: null // Existing add button to use
+        added: false, // Function called each time a new form is added
+        removed: false, // Function called each time a form is deleted
+        addButton: false // Existing add button to use
     };
 
 

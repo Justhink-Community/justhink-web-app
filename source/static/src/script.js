@@ -1,21 +1,9 @@
-// const secondaryLanguageSelection = document.querySelector(
-//     ".language-selection--secondary"
-//   ),
-//   languageSwitch = document.querySelector(".language-switch"),
 const
   publishIdeaLink = document.querySelector(".publish-idea"),
   publishIdeaBox = document.querySelector(".publish-idea-box"),
   publishIdeaContainer = document.querySelector(".publish-idea-container"),
   myAccount = document.querySelector(".my-account"),
   notificationsBox = document.querySelector('.notifications-box')
-
-// secondaryLanguageSelection.addEventListener("mouseover", () => {
-//   languageSwitch.style.backgroundColor = "#e4e4e4";
-// });
-
-// secondaryLanguageSelection.addEventListener("mouseout", () => {
-//   languageSwitch.style.backgroundColor = "#ebebeb";
-// });
 
 const NOTIFICATION_TAGS = {
   success: "/static/images/icons/check-circle-outline.svg",
@@ -124,31 +112,38 @@ productUseBtns = document.querySelectorAll('.product-use'),
 confirmPurchase = document.querySelector('.confirm-purchase')
 
 productBuyBtns.forEach(productBuyBtn => {
-  productBuyBtn.addEventListener('click', (_e) => {
-    confirmPurchase.querySelector('p').innerHTML = `${productBuyBtn.getAttribute('data-product')} adlı ürün için ${productBuyBtn.getAttribute('data-fee')} puan kullanmayı onaylıyor musun?` 
-    confirmationBtn.setAttribute('data-product', productBuyBtn.getAttribute('data-product'))
-  });
+  if (productBuyBtn) {
+    productBuyBtn.addEventListener('click', (_e) => {
+      confirmPurchase.querySelector('p').innerHTML = `${productBuyBtn.getAttribute('data-product')} adlı ürün için ${productBuyBtn.getAttribute('data-fee')} puan kullanmayı onaylıyor musun?` 
+      confirmationBtn.setAttribute('data-product', productBuyBtn.getAttribute('data-product'))
+    });
+  }
 })
 
 productUseBtns.forEach(productUseBtn => {
-  productUseBtn.addEventListener('click', (_e) => {
-    $.ajax({
-      type: 'GET',
-      url: '/change-theme',
-      data: {product_name: productUseBtn.getAttribute('data-product')},
-      success: function(res) {
-        window.location.reload()
-      }
-    })
-  });
+  if (productUseBtn) {
+    productUseBtn.addEventListener('click', (_e) => {
+      $.ajax({
+        type: 'GET',
+        url: '/change-theme',
+        data: {product_name: productUseBtn.getAttribute('data-product')},
+        success: function(res) {
+          window.location.reload()
+        }
+      })
+    });
+  }
 });
 
-  confirmationBtn.addEventListener('click', (_e) => {
-    $.ajax({
-      type: 'POST',
-      url: '/shop',
-      data: {product_name: confirmationBtn.getAttribute('data-product'), csrfmiddlewaretoken: confirmPurchase.querySelector('input[name="csrfmiddlewaretoken"]').value},
-      success: function(res) { window.location.reload() } 
-    })
-  });
-
+  if (confirmationBtn) {
+    confirmationBtn.addEventListener('click', (_e) => {
+      $.ajax({
+        type: 'POST',
+        url: '/shop',
+        data: {product_name: confirmationBtn.getAttribute('data-product'), csrfmiddlewaretoken: confirmPurchase.querySelector('input[name="csrfmiddlewaretoken"]').value},
+        success: function(res) { window.location.reload() } 
+      })
+    });
+  
+  
+  }

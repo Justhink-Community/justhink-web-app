@@ -20,7 +20,17 @@
 
 {% block daily_summary %} {% endblock %} 
 
-{% block title %}Justhink &ndash; {{ idea.idea_author.account.username }}'nin Fikri{% endblock %}
+{% block title %} 
+@{{ idea.idea_author.account.username }} &bull; Justhink fikrini görüntüle (#{{idea.pk}})
+{% endblock %}
+
+{% block page_description %}
+{{ idea.idea_like_count }} Beğeni, {{ idea.idea_comments }} Yorum &bull; @{{ idea.idea_author.account.username }}'e ait Justhink fikrini görüntüle
+{% endblock %} 
+
+{% block onseo_text %} 
+{{ idea.idea_like_count }} Beğeni, {{ idea.idea_comments }} Yorum &bull; @{{ idea.idea_author.account.username }}'e ait Justhink fikrini görüntüle
+{% endblock %}
 
 {% block main %} 
 

@@ -6,6 +6,7 @@ TIMES_TO_BACKUP = [
     "00:00", "06:00", "12:00", "18:00"
 ]
 TIME_TO_RESET = "18:00"
+TIME_TO_ACTIVATE_SUNDAY = "10:00"
 
 
 def daily_reset():
@@ -18,10 +19,18 @@ def daily_backup():
 
     print(f"Daily backup has been done succesfully: {response} - {response.status_code}")
 
+daily_backup()
+
 for _time in TIMES_TO_BACKUP:
     schedule.every().day.at(_time).do(daily_backup)
 
-schedule.every().day.at(TIME_TO_RESET).do(daily_reset)
+schedule.every().monday.at(TIME_TO_RESET).do(daily_reset)
+schedule.every().tuesday.at(TIME_TO_RESET).do(daily_reset)
+schedule.every().wednesday.at(TIME_TO_RESET).do(daily_reset)
+schedule.every().thursday.at(TIME_TO_RESET).do(daily_reset)
+schedule.every().friday.at(TIME_TO_RESET).do(daily_reset)
+schedule.every().saturday.at(TIME_TO_RESET).do(daily_reset)
+schedule.every().sunday.at(TIME_TO_ACTIVATE_SUNDAY).do(daily_reset)
 
 
 print(f"Daily reset program has been started. It will reset at {TIME_TO_RESET}. (To terminate, press Ctrl + C)")
